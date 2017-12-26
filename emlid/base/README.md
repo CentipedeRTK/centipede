@@ -18,5 +18,5 @@ update-rc.d wifi.py defaults
 * for delete
 
 ```
-update-rc.d -f yourscript.sh remove
+update-rc.d -f wifi.py remove
 ```

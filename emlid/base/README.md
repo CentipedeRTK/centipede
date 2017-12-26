@@ -2,14 +2,14 @@
 
 * create python wifi.py
 
-*cp 
+* cp 
 
 ```
 cp wifi.py /etc/init.d
 chmod +x /etc/init.d/wifi.py
 ```
 
-*do
+* do
 
 ```
 update-rc.d wifi.py defaults

@@ -17,3 +17,4 @@ ID = id                     ##Id de l'entité
   else
       echo DOWN
       docker exec -d $CONTAINER su postgres -c "psql $BASE -c 'update $TABLE SET $PING= false  where $ID = 7;'"
+  fi

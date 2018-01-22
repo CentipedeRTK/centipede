@@ -1,8 +1,8 @@
 # centipede
 
-### Conception d'un réseau ouvert de Bases GNSS RTK
+### Réseau ouvert de Bases GNSS RTK low-cost
 
-<img src="docs/images/centipede.jpg" height="100">
+<img src="docs/images/centipede.jpg" height="200">
 
 https://jancelin.github.io/centipede
 

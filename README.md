@@ -4,9 +4,9 @@
 
 ![sat -half ](docs/images/centipede.jpg)
 
-![sat -half ](docs/images/inra.png)
-![sat -half ](docs/images/dynafor.jpg)
-![sat -half ](docs/images/lienss.png)
-![sat -half ](docs/images/geves.png)
-![sat -half ](docs/images/ZA.jpg)
-![sat -half ](docs/images/region.jpg)
+![sat -half ](docs/images/inra.png| height=50)
+![sat -half ](docs/images/dynafor.jpg| height=50)
+![sat -half ](docs/images/lienss.png| height=50)
+![sat -half ](docs/images/geves.png| height=50)
+![sat -half ](docs/images/ZA.jpg| height=50)
+![sat -half ](docs/images/region.jpg| height=50)

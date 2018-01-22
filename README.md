@@ -4,7 +4,7 @@
 
 ![sat -half ](docs/images/centipede.jpg)
 
-![sat -half ](docs/images/inra.png| height=50)
+<img src="docs/images/inra.png" width="100" height="100">
 ![sat -half ](docs/images/dynafor.jpg| height=50)
 ![sat -half ](docs/images/lienss.png| height=50)
 ![sat -half ](docs/images/geves.png| height=50)

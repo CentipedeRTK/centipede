@@ -13,7 +13,7 @@ TABLE='rtk.antenne'         ##table
 PING='ping'                 ##champ boolean
 DATE='ping_date'            ##champ timestamp with time zone
 ID='id'                     ##champ Id de l'entité
-IDVALUE='7'
+IDVALUE='7'                 ##ID de la base
 
   if nc -z -w2 $RTCM $PORT ; then
       echo OK

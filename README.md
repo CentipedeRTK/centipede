@@ -1,4 +1,4 @@
-# centipede
+# Centipède
 
 ### Réseau collaboratif de Bases GNSS RTK low-cost
 

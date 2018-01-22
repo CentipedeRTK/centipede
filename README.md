@@ -1,6 +1,6 @@
 # centipede
 
-### Réseau ouvert de Bases GNSS RTK low-cost
+### Réseau collaboratif de Bases GNSS RTK low-cost
 
 <img src="docs/images/centipede.jpg" height="200">
 

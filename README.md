@@ -10,5 +10,5 @@ https://jancelin.github.io/centipede
 
 
 
-<img src="docs/images/rtk_map.png" height="300
-"> 
+<img src="docs/images/rtk_map.png">
+

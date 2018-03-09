@@ -1,5 +1,6 @@
-* connect ssh reach base 
+for reachView 10.0.0
 
+* connect ssh reach 
 * create python wifi.py
 
 * cp 

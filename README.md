@@ -6,7 +6,8 @@
 
 https://jancelin.github.io/centipede
 
-<iframe width="854" height="480" src="https://centipede.sig.inra.fr/websig/lizmap/www/" frameborder="0" allowfullscreen></iframe>
+
+<iframe src="https://centipede.sig.inra.fr/websig/lizmap/www/" width="900" height="780" style="border: none;"></iframe>
 
 <img src="docs/images/rtk_map.png">
 

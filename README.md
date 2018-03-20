@@ -6,7 +6,7 @@
 
 https://jancelin.github.io/centipede
 
-<section data-background-iframe="https://https://centipede.sig.inra.fr/websig/lizmap/www/index.php/view/map/?repository=cent&project=situation"> 
+<section iframe="https://https://centipede.sig.inra.fr/websig/lizmap/www/index.php/view/map/?repository=cent&project=situation"> 
 </section>
 
 <img src="docs/images/rtk_map.png">

@@ -4,6 +4,8 @@
 
 <img src="docs/images/centipede.jpg" height="200">
 
+https://centipede.sig.inra.fr
+
 https://jancelin.github.io/centipede
 
 <img src="docs/images/rtkmap1.png">

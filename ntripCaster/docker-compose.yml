@@ -1,0 +1,7 @@
+ version: '3'
+services:
+ ntrip:
+    build:
+      context: ./ntripCaster
+    ports:
+     - 2101:2101

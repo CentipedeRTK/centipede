@@ -9,9 +9,9 @@
 ## home/mySpace/files/ IN_CREATE /bin/sh /home/mySpace/autoDump.sh
 
 #chemin des dossiers origine et temporaire
-VAR1=/home/sig/nextcloud/data/lupsig/files/
-VAR2=/home/sig/dbDump/unlimited/llh
-VAR2DOCKER=/home/unlimited/llh/
+VAR1=/home/mySpace/files/
+VAR2=/home/my_space/llh
+VAR2DOCKER=/home/my_space/llh/
 
 sleep 30  &&
 #récupère le nom du dernier fichier mofié

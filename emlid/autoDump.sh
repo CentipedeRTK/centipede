@@ -26,7 +26,7 @@ FICHIER2=$(ls -1t $VAR2/ |  head -1) &&
 sed -i -r 's/^ *//;s/ {1,}/,/g' $VAR2/$FICHIER2 &&
 
 ## insère les données dans la base
-docker exec -u postgres sig_postgis_1 psql unlimited -c "COPY unlimited(jour,heure,latitude,longitude,height,rtk_fix_float_sbas_dgps_single_ppp,satellites,sdn,sde,sdu,sdne,sdeu,sdun,age,ratio) FROM '$VAR2DOCKER$FICHIER2' DELIMITER ',' csv encoding 'UTF-8';" &&
+docker exec -u postgres sig_postgis psql unlimited -c "COPY unlimited(jour,heure,latitude,longitude,height,rtk_fix_float_sbas_dgps_single_ppp,satellites,sdn,sde,sdu,sdne,sdeu,sdun,age,ratio) FROM '$VAR2DOCKER$FICHIER2' DELIMITER ',' csv encoding 'UTF-8';" &&
 
 ##supprime le fichier data
 rm $VAR2/$FICHIER2

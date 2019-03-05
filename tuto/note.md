@@ -20,7 +20,7 @@ Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir
 
 ### Prérequis du serveur
 
-ubuntu-server 18.04
+OS: Ubuntu-server 18.04
 
 Installer les paquets docker et docker-compose
 
@@ -32,5 +32,21 @@ Il est nécessaire d'ouvrir le port 2101 de la machine.
 
 L'application est conteneurisée dans docker :
 
+Récupérer les codes de centipede :
+
 ``` git clone https://github.com/jancelin/centipede.git ```
+
+Modifier le fichier de configuration :
+
+```cd centipede 
+sudo nano ntripcaster.conf 
+ server_url
+ email
+ server_name
+ mountpoint
+```
+sudo nano sourcetab.dat
+ name
+ position
+ 
 

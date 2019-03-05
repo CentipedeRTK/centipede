@@ -34,12 +34,16 @@ L'application est conteneurisée dans docker :
 
 Récupérer les codes de centipede :
 
-``` git clone https://github.com/jancelin/centipede.git ```
+``` 
+git clone https://github.com/jancelin/centipede.git 
+```
 
 Modifier le fichier de configuration :
 
-``` cd centipede 
-sudo nano ntripcaster.conf ```
+```
+cd centipede 
+sudo nano ntripcaster.conf 
+```
 
 Modifier les valeurs suivantes :
 

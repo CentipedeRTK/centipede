@@ -4,8 +4,9 @@ Modèle Emlid Reach M+ - v2.16.2
 
 ## Installation du module
 
-La température locale et l'humidité relative étant très élevées, il est nécessaire de retirer le module du boitier et de lui adjoindre
-un ventilateur équipé d'un dissipateur.
+La température locale et l'humidité relative étant très élevées, il est nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur.
+
+<img src="docs/images/reach_fan.png">
 
 ## Paramétrage de la base
 

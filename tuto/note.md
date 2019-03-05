@@ -16,11 +16,21 @@ L'antenne est placée sur un mât et le reach est positionné dans un endroit ab
 
 Le reach est mis sous tension.
 
-Télécharger l'application ReachView (disponible sur Android et iOS).
+* Se connecter au réseau wifi du Reach ("reach:xx:xx") en utilisant le mot de passe __emlidreach__.
 
-Se connecter au réseau wifi du Reach (reach:xx:xx
+* Ouvrir un navigateur (de préférence Mozilla Firefox ou google Chrome) et taper http://reach.local ou http://192.168.42.1 pour accéder à l'interface de configuration du reach (cf. image ci-dessous).
 
-Démarrer Reachview. 
+<p align="center"><img src="../docs/images/reach_view_accueil.png"></p>
+
+* Cliquer sur le bouton + et entrer le SSID de votre réseau wifi, le type de sécurité et le mot de passe. Cliquer sur le bouton Save.
+
+* Sélectionner votre réseau wifi et cliquer sur Connect.
+
+* Une fois le reach connecté sur votre réseau wifi, une nouvelle IP lui est attribuée, c'est celle-ci qui est utilisée (http://reach.local fonctionne également). Elle est visible sur l'interface Web du Reach, en haut à gauche de l'écran.
+
+<p align="center"><img src="../docs/images/reach_home.png"></p>
+
+Note : il est également possible de faire ces manupulations via l'application ReachView (disponible sur Android et iOS).
 
 ## Calcul de la position de la base
 
@@ -33,7 +43,7 @@ Pour ce faire,
 
 OS: Ubuntu-server 18.04
 
-Installer les paquets docker et docker-compose
+* Installer les paquets docker et docker-compose
 
 ``` sudo apt-get install docker docker-compose```
 
@@ -43,20 +53,20 @@ Il est nécessaire d'ouvrir le port 2101 de la machine.
 
 L'application est conteneurisée dans docker :
 
-Récupérer les codes de centipede :
+* Récupérer les codes de centipede :
 
 ``` 
 git clone https://github.com/jancelin/centipede.git 
 ```
 
-Modifier le fichier de configuration :
+* Modifier le fichier de configuration :
 
 ```
 cd centipede 
 sudo nano ntripcaster.conf 
 ```
 
-Modifier les valeurs suivantes :
+* Modifier les valeurs suivantes :
 
 server_url
 

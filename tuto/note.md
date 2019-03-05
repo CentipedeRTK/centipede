@@ -6,11 +6,11 @@
 
 La température locale et l'humidité relative étant très élevées, il est nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur, comme présenté ci-dessous.
 
-<center><img src="../docs/images/reach_fan.png"></center>
+<p align="center"><img src="../docs/images/reach_fan.png"></p>
 
 L'antenne est placée sur un mât et le reach est positionné dans un endroit abrité du soleil direct et de la pluie.
 
-<center><img src="../docs/images/reach_roof.jpg"></center>
+<p align="center"><img src="../docs/images/reach_roof.jpg"></p>
 
 ## Paramétrage de la base
 

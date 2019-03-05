@@ -12,9 +12,20 @@ L'antenne est placée sur un mât et le reach est positionné dans un endroit ab
 
 <p align="center"><img src="../docs/images/reach_roof.jpg"></p>
 
-## Paramétrage de la base
+## Premières configurations
+
+Le reach est mis sous tension.
+
+Télécharger l'application ReachView (disponible sur Android et iOS).
+
+Se connecter au réseau wifi du Reach (reach:xx:xx
+
+Démarrer Reachview. 
+
+## Calcul de la position de la base
 
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
+Pour ce faire, 
 
 ## Installation du caster
 

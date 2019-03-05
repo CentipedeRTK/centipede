@@ -48,11 +48,15 @@ sudo nano ntripcaster.conf
 Modifier les valeurs suivantes :
 
 server_url
- email
- server_name
- mountpoint
+
+email
+ 
+server_name
+ 
+mountpoint
 
 ```sudo nano sourcetab.dat```
+
  name
  position
  

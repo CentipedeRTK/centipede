@@ -38,14 +38,17 @@ Récupérer les codes de centipede :
 
 Modifier le fichier de configuration :
 
-```cd centipede 
-sudo nano ntripcaster.conf 
- server_url
+``` cd centipede 
+sudo nano ntripcaster.conf ```
+
+Modifier les valeurs suivantes :
+
+server_url
  email
  server_name
  mountpoint
-```
-sudo nano sourcetab.dat
+
+```sudo nano sourcetab.dat```
  name
  position
  

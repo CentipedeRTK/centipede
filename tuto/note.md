@@ -20,7 +20,7 @@ Le reach est mis sous tension.
 
 * Ouvrir un navigateur (de préférence Mozilla Firefox ou google Chrome) et taper http://reach.local ou http://192.168.42.1 pour accéder à l'interface de configuration du reach (cf. image ci-dessous).
 
-<p align="center"><img src="../docs/images/reach_view_accueil.png" width="100"></p>
+<p align="center"><img src="../docs/images/reach_view_accueil.png" width="400"></p>
 
 * Cliquer sur le bouton + et entrer le SSID de votre réseau wifi, le type de sécurité et le mot de passe. Cliquer sur le bouton Save.
 

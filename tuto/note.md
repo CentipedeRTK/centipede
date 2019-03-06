@@ -43,7 +43,21 @@ L'enregistrement se fait pendant une période minimale de 12h00 consécutives. L
 
 Plusieurs méthodes de post-traitements existent, et ce sont les conditions locales (éloignement de l'antenne de référence, visibilité de la constellation ...) qui aident à déterminer la méthode la plus pertinente.
 
+* Télécharger le fichier ubx (Raw_xxx_UBX.zip)
 
+* Aller sur le site IGN et télécharger la trame correspondante à la période (prendre Temps Universel).
+
+* Sélectionner GLONASS en plus de GPS (+ GALILEO si la base concernée le propose).
+
+* L'échantillonnage à 5 sec est suffisant pour la plage horaire choisie.
+
+* Version Rinex : 2.11
+
+* Il faut ensuite sélectionner la base souhaitée sur la carte à l'aide de l'outil de sélection puis l'ajouter au panier.
+
+* Télécharger l'archive une fois disponible.
+
+* Réunir les 2 fichiers (ubx + rinex) dans un même répertoire pour plus de confort d'utilisation.
 
 ## Installation du caster
 

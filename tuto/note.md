@@ -87,7 +87,7 @@ Lancer RTKPOST
 
 * Charger le fichier .obs de la base à corriger (Rover)
 * Charger le fichier .19o de la base de référence (Base Station)
-* Charger le fichier .nav de la base à corriger
+* Charger les fichiers .nav, .hnav, .lnav, .gnav de la base à corriger
 * Le fichier résultat aura une extension .pos
 * Renseigner le Time Start et le Time End (la plage horaire de notre période de logging).
 * Cliquer sur options
@@ -101,7 +101,7 @@ Lancer RTKPOST
     * Pour les autres options, laisser les valeurs par défaut 
   - Setting2 
     * Integer Ambiguity Res : Continuous 
-    > A creuser (cf. RTKLIB explorer) 
+      > A creuser (cf. RTKLIB explorer) 
     * Toutes les autres options doivent rester par défaut
   - Output : toutes les valeurs par défaut 
   - Statistics : toutes les valeurs par défaut 

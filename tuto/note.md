@@ -34,12 +34,14 @@ Note : il est également possible de faire ces manipulations via l'application R
 
 ## Calcul de la position de la base
 
+### Récupération des données nécessaires
+
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
 Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging.
 
 <p align="center"><img src="../docs/images/reach_log.png"></p>
 
-L'enregistrement se fait pendant une période minimale de 12h00 consécutives. Les positions enregistrées sont ensuite post-traitées en s'appuyant sur la trame de l'antenne RGP (IGN - <a href="http://rgp.ign.fr/">En savoir plus</a>) la plus proche, enregistrée sur la même période. Plus l'antenne de référence sera proche, meilleure sera la précision de localisation de notre base.
+L'enregistrement se fait pendant une période minimale de 12h00 consécutives. Les positions enregistrées sont ensuite post-traitées en s'appuyant sur la trame de l'antenne RGP (IGN - <a href="http://rgp.ign.fr/DONNEES/diffusion">En savoir plus</a>) la plus proche, enregistrée sur la même période. Plus l'antenne de référence sera proche, meilleure sera la précision de localisation de notre base.
 
 Plusieurs méthodes de post-traitements existent, et ce sont les conditions locales (éloignement de l'antenne de référence, visibilité de la constellation ...) qui aident à déterminer la méthode la plus pertinente.
 
@@ -58,6 +60,38 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 * Télécharger l'archive une fois disponible.
 
 * Réunir les 2 fichiers (ubx + rinex) dans un même répertoire pour plus de confort d'utilisation.
+
+* Pour en savoir plus sur les formats utilisés : <a href="https://en.wikipedia.org/wiki/RINEX">wikipedia</a>
+
+### Calcul de la correction
+
+Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emlid.com/reachm-plus/common/tutorials/gps-post-processing/" target="new_">docs.emlid.com</a>.
+
+Nous allons utiliser en premier lieu l'AppImage RTKCONV.
+
+
+```
+./RTKCONV_Qt-x86_64.AppImage
+```
+
+* Charger le fichier UBX
+* Sélectionner le format u-blox
+* Cliquer sur options puis changer la version Rinex (2.11 : celle de la base RGP)
+* Cliquer sur Convert
+
+Lancer RTKPOST
+
+```
+./RTKPOST_Qt-x86_64.AppImage
+```
+* Charger le fichier .obs de la base à corriger (Rover)
+* Charger le fichier .19o de la base de référence (Base Station)
+* Charger le fichier .nav de la base à corriger
+* Le fichier résultat aura une extension .pos
+* Renseigner le Time Start et le Time End (la plage horaire de notre période de logging).
+* Cliquer sur options
+
+
 
 ## Installation du caster
 

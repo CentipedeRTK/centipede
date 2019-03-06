@@ -37,21 +37,23 @@ Le reach est mis sous tension.
 ### Récupération des données nécessaires
 
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
-Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging.
+Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging, en activant l'option Raw data (position ON).
 
 <p align="center"><img src="../docs/images/reach_log.png"></p>
 
-L'enregistrement se fait pendant une période minimale de 12h00 consécutives. Les positions enregistrées sont ensuite post-traitées en s'appuyant sur la trame de l'antenne RGP (IGN - <a href="http://rgp.ign.fr">En savoir plus</a>) la plus proche, enregistrée sur la même période. Plus l'antenne de référence sera proche, meilleure sera la précision de localisation de notre base.
+L'enregistrement se fait pendant une période minimale de 12h00 consécutives. Les positions enregistrées sont ensuite post-traitées en s'appuyant sur la trame de l'antenne RGP la plus proche (IGN - <a href="http://rgp.ign.fr">En savoir plus</a>), enregistrée sur la même période. Plus l'antenne de référence sera proche, meilleure sera la précision de localisation de notre base.
 
-Plusieurs méthodes de post-traitements existent, et ce sont les conditions locales (éloignement de l'antenne de référence, visibilité de la constellation ...) qui aident à déterminer la méthode la plus pertinente.
+Plusieurs méthodes de post-traitements existent, et ce sont les conditions locales (éloignement de l'antenne de référence, modèle de l'antenne,  visibilité de la constellation ...) qui aident à déterminer la méthode la plus pertinente.
 
-* Télécharger le fichier ubx (Raw_xxx_UBX.zip)
+* Télécharger le fichier UBX (Raw_xxx_UBX.zip)en cliquant sur l'icone <img src="../docs/images/reachview_download.png">
 
-* Aller sur le <a href="http://rgp.ign.fr/DONNEES/diffusion">site IGN</a> et télécharger la trame correspondante à la période (prendre Temps Universel).
+* Aller sur le <a href="http://rgp.ign.fr/DONNEES/diffusion">site IGN</a> et télécharger la trame correspondante à la période.
 
-* Sélectionner GLONASS en plus de GPS (+ GALILEO si la base concernée le propose).
+* Sélectionner UT (Temps Universel)
 
-* L'échantillonnage à 5 sec est suffisant pour la plage horaire choisie.
+* Sélectionner GLONASS en plus de GPS (+ GALILEO si la base concernée le propose). Si un système sélectionné (ex : GALILEO) n'est pas disponible sur la base concernée, celle-ci disparait de l'interface cartographique et n'est donc plus sélectionnable. Dans ce cas, décocher le système de positionnement.
+
+* Echantillonnage : 5 sec.
 
 * Version Rinex : 2.11
 
@@ -59,11 +61,11 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Il faut ensuite sélectionner la base souhaitée sur la carte à l'aide de l'outil de sélection puis l'ajouter au panier.
 
-* Télécharger l'archive une fois disponible.
+* Télécharger l'archive une fois celle-ci disponible.
 
 <p align="center"><img src="../docs/images/ign_base.png"></p>
 
-* Réunir les 2 fichiers (ubx + rinex) dans un même répertoire.
+* Réunir les 2 fichiers (UBX + Rinex) dans un même répertoire.
 
 > Pour en savoir plus sur les formats utilisés : <a href="https://en.wikipedia.org/wiki/RINEX">wikipedia</a>
 
@@ -72,7 +74,6 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emlid.com/reachm-plus/common/tutorials/gps-post-processing/" target="new_">docs.emlid.com</a>.
 
 Nous allons utiliser en premier lieu l'AppImage RTKCONV.
-
 
 ```
 ./RTKCONV_Qt-x86_64.AppImage
@@ -109,12 +110,12 @@ Lancer RTKPOST
     * Integer Ambiguity Res : Continuous 
       > A creuser (cf. RTKLIB explorer) 
     * Toutes les autres options doivent rester par défaut
-  - Output : toutes les valeurs par défaut 
-  - Statistics : toutes les valeurs par défaut 
+  - Output : laisser les valeurs par défaut 
+  - Statistics : laisser les valeurs par défaut 
   - Positions 
     * Changer uniquement la valeur de Base station : Rinex Header Position 
-  - Files : toutes les valeurs par défaut 
-  - Misc : toutes les valeurs par défaut
+  - Files : laisser les valeurs par défaut 
+  - Misc : laisser les valeurs par défaut
  
  __Penser à sauvegarder tous ces paramétrages dans un fichier .conf (option Save)__
  

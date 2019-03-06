@@ -99,7 +99,18 @@ Lancer RTKPOST
  
  > A creuser
  
- *** Troposphere correction
+ *** Troposphere correction : Saastamoinen
+ *** Pour les autres options, laisser les valeurs par défaut
+ 
+ ** Setting2
+ *** Integer Ambiguity Res : Continuous
+ 
+ > A creuser (cf. RTKLIB explorer)
+ 
+ *** Toutes les autres options doivent rester par défaut
+ 
+ ** Output : toutes les valeurs par défaut
+ 
 
 
 ## Installation du caster

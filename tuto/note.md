@@ -55,13 +55,13 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Version Rinex : 2.11
 
-<p align="center"><img src="../docs/images/ign_base.png"></p>
+<p align="center"><img src="../docs/images/ign_selection.png"></p>
 
 * Il faut ensuite sélectionner la base souhaitée sur la carte à l'aide de l'outil de sélection puis l'ajouter au panier.
 
 * Télécharger l'archive une fois disponible.
 
-<p align="center"><img src="../docs/images/ign_selection.png"></p>
+<p align="center"><img src="../docs/images/ign_base.png"></p>
 
 * Réunir les 2 fichiers (ubx + rinex) dans un même répertoire pour plus de confort d'utilisation.
 
@@ -82,6 +82,8 @@ Nous allons utiliser en premier lieu l'AppImage RTKCONV.
 * Sélectionner le format u-blox
 * Cliquer sur options puis changer la version Rinex (2.11 : celle de la base RGP)
 * Cliquer sur Convert
+* En sortie, nous récupérons 6 fichiers :
+    - .nav, .qnav, .lnav, .gnav, .hnav, .obs
 
 Lancer RTKPOST
 
@@ -117,7 +119,12 @@ Lancer RTKPOST
  __Penser à sauvegarder tous ces paramétrages dans un fichier .conf (option Save)__
  
  
+ Lancer RTKPLOT pour cartographier le nuage de points obtenu précédemment.
+ Il est possible à ce stade-là de filtrer les données afin de ne conserver que les points pour lesquels la valeur de Q est égale à 1 (ie. mode FIX) et le ratio est maximal (ie. proche de 999).
+ La position la plus précise de notre base est donnée par la valeur de la médiane des points filtrés.
+ Dans nos conditions expérimentales, nous avons obtenu une précision inférieure à 1 centimètre.
  
+ :+1:
 
 
 ## Installation du caster

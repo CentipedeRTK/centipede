@@ -91,16 +91,14 @@ Lancer RTKPOST
 * Le fichier résultat aura une extension .pos
 * Renseigner le Time Start et le Time End (la plage horaire de notre période de logging).
 * Cliquer sur options
- * Setting1 
-  * Positionning Mode : Static 
-  * Fréquencies : L1 + Forward (valeur par défaut) 
-  * Elevation mask : valeur configurée pour le reach (15° par défaut) 
-  * Ionosphere correction : Broadcast 
- 
-  > A creuser
- 
-  * Troposphere correction : Saastamoinen 
-  * Pour les autres options, laisser les valeurs par défaut 
+ *Setting1 
+  *Positionning Mode : Static 
+  *Fréquencies : L1 + Forward (valeur par défaut) 
+  *Elevation mask : valeur configurée pour le reach (15° par défaut) 
+  *Ionosphere correction : Broadcast  
+  > A creuser 
+  *Troposphere correction : Saastamoinen 
+  *Pour les autres options, laisser les valeurs par défaut 
  * Setting2 
   * Integer Ambiguity Res : Continuous
  

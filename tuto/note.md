@@ -37,9 +37,13 @@ Note : il est également possible de faire ces manipulations via l'application R
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
 Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging.
 
+<p align="center"><img src="../docs/images/reach_log.png"></p>
+
 L'enregistrement se fait pendant une période minimale de 12h00 consécutives. Les positions enregistrées sont ensuite post-traitées en s'appuyant sur la trame de l'antenne RGP (IGN - <a href="http://rgp.ign.fr/">En savoir plus</a>) la plus proche, enregistrée sur la même période. Plus l'antenne de référence sera proche, meilleure sera la précision de localisation de notre base.
 
 Plusieurs méthodes de post-traitements existent, et ce sont les conditions locales (éloignement de l'antenne de référence, visibilité de la constellation ...) qui aident à déterminer la méthode la plus pertinente.
+
+
 
 ## Installation du caster
 

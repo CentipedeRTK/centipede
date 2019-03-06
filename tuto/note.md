@@ -18,7 +18,7 @@ Le reach est mis sous tension.
 
 * Se connecter au réseau wifi du Reach ("reach:xx:xx") en utilisant le mot de passe __emlidreach__.
 
-* Ouvrir un navigateur (de préférence Mozilla Firefox ou google Chrome) et taper http://reach.local ou http://192.168.42.1 pour accéder à l'interface de configuration du reach (cf. image ci-dessous).
+* Ouvrir un navigateur (de préférence Mozilla Firefox ou Google Chrome) et taper http://reach.local ou http://192.168.42.1 pour accéder à l'interface de configuration du reach (cf. image ci-dessous).
 
 <p align="center"><img src="../docs/images/reach_view_accueil.png" width="400"></p>
 
@@ -26,16 +26,19 @@ Le reach est mis sous tension.
 
 * Sélectionner votre réseau wifi et cliquer sur Connect.
 
-* Une fois le reach connecté sur votre réseau wifi, une nouvelle IP lui est attribuée, c'est celle-ci qui est utilisée (http://reach.local fonctionne également). Elle est visible sur l'interface Web du Reach, en haut à gauche de l'écran.
+* Une fois le reach connecté sur votre réseau wifi, une nouvelle IP lui est attribuée ; c'est celle-ci qui est utilisée par la suite (http://reach.local fonctionne également). Cette IP est visible sur l'interface Web du Reach, en haut à gauche de l'écran.
 
 <p align="center"><img src="../docs/images/reach_home.png"></p>
 
-Note : il est également possible de faire ces manupulations via l'application ReachView (disponible sur Android et iOS).
+Note : il est également possible de faire ces manipulations via l'application ReachView (disponible sur Android et iOS) sur une tablette ou un smartphone.
 
 ## Calcul de la position de la base
 
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
-Pour ce faire, 
+Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging.
+
+L'enregistrement se fait pendant une période minimale de 12h00 consécutives. Les positions enregistrées sont ensuite post-traitées en s'appuyant sur la trame de l'antenne RGP (IGN - <a href="http://rgp.ign.fr/">En savoir plus</a>) la plus proche, enregistrée sur la même période. Plus l'antenne de référence sera proche, meilleure sera la précision de localisation de notre base.
+Plusieurs méthodes de post-traitements existent, et ce sont les conditions locales (éloignement de l'antenne de référence, visibilité de la constellation ...) qui aident à déterminer la méthode la plus pertinente.
 
 ## Installation du caster
 

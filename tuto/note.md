@@ -182,3 +182,9 @@ La base fixe étant opérationnelle, il est possible de déployer un ou plusieur
 Pour cela, le paramétrage du reach est semblable à celui de la base, en suivant les étapes décrites plus haut dans la rubrique *premières configurations*.
 
 Il n'est pas nécessaire de calibrer la position du rover ; celle-ci sera corrigée en temps réel en récupérant la trame fournie par la base.
+
+Ci-dessous, exemple du rover construit pour être immergé :
+
+<p align="center"><img src="../docs/images/P1200606.JPG"></p>
+
+<p align="center"><img src="../docs/images/P1200607.JPG"></p>

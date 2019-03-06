@@ -30,7 +30,7 @@ Le reach est mis sous tension.
 
 <p align="center"><img src="../docs/images/reach_home.png"></p>
 
-Note : il est également possible de faire ces manipulations via l'application ReachView (disponible sur Android et iOS) sur une tablette ou un smartphone.
+> Note : il est également possible de faire ces manipulations via l'application ReachView (disponible sur Android et iOS) sur une tablette ou un smartphone.
 
 ## Calcul de la position de la base
 
@@ -65,7 +65,7 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Réunir les 2 fichiers (ubx + rinex) dans un même répertoire.
 
-* Pour en savoir plus sur les formats utilisés : <a href="https://en.wikipedia.org/wiki/RINEX">wikipedia</a>
+> Pour en savoir plus sur les formats utilisés : <a href="https://en.wikipedia.org/wiki/RINEX">wikipedia</a>
 
 ### Calcul de la correction
 

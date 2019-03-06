@@ -111,6 +111,19 @@ Lancer RTKPOST
  
  ** Output : toutes les valeurs par défaut
  
+ ** Statistics : toutes les valeurs par défaut
+ 
+ ** Positions
+ *** Changer uniquement la valeur de Base station : Rinex Header Position
+ 
+ *** Files : toutes les valeurs par défaut
+ 
+ *** Misc : toutes les valeurs par défaut
+ 
+ __Penser à sauvegarder tous ces paramétrages dans un fichier .conf (option Save)__
+ 
+ 
+ 
 
 
 ## Installation du caster

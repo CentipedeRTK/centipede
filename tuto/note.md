@@ -92,9 +92,9 @@ Lancer RTKPOST
 * Renseigner le Time Start et le Time End (la plage horaire de notre période de logging).
 * Cliquer sur options
 
- ** Setting1
+  ** Setting1
  
-  *** Positionning Mode : Static
+   *** Positionning Mode : Static
  
   *** Fréquencies : L1 + Forward (valeur par défaut)
  

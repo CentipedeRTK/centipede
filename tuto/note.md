@@ -41,13 +41,13 @@ Pour ce faire, nous activons l'enregistrement des positions dans la rubrique log
 
 <p align="center"><img src="../docs/images/reach_log.png"></p>
 
-L'enregistrement se fait pendant une période minimale de 12h00 consécutives. Les positions enregistrées sont ensuite post-traitées en s'appuyant sur la trame de l'antenne RGP (IGN - <a href="http://rgp.ign.fr/DONNEES/diffusion">En savoir plus</a>) la plus proche, enregistrée sur la même période. Plus l'antenne de référence sera proche, meilleure sera la précision de localisation de notre base.
+L'enregistrement se fait pendant une période minimale de 12h00 consécutives. Les positions enregistrées sont ensuite post-traitées en s'appuyant sur la trame de l'antenne RGP (IGN - <a href="http://rgp.ign.fr">En savoir plus</a>) la plus proche, enregistrée sur la même période. Plus l'antenne de référence sera proche, meilleure sera la précision de localisation de notre base.
 
 Plusieurs méthodes de post-traitements existent, et ce sont les conditions locales (éloignement de l'antenne de référence, visibilité de la constellation ...) qui aident à déterminer la méthode la plus pertinente.
 
 * Télécharger le fichier ubx (Raw_xxx_UBX.zip)
 
-* Aller sur le site IGN et télécharger la trame correspondante à la période (prendre Temps Universel).
+* Aller sur le <a href="http://rgp.ign.fr/DONNEES/diffusion">site IGN</a> et télécharger la trame correspondante à la période (prendre Temps Universel).
 
 * Sélectionner GLONASS en plus de GPS (+ GALILEO si la base concernée le propose).
 

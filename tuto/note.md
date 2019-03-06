@@ -55,9 +55,13 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Version Rinex : 2.11
 
+<p align="center"><img src="../docs/images/ign_base.png"></p>
+
 * Il faut ensuite sélectionner la base souhaitée sur la carte à l'aide de l'outil de sélection puis l'ajouter au panier.
 
 * Télécharger l'archive une fois disponible.
+
+<p align="center"><img src="../docs/images/ign_selection.png"></p>
 
 * Réunir les 2 fichiers (ubx + rinex) dans un même répertoire pour plus de confort d'utilisation.
 

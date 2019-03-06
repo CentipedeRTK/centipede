@@ -63,7 +63,7 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 <p align="center"><img src="../docs/images/ign_base.png"></p>
 
-* Réunir les 2 fichiers (ubx + rinex) dans un même répertoire pour plus de confort d'utilisation.
+* Réunir les 2 fichiers (ubx + rinex) dans un même répertoire.
 
 * Pour en savoir plus sur les formats utilisés : <a href="https://en.wikipedia.org/wiki/RINEX">wikipedia</a>
 
@@ -120,8 +120,11 @@ Lancer RTKPOST
  
  
  Lancer RTKPLOT pour cartographier le nuage de points obtenu précédemment.
+ 
  Il est possible à ce stade-là de filtrer les données afin de ne conserver que les points pour lesquels la valeur de Q est égale à 1 (ie. mode FIX) et le ratio est maximal (ie. proche de 999).
+ 
  La position la plus précise de notre base est donnée par la valeur de la médiane des points filtrés.
+ 
  Dans nos conditions expérimentales, nous avons obtenu une précision inférieure à 1 centimètre.
  
  :+1:

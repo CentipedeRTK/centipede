@@ -84,13 +84,22 @@ Lancer RTKPOST
 ```
 ./RTKPOST_Qt-x86_64.AppImage
 ```
+
 * Charger le fichier .obs de la base à corriger (Rover)
 * Charger le fichier .19o de la base de référence (Base Station)
 * Charger le fichier .nav de la base à corriger
 * Le fichier résultat aura une extension .pos
 * Renseigner le Time Start et le Time End (la plage horaire de notre période de logging).
 * Cliquer sur options
-
+ ** Setting1
+ *** Positionning Mode : Static
+ *** Fréquencies : L1 + Forward (valeur par défaut)
+ *** Elevation mask : valeur configurée pour le reach (15° par défaut)
+ *** Ionosphere correction : Broadcast 
+ 
+ > A creuser
+ 
+ *** Troposphere correction
 
 
 ## Installation du caster

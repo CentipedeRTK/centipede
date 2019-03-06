@@ -92,21 +92,21 @@ Lancer RTKPOST
 * Renseigner le Time Start et le Time End (la plage horaire de notre période de logging).
 * Cliquer sur options
   - Setting1 
-   * Positionning Mode : Static 
-   * Fréquencies : L1 + Forward (valeur par défaut) 
-   * Elevation mask : valeur configurée pour le reach (15° par défaut) 
-   * Ionosphere correction : Broadcast  
-   > A creuser 
-   * Troposphere correction : Saastamoinen 
-   * Pour les autres options, laisser les valeurs par défaut 
+    * Positionning Mode : Static 
+    * Fréquencies : L1 + Forward (valeur par défaut) 
+    * Elevation mask : valeur configurée pour le reach (15° par défaut) 
+    * Ionosphere correction : Broadcast  
+      > A creuser 
+    * Troposphere correction : Saastamoinen 
+    * Pour les autres options, laisser les valeurs par défaut 
   - Setting2 
-   * Integer Ambiguity Res : Continuous 
-   > A creuser (cf. RTKLIB explorer) 
-   * Toutes les autres options doivent rester par défaut
+    * Integer Ambiguity Res : Continuous 
+    > A creuser (cf. RTKLIB explorer) 
+    * Toutes les autres options doivent rester par défaut
   - Output : toutes les valeurs par défaut 
   - Statistics : toutes les valeurs par défaut 
   - Positions 
-   * Changer uniquement la valeur de Base station : Rinex Header Position 
+    * Changer uniquement la valeur de Base station : Rinex Header Position 
   - Files : toutes les valeurs par défaut 
   - Misc : toutes les valeurs par défaut
  

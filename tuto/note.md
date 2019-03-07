@@ -187,6 +187,8 @@ Ci-dessous, exemple du rover construit pour être immergé :
 
 <p align="center"><img src="../docs/images/reach_bouee.jpg"></p>
 
-Un dissipateur de chaleur et un ventilateur ont été ajoutés.
+Un dissipateur de chaleur et un ventilateur ont été ajoutés :
 
-<p align="center"><img src="../docs/images/reach_champagne"></p>
+<p align="center"><img src="../docs/images/reach_champagne.jpg"></p>
+
+> Il est conseillé de renommer chacun des reach dans la rubrique *Control panel* de l'interface (cliquer sur l'icône <img src="../docs/images/reach_control_panel.png">) puis *General settings* > *Edit*.

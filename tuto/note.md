@@ -139,7 +139,7 @@ OS: Ubuntu-server 18.04
 
 * Installer les paquets docker et docker-compose
 
-``` sudo apt-get install docker docker-compose```
+La procédure est décrite à l'adresse <a href="https://docs.docker.com/install/linux/docker-ce/debian/" target="new_">docs.docker.com</a>
 
 Il est nécessaire d'ouvrir le port 2101 de la machine.
 
@@ -162,18 +162,18 @@ sudo nano ntripcaster.conf
 
 * Modifier les valeurs suivantes :
 
-server_url
+    - server_url
 
-email
+    - email
  
-server_name
+    - server_name
  
-mountpoint
+    - mountpoint
 
 ```sudo nano sourcetab.dat```
 
- name
- position
+    - name
+    - position
  
 ## Mise en oeuvre du rover
 

@@ -99,21 +99,21 @@ Lancer RTKPOST
 * Renseigner le *Time Start* et le *Time End* (la plage horaire de notre période de logging).
 * Cliquer sur __options__
   - __Setting1__
-            - *Positionning Mode* : Static 
-            - *Fréquencies* : L1 + Forward (valeur par défaut) 
-            - *Elevation mask* : valeur configurée pour le reach (15° par défaut) 
-            - *Ionosphere correction* : Broadcast  
+       - *Positionning Mode* : Static 
+       - *Fréquencies* : L1 + Forward (valeur par défaut) 
+       - *Elevation mask* : valeur configurée pour le reach (15° par défaut) 
+       - *Ionosphere correction* : Broadcast  
             > A creuser 
-            - *Troposphere correction* : Saastamoinen 
-            - Pour les autres options, laisser les valeurs par défaut 
+       - *Troposphere correction* : Saastamoinen 
+       - Pour les autres options, laisser les valeurs par défaut 
   - __Setting2__
-        * *Integer Ambiguity Res* : Continuous 
-      > A creuser (cf. RTKLIB explorer) 
-        * Toutes les autres options doivent rester par défaut
+       - *Integer Ambiguity Res* : Continuous 
+            > A creuser (cf. RTKLIB explorer) 
+       - Toutes les autres options doivent rester par défaut
   - __Output__ : laisser les valeurs par défaut 
   - __Statistics__ : laisser les valeurs par défaut 
   - __Positions__ 
-        * Changer uniquement la valeur de *Base station* : Rinex Header Position 
+       - Changer uniquement la valeur de *Base station* : Rinex Header Position 
   - __Files__ : laisser les valeurs par défaut 
   - __Misc__ : laisser les valeurs par défaut
  
@@ -186,5 +186,7 @@ Il n'est pas nécessaire de calibrer la position du rover ; celle-ci sera corrig
 Ci-dessous, exemple du rover construit pour être immergé :
 
 <p align="center"><img src="../docs/images/P1200606.JPG"></p>
+
+Un dissipateur de chaleur et un ventilateur ont été ajoutés.
 
 <p align="center"><img src="../docs/images/P1200607.JPG"></p>

@@ -178,13 +178,17 @@ sudo nano ntripcaster.conf
     
 * Se positionner dans le dossier ntripcaster
 
-    - ```docker-compose build
-    
-          docker-compose -up -d```
+
+```
+docker-compose build 
+docker-compose -up -d
+```
     
 ## Connexion de la base au caster
 
-    ``` docker-compose log ntrip ```
+``` 
+docker-compose log ntrip
+```
     
  
 ## Mise en oeuvre du rover

@@ -185,8 +185,8 @@ Il n'est pas nécessaire de calibrer la position du rover ; celle-ci sera corrig
 
 Ci-dessous, exemple du rover construit pour être immergé :
 
-<p align="center"><img src="../docs/images/P1200606.JPG"></p>
+<p align="center"><img src="../docs/images/reach_bouee.jpg"></p>
 
 Un dissipateur de chaleur et un ventilateur ont été ajoutés.
 
-<p align="center"><img src="../docs/images/P1200607.JPG"></p>
+<p align="center"><img src="../docs/images/reach_champagne"></p>

@@ -37,7 +37,7 @@ Le reach est mis sous tension.
 ### Récupération des données nécessaires
 
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
-Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging, en activant l'option Raw data (position ON).
+Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging, en activant l'option *Raw data* (position ON). Les options *Position* et *Base correction* ne doivent pas être activées pour l'instant.
 
 <p align="center"><img src="../docs/images/reach_log.png"></p>
 
@@ -45,7 +45,7 @@ L'enregistrement se fait pendant une période minimale de 12h00 consécutives. L
 
 Plusieurs méthodes de post-traitements existent, et ce sont les conditions locales (éloignement de l'antenne de référence, modèle de l'antenne,  visibilité de la constellation ...) qui aident à déterminer la méthode la plus pertinente.
 
-* Télécharger le fichier UBX (Raw_xxx_UBX.zip)en cliquant sur l'icone <img src="../docs/images/reach_view_download.png">
+* Télécharger le fichier UBX (Raw_xxx_UBX.zip) en cliquant sur l'icone <img src="../docs/images/reach_view_download.png">
 
 * Aller sur le <a href="http://rgp.ign.fr/DONNEES/diffusion">site IGN</a> et télécharger la trame correspondante à la période.
 
@@ -61,13 +61,13 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Il faut ensuite sélectionner la base souhaitée sur la carte à l'aide de l'outil de sélection puis l'ajouter au panier.
 
-* Télécharger l'archive une fois celle-ci disponible.
+* Télécharger l'archive au format ZIP une fois celle-ci disponible.
 
 <p align="center"><img src="../docs/images/ign_base.png"></p>
 
 * Réunir les 2 fichiers (UBX + Rinex) dans un même répertoire.
 
-> Pour en savoir plus sur les formats utilisés : <a href="https://en.wikipedia.org/wiki/RINEX">wikipedia</a>
+> Pour en savoir plus sur les formats UBX et Rinex : <a href="https://en.wikipedia.org/wiki/RINEX">wikipedia</a>
 
 ### Calcul de la correction
 
@@ -99,8 +99,8 @@ Lancer RTKPOST
 * Renseigner le Time Start et le Time End (la plage horaire de notre période de logging).
 * Cliquer sur options
   - Setting1 
-    * Positionning Mode : Static 
-    * Fréquencies : L1 + Forward (valeur par défaut) 
+    * **Positionning Mode** : Static 
+    * **Fréquencies** : L1 + Forward (valeur par défaut) 
     * Elevation mask : valeur configurée pour le reach (15° par défaut) 
     * Ionosphere correction : Broadcast  
       > A creuser 

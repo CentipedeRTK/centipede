@@ -84,7 +84,7 @@ Nous allons utiliser en premier lieu l'AppImage RTKCONV.
 * Cliquer sur options puis changer la version Rinex (2.11 : celle de la base RGP)
 * Cliquer sur Convert
 * En sortie, nous récupérons 6 fichiers :
-    - .nav, .qnav, .lnav, .gnav, .hnav, .obs
+    - *.nav*, *.qnav*, *.lnav*, *.gnav*, *.hnav*, *.obs*
 
 Lancer RTKPOST
 
@@ -92,30 +92,30 @@ Lancer RTKPOST
 ./RTKPOST_Qt-x86_64.AppImage
 ```
 
-* Charger le fichier .obs de la base à corriger (Rover)
-* Charger le fichier .19o de la base de référence (Base Station)
-* Charger les fichiers .nav, .hnav, .lnav, .gnav de la base à corriger
-* Le fichier résultat aura une extension .pos
-* Renseigner le Time Start et le Time End (la plage horaire de notre période de logging).
-* Cliquer sur options
-  - *Setting1* 
-    * Positionning Mode : Static 
-    * Fréquencies : L1 + Forward (valeur par défaut) 
-    * Elevation mask : valeur configurée pour le reach (15° par défaut) 
-    * Ionosphere correction : Broadcast  
+* Charger le fichier *.obs* de la base à corriger (Rover)
+* Charger le fichier *.19o* de la base de référence (Base Station)
+* Charger les fichiers *.nav*, *.hnav*, *.lnav*, *.gnav* de la base à corriger
+* Le fichier résultat aura une extension *.pos*
+* Renseigner le *Time Start* et le *Time End* (la plage horaire de notre période de logging).
+* Cliquer sur __options__
+  - __Setting1__
+        * *Positionning Mode* : Static 
+        * *Fréquencies* : L1 + Forward (valeur par défaut) 
+        * *Elevation mask* : valeur configurée pour le reach (15° par défaut) 
+        * *Ionosphere correction* : Broadcast  
       > A creuser 
-    * Troposphere correction : Saastamoinen 
-    * Pour les autres options, laisser les valeurs par défaut 
-  - *Setting2* 
-    * Integer Ambiguity Res : Continuous 
+        * *Troposphere correction* : Saastamoinen 
+        * Pour les autres options, laisser les valeurs par défaut 
+  - __Setting2__
+        * *Integer Ambiguity Res* : Continuous 
       > A creuser (cf. RTKLIB explorer) 
-    * Toutes les autres options doivent rester par défaut
-  - *Output* : laisser les valeurs par défaut 
-  - *Statistics* : laisser les valeurs par défaut 
-  - *Positions* 
-    * Changer uniquement la valeur de Base station : Rinex Header Position 
-  - *Files* : laisser les valeurs par défaut 
-  - *Misc* : laisser les valeurs par défaut
+        * Toutes les autres options doivent rester par défaut
+  - __Output__ : laisser les valeurs par défaut 
+  - __Statistics__ : laisser les valeurs par défaut 
+  - __Positions__ 
+        * Changer uniquement la valeur de *Base station* : Rinex Header Position 
+  - __Files__ : laisser les valeurs par défaut 
+  - __Misc__ : laisser les valeurs par défaut
  
  __Penser à sauvegarder tous ces paramétrages dans un fichier .conf (option Save)__
  

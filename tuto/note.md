@@ -145,7 +145,7 @@ Il est nécessaire d'ouvrir le port 2101 de la machine.
 
 ### Déploiement du caster
 
-L'application est conteneurisée dans docker :
+L'application est conteneurisée avec docker, permettant un déploiement simple et rapide.
 
 * Récupérer les codes de centipede :
 
@@ -156,25 +156,26 @@ git clone https://github.com/jancelin/centipede.git
 * Modifier le fichier de configuration :
 
 ```
-cd centipede 
+cd centipede/ntripCaster
 sudo nano ntripcaster.conf 
 ```
+<p align="center"><img src="../docs/images/ntripcaster_conf.png"></p>
 
-* Modifier les valeurs suivantes :
+   Modifier les valeurs suivantes :
 
     - server_url
-
-    - email
- 
-    - server_name
- 
+    - email 
+    - server_name 
     - mountpoint
+
+* Modifier la liste des bases recensées par le caster
+
+<p align="center"><img src="../docs/images/source_dat.png"></p>
 
 ```sudo nano sourcetab.dat```
 
-    - name
     
-    - position
+> Un bug non résolu persiste, mais cette oépration est nécessaire.
     
 * Se positionner dans le dossier ntripcaster
 

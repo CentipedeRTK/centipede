@@ -285,6 +285,16 @@ Il n'est pas nécessaire de calibrer la position du rover ; celle-ci sera corrig
 - Choisir le port 2101
 - Sélectionner le format *RTCM3* pour la trame reçue
 
+Le rover est prêt à être utilisé : 
+
+ - Dans la rubrique Logging, activer l'option *Position* (bouton sur ON).
+ 
+<p align="center"><img src="../docs/images/reach_rover.png"></p>
+
+ - Avant de commencer l'acquisition de données, il est préférable d'attendre d'obtenir un *Solution status* à FIX et un *AR ratio* > 999.
+
+> Il est conseillé de renommer chacun des reach dans la rubrique *Control panel* de l'interface (cliquer sur l'icône <img src="../docs/images/reach_control_panel.png">) puis *General settings* > *Edit*.
+
 Ci-dessous, exemple du rover construit pour être immergé :
 
 <p align="center"><img src="../docs/images/reach_bouee.jpg"></p>
@@ -297,4 +307,13 @@ Le rover en mode *Survey* dans le lagon de Saint-Leu :
 
 <p align="center"><img src="../docs/images/reach_lagon.jpg"></p>
 
-> Il est conseillé de renommer chacun des reach dans la rubrique *Control panel* de l'interface (cliquer sur l'icône <img src="../docs/images/reach_control_panel.png">) puis *General settings* > *Edit*.
+Un exemple de relevés en mode fix :
+
+Localisation générale (Réserve marine de Saint-Leu) :
+
+<p align="center"><img src="../docs/images/survey_centipede1.png"></p>
+
+Zoom à l'échelle 1:26 :
+
+<p align="center"><img src="../docs/images/survey_centipede2.png"></p>
+

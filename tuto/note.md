@@ -293,4 +293,8 @@ Un dissipateur de chaleur et un ventilateur ont été ajoutés :
 
 <p align="center"><img src="../docs/images/reach_champagne.jpg"></p>
 
+Le rover en mode *Survey* dans le lagon de Saint-Leu :
+
+<p align="center"><img src="../docs/images/reach_lagon.jpg"></p>
+
 > Il est conseillé de renommer chacun des reach dans la rubrique *Control panel* de l'interface (cliquer sur l'icône <img src="../docs/images/reach_control_panel.png">) puis *General settings* > *Edit*.

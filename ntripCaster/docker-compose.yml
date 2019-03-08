@@ -2,6 +2,6 @@
 services:
  ntrip:
     build:
-      context: ./ntripCaster
+      context: .
     ports:
      - 2101:2101

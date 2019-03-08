@@ -34,11 +34,6 @@ Le reach est mis sous tension.
 
 ## Calcul de la position de la base
 
-### Paramétrage des satellites
-
-
-<p align="center"><img src="../RTK_settings.png"></p>
-
 ### Récupération des données nécessaires
 
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
@@ -171,7 +166,7 @@ sudo nano ntripcaster.conf
     - server_url
     - email 
     - server_name 
-    - mountpoint
+    - mountpoint (à faire précéder du caractère /)
     - encoder_password (celui-ci est nécessaire pour connecter la base au caster)
 
 * Modifier la liste des bases recensées par le caster
@@ -210,7 +205,7 @@ Modifier les valeurs suivantes (en se basant sur les paramètres enregistrés da
    - Choisir l'option *NTRIP*
    - Indiquer l'URL du caster dans le champ *Address*
    - Choisir le port 2101
-   - Sélectionner le format *RTCM3* pour la trame reçue
+   - Indiquer le nom du Mount point
  
 ## Mise en oeuvre du rover
 

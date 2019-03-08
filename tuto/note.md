@@ -10,7 +10,7 @@ La température locale et l'humidité relative étant très élevées, il est n�
 
 L'antenne est placée sur un mât et le reach est positionné dans un endroit abrité du soleil direct et de la pluie.
 
-<p align="center"><img src="../docs/images/reach_palmier.jpg"></p>
+<p align="center"><img src="../docs/images/reach_palmier.png"></p>
 
 ## Premières configurations
 

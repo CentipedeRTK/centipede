@@ -138,7 +138,7 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
  
  Le fichier résultat peut être exploité dans QGIS.
  
- > Plus d'informations sur l'installation de ce logiciel sur cette a href="https://doc.ubuntu-fr.org/qgis" target="new_">page</a>
+ > Plus d'informations sur l'installation de ce logiciel sur cette <a href="https://doc.ubuntu-fr.org/qgis" target="new_">page</a>
  
    - Cliquer sur *couche* > *Ajouter une couche* > *Ajouter une couche de texte délimité*
    - Choisir le fichier .pos puis cliquer sur *Ouvrir*
@@ -163,13 +163,27 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
  "ratio" >= 999
   ```
    - Cliquer sur *OK*
+   
 On retrouve ici les points affichés dans RTKPLOT suite à l'application des mêmes filtres (mode FIX et AR Ratio > 999).
    
 <p align="center"><img src="../docs/images/calc_base_qgis_3.png"></p>      
-  
+
+   - Cliquer sur *vecteur* > *Outils d'analyse* > *Statistiques basiques pour les champs*
+   - *Couche vectorielle en entrée* : choisir le fichier pos
+   - *Champ pour le calcul des statistiques* : latitude
+   - *Statistiques* > *Enregistrer vers un fichier* et créer un fichier latitude.html (par exemple)
+   - Cliquer sur *Run*
+   - Répéter l'opération avec les champs longitude et hauteur.
+
+<p align="center"><img src="../docs/images/calc_base_qgis_4.png"></p>  
+
+Nous obtenons ainsi trois fichiers contenant les statistiques basiques sur les trois paramètres de localisation.
+
+La position la plus précise de notre base est donnée par la valeur de la médiane de chaque dimension.
+
+<p align="center"><img src="../docs/images/calc_base_qgis_5.png"></p>  
+
  5 - Insertion des coordonnées corrigées
- 
- La position la plus précise de notre base est donnée par la valeur de la médiane des points filtrés dans RTKPLOT ou QGIS.
  
  Ces valeurs doivent être enregistrées dans la rubrique *Base mode* de l'interface du Reach.
  

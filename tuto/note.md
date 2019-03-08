@@ -78,7 +78,7 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emlid.com/reachm-plus/common/tutorials/gps-post-processing/" target="new_">docs.emlid.com</a>.
 
-1 - RTKCONV
+1 - __RTKCONV__
 
 ```
 ./RTKCONV_Qt-x86_64.AppImage
@@ -91,7 +91,7 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
 * En sortie, nous récupérons 6 fichiers :
     - *.nav*, *.qnav*, *.lnav*, *.gnav*, *.hnav*, *.obs*
 
-2 - RTKPOST
+2 - __RTKPOST__
 
 ```
 ./RTKPOST_Qt-x86_64.AppImage
@@ -122,9 +122,9 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
   - __Files__ : laisser les valeurs par défaut 
   - __Misc__ : laisser les valeurs par défaut
  
- __Penser à sauvegarder tous ces paramétrages dans un fichier .conf (option Save)__
+> Penser à sauvegarder tous ces paramétrages dans un fichier .conf (option Save)
   
- 3 - RTKPLOT 
+ 3 - __RTKPLOT__ 
  
  ```
 ./RTKPLOT_Qt-x86_64.AppImage
@@ -134,24 +134,38 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
  
  Il est possible à ce stade-là de filtrer les données afin de ne conserver que les points pour lesquels la valeur de Q est égale à 1 (ie. mode FIX) et le ratio est maximal (ie. proche de 999).
  
- 4 - QGIS
+ 4 - __QGIS__
  
  Le fichier résultat peut être exploité dans QGIS.
  
  > Plus d'informations sur l'installation de ce logiciel sur cette a href="https://doc.ubuntu-fr.org/qgis" target="new_">page</a>
  
-        - Cliquer sur *couche* > *Ajouter une couche* > *Ajouter une couche de texte délimité*
-        - Choisir le fichier .pos puis cliquer sur *Ouvrir*
+   - Cliquer sur *couche* > *Ajouter une couche* > *Ajouter une couche de texte délimité*
+   - Choisir le fichier .pos puis cliquer sur *Ouvrir*
         
 <p align="center"><img src="../docs/images/calc_base_qgis_1.png"></p>      
 
-        - Dans *Format de fichier*, sélectionner le délimiteur *espace*
-        - Fixer la valeur du *Nombre de lignes à ignorer* à 12
-        - Cocher l'option "Entêtes dans la 1ere ligne"
+   - Dans *Format de fichier*, sélectionner le délimiteur *espace*
+   - Fixer la valeur du *Nombre de lignes à ignorer* à 12
+   - Cocher l'option "Entêtes dans la 1ere ligne"
+   - Renseigner le *champ X* : longitude
+   - Renseigner le *champ Y* : latitude
+   - Cliquer sur *ok* (une nouvelle fenêtre s'ouvre)
+   - Sélectionner le SRC 4326 (WGS 84) en utilisant le filtre
+   - Cliquer sur *ok*
 
-<p align="center"><img src="../docs/images/calc_base_qgis_1.png"></p>      
+<p align="center"><img src="../docs/images/calc_base_qgis_2.png"></p>      
 
-<p align="center"><img src="../docs/images/calc_base_qgis_1.png"></p>      
+   - Faire un clic droit sur la couche puis *Filtrer...*
+   - Ajouter le filtre suivant :
+ ```
+ "Q" = 1 AND
+ "ratio" >= 999
+  ```
+   - Cliquer sur *OK*
+On retrouve ici les points affichés dans RTKPLOT suite à l'application des mêmes filtres (mode FIX et AR Ratio > 999).
+   
+<p align="center"><img src="../docs/images/calc_base_qgis_3.png"></p>      
   
  5 - Insertion des coordonnées corrigées
  

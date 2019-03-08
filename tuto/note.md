@@ -178,7 +178,7 @@ sudo nano ntripcaster.conf
 STR;DODO;Saint Leu;RTCM 3;;1002(1),1006(10),1008(1),1019(1),1097(1),1107(1),1117(1),1127(1);1;GPS+GLO+GAL+BDS+SBAS;EUREF;FRA;-21.168;55.2903;0;0;tallysman;none;;;;ifremer france
 ```
 
-Pour plus d'informations sur les différents paramètres à remplir
+Pour plus d'informations sur les différents paramètres à remplir: https://software.rtcm-ntrip.org/wiki/STR
     
 > Un bug d'affichage non résolu persiste, mais cette opération est nécessaire.
     

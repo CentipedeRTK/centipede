@@ -150,9 +150,9 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
    - Cocher l'option "Entêtes en 1ere ligne"
    - Renseigner le *champ X* : longitude
    - Renseigner le *champ Y* : latitude
-   - Cliquer sur *ok* (une nouvelle fenêtre s'ouvre)
+   - Cliquer sur *OK* (une nouvelle fenêtre s'ouvre)
    - Sélectionner le SRC 4326 (WGS 84) en utilisant le filtre
-   - Cliquer sur *ok*
+   - Cliquer sur *OK*
 
 <p align="center"><img src="../docs/images/calc_base_qgis_2.png"></p>      
 
@@ -169,10 +169,10 @@ On retrouve ici les points affichés dans RTKPLOT suite à l'application des mê
 <p align="center"><img src="../docs/images/calc_base_qgis_3.png"></p>      
 
    - Cliquer sur *vecteur* > *Outils d'analyse* > *Statistiques basiques pour les champs*
-   - *Couche vectorielle en entrée* : choisir le fichier pos
-   - *Champ pour le calcul des statistiques* : latitude
-   - *Statistiques* > *Enregistrer vers un fichier* et créer un fichier latitude.html (par exemple)
-   - Cliquer sur *Run*
+        - *Couche vectorielle en entrée* : choisir le fichier pos
+        - *Champ pour le calcul des statistiques* : latitude
+        - *Statistiques* > *Enregistrer vers un fichier* et créer un fichier latitude.html (par exemple)
+        - Cliquer sur *Run*
    - Répéter l'opération avec les champs longitude et hauteur.
 
 <p align="center"><img src="../docs/images/calc_base_qgis_4.png"></p>  

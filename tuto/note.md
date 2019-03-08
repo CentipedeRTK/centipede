@@ -177,7 +177,7 @@ On retrouve ici les points affichés dans RTKPLOT suite à l'application des mê
 
 <p align="center"><img src="../docs/images/calc_base_qgis_4.png"></p>  
 
-Nous obtenons ainsi trois fichiers contenant les statistiques basiques sur les trois paramètres de localisation.
+Nous obtenons ainsi trois fichiers contenant les statistiques basiques sur les trois paramètres de localisation : longitude.html, latitude.html et height.html.
 
 La position la plus précise de notre base est donnée par la valeur de la médiane de chaque dimension.
 
@@ -192,7 +192,6 @@ La position la plus précise de notre base est donnée par la valeur de la médi
    <p align="center"><img src="../docs/images/reach_base_coord.png"></p>
  
 > Dans nos conditions expérimentales, nous avons obtenu une précision inférieure à 1 centimètre. :+1:
-
 
 ## Installation du caster
 
@@ -252,14 +251,13 @@ Pour plus d'informations sur les différents paramètres à remplir: <a href="ht
 docker-compose build 
 docker-compose up -d
 ```
-    
 ## Connexion de la base au caster
 
 Pour tester le bon fonctionnement du caster, lancer la commande suivante :
 ``` 
 docker-compose logs ntrip
 ```
-<p align="center"><img src="../docs/images/check_catser.png"></p>
+<p align="center"><img src="../docs/images/check_caster.png"></p>
 
 Pour connecter la base au caster, se rendre dans la rubrique *Base mode* de l'interface du reach :
 

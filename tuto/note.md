@@ -145,9 +145,9 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
         
 <p align="center"><img src="../docs/images/calc_base_qgis_1.png"></p>      
 
-   - Dans *Format de fichier*, sélectionner le délimiteur *espace*
+   - Dans *Format de fichier*, sélectionner le délimiteur *Espace*
    - Fixer la valeur du *Nombre de lignes à ignorer* à 12
-   - Cocher l'option "Entêtes dans la 1ere ligne"
+   - Cocher l'option "Entêtes en 1ere ligne"
    - Renseigner le *champ X* : longitude
    - Renseigner le *champ Y* : latitude
    - Cliquer sur *ok* (une nouvelle fenêtre s'ouvre)

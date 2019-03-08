@@ -174,6 +174,9 @@ sudo nano ntripcaster.conf
 
 ```sudo nano sourcetab.dat```
 
+```
+STR;DODO;Saint Leu;RTCM 3;;1002(1),1006(10),1008(1),1019(1),1097(1),1107(1),1117(1),1127(1);1;GPS+GLO+GAL+BEI+SBS;EUREF;FRA;-21.168;55.2903;0;0;tallysman;none;;;;ifremer france
+```
     
 > Un bug non résolu persiste, mais cette oépration est nécessaire.
     

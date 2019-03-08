@@ -133,11 +133,11 @@ Lancer RTKPOST
  
  Ces valeurs doivent être enregistrées dans la rubrique *Base mode*
  
-   Dans l'onglet *Base coordinates* (LLH), mettre le *Coordinates input mode* sur Manual puis enregistrer les valeurs de longtude, latitude et hauteur.
+   Dans l'onglet *Base coordinates* (LLH), mettre le *Coordinates input mode* sur Manual puis enregistrer les valeurs de longitude, latitude et hauteur.
+   
+   <p align="center"><img src="../docs/images/reach_base_coord.png"></p>
  
- Dans nos conditions expérimentales, nous avons obtenu une précision inférieure à 1 centimètre.
- 
- :+1:
+> Dans nos conditions expérimentales, nous avons obtenu une précision inférieure à 1 centimètre. :+1:
 
 
 ## Installation du caster

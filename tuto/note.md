@@ -36,7 +36,7 @@ Le reach est mis sous tension.
 
 ### Paramétrage de la position des satellites
 
-<p align="center"><img src="../docs/images/RTK_setings.png"></p>
+<p align="center"><img src="../docs/images/RTK_settings.png"></p>
 
 ### Récupération des données nécessaires
 

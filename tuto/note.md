@@ -317,3 +317,6 @@ Zoom à l'échelle 1:26 :
 
 <p align="center"><img src="../docs/images/survey_centipede2.png"></p>
 
+-----------------------------------------------------------------------------
+<p align="center"><img src="../docs/images/cc0.png"></p>
+

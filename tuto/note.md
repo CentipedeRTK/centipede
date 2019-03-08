@@ -272,6 +272,8 @@ Modifier les valeurs suivantes (en se basant sur les paramètres enregistrés da
  
 ## Mise en oeuvre du rover
 
+> Il est conseillé de renommer chacun des reach dans la rubrique *Control panel* de l'interface (cliquer sur l'icône <img src="../docs/images/reach_control_panel.png">) puis *General settings* > *Edit*.
+
 La base fixe étant opérationnelle, il est possible de déployer un ou plusieurs reach mobiles ("rover") pour se déplacer en bénéficiant d'un positionnement centimétrique. Ceci est possible dans un rayon de 10 kilomètres autour de la base.
 
 Pour cela, le paramétrage du reach est semblable à celui de la base, en suivant les étapes décrites plus haut dans la rubrique *premières configurations*.
@@ -292,8 +294,6 @@ Le rover est prêt à être utilisé :
 <p align="center"><img src="../docs/images/reach_rover.png"></p>
 
  - Avant de commencer l'acquisition de données, il est préférable d'attendre d'obtenir un *Solution status* à FIX et un *AR ratio* > 999.
-
-> Il est conseillé de renommer chacun des reach dans la rubrique *Control panel* de l'interface (cliquer sur l'icône <img src="../docs/images/reach_control_panel.png">) puis *General settings* > *Edit*.
 
 Ci-dessous, exemple du rover construit pour être immergé :
 

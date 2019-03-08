@@ -78,7 +78,7 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emlid.com/reachm-plus/common/tutorials/gps-post-processing/" target="new_">docs.emlid.com</a>.
 
-Nous allons utiliser en premier lieu l'AppImage RTKCONV.
+1 - RTKCONV
 
 ```
 ./RTKCONV_Qt-x86_64.AppImage
@@ -91,7 +91,7 @@ Nous allons utiliser en premier lieu l'AppImage RTKCONV.
 * En sortie, nous récupérons 6 fichiers :
     - *.nav*, *.qnav*, *.lnav*, *.gnav*, *.hnav*, *.obs*
 
-Lancer RTKPOST
+2 - RTKPOST
 
 ```
 ./RTKPOST_Qt-x86_64.AppImage
@@ -123,15 +123,41 @@ Lancer RTKPOST
   - __Misc__ : laisser les valeurs par défaut
  
  __Penser à sauvegarder tous ces paramétrages dans un fichier .conf (option Save)__
+  
+ 3 - RTKPLOT 
  
+ ```
+./RTKPLOT_Qt-x86_64.AppImage
+```
  
- Lancer RTKPLOT pour cartographier le nuage de points obtenu précédemment.
+ Pour cartographier le nuage de points obtenu précédemment (fichier avec extension pos).
  
  Il est possible à ce stade-là de filtrer les données afin de ne conserver que les points pour lesquels la valeur de Q est égale à 1 (ie. mode FIX) et le ratio est maximal (ie. proche de 999).
  
- La position la plus précise de notre base est donnée par la valeur de la médiane des points filtrés.
+ 4 - QGIS
  
- Ces valeurs doivent être enregistrées dans la rubrique *Base mode*
+ Le fichier résultat peut être exploité dans QGIS.
+ 
+ > Plus d'informations sur l'installation de ce logiciel sur cette a href="https://doc.ubuntu-fr.org/qgis" target="new_">page</a>
+ 
+        - Cliquer sur *couche* > *Ajouter une couche* > *Ajouter une couche de texte délimité*
+        - Choisir le fichier .pos puis cliquer sur *Ouvrir*
+        
+<p align="center"><img src="../docs/images/calc_base_qgis_1.png"></p>      
+
+        - Dans *Format de fichier*, sélectionner le délimiteur *espace*
+        - Fixer la valeur du *Nombre de lignes à ignorer* à 12
+        - Cocher l'option "Entêtes dans la 1ere ligne"
+
+<p align="center"><img src="../docs/images/calc_base_qgis_1.png"></p>      
+
+<p align="center"><img src="../docs/images/calc_base_qgis_1.png"></p>      
+  
+ 5 - Insertion des coordonnées corrigées
+ 
+ La position la plus précise de notre base est donnée par la valeur de la médiane des points filtrés dans RTKPLOT ou QGIS.
+ 
+ Ces valeurs doivent être enregistrées dans la rubrique *Base mode* de l'interface du Reach.
  
    Dans l'onglet *Base coordinates* (LLH), mettre le *Coordinates input mode* sur Manual puis enregistrer les valeurs de longitude, latitude et hauteur.
    

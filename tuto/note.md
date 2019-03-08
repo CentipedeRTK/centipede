@@ -34,6 +34,11 @@ Le reach est mis sous tension.
 
 ## Calcul de la position de la base
 
+### Paramétrage des satellites
+
+
+<p align="center"><img src="../RTK_settings.png"></p>
+
 ### Récupération des données nécessaires
 
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.

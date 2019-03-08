@@ -170,15 +170,17 @@ sudo nano ntripcaster.conf
 
 * Modifier la liste des bases recensées par le caster
 
-<p align="center"><img src="../docs/images/source_dat.png"></p>
+<p align="center"><img src="../docs/images/source_tab.png"></p>
 
 ```sudo nano sourcetab.dat```
 
 ```
-STR;DODO;Saint Leu;RTCM 3;;1002(1),1006(10),1008(1),1019(1),1097(1),1107(1),1117(1),1127(1);1;GPS+GLO+GAL+BEI+SBS;EUREF;FRA;-21.168;55.2903;0;0;tallysman;none;;;;ifremer france
+STR;DODO;Saint Leu;RTCM 3;;1002(1),1006(10),1008(1),1019(1),1097(1),1107(1),1117(1),1127(1);1;GPS+GLO+GAL+BDS+SBAS;EUREF;FRA;-21.168;55.2903;0;0;tallysman;none;;;;ifremer france
 ```
+
+Pour plus d'informations sur les différents paramètres à remplir
     
-> Un bug non résolu persiste, mais cette oépration est nécessaire.
+> Un bug d'affichage non résolu persiste, mais cette opération est nécessaire.
     
 * Se positionner dans le dossier ntripcaster
 

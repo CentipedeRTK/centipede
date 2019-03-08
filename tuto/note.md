@@ -34,6 +34,10 @@ Le reach est mis sous tension.
 
 ## Calcul de la position de la base
 
+### Paramétrage de la position des satellites
+
+<p align="center"><img src="../docs/images/RTK_setings.png"></p>
+
 ### Récupération des données nécessaires
 
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
@@ -196,6 +200,8 @@ Pour tester le bon fonctionnement du caster, lancer la commande suivante :
 ``` 
 docker-compose logs ntrip
 ```
+<p align="center"><img src="../docs/images/check_catser.png"></p>
+
 Pour connecter la base au caster, se rendre dans la rubrique *Base mode* de l'interface du reach :
 
 <p align="center"><img src="../docs/images/reach_cor_output.png"></p>

@@ -64,9 +64,9 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Version Rinex : 2.11
 
-<p align="center"><img src="../docs/images/ign_selection.png"></p>
+<p align="center"><img src="../docs/images/ign_choix.png"></p>
 
-* Il faut ensuite sélectionner la base souhaitée sur la carte à l'aide de l'outil de sélection puis l'ajouter au panier.
+* Il faut ensuite sélectionner la base souhaitée sur la carte à l'aide de l'outil de sélection (<img src="../docs/images/ign_election.png">) puis l'ajouter au panier.
 
 * Télécharger l'archive au format ZIP une fois celle-ci disponible.
 
@@ -132,6 +132,10 @@ Lancer RTKPOST
  Il est possible à ce stade-là de filtrer les données afin de ne conserver que les points pour lesquels la valeur de Q est égale à 1 (ie. mode FIX) et le ratio est maximal (ie. proche de 999).
  
  La position la plus précise de notre base est donnée par la valeur de la médiane des points filtrés.
+ 
+ Ces valeurs doivent être enregistrées dans la rubrique *Base mode*
+ 
+   Dans l'onglet *Base coordinates* (LLH), mettre le *Coordinates input mode* sur Manual puis enregistrer les valeurs de longtude, latitude et hauteur.
  
  Dans nos conditions expérimentales, nous avons obtenu une précision inférieure à 1 centimètre.
  

@@ -38,6 +38,8 @@ Le reach est mis sous tension.
 
 <p align="center"><img src="../docs/images/RTK_settings.png"></p>
 
+La valeur du *Update rate* conditionne le nombre de mesures par seconde. 
+
 ### Récupération des données nécessaires
 
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
@@ -50,6 +52,7 @@ L'enregistrement se fait pendant une période minimale de 12h00 consécutives. L
 Plusieurs méthodes de post-traitements existent, et ce sont les conditions locales (éloignement de l'antenne de référence, modèle de l'antenne,  visibilité de la constellation ...) qui aident à déterminer la méthode la plus pertinente.
 
 * Télécharger le fichier UBX (Raw_xxx_UBX.zip) en cliquant sur l'icone <img src="../docs/images/reach_view_download.png">
+> Le téléchargement n'est possible qu'en stoppant préalablement les logs (*RAW Data* sur OFF).
 
 * Aller sur le <a href="http://rgp.ign.fr/DONNEES/diffusion">site IGN</a> et télécharger la trame correspondante à la période.
 

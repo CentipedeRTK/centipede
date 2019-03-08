@@ -167,10 +167,11 @@ sudo nano ntripcaster.conf
     - email 
     - server_name 
     - mountpoint
+    - encoder_password (celui-ci est nécessaire pour connecter la base au caster)
 
 * Modifier la liste des bases recensées par le caster
 
-<p align="center"><img src="../docs/images/source_tab.png"></p>
+<p align="center"><img src="../docs/images/sourcetab_dat.png"></p>
 
 ```sudo nano sourcetab.dat```
 
@@ -178,24 +179,33 @@ sudo nano ntripcaster.conf
 STR;DODO;Saint Leu;RTCM 3;;1002(1),1006(10),1008(1),1019(1),1097(1),1107(1),1117(1),1127(1);1;GPS+GLO+GAL+BDS+SBAS;EUREF;FRA;-21.168;55.2903;0;0;tallysman;none;;;;ifremer france
 ```
 
-Pour plus d'informations sur les différents paramètres à remplir: https://software.rtcm-ntrip.org/wiki/STR
+Pour plus d'informations sur les différents paramètres à remplir: <a href="https://software.rtcm-ntrip.org/wiki/STR" target="new_">ttps://software.rtcm-ntrip.org</a>
     
-> Un bug d'affichage non résolu persiste, mais cette opération est nécessaire.
+> Un bug d'affichage non résolu persiste (cette liste ne s'affiche pas dans l'interface du reach) mais cette opération est nécessaire.
     
-* Se positionner dans le dossier ntripcaster
-
+* Lancer la fabrication et le démarrage du caster avec les commandes suivantes :
 
 ```
 docker-compose build 
-docker-compose -up -d
+docker-compose up -d
 ```
     
 ## Connexion de la base au caster
 
+Pour tester le bon fonctionnement du caster, lancer la commande suivante :
 ``` 
-docker-compose log ntrip
+docker-compose logs ntrip
 ```
-    
+Pour connecter la base au caster, se rendre dans la rubrique *Base mode* de l'interface du reach :
+
+<p align="center"><img src="../docs/images/reach_cor_output.png"></p>
+
+Modifier les valeurs suivantes (en se basant sur les paramètres enregistrés dans *ntripcaster.conf*)
+
+   - Choisir l'option *NTRIP*
+   - Indiquer l'URL du caster dans le champ *Address*
+   - Choisir le port 2101
+   - Sélectionner le format *RTCM3* pour la trame reçue
  
 ## Mise en oeuvre du rover
 

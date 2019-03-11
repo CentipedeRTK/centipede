@@ -197,7 +197,7 @@ La position la plus précise de notre base est donnée par la valeur de la médi
 
 > Si vous êtes situé en Métropole et dans un but de partage collaboratif afin de faire grandir le réseau Centipede, il est conseillé de rajouter votre base RTK et son signal de correction directement au Caster central:
 
-http://pop.sig.inra.fr:2101
+http://pip.sig.inra.fr:2101
 
 > Cela vous évitera d'installer et d'administrer votre propre caster. Les demandes sont à envoyer à julien.ancelin@inra.fr
 

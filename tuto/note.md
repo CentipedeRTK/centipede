@@ -294,6 +294,7 @@ Il n'est pas nécessaire de calibrer la position du rover ; celle-ci sera corrig
 - Indiquer l'URL du caster dans le champ *Address*
 - Choisir le port 2101
 - Sélectionner le format *RTCM3* pour la trame reçue
+- Indiquer le nom de la base RTK dans MountPoint 
 
 Le rover est prêt à être utilisé : 
 

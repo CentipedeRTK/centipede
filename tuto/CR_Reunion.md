@@ -57,7 +57,7 @@ Ce prototype version 0.1 est nommé "Champagne". Il est composé d'un module [Em
 ### Prix du matériel
 
 |Matériel|Prix HT|
-|--------|----|----|
+|--------|----|
 |[Emlid Reach M+](https://store.emlid.com/product/reachm-plus/)|240€|
 |[Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/)|54€|
 |[Modem USB](https://www.ebay.com/itm/ZTE-MF823-USB-Broadband-modem-4G-LTE-Mobile-Dongle-FDD-B3-B7-B20-1800-2600-800/271819147163?hash=item3f49af079b:g:5dYAAOSw37tWAVzz)|32€|
@@ -67,7 +67,7 @@ Ce prototype version 0.1 est nommé "Champagne". Il est composé d'un module [Em
 |[Feuille aluminium (Ground plane)](https://fr.rs-online.com/web/c/abrasifs-materiaux-techniques/tubes-feuilles-et-angles-en-aluminium/feuilles-en-aluminium/?searchTerm=aluminium&sort-by=P_breakPrice1&sort-order=asc&applied-dimensions=4294555449)|12€|
 |[Rubans auto-agrippant](https://fr.rs-online.com/web/p/rubans-auto-agrippant/7117556/)|27€|
 |[Power Bank 20000mAh](https://fr.rs-online.com/web/p/batteries-externes/1744611/)|38€|
-|[Chargeur solaire](https://fr.rs-online.com/web/p/chargeurs-solaires/1768894/) (a tester!)|176€|
+|[Chargeur solaire (à tester)](https://fr.rs-online.com/web/p/chargeurs-solaires/1768894/)|176€|
 
 ### Test de la balise
 

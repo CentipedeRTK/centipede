@@ -7,23 +7,23 @@
 
 date: Mars 2019
 
-Collaborateurs: <a href="https://www.linkedin.com/in/jancelin" target="_blank">Julien Ancelin</a> (INRA), <a href="https://www.linkedin.com/in/sylvain-bonhommeau-3790035/">Sylvain Bonhommeau</a> (IFREMER), <a href="https://www.dynafor.fr/heintz-wilfried">WilfriedHeintz</a> (INRA), <a href="https://www.linkedin.com/in/sylvainpoulain/">Sylvain Poulain</a> (GISCAN), <a href="https://www.linkedin.com/in/julien-barde-1692282/">Julien Barde</a> (IRD) , <a href="https://www.linkedin.com/in/anne-elise-nieblas-91228316/">Anne-Elise Nieblas</a> (COOOL Research)
+Collaborateurs: [Julien Ancelin](https://www.linkedin.com/in/jancelin) (INRA), [Sylvain Bonhommeau](https://www.linkedin.com/in/sylvain-bonhommeau-3790035/) (IFREMER), [WilfriedHeintz](https://www.dynafor.fr/heintz-wilfried) (INRA), [Sylvain Poulain](https://www.linkedin.com/in/sylvainpoulain/) (GISCAN), [Julien Barde](https://www.linkedin.com/in/julien-barde-1692282/) (IRD) , [Anne-Elise Nieblas](https://www.linkedin.com/in/anne-elise-nieblas-91228316/) (COOOL Research)
 
-Licence: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/fr/" target="_blank">CC BY-NC-ND 3.0 FR</a>
+Licence: [CC BY-NC-ND 3.0 FR](https://creativecommons.org/licenses/by-nc-nd/3.0/fr/)
 
 L’acquisition de données dans le milieu marin pour des problématiques climatiques est un enjeu majeur à l’échelle internationale. Cependant, les instruments d’acquisition sont souvent très onéreux, spécialisés pour certains champs disciplinaires et dont les spécifications techniques et logicielles sont protégées par les industriels qui font peu d’innovations. La démocratisation de l’électronique libre, des projets open-source / open-data et des objets connectés offrant des solutions de communications très peu chères ont le potentiel de modifier complètement le panorama de l’observation en sciences marines.
 
 Les défis à relever sont la capacité à collecter et transmettre des données dans le domaine marin de manière autonome en termes d’énergie.
 
-Ce projet est consacré au développement de balises capables de collecter des données (hauteur de l’eau, houle, marée) grâce à un capteur <a href="https://fr.wikipedia.org/wiki/Cin%C3%A9matique_temps_r%C3%A9el" target="_blank">GNSS RTK</a> . Cette première mission à la Réunion (mars 2019) est ainsi l’occasion de tester les développements en termes de système de transmission et la capacité de récupérer des volumes de données permettant le monitoring de données océanographiques.
+Ce projet est consacré au développement de balises capables de collecter des données (hauteur de l’eau, houle, marée) grâce à un capteur [GNSS RTK](https://fr.wikipedia.org/wiki/Cin%C3%A9matique_temps_r%C3%A9el) . Cette première mission à la Réunion (mars 2019) est ainsi l’occasion de tester les développements en termes de système de transmission et la capacité de récupérer des volumes de données permettant le monitoring de données océanographiques.
 
 ### Utilisation du réseau Centipède <p align="left"><img src="../docs/images/centipede.jpg" height=80px></p>
 
-Le projet Centipède vise à créer un réseau de bases RTK ouvertes et disponibles pour toute personne se trouvant dans la zone de couverture. Cette technologie permet entre autres à des instituts de recherche d’effectuer des relevés expérimentaux en haute précision géographique, en autonomie, à faible coût et avec des outils et méthodes Open Source.
+Le projet [Centipède](https://github.com/jancelin/centipede) vise à créer un réseau de bases RTK ouvertes et disponibles pour toute personne se trouvant dans la zone de couverture. Cette technologie permet entre autres à des instituts de recherche d’effectuer des relevés expérimentaux en haute précision géographique, en autonomie, à faible coût et avec des outils et méthodes Open Source.
 
 <p align="center"><img src="../docs/images/reach_palmier.png"></p>
 
-Le premier objectif de cette mission était de mettre en place une base de référence capable de corriger les signaux satellitaires pour atteindre une précision centimétrique temps réel des mesures. L'installation à permis de tester la résistance des composants électroniques à la chaleur et l'humidité ambiante ainsi que de fiabiliser la méthode de calcul de son positionnement grâce au RGP. Une documentation est disponible ici pour reproduire pour vos propres besoins le processus de montage et calage de la Base. Le signal de correction RTCM3 produit est diffusé en OpenAcess, via un NTRIP BroadCaster utilisable dans une zone d'action de 10 km de rayon autour de la base.
+Le premier objectif de cette mission était de mettre en place une base de référence capable de corriger les signaux satellitaires pour atteindre une précision centimétrique temps réel des mesures. L'installation à permis de tester la résistance des composants électroniques à la chaleur et l'humidité ambiante ainsi que de fiabiliser la méthode de calcul de son positionnement grâce au [RGP](http://rgp.ign.fr/DONNEES/diffusion/). Une documentation est disponible [ici](https://github.com/jancelin/centipede/blob/master/tuto/note.md) pour reproduire pour vos propres besoins le processus de montage et calage de la Base. Le signal de correction [RTCM3](https://gssc.esa.int/navipedia/index.php/DGNSS_Standar) produit est diffusé en [OpenAcess](scientific-contribs.ddns.net:2101), via un [NTRIP BroadCaster](https://igs.bkg.bund.de/ntrip/caster) utilisable dans une zone d'action de 10 km de rayon autour de la base.
 
 <p align="left"><img src="../docs/images/dodo_lizmap.png" ></p>
 
@@ -42,7 +42,7 @@ Malgré le positionnement obligatoire de la base RTK nomé "DODO" proche des rel
 
 ### Conception de la balise
 
-Ce premier prototype s'inspire des expériences de l'équipe de SONEL ( Système d'Observation du Niveau des Eaux Littorales) qui rassemble et de diffuse des observations du niveau marin à la côte enregistrées par des marégraphes, de la meilleure qualité métrologique possible, pour apporter aux chercheurs des éléments qui leur permettront de répondre aux questions qu’ils se posent aujourd’hui sur les changements qui affectent les différentes composantes du niveau de la mer. Cette équipe à développée des bouées GPS mesurant le niveau de la mer à une "résolution de 1 à 2.2 cm par rapport à des marégraphes conventionnels ce qui est satisfaisant pour des applications marégraphiques et offre d’intéressantes perspectives pour les futures études sur l’évolution du niveau de la mer" (Andre, Gael & Martin Miguez, Belen & Ballu, Valérie & Testut, L & Woppelmann, Guy & Tiphaneau, Pascal. (2014). La mesure du niveau de la mer par bouées GPS : l’expérience multi-capteurs de l’île d’Aix.).
+Ce premier prototype s'inspire des expériences de l'équipe de [SONEL](https://lienss.univ-larochelle.fr/SONEL-Systeme-d-Observation-du-Niveau-des-Eaux-Littorales-518) ( Système d'Observation du Niveau des Eaux Littorales) qui rassemble et de diffuse des observations du niveau marin à la côte enregistrées par des marégraphes, de la meilleure qualité métrologique possible, pour apporter aux chercheurs des éléments qui leur permettront de répondre aux questions qu’ils se posent aujourd’hui sur les changements qui affectent les différentes composantes du niveau de la mer. Cette équipe à développée des bouées GPS mesurant le niveau de la mer à une "résolution de 1 à 2.2 cm par rapport à des marégraphes conventionnels ce qui est satisfaisant pour des applications marégraphiques et offre d’intéressantes perspectives pour les futures études sur l’évolution du niveau de la mer" ([Andre, Gael & Martin Miguez, Belen & Ballu, Valérie & Testut, L & Woppelmann, Guy & Tiphaneau, Pascal. (2014). La mesure du niveau de la mer par bouées GPS : l’expérience multi-capteurs de l’île d’Aix.](https://www.researchgate.net/publication/291171973_La_mesure_du_niveau_de_la_mer_par_bouees_GPS_l'experience_multi-capteurs_de_l'ile_d'Aix)).
 
 Les mesures de ces bouées GPS ont été réalisées en mode GNSS single et ensuite post-traitées en mode cinématique en utilisant une station du réseau GNSS permanent de l’IGN. Ce processus demande de récupérer les données des récepteurs manuellement régulièrement et ensuite d'effectuer un traitement informatique assez lourd. Les résultats ne sont donc disponibles qu'à posteriori. L'idée pour ce nouveau prototype est d'utiliser la technologie RTK afin de disposer de données de mesures fiables, instantanées et donc de pouvoir monitorer en temps réel les océans.
 
@@ -50,13 +50,13 @@ De plus, SONEL utilise des récepteur GPS propriétaire coûteux et donc diffici
 
 <p align="center"><img src="../docs/images/champagne.jpeg" ></p>
 
-Ce prototype version 0.1 est nommé "Champagne". Il est composé d'un module Emlid Reach M+ embarquant une puce Ublox NEO-M8P mono fréquence, un Opérating système Linux, le logiciel RTKLib et enfin ReachView, une web interface permettant le paramétrage simplifié de RTKlib. L'ensemble des codes du M+ sont disponibles ici. Une antenne de réception multi-GNSS Tallysman est montée sur un ground Plane de 12 cm en aluminium. Afin de recevoir le signal RTM3 de correction RTK et renvoyer les données dans une base de données centrale, un smartphone avec un forfait 4G est utilisé, il sera remplacé par une clé USB 4G compatible prochainement. Le tout est alimenté avec une batterie externe USB en attendant un montage autonome en électricité via des panneaux solaires.
+Ce prototype version 0.1 est nommé "Champagne". Il est composé d'un module [Emlid Reach M+](https://emlid.com/reach/) embarquant une puce [Ublox NEO-M8P](https://www.u-blox.com/en/product/neo-m8p-series) mono fréquence, un Opérating système Linux, le logiciel [RTKLib](http://www.rtklib.com/) et enfin [ReachView](https://docs.emlid.com/reachm-plus/common/reachview/), une web interface permettant le paramétrage simplifié de RTKlib. L'ensemble des codes du M+ sont disponibles [ici](https://github.com/emlid). Une antenne de réception multi-GNSS Tallysman est montée sur un ground Plane de 12 cm en aluminium. Afin de recevoir le signal RTM3 de correction RTK et renvoyer les données dans une base de données centrale, un smartphone avec un forfait 4G est utilisé, il sera remplacé par une clé USB 4G compatible prochainement. Le tout est alimenté avec une batterie externe USB en attendant un montage autonome en électricité via des panneaux solaires.
 
 <p align="center"><img src="../docs/images/reach_bouee.jpg" ></p>
 
 ### Test de la balise
 
-Ce premier test est réalisé dans le lagon de Saint-Leu (la Réunion) avant son positionnement permanent au large du lagon. Cette situation à permis de vérifier facilement et régulièrement son bon fonctionnement et d'effectuer d'autres tests à proximité pendant l'acquisition avec d'autres matériels terrestre.
+Ce premier test est réalisé dans le [lagon de Saint-Leu](https://www.openstreetmap.org/search?query=saint%20leu#map=13/-21.1817/55.3431) (la Réunion) avant son positionnement permanent au large du lagon. Cette situation à permis de vérifier facilement et régulièrement son bon fonctionnement et d'effectuer d'autres tests à proximité pendant l'acquisition avec d'autres matériels terrestre.
 
 <p align="center"><img src="../docs/images/champagne_misealeau.jpeg"></p>
 
@@ -65,7 +65,7 @@ Une première phase de test à été effectué pour vérifier la bonne étanché
 <p align="center"><img src="../docs/images/champagne_aleau.jpeg" ></p>
 
 
-La balise à été fixée à un poteau délimitant l'une des réserves marine de la Réunion et a acquis des données de longitude, latitude, altimétrie, fix GNSS, variabilité de la position et qualité du signal pendant une durée de quatre heures.
+La balise à été fixée à un poteau délimitant l'une des [réserves marine de la Réunion](http://www.reservemarinereunion.fr/images/reserve/pdf/decrets/carte_rnmr_.pdf) et a acquis des données de longitude, latitude, altimétrie, fix GNSS, variabilité de la position et qualité du signal pendant une durée de quatre heures.
 
 <p align="center"><img src="../docs/images/champagne_bouchon.jpeg"></p>
 

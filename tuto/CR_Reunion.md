@@ -36,7 +36,7 @@ Cette limite garantie la précision de la mesure car le matériel utilisé n'est
 Différents tests de validations de la position de la bases ont été effectués via des posts traitements et des mesures par rapport aux stations de référence du RGP. Des tests sur terre ont également été réalisés pour vérifier la fiabilité du signal de correction et sa disponibilité en continue.
 
 <p align="center"><img src="../docs/images/survey_centipede2.png"></p>
-<p align="center"><sup><i>Test d'acquisition de points en RTK<i/></sup></p>
+<p align="center"><sup><i>Test d'acquisition de points en RTK</i></sup></p>
 
 Malgré le positionnement obligatoire de la base RTK nomé "DODO" proche des reliefs du bord de côte de L'île de la Réunion, la disponibilité du signal de correction est rapide, fiable et continue avec une bonne disponibilité satellitaire.
 

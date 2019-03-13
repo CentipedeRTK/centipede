@@ -58,10 +58,11 @@ Ce prototype version 0.1 est nommé "Champagne". Il est composé d'un module [Em
 
 |Matériel|Prix HT|lien|
 |--------|----|----|
-|Emlid Reach M+|240€|https://store.emlid.com/product/reachm-plus/|
-|Tallysman multi-GNSS antenna|54€|https://store.emlid.com/product/tallysman-multi-gnss-antenna/|
-|Dissipateur chaleur|13€|https://fr.rs-online.com/web/p/dissipateurs-de-chaleur/1263113/|
-
+|[Emlid Reach M+](https://store.emlid.com/product/reachm-plus/)|240€|
+|[Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/)|54€|
+|[Dissipateur chaleur](https://fr.rs-online.com/web/p/dissipateurs-de-chaleur/1263113/)|13€|
+|[Pâte thermique](https://fr.rs-online.com/web/p/graisse-thermique/0554311/)|7€|
+|[Feuille aluminium (Ground plane)](https://fr.rs-online.com/web/c/abrasifs-materiaux-techniques/tubes-feuilles-et-angles-en-aluminium/feuilles-en-aluminium/?searchTerm=aluminium&sort-by=P_breakPrice1&sort-order=asc&applied-dimensions=4294555449)|12€|
 
 
 ### Test de la balise

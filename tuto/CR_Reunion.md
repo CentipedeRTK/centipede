@@ -7,15 +7,15 @@
 
 date: Mars 2019
 
-Collaborateurs: <a href="https://www.linkedin.com/in/jancelin" target="blank">Julien Ancelin</a> (INRA), <a href="https://www.linkedin.com/in/sylvain-bonhommeau-3790035/">Sylvain Bonhommeau</a> (IFREMER), <a href="https://www.dynafor.fr/heintz-wilfried">WilfriedHeintz</a> (INRA), <a href="https://www.linkedin.com/in/sylvainpoulain/">Sylvain Poulain</a> (GISCAN), <a href="https://www.linkedin.com/in/julien-barde-1692282/">Julien Barde</a> (IRD) , <a href="https://www.linkedin.com/in/anne-elise-nieblas-91228316/">Anne-Elise Nieblas</a> (COOOL Research)
+Collaborateurs: <a href="https://www.linkedin.com/in/jancelin" target="_blank">Julien Ancelin</a> (INRA), <a href="https://www.linkedin.com/in/sylvain-bonhommeau-3790035/">Sylvain Bonhommeau</a> (IFREMER), <a href="https://www.dynafor.fr/heintz-wilfried">WilfriedHeintz</a> (INRA), <a href="https://www.linkedin.com/in/sylvainpoulain/">Sylvain Poulain</a> (GISCAN), <a href="https://www.linkedin.com/in/julien-barde-1692282/">Julien Barde</a> (IRD) , <a href="https://www.linkedin.com/in/anne-elise-nieblas-91228316/">Anne-Elise Nieblas</a> (COOOL Research)
 
-Licence: CC0
+Licence: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/fr/" target="_blank">CC BY-NC-ND 3.0 FR</a>
 
 L’acquisition de données dans le milieu marin pour des problématiques climatiques est un enjeu majeur à l’échelle internationale. Cependant, les instruments d’acquisition sont souvent très onéreux, spécialisés pour certains champs disciplinaires et dont les spécifications techniques et logicielles sont protégées par les industriels qui font peu d’innovations. La démocratisation de l’électronique libre, des projets open-source / open-data et des objets connectés offrant des solutions de communications très peu chères ont le potentiel de modifier complètement le panorama de l’observation en sciences marines.
 
 Les défis à relever sont la capacité à collecter et transmettre des données dans le domaine marin de manière autonome en termes d’énergie.
 
-Ce projet est consacré au développement de balises capables de collecter des données (hauteur de l’eau, houle, marée) grâce à un capteur GNSS RTK . Cette première mission à la Réunion (mars 2019) est ainsi l’occasion de tester les développements en termes de système de transmission et la capacité de récupérer des volumes de données permettant le monitoring de données océanographiques.
+Ce projet est consacré au développement de balises capables de collecter des données (hauteur de l’eau, houle, marée) grâce à un capteur <a href="https://fr.wikipedia.org/wiki/Cin%C3%A9matique_temps_r%C3%A9el" target="_blank">GNSS RTK</a> . Cette première mission à la Réunion (mars 2019) est ainsi l’occasion de tester les développements en termes de système de transmission et la capacité de récupérer des volumes de données permettant le monitoring de données océanographiques.
 
 ### Utilisation du réseau Centipède <p align="left"><img src="../docs/images/centipede.jpg" height=80px></p>
 

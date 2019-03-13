@@ -7,7 +7,7 @@
 
 date: Mars 2019
 
-Collaborateurs: <a href="https://www.linkedin.com/in/jancelin" target="_blank" >Julien Ancelin</a> (INRA), <a href="https://www.linkedin.com/in/sylvain-bonhommeau-3790035/">Sylvain Bonhommeau</a> (IFREMER), <a href="https://www.dynafor.fr/heintz-wilfried">WilfriedHeintz</a> (INRA), <a href="https://www.linkedin.com/in/sylvainpoulain/">Sylvain Poulain</a> (GISCAN), <a href="https://www.linkedin.com/in/julien-barde-1692282/">Julien Barde</a> (IRD) , <a href="https://www.linkedin.com/in/anne-elise-nieblas-91228316/">Anne-Elise Nieblas</a> (COOOL Research)
+Collaborateurs: <a href="https://www.linkedin.com/in/jancelin" target="blank">Julien Ancelin</a> (INRA), <a href="https://www.linkedin.com/in/sylvain-bonhommeau-3790035/">Sylvain Bonhommeau</a> (IFREMER), <a href="https://www.dynafor.fr/heintz-wilfried">WilfriedHeintz</a> (INRA), <a href="https://www.linkedin.com/in/sylvainpoulain/">Sylvain Poulain</a> (GISCAN), <a href="https://www.linkedin.com/in/julien-barde-1692282/">Julien Barde</a> (IRD) , <a href="https://www.linkedin.com/in/anne-elise-nieblas-91228316/">Anne-Elise Nieblas</a> (COOOL Research)
 
 Licence: CC0
 

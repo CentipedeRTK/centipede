@@ -1,5 +1,5 @@
-
-![Balise](../docs/images/balise.jpeg)
+<p align="left"><img src="../docs/images/balise.jpeg" ></p>
+<p align="center"><sup>Balise Champagne prototype V0.1 dans le lagon de Saint Leu (la Réunion)</sup></p>
 
 ## Une Balise Open Source pour le monitoring des océans
 

@@ -91,7 +91,7 @@ Une première phase de test à été effectué pour vérifier la bonne étanché
 La balise à été fixée à un poteau délimitant l'une des [réserves marine de la Réunion](http://www.reservemarinereunion.fr/images/reserve/pdf/decrets/carte_rnmr_.pdf) et a acquis des données de longitude, latitude, altimétrie, fix GNSS, variabilité de la position et qualité du signal pendant une durée de quatre heures.
 
 <p align="center"><img src="../docs/images/champagne_bouchon.jpeg"></p>
-<p align="center"><sup><i>Acquisition continue en RTK de sa position: longitude, latitude et altimétrie<i/></sup></p>
+<p align="center"><sup><i>Acquisition continue en RTK de sa position: longitude, latitude et altimétrie</i></sup></p>
 
 
 ### Premiers résultats

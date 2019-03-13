@@ -48,19 +48,33 @@ Les mesures de ces bouées GPS ont été réalisées en mode GNSS single et ensu
 
 De plus, SONEL utilise des récepteur GPS propriétaire coûteux et donc difficilement déployable, ce prototype devra donc être le moins cher possible et libre afin d'offrir la possibilité de monitorer un maximum de zones possible pour permettre une collecte de masse de données.
 
+<p align="center"><img src="../docs/images/champagne.jpeg" height=200px></p>
+
 Ce prototype version 0.1 est nommé "Champagne". Il est composé d'un module Emlid Reach M+ embarquant une puce Ublox NEO-M8P mono fréquence, un Opérating système Linux, le logiciel RTKLib et enfin ReachView, une web interface permettant le paramétrage simplifié de RTKlib. L'ensemble des codes du M+ sont disponibles ici. Une antenne de réception multi-GNSS Tallysman est montée sur un ground Plane de 12 cm en aluminium. Afin de recevoir le signal RTM3 de correction RTK et renvoyer les données dans une base de données centrale, un smartphone avec un forfait 4G est utilisé, il sera remplacé par une clé USB 4G compatible prochainement. Le tout est alimenté avec une batterie externe USB en attendant un montage autonome en électricité via des panneaux solaires.
+
+<p align="center"><img src="../docs/images/reach_bouee.jpg" height=200px></p>
 
 ### Test de la balise
 
 Ce premier test est réalisé dans le lagon de Saint-Leu (la Réunion) avant son positionnement permanent au large du lagon. Cette situation à permis de vérifier facilement et régulièrement son bon fonctionnement et d'effectuer d'autres tests à proximité pendant l'acquisition avec d'autres matériels terrestre.
 
+<p align="center"><img src="../docs/images/champagne_misealeau.jpeg"></p>
+
 Une première phase de test à été effectué pour vérifier la bonne étanchéité de la balise, son effet "bouchon", sa capacité à récupérer la trame RTCM3 de la base Centipede "DODO" et avoir un "fix" RTK (Q=1 et AR ratio=999.99) constant afin de garantir une donnée de qualité (+- 2 cm en altimétrie par rapport à nos estimations en mesures statiques).
 
+<p align="center"><img src="../docs/images/champagne_aleau.jpeg" ></p>
+
+
 La balise à été fixée à un poteau délimitant l'une des réserves marine de la Réunion et a acquis des données de longitude, latitude, altimétrie, fix GNSS, variabilité de la position et qualité du signal pendant une durée de quatre heures.
+
+<p align="center"><img src="../docs/images/champagne_bouchon.jpeg"></p>
+
 
 ### Premiers résultats
 
 La fréquence d'acquisition des données était de 5 HZ soit 5 données par secondes, cela représente une quantité non négligeable en terme de volume, mais permet de récupérer l’essentiel et le fiable suite au nettoyage des données aberrantes sur cette courte période de mesure. La balise n'a pas montré de perte de données ni de coupure pendant l'acquisition et les composants n'ont pas eux d'effets de surchauffe malgré l'ambiance confinée de la balise étanche et la bulle de protection transparente (effet de serre). Un effet "bouchon" à été observé visuellement lié à la morphologie du matériel, l'effet clapot, le courant et le vent présent dans le lagon. L'analyse des données à montrée une influence de son point d'accroche avec un effet de masque (poteau en métal influençant la réception des données satellitaires) quand la balise se trouvais à proximité. Néanmoins, il semble à première vue que les données collectées concordent et permettent de monitorer les cycles et périodes des mouvements des océans.
+
+<p align="center"><img src="../docs/images/champagne_graph.jpeg"></p>
 
 ### Enfin...
 

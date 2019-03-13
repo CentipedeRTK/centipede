@@ -37,7 +37,7 @@ Différents tests de validations de la position de la bases ont été effectués
 
 Malgré le positionnement obligatoire de la base RTK nomé "DODO" proche des reliefs du bord de côte de L'île de la Réunion, la disponibilité du signal de correction est rapide, fiable et continue avec une bonne disponibilité satellitaire.
 
-<p align="center"><img src="../docs/images/dodo_rtk.png" height=200px></p>
+<p align="center"><img src="../docs/images/dodo_rtk.jpg" height=200px></p>
 
 
 ### Conception de la balise

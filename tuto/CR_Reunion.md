@@ -54,6 +54,16 @@ Ce prototype version 0.1 est nommé "Champagne". Il est composé d'un module [Em
 
 <p align="center"><img src="../docs/images/reach_bouee.jpg" ></p>
 
+### Prix du matériel
+
+|Matériel|Prix HT|lien|
+|--------|----|----|
+|Emlid Reach M+|240€|https://store.emlid.com/product/reachm-plus/|
+|Tallysman multi-GNSS antenna|54€|https://store.emlid.com/product/tallysman-multi-gnss-antenna/|
+|Dissipateur chaleur|13€|https://fr.rs-online.com/web/p/dissipateurs-de-chaleur/1263113/|
+
+
+
 ### Test de la balise
 
 Ce premier test est réalisé dans le [lagon de Saint-Leu](https://www.openstreetmap.org/search?query=saint%20leu#map=13/-21.1817/55.3431) (la Réunion) avant son positionnement permanent au large du lagon. Cette situation à permis de vérifier facilement et régulièrement son bon fonctionnement et d'effectuer d'autres tests à proximité pendant l'acquisition avec d'autres matériels terrestre.

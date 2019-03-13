@@ -2,6 +2,8 @@
 
 *Modèle Emlid Reach M+ - v2.16.2*
 
+Licence: [CC BY-NC-ND 3.0 FR](https://creativecommons.org/licenses/by-nc-nd/3.0/fr/)
+
 ## Installation du module
 
 La température locale et l'humidité relative étant très élevées, il est nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur, comme présenté ci-dessous.
@@ -326,6 +328,4 @@ Zoom à l'échelle 1:26 :
 
 <p align="center"><img src="../docs/images/survey_centipede2.png"></p>
 
------------------------------------------------------------------------------
-<p align="left"><img src="../docs/images/cc0.png" height=30px ></p>
 

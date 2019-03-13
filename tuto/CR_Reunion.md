@@ -33,11 +33,11 @@ Cette limite garantie la précision de la mesure car le matériel utilisé n'est
 
 Différents tests de validations de la position de la bases ont été effectués via des posts traitements et des mesures par rapport aux stations de référence du RGP. Des tests sur terre ont également été réalisés pour vérifier la fiabilité du signal de correction et sa disponibilité en continue.
 
-<p align="left"><img src="../docs/images/survey_centipede2.png" height=200px></p>
+<p align="center"><img src="../docs/images/survey_centipede2.png" height=200px></p>
 
 Malgré le positionnement obligatoire de la base RTK nomé "DODO" proche des reliefs du bord de côte de L'île de la Réunion, la disponibilité du signal de correction est rapide, fiable et continue avec une bonne disponibilité satellitaire.
 
-<p align="center"><img src="../docs/images/dodo_rtk.jpg" height=200px></p>
+<p align="center"><img src="../docs/images/dodo_rtk.jpg" ></p>
 
 
 ### Conception de la balise
@@ -48,11 +48,11 @@ Les mesures de ces bouées GPS ont été réalisées en mode GNSS single et ensu
 
 De plus, SONEL utilise des récepteur GPS propriétaire coûteux et donc difficilement déployable, ce prototype devra donc être le moins cher possible et libre afin d'offrir la possibilité de monitorer un maximum de zones possible pour permettre une collecte de masse de données.
 
-<p align="center"><img src="../docs/images/champagne.jpeg" height=200px></p>
+<p align="center"><img src="../docs/images/champagne.jpeg" ></p>
 
 Ce prototype version 0.1 est nommé "Champagne". Il est composé d'un module Emlid Reach M+ embarquant une puce Ublox NEO-M8P mono fréquence, un Opérating système Linux, le logiciel RTKLib et enfin ReachView, une web interface permettant le paramétrage simplifié de RTKlib. L'ensemble des codes du M+ sont disponibles ici. Une antenne de réception multi-GNSS Tallysman est montée sur un ground Plane de 12 cm en aluminium. Afin de recevoir le signal RTM3 de correction RTK et renvoyer les données dans une base de données centrale, un smartphone avec un forfait 4G est utilisé, il sera remplacé par une clé USB 4G compatible prochainement. Le tout est alimenté avec une batterie externe USB en attendant un montage autonome en électricité via des panneaux solaires.
 
-<p align="center"><img src="../docs/images/reach_bouee.jpg" height=200px></p>
+<p align="center"><img src="../docs/images/reach_bouee.jpg" ></p>
 
 ### Test de la balise
 

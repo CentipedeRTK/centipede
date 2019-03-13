@@ -1,5 +1,5 @@
 
-<p align="center"><img src="../docs/images/balise.jpg"></p>
+<p align="center"><img src="../docs/images/balise.jpeg"></p>
 
 ## Une Balise Open Source pour le monitoring des océans
 

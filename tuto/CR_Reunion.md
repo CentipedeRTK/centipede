@@ -17,19 +17,28 @@ Les défis à relever sont la capacité à collecter et transmettre des données
 
 Ce projet est consacré au développement de balises capables de collecter des données (hauteur de l’eau, houle, marée) grâce à un capteur GNSS RTK . Cette première mission à la Réunion (mars 2019) est ainsi l’occasion de tester les développements en termes de système de transmission et la capacité de récupérer des volumes de données permettant le monitoring de données océanographiques.
 
-### Utilisation du réseau Centipède
+### Utilisation du réseau Centipède <p align="left"><img src="../docs/images/centipede.jpg" height=80px></p>
 
 Le projet Centipède vise à créer un réseau de bases RTK ouvertes et disponibles pour toute personne se trouvant dans la zone de couverture. Cette technologie permet entre autres à des instituts de recherche d’effectuer des relevés expérimentaux en haute précision géographique, en autonomie, à faible coût et avec des outils et méthodes Open Source.
 
 <p align="center"><img src="../docs/images/reach_palmier.png"></p>
 
-Le premier objectif de cette mission était de mettre en place une base de référence capable de corriger les signaux satellitaires pour atteindre une précision centimétrique temps réel des mesures. L'installation à permis de tester la résistance des composants électroniques à la chaleur et l'humidité ambiante ainsi que de fiabiliser la méthode de calcul de son positionnement grâce au RGP. Une documentation est disponible ici pour reproduire pour vos propres besoins le processus de montage et calage de la Base. Le signal de correction RTCM3 produit est diffusé en OpenAcess, via un NTRIP BroadCaster utilisable dans une zone d'action de 10 km de rayon autour de la base. Cette limite garantie la précision de la mesure car le matériel utilisé n'est capable d'utiliser que la fréquence L1 des Satellites GNSS, au-delà, une variabilité supplémentaire risque d'être induite et demande donc d'installer une nouvelle base. Cependant, l'arrivée prochaine de nouvelles puces informatique à faible coût va permettre de travailler sur les fréquences L1 et L2 permettant ainsi de garantir un signal de correction sur des distances proches de 40-50km de la base de référence.
+Le premier objectif de cette mission était de mettre en place une base de référence capable de corriger les signaux satellitaires pour atteindre une précision centimétrique temps réel des mesures. L'installation à permis de tester la résistance des composants électroniques à la chaleur et l'humidité ambiante ainsi que de fiabiliser la méthode de calcul de son positionnement grâce au RGP. Une documentation est disponible ici pour reproduire pour vos propres besoins le processus de montage et calage de la Base. Le signal de correction RTCM3 produit est diffusé en OpenAcess, via un NTRIP BroadCaster utilisable dans une zone d'action de 10 km de rayon autour de la base.
+
+<p align="left"><img src="../docs/images/dodo_lizmap.png"  height=200px></p>
+
+Cette limite garantie la précision de la mesure car le matériel utilisé n'est capable d'utiliser que la fréquence L1 des Satellites GNSS, au-delà, une variabilité supplémentaire risque d'être induite et demande donc d'installer une nouvelle base. Cependant, l'arrivée prochaine de nouvelles puces informatique à faible coût va permettre de travailler sur les fréquences L1 et L2 permettant ainsi de garantir un signal de correction sur des distances proches de 40-50km de la base de référence.
 
 ### Test d'acquisition en RTK
 
 Différents tests de validations de la position de la bases ont été effectués via des posts traitements et des mesures par rapport aux stations de référence du RGP. Des tests sur terre ont également été réalisés pour vérifier la fiabilité du signal de correction et sa disponibilité en continue.
 
+<p align="left"><img src="../docs/images/survey_centipede2.png" height=200px></p>
+
 Malgré le positionnement obligatoire de la base RTK nomé "DODO" proche des reliefs du bord de côte de L'île de la Réunion, la disponibilité du signal de correction est rapide, fiable et continue avec une bonne disponibilité satellitaire.
+
+<p align="center"><img src="../docs/images/dodo_rtk.png" height=200px></p>
+
 
 ### Conception de la balise
 

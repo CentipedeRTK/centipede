@@ -31,7 +31,7 @@ La température locale et l'humidité relative étant très élevées, il est n�
 
 L'antenne est placée sur un mât avec un ground plane en métal et le reach est positionné dans un endroit abrité du soleil direct et de la pluie.
 
-p align="center"><img src="https://github.com/emlid/emlid-docs/blob/master/docs/reach/mplus/img/reachm-plus/antenna-placement/antenna-ground-plane.png></p>
+![grounplane](https://github.com/emlid/emlid-docs/blob/master/docs/reach/mplus/img/reachm-plus/antenna-placement/antenna-ground-plane.png)
 
 <p align="center"><img src="../docs/images/reach_palmier.png"></p>
 

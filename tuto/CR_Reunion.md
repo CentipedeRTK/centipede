@@ -1,11 +1,11 @@
+# Une Balise Open Source pour le monitoring des océans
+
 <p align="left"><img src="../docs/images/balise.jpeg" ></p>
 <p align="center"><sup>Balise Champagne prototype V0.1 dans le lagon de Saint Leu (la Réunion)</sup></p>
 
-## Une Balise Open Source pour le monitoring des océans
+#### Mission conjointe: IFREMER / INRA
 
-### Mission conjointe: IFREMER / INRA
-
-date: Mars 2019
+Date: Mars 2019
 
 Collaborateurs: [Julien Ancelin](https://www.linkedin.com/in/jancelin) (INRA), [Sylvain Bonhommeau](https://www.linkedin.com/in/sylvain-bonhommeau-3790035/) (IFREMER), [WilfriedHeintz](https://www.dynafor.fr/heintz-wilfried) (INRA), [Sylvain Poulain](https://www.linkedin.com/in/sylvainpoulain/) (GISCAN), [Julien Barde](https://www.linkedin.com/in/julien-barde-1692282/) (IRD) , [Anne-Elise Nieblas](https://www.linkedin.com/in/anne-elise-nieblas-91228316/) (COOOL Research)
 
@@ -22,10 +22,12 @@ Ce projet est consacré au développement de balises capables de collecter des d
 Le projet [Centipède](https://github.com/jancelin/centipede) vise à créer un réseau de bases RTK ouvertes et disponibles pour toute personne se trouvant dans la zone de couverture. Cette technologie permet entre autres à des instituts de recherche d’effectuer des relevés expérimentaux en haute précision géographique, en autonomie, à faible coût et avec des outils et méthodes Open Source.
 
 <p align="center"><img src="../docs/images/reach_palmier.png"></p>
+<p align="center"><sup>Prototype Base RTK "DODO" installée à Saint-Leu</sup></p>
 
 Le premier objectif de cette mission était de mettre en place une base de référence capable de corriger les signaux satellitaires pour atteindre une précision centimétrique temps réel des mesures. L'installation à permis de tester la résistance des composants électroniques à la chaleur et l'humidité ambiante ainsi que de fiabiliser la méthode de calcul de son positionnement grâce au [RGP](http://rgp.ign.fr/DONNEES/diffusion/). Une documentation est disponible [ici](https://github.com/jancelin/centipede/blob/master/tuto/note.md) pour reproduire pour vos propres besoins le processus de montage et calage de la Base. Le signal de correction [RTCM3](https://gssc.esa.int/navipedia/index.php/DGNSS_Standar) produit est diffusé en [OpenAcess](scientific-contribs.ddns.net:2101), via un [NTRIP BroadCaster](https://igs.bkg.bund.de/ntrip/caster) utilisable dans une zone d'action de 10 km de rayon autour de la base.
 
-<p align="left"><img src="../docs/images/dodo_lizmap.png" ></p>
+<p align="center"><img src="../docs/images/dodo_lizmap.png" ></p>
+<p align="center"><sup>Situation et zone d'action de la Base DODO</sup></p>
 
 Cette limite garantie la précision de la mesure car le matériel utilisé n'est capable d'utiliser que la fréquence L1 des Satellites GNSS, au-delà, une variabilité supplémentaire risque d'être induite et demande donc d'installer une nouvelle base. Cependant, l'arrivée prochaine de nouvelles puces informatique à faible coût va permettre de travailler sur les fréquences L1 et L2 permettant ainsi de garantir un signal de correction sur des distances proches de 40-50km de la base de référence.
 
@@ -34,10 +36,12 @@ Cette limite garantie la précision de la mesure car le matériel utilisé n'est
 Différents tests de validations de la position de la bases ont été effectués via des posts traitements et des mesures par rapport aux stations de référence du RGP. Des tests sur terre ont également été réalisés pour vérifier la fiabilité du signal de correction et sa disponibilité en continue.
 
 <p align="center"><img src="../docs/images/survey_centipede2.png"></p>
+<p align="center"><sup>Test d'acquisition de points en RTK</sup></p>
 
 Malgré le positionnement obligatoire de la base RTK nomé "DODO" proche des reliefs du bord de côte de L'île de la Réunion, la disponibilité du signal de correction est rapide, fiable et continue avec une bonne disponibilité satellitaire.
 
 <p align="center"><img src="../docs/images/dodo_rtk.jpg" ></p>
+<p align="center"><sup>Test haute précision (40cm X 40cm) d'acquisition de points en RTK</sup></p>
 
 
 ### Conception de la balise
@@ -49,10 +53,12 @@ Les mesures de ces bouées GPS ont été réalisées en mode GNSS single et ensu
 De plus, SONEL utilise des récepteur GPS propriétaire coûteux et donc difficilement déployable, ce prototype devra donc être le moins cher possible et libre afin d'offrir la possibilité de monitorer un maximum de zones possible pour permettre une collecte de masse de données.
 
 <p align="center"><img src="../docs/images/champagne.jpeg" ></p>
+<p align="center"><sup>Finalisation du montage de la balise avant mise à l'eau</sup></p>
 
 Ce prototype version 0.1 est nommé "Champagne". Il est composé d'un module [Emlid Reach M+](https://emlid.com/reach/) embarquant une puce [Ublox NEO-M8T](https://www.u-blox.com/en/product/neolea-m8t-series) mono fréquence, un Opérating système Linux, le logiciel [RTKLib](http://www.rtklib.com/) et enfin [ReachView](https://docs.emlid.com/reachm-plus/common/reachview/), une web interface permettant le paramétrage simplifié de RTKlib. L'ensemble des codes du M+ sont disponibles [ici](https://github.com/emlid). Une antenne de réception multi-GNSS Tallysman est montée sur un ground Plane de 12 cm en aluminium. Afin de recevoir le signal RTM3 de correction RTK et renvoyer les données dans une base de données centrale, un smartphone avec un forfait 4G est utilisé, il sera remplacé par une clé USB 4G compatible prochainement. Le tout est alimenté avec une batterie externe USB en attendant un montage autonome en électricité via des panneaux solaires.
 
 <p align="center"><img src="../docs/images/reach_bouee.jpg" ></p>
+<p align="center"><sup>Balise montée et test de positionnnement RTK</sup></p>
 
 ### Prix du matériel
 
@@ -75,15 +81,17 @@ Ce prototype version 0.1 est nommé "Champagne". Il est composé d'un module [Em
 Ce premier test est réalisé dans le [lagon de Saint-Leu](https://www.openstreetmap.org/search?query=saint%20leu#map=13/-21.1817/55.3431) (la Réunion) avant son positionnement permanent au large du lagon. Cette situation à permis de vérifier facilement et régulièrement son bon fonctionnement et d'effectuer d'autres tests à proximité pendant l'acquisition avec d'autres matériels terrestre.
 
 <p align="center"><img src="../docs/images/champagne_misealeau.jpeg"></p>
+<p align="center"><sup>Mise à l'eau de la balise pour test d'étanchéité</sup></p>
 
 Une première phase de test à été effectué pour vérifier la bonne étanchéité de la balise, son effet "bouchon", sa capacité à récupérer la trame RTCM3 de la base Centipede "DODO" et avoir un "fix" RTK (Q=1 et AR ratio=999.99) constant afin de garantir une donnée de qualité (+- 2 cm en altimétrie par rapport à nos estimations en mesures statiques).
 
 <p align="center"><img src="../docs/images/champagne_aleau.jpeg" ></p>
-
+<p align="center"><sup>Installation de la balise dans le lagon</sup></p>
 
 La balise à été fixée à un poteau délimitant l'une des [réserves marine de la Réunion](http://www.reservemarinereunion.fr/images/reserve/pdf/decrets/carte_rnmr_.pdf) et a acquis des données de longitude, latitude, altimétrie, fix GNSS, variabilité de la position et qualité du signal pendant une durée de quatre heures.
 
 <p align="center"><img src="../docs/images/champagne_bouchon.jpeg"></p>
+<p align="center"><sup>Acquisition continue en RTK de sa position: longitude, latitude et altimétrie</sup></p>
 
 
 ### Premiers résultats
@@ -91,6 +99,7 @@ La balise à été fixée à un poteau délimitant l'une des [réserves marine d
 La fréquence d'acquisition des données était de 5 HZ soit 5 données par secondes, cela représente une quantité non négligeable en terme de volume, mais permet de récupérer l’essentiel et le fiable suite au nettoyage des données aberrantes sur cette courte période de mesure. La balise n'a pas montré de perte de données ni de coupure pendant l'acquisition et les composants n'ont pas eux d'effets de surchauffe malgré l'ambiance confinée de la balise étanche et la bulle de protection transparente (effet de serre). Un effet "bouchon" à été observé visuellement lié à la morphologie du matériel, l'effet clapot, le courant et le vent présent dans le lagon. L'analyse des données à montrée une influence de son point d'accroche avec un effet de masque (poteau en métal influençant la réception des données satellitaires) quand la balise se trouvais à proximité. Néanmoins, il semble à première vue que les données collectées concordent et permettent de monitorer les cycles et périodes des mouvements des océans.
 
 <p align="center"><img src="../docs/images/champagne_graph.jpeg"></p>
+<p align="center"><sup>Premier Traitement sous Rstat des données collectées</sup></p>
 
 ### Enfin...
 

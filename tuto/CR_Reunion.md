@@ -66,8 +66,8 @@ Ce prototype version 0.1 est nommé "Champagne". Il est composé d'un module [Em
 |[Pâte thermique](https://fr.rs-online.com/web/p/graisse-thermique/0554311/)|7€|
 |[Feuille aluminium (Ground plane)](https://fr.rs-online.com/web/c/abrasifs-materiaux-techniques/tubes-feuilles-et-angles-en-aluminium/feuilles-en-aluminium/?searchTerm=aluminium&sort-by=P_breakPrice1&sort-order=asc&applied-dimensions=4294555449)|12€|
 |[Rubans auto-agrippant](https://fr.rs-online.com/web/p/rubans-auto-agrippant/7117556/)|27€|
-|[Power Bank 20000mAh|(https://fr.rs-online.com/web/p/batteries-externes/1744611/)|38€|
-|[Chargeur solaire](https://fr.rs-online.com/web/p/chargeurs-solaires/1768894/) (a tester!)|https://fr.rs-online.com/web/p/chargeurs-solaires/1768894/|176€|
+|[Power Bank 20000mAh](https://fr.rs-online.com/web/p/batteries-externes/1744611/)|38€|
+|[Chargeur solaire](https://fr.rs-online.com/web/p/chargeurs-solaires/1768894/) (a tester!)|176€|
 
 ### Test de la balise
 

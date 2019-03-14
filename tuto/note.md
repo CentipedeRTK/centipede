@@ -363,4 +363,7 @@ Zoom à l'échelle 1:26 :
 
 <p align="center"><img src="../docs/images/survey_centipede2.png"></p>
 
+Autre test sur un une table de 50cm X 50cm
+
+<p align="center"><img src="../docs/images/dodo_rtk.jpg"></p>
 

@@ -1,7 +1,5 @@
 # Mise en place d'une antenne RTK (exemple du site de Saint-Leu - Ifremer - Réunion)
 
-*Modèle Emlid Reach M+ - v2.16.2*
-
 Licence: [CC BY-NC-ND 3.0 FR](https://creativecommons.org/licenses/by-nc-nd/3.0/fr/)
 
 ## Besoin Matériel
@@ -13,11 +11,11 @@ Voici la liste des matériels nécessaires à la mise en place d'une base RTK:
 |[Emlid Reach M+](https://store.emlid.com/product/reachm-plus/)|240€|
 |[Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/)|54€|
 |[Cable d'extension d'antenne](https://store.emlid.com/product/reach-antenna-extension-cable-2m/)|11€|
-|[Dissipateur chaleur](https://fr.rs-online.com/web/p/dissipateurs-de-chaleur/1263113/)|13€|
-|[Pâte thermique](https://fr.rs-online.com/web/p/graisse-thermique/0554311/)|7€|
 |[Feuille aluminium (Ground plane)](https://fr.rs-online.com/web/c/abrasifs-materiaux-techniques/tubes-feuilles-et-angles-en-aluminium/feuilles-en-aluminium/?searchTerm=aluminium&sort-by=P_breakPrice1&sort-order=asc&applied-dimensions=4294555449)|12€|
 |[Alimentation](https://fr.rs-online.com/web/p/adaptateurs-ac-dc/1770223/)|6€|
-|[Rubans auto-agrippant](https://fr.rs-online.com/web/p/rubans-auto-agrippant/7117556/)|27€|
+|En Option||
+|[Dissipateur chaleur](https://fr.rs-online.com/web/p/dissipateurs-de-chaleur/1263113/)|13€|
+|[Pâte thermique](https://fr.rs-online.com/web/p/graisse-thermique/0554311/)|7€|
 
 Il est indispensable d'avoir un accès WIFI proche de la Base pour pouvoir connecter le recepteur au réseau. Si ce n'est pas le cas il est possible d'utiliser des CPL ethernet et wifi pour se déporter vers une autre zone. Attention, dans cette configuration vous devez être sur le même réseau électrique que votre point accès à internet (Box).
 

@@ -19,7 +19,7 @@ Voici la liste des matériels nécessaires à la mise en place d'une base RTK:
 |[Alimentation](https://fr.rs-online.com/web/p/adaptateurs-ac-dc/1770223/)|6€|
 |[Rubans auto-agrippant](https://fr.rs-online.com/web/p/rubans-auto-agrippant/7117556/)|27€|
 
-Il est indispensable d'avoir un accès WIFI proche de la Base pour pouvoir connecter le recepteur au réseau. Si ce n'est pas le cas il est possible d'utiliser des CPL ethernet et wifi pour se déporter vers une autre zone. Attention, dans cette configuration vous devez être sur le me réseau électrique que votre box d'accès à internet.
+Il est indispensable d'avoir un accès WIFI proche de la Base pour pouvoir connecter le recepteur au réseau. Si ce n'est pas le cas il est possible d'utiliser des CPL ethernet et wifi pour se déporter vers une autre zone. Attention, dans cette configuration vous devez être sur le même réseau électrique que votre point accès à internet (Box).
 
 ## Choix de la zone d'implantation
 
@@ -29,7 +29,7 @@ La zone d'implantation de l'antenne de réception ne doit pas forcement être tr
 
 ## Installation du module
 
-L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un ground plane en métal (préconisation du constructeur) de 10 cm afin d'améliorer la reception des données satellitaires. Il peut être fait en aluminium, inox ou cuivre, disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mat, toiture, borne béton,...) et d'un deuxième trou pour faire passer le fil d'antenne.
+L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un ground plane en métal (préconisation du constructeur) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fait en aluminium, inox ou cuivre, disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mat, toiture, borne béton,...) et d'un deuxième trou pour faire passer le fil d'antenne.
 
 <p align="center"><img src="../docs/images/ground_plane.jpg"></p>
 
@@ -37,17 +37,17 @@ Coller ensuite l'antenne, rajouter le cable d'extension si nécessaire (en fonct
 
 <p align="center"><img src="../docs/images/ground_plane_assemblage.jpg"></p>
 
-Le reach est positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et à une distance ou il peut capter un accès wifi.
+Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et à une distance ou il peut capter un accès wifi.
 
 <p align="center"><img src="../docs/images/reach_palmier.png"></p>
 
-La température locale et l'humidité relative étant très élevées à Saint Leu, il à est nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur, comme présenté ci-dessous sinon le M+ se métait en sécurité chaleur.
+La température locale et l'humidité relative étant très élevées à Saint Leu, il a été nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur (montage à la pâte thermique), comme présenté ci-dessous sinon le Reach M+ se métait en sécurité chaleur.
 
 <p align="center"><img src="../docs/images/reach_fan.png"></p>
 
 ## Premières configurations
 
-Le reach est mis sous tension.
+Le Reach M+ est mis sous tension.
 
 * Se connecter au réseau wifi du Reach ("reach:xx:xx") en utilisant le mot de passe __emlidreach__.
 

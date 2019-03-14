@@ -237,7 +237,7 @@ La position la plus précise de notre base est donnée par la valeur de la médi
 ## Installation du caster
 
 > Cette étape n'est pas obligatoire : 
-Si vous êtes situé en Métropole et que vous ne souhaitez pas installer et maintenir un caster, vous pouvez bénéficier du caster déjà existant tout en contribuant à l'extension du réseau Centipède. Vous mutualisez ainsi le signal de correction de votre base RTK et renforcez le caractère collaboratif de Centipède.
+si vous êtes situé en métropole et que vous ne souhaitez pas installer et maintenir un caster, vous pouvez bénéficier du caster déjà existant tout en contribuant à l'extension du réseau Centipède. Vous mutualisez ainsi le signal de correction de votre base RTK et renforcez le caractère collaboratif de Centipède.
 
 Le caster Centipède est accessible à l'adresse http://pip.sig.inra.fr:2101
 

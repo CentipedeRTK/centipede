@@ -2,6 +2,8 @@
 
 Licence: [CC BY-NC-ND 3.0 FR](https://creativecommons.org/licenses/by-nc-nd/3.0/fr/)
 
+> Pourquoi une licence aussi restrictive ?
+
 ## Besoin Matériel
 
 Voici la liste des matériels nécessaires à la mise en place d'une base RTK:
@@ -17,35 +19,37 @@ Voici la liste des matériels nécessaires à la mise en place d'une base RTK:
 |[Dissipateur chaleur](https://fr.rs-online.com/web/p/dissipateurs-de-chaleur/1263113/)|13€|
 |[Pâte thermique](https://fr.rs-online.com/web/p/graisse-thermique/0554311/)|7€|
 
-Il est indispensable d'avoir un accès WIFI proche de la Base pour pouvoir connecter le recepteur au réseau. Si ce n'est pas le cas il est possible d'utiliser des CPL ethernet et wifi pour se déporter vers une autre zone. Attention, dans cette configuration vous devez être sur le même réseau électrique que votre point accès à internet (Box).
+Il est indispensable d'avoir un accès WIFI proche de la base pour assurer la connexion du récepteur au réseau internet. Si ce n'est pas le cas, il est possible d'utiliser des CPL ethernet et wifi pour se déporter vers une autre zone. Attention, dans cette configuration vous devez être sur le même réseau électrique que votre point d'accès à internet (Box).
+
+> Exemple d'utilisation d'un RPI ?
 
 ## Choix de la zone d'implantation
 
-La zone d'implantation de l'antenne de réception ne doit pas forcement être très haute mais surtout avoir une visibilité maximum du ciel, il est indispensable de ne pas avoir d'obstacles (batiments, arbres, murs,...) dans ses 30 premiers degrés par rapport à la base de l'antenne.
+La zone d'implantation de l'antenne de réception ne nécessite pas une position dominante mais doit proposer une visibilité maximum du ciel ; il est indispensable de ne pas avoir d'obstacles (bâtiments, arbres, murs, ...) dans les 30 premiers degrés par rapport à la base de l'antenne.
 
 <p align="center"><img src="../docs/images/skyview-obstacles_1.png"></p>
 
 ## Installation du module
 
-L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un ground plane en métal ([préconisation du constructeur](https://community.emlid.com/t/antenna-ground-plane/2278/8?u=panky)) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fait en aluminium, inox ou cuivre, disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mat, toiture, borne béton,...) et d'un deuxième trou pour faire passer le fil d'antenne.
+L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un ground plane en métal ([préconisation du constructeur](https://community.emlid.com/t/antenna-ground-plane/2278/8?u=panky)) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fabriqué en aluminium, inox ou cuivre. Il doit disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mât, toiture, borne béton,...) et d'un deuxième trou pour faire passer le fil de l'antenne.
 
 <p align="center"><img src="../docs/images/ground_plane.jpg" width=50%></p>
 
-Coller ensuite l'antenne, rajouter le cable d'extension de 2 mètres si nécessaire (en fonction de la configuration de pose) et connecter au Reach M+ 
+Coller ensuite l'antenne, rajouter le câble d'extension de 2 mètres si nécessaire (en fonction de la configuration de pose) et connecter le Reach M+.
 
 <p align="center"><img src="../docs/images/ground_plane_assemblage.jpg"></p>
 
-Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et à une distance ou il peut capter un accès wifi.
+Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et à une distance lui permettant de capter un accès wifi.
 
 <p align="center"><img src="../docs/images/reach_palmier.png"></p>
 
-Voici plusieurs exemples de montage de bases RTK
+Voici plusieurs exemples de montage de bases RTK :
 
 <p align="center"><img src="../docs/images/base_ex.png"></p>
 <p align="center"><sup><i>https://centipede.sig.inra.fr</i></sup></p>
 
 
-La température locale et l'humidité relative étant très élevées à Saint Leu, il a été nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur (montage à la pâte thermique), comme présenté ci-dessous sinon le Reach M+ se métait en sécurité chaleur.
+La température locale et l'humidité relative étant très élevées à Saint-Leu, il a été nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur (montage à la pâte thermique), comme présenté ci-dessous. Sans ce montage, le Reach M+ bascule en mode sécurité et s'éteint pour éviter une surchauffe du processeur.
 
 <p align="center"><img src="../docs/images/reach_fan.png"></p>
 

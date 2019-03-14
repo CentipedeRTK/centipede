@@ -241,7 +241,7 @@ si vous êtes situé en métropole et que vous ne souhaitez pas installer et mai
 
 Le caster Centipède est accessible à l'adresse http://pip.sig.inra.fr:2101
 
-> Les demandes sont à envoyer à julien.ancelin@inra.fr
+> Les demandes de raccordement doivent être adressées à julien.ancelin@inra.fr
 
 ### Prérequis du serveur
 

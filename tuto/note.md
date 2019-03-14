@@ -39,7 +39,7 @@ Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pl
 
 <p align="center"><img src="../docs/images/reach_palmier.png"></p>
 
-Voici plusieurs exemples de montage de base
+Voici plusieurs exemples de montage de bases RTK
 
 <p align="center"><img src="../docs/images/base_ex.png"></p>
 

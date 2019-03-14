@@ -1,4 +1,4 @@
-# Mise en place d'une antenne RTK (site de Saint-Leu - Ifremer - Réunion)
+# Mise en place d'une antenne RTK (exemple du site de Saint-Leu - Ifremer - Réunion)
 
 *Modèle Emlid Reach M+ - v2.16.2*
 
@@ -6,7 +6,7 @@ Licence: [CC BY-NC-ND 3.0 FR](https://creativecommons.org/licenses/by-nc-nd/3.0/
 
 ## Besoin Matériel
 
-Voici la liste du matériel nécessaire à la mise en place de'une base RTK:
+Voici la liste des matériels nécessaires à la mise en place d'une base RTK:
 
 |Matériel|Prix HT|
 |--------|----|
@@ -19,21 +19,31 @@ Voici la liste du matériel nécessaire à la mise en place de'une base RTK:
 |[Alimentation](https://fr.rs-online.com/web/p/adaptateurs-ac-dc/1770223/)|6€|
 |[Rubans auto-agrippant](https://fr.rs-online.com/web/p/rubans-auto-agrippant/7117556/)|27€|
 
+Il est indispensable d'avoir un accès WIFI proche de la Base pour pouvoir connecter le recepteur au réseau. Si ce n'est pas le cas il est possible d'utiliser des CPL ethernet et wifi pour se déporter vers une autre zone. Attention, dans cette configuration vous devez être sur le me réseau électrique que votre box d'accès à internet.
+
 ## Choix de la zone d'implantation
 
-La zone d'implantation de l'antenne de réception ne doit pas forcement être très haute mais surtout avoir une visibilité maximum du ciel, il est conseillé de ne pas avoir d'obstacle (batiments, arbres, mur,...) dans ses 15 premiers degrés par rapport à la base de l'antenne.
+La zone d'implantation de l'antenne de réception ne doit pas forcement être très haute mais surtout avoir une visibilité maximum du ciel, il est indispensable de ne pas avoir d'obstacles (batiments, arbres, murs,...) dans ses 30 premiers degrés par rapport à la base de l'antenne.
+
+<p align="center"><img src="../docs/images/skyview-obstacles_1.png"></p>
 
 ## Installation du module
 
-La température locale et l'humidité relative étant très élevées, il est nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur, comme présenté ci-dessous.
+L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un ground plane en métal (préconisation du constructeur) de 10 cm afin d'améliorer la reception des données satellitaires. Il peut être fait en aluminium, inox ou cuivre, disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mat, toiture, borne béton,...) et d'un deuxième trou pour faire passer le fil d'antenne.
 
-<p align="center"><img src="../docs/images/reach_fan.png"></p>
+<p align="center"><img src="../docs/images/ground_plane.jpg"></p>
 
-L'antenne est placée sur un mât avec un ground plane en métal et le reach est positionné dans un endroit abrité du soleil direct et de la pluie.
+Coller ensuite l'antenne, rajouter le cable d'extension si nécessaire (en fonction de la configuration de pose) et connecter au Reach M+ 
 
-![grounplane](https://github.com/emlid/emlid-docs/blob/master/docs/reach/mplus/img/reachm-plus/antenna-placement/antenna-ground-plane.png)
+<p align="center"><img src="../docs/images/ground_plane_assemblage.jpg"></p>
+
+Le reach est positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et à une distance ou il peut capter un accès wifi.
 
 <p align="center"><img src="../docs/images/reach_palmier.png"></p>
+
+La température locale et l'humidité relative étant très élevées à Saint Leu, il à est nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur, comme présenté ci-dessous sinon le M+ se métait en sécurité chaleur.
+
+<p align="center"><img src="../docs/images/reach_fan.png"></p>
 
 ## Premières configurations
 

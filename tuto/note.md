@@ -224,7 +224,7 @@ La position la plus précise de notre base est donnée par la valeur de la médi
 
 <p align="center"><img src="../docs/images/calc_base_qgis_5.png"></p>  
 
- 5 - Insertion des coordonnées corrigées
+ 5 - __Insertion des coordonnées corrigées__
  
  Ces valeurs doivent être enregistrées dans la rubrique *Base mode* de l'interface du Reach.
  
@@ -236,13 +236,12 @@ La position la plus précise de notre base est donnée par la valeur de la médi
 
 ## Installation du caster
 
-> Si vous êtes situé en Métropole et dans un but de partage collaboratif afin de faire grandir le réseau Centipede, il est conseillé de rajouter votre base RTK et son signal de correction directement au Caster central:
+> Cette étape n'est pas obligatoire : 
+Si vous êtes situé en Métropole et que vous ne souhaitez pas installer et maintenir un caster, vous pouvez bénéficier du caster déjà existant tout en contribuant à l'extension du réseau Centipède. Vous mutualisez ainsi le signal de correction de votre base RTK et renforcez le caractère collaboratif de Centipède.
 
-http://pip.sig.inra.fr:2101
+Le caster Centipède est accessible à l'adresse http://pip.sig.inra.fr:2101
 
-> Cela vous évitera d'installer et d'administrer votre propre caster. Les demandes sont à envoyer à julien.ancelin@inra.fr
-
-
+> Les demandes sont à envoyer à julien.ancelin@inra.fr
 
 ### Prérequis du serveur
 

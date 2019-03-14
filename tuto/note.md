@@ -42,6 +42,8 @@ Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pl
 Voici plusieurs exemples de montage de bases RTK
 
 <p align="center"><img src="../docs/images/base_ex.png"></p>
+<p align="center"><sup><i>https://centipede.sig.inra.fr</i></sup></p>
+
 
 La température locale et l'humidité relative étant très élevées à Saint Leu, il a été nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur (montage à la pâte thermique), comme présenté ci-dessous sinon le Reach M+ se métait en sécurité chaleur.
 

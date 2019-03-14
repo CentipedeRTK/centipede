@@ -39,6 +39,10 @@ Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pl
 
 <p align="center"><img src="../docs/images/reach_palmier.png"></p>
 
+Voici plusieurs exemples de montage de base
+
+<p align="center"><img src="../docs/images/base_ex.png"></p>
+
 La température locale et l'humidité relative étant très élevées à Saint Leu, il a été nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur (montage à la pâte thermique), comme présenté ci-dessous sinon le Reach M+ se métait en sécurité chaleur.
 
 <p align="center"><img src="../docs/images/reach_fan.png"></p>

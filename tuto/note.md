@@ -31,7 +31,7 @@ L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysm
 
 <p align="center"><img src="../docs/images/ground_plane.jpg" width=50%></p>
 
-Coller ensuite l'antenne, rajouter le cable d'extension si nécessaire (en fonction de la configuration de pose) et connecter au Reach M+ 
+Coller ensuite l'antenne, rajouter le cable d'extension de 2 mètres si nécessaire (en fonction de la configuration de pose) et connecter au Reach M+ 
 
 <p align="center"><img src="../docs/images/ground_plane_assemblage.jpg"></p>
 

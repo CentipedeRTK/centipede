@@ -27,7 +27,7 @@ La zone d'implantation de l'antenne de réception ne doit pas forcement être tr
 
 ## Installation du module
 
-L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un ground plane en métal (préconisation du constructeur) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fait en aluminium, inox ou cuivre, disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mat, toiture, borne béton,...) et d'un deuxième trou pour faire passer le fil d'antenne.
+L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un ground plane en métal ([préconisation du constructeur](https://community.emlid.com/t/antenna-ground-plane/2278/8?u=panky)) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fait en aluminium, inox ou cuivre, disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mat, toiture, borne béton,...) et d'un deuxième trou pour faire passer le fil d'antenne.
 
 <p align="center"><img src="../docs/images/ground_plane.jpg" width=50%></p>
 

@@ -4,9 +4,9 @@ Licence: [CC BY-NC-ND 3.0 FR](https://creativecommons.org/licenses/by-nc-nd/3.0/
 
 > Pourquoi une licence aussi restrictive ?
 
-## Besoin Matériel
+## Matériel utilisé
 
-Voici la liste des matériels nécessaires à la mise en place d'une base RTK:
+Voici la liste des éléments nécessaires à la mise en place d'une base RTK :
 
 |Matériel|Prix HT|
 |--------|----|
@@ -19,9 +19,11 @@ Voici la liste des matériels nécessaires à la mise en place d'une base RTK:
 |[Dissipateur chaleur](https://fr.rs-online.com/web/p/dissipateurs-de-chaleur/1263113/)|13€|
 |[Pâte thermique](https://fr.rs-online.com/web/p/graisse-thermique/0554311/)|7€|
 
-Il est indispensable d'avoir un accès WIFI proche de la base pour assurer la connexion du récepteur au réseau internet. Si ce n'est pas le cas, il est possible d'utiliser des CPL ethernet et wifi pour se déporter vers une autre zone. Attention, dans cette configuration vous devez être sur le même réseau électrique que votre point d'accès à internet (Box).
+> scratch 3M ?
 
-> Exemple d'utilisation d'un RPI ?
+Un accès WIFI proche de la base est indispensable pour assurer la connexion du récepteur au réseau internet. Si ce n'est pas le cas, il est possible d'utiliser des CPL ethernet et wifi pour se déporter le réseau wifi vers la zone d'installation de votre antenne. Attention, dans cette configuration le CPL doit être connecté sur la même phase de votre réseau électrique que votre point d'accès à internet (Box).
+
+> Exemple d'utilisation d'un RPI pour les réseaux wifi institutionnels ?
 
 ## Choix de la zone d'implantation
 
@@ -35,11 +37,11 @@ L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysm
 
 <p align="center"><img src="../docs/images/ground_plane.jpg" width=50%></p>
 
-Coller ensuite l'antenne, rajouter le câble d'extension de 2 mètres si nécessaire (en fonction de la configuration de pose) et connecter le Reach M+.
+Coller ensuite l'antenne sur le ground plane, rajouter le câble d'extension de 2 mètres si nécessaire (en fonction de la configuration de pose) et connecter le Reach M+.
 
 <p align="center"><img src="../docs/images/ground_plane_assemblage.jpg"></p>
 
-Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et à une distance lui permettant de capter un accès wifi.
+Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et dans une zone lui permettant de capter le signal wifi de votre box.
 
 <p align="center"><img src="../docs/images/reach_palmier.png"></p>
 
@@ -49,7 +51,7 @@ Voici plusieurs exemples de montage de bases RTK :
 <p align="center"><sup><i>https://centipede.sig.inra.fr</i></sup></p>
 
 
-La température locale et l'humidité relative étant très élevées à Saint-Leu, il a été nécessaire de retirer le module du boitier et de lui adjoindre un ventilateur équipé d'un dissipateur (montage à la pâte thermique), comme présenté ci-dessous. Sans ce montage, le Reach M+ bascule en mode sécurité et s'éteint pour éviter une surchauffe du processeur.
+Dans nos conditions expérimentales, la température locale et l'humidité relative étant très élevées, il a été nécessaire de retirer le module du boîtier et de lui adjoindre un ventilateur équipé d'un dissipateur (montage à la pâte thermique), comme présenté ci-dessous. Sans ce montage, le Reach M+ bascule en mode sécurité et s'éteint pour éviter une surchauffe du processeur.
 
 <p align="center"><img src="../docs/images/reach_fan.png"></p>
 

@@ -151,17 +151,24 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
        - *Fréquencies* : L1 + Forward (valeur par défaut) 
        - *Elevation mask* : valeur configurée pour le reach (15° par défaut) 
        - *Ionosphere correction* : Broadcast  
-            > A creuser 
+            > Correction de l'effet de l'ionosphère. Il est conseillé d'utiliser le mode Broadcast (modèle utilisé en temps réel et disponible dans le fichier de navigation) ou Dual-Frequancy (si des mesures ou plusieurs fréquences sont disponibles).
+            > Source : IGN cf. http://cours-fad-public.ensg.eu/mod/imscp/view.php?id=450 (Analyse GNSS sous RTKLIB, Fenêtre options)
        - *Troposphere correction* : Saastamoinen 
+            > Correction de l'effet de la troposphère. Il est conseillé d'utiliser le mode Saastamoinen en positionnement utilisant des mesures de code ou en positionnement relatif avec de courtes lignes de base et de faibles dénivelés ; dans le cas contraire, on peut utiliser les modes Estimate ZTD ou Estimate ZTD+Grad (estimation de paramètres troposphériques).
+            > Source : IGN cf. http://cours-fad-public.ensg.eu/mod/imscp/view.php?id=450 (Analyse GNSS sous RTKLIB, Fenêtre options)
        - Pour les autres options, laisser les valeurs par défaut 
   - __Setting2__
-       - *Integer Ambiguity Res* : Continuous 
-            > A creuser (cf. RTKLIB explorer) 
+       - *Integer Ambiguity Res* : Fix and Hold
+            > Stratégie de résolution des ambiguïtés. Les stratégies Continuous et Fix ans Hold sont les plus concluantes.
+            > Source : IGN cf. http://cours-fad-public.ensg.eu/mod/imscp/view.php?id=450 (Analyse GNSS sous RTKLIB, Fenêtre options)
+            >
+            > (cf. aussi RTKLIB explorer qui privilégie le Continuous https://rtklibexplorer.wordpress.com/2016/04/05/rtklib-thoughts-on-fix-and-hold/
+            >   https://rtklibexplorer.wordpress.com/2016/05/02/another-kayak-data-set-fix-and-hold-fails-again/   http://rtkexplorer.com/improving-rtklib-solution-ar-lock-count-and-elevation-mask/ ) 
        - Toutes les autres options doivent rester par défaut
   - __Output__ : laisser les valeurs par défaut 
   - __Statistics__ : laisser les valeurs par défaut 
   - __Positions__ 
-       - Changer uniquement la valeur de *Base station* : Rinex Header Position 
+       - Changer la valeur de *Base station* : Rinex Header Position 
   - __Files__ : laisser les valeurs par défaut 
   - __Misc__ : laisser les valeurs par défaut
  

@@ -1,8 +1,6 @@
 # Mise en place d'une antenne RTK (exemple du site de Saint-Leu - Ifremer - Réunion)
 
-Licence: [CC BY-NC-ND 3.0 FR](https://creativecommons.org/licenses/by-nc-nd/3.0/fr/)
-
-> Pourquoi une licence aussi restrictive ?
+Licence: [AGPL-3.0](https://github.com/jancelin/centipede/blob/master/LICENSE)
 
 ## Matériel utilisé
 

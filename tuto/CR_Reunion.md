@@ -9,7 +9,7 @@ Date: Mars 2019
 
 Collaborateurs: [Julien Ancelin](https://www.linkedin.com/in/jancelin) (INRA), [Sylvain Bonhommeau](https://www.linkedin.com/in/sylvain-bonhommeau-3790035/) (IFREMER), [Wilfried Heintz](https://www.dynafor.fr/heintz-wilfried) (INRA), [Sylvain Poulain](https://www.linkedin.com/in/sylvainpoulain/) (GISCAN), [Julien Barde](https://www.linkedin.com/in/julien-barde-1692282/) (IRD) , [Anne-Elise Nieblas](https://www.linkedin.com/in/anne-elise-nieblas-91228316/) (COOOL Research)
 
-Licence: [CC BY-NC-ND 3.0 FR](https://creativecommons.org/licenses/by-nc-nd/3.0/fr/)
+Licence: [AGPL-3.0](https://github.com/jancelin/centipede/blob/master/LICENSE)
 > CC By ?
 
 L’acquisition de données dans le milieu marin pour des problématiques climatiques est un enjeu majeur à l’échelle internationale. Cependant, les instruments d’acquisition sont généralement très onéreux, spécialisés pour certains champs disciplinaires et dont les spécifications techniques et logicielles sont protégées par les éditeurs. La démocratisation de l’électronique libre, des projets open-source / open-data et des objets connectés offrant des solutions de communications à bas coût ont le potentiel de modifier complètement le panorama de l’observation en sciences marines.

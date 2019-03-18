@@ -136,13 +136,17 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
 
 2 - __RTKPOST__
 
+Deux méthodes sont proposés, l'une avec les fichiers récupérés 24 h après la collecte des données (positionnement précis) et la deuxième ces fichiers plus les fichiers de l'IGS récupérés 20 jours après la collecte des données donc un potitionnement très précis (Solution combinée finale GNSS pour la solution orbitale combinée du système d'information sur la dynamique de la croûte terrestre (CDDIS)). 
+
+2.1 - __Méthode à 24h__
+
 ```
 ./RTKPOST_Qt-x86_64.AppImage
 ```
 
 * Charger le fichier *.obs* de la base à corriger (Rover)
 * Charger le fichier *.19o* de la base de référence (Base Station)
-* Charger les fichiers *.nav*, *.hnav*, *.lnav*, *.gnav* de la base à corriger
+* Charger les fichiers *.nav*, *.hnav*, *.gnav*, *.lnav* de la base à corriger
 * Le fichier résultat aura une extension *.pos*
 * Renseigner le *Time Start* et le *Time End* (la plage horaire de notre période de logging).
 * Cliquer sur __options__
@@ -173,6 +177,27 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
   - __Misc__ : laisser les valeurs par défaut
  
 > Penser à sauvegarder tous ces paramétrages dans un fichier .conf (option Save)
+
+2.2 - __Méthode après 20 jours__
+
+* Récupérer la date GPS de la collecte de données: http://navigationservices.agi.com/GNSSWeb/
+> par exemple le 5 février 2019 corresponds au 2039:2
+* se rendre sur le site ftp://cddis.nasa.gov/gnss/products/
+* chercher le dossier correspondant à la date GPS et l'ouvrir
+> dans notre exemple 2032
+* Chercher le Fichier :igs"dategps+jour".sp3.Z , télécharger le et décompressez le
+> dans l'exemple: Fichier :igs20392.sp3.Z > igs20392.sp3
+* Ouvrir RTKPOST
+```
+./RTKPOST_Qt-x86_64.AppImage
+```
+
+* Charger le fichier *.obs* de la base à corriger (Rover)
+* Charger le fichier *.19o* de la base de référence (Base Station)
+* Charger les fichiers *.nav*, *.hnav*, *.gnav*, *igs20392.sp3* de la base à corriger
+* Renseigner le *Time Start* et le *Time End* (la plage horaire de notre période de logging).
+* Reprendre la procédure décrite précédement (2.1 __Méthode à 24h__) au niveau de * Cliquer sur __options__
+
   
  3 - __RTKPLOT__ 
  

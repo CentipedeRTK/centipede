@@ -216,7 +216,7 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
  -- "sdne(m)" = 0 AND
  -- "sdu(m)" = 0  AND 
  -- "sde(m)" = 0  AND 
- -- sdn(m)" = 0
+ -- "sdn(m)" = 0
 
   ```
    - Cliquer sur *OK*

@@ -210,7 +210,14 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
    - Ajouter le filtre suivant :
  ```
  "Q" = 1 AND
- "ratio" >= 999
+ "ratio" >= 999 AND
+ "sdun(m)" = 0 -- AND
+ -- "sdeu(m)" = 0 AND
+ -- "sdne(m)" = 0 AND
+ -- "sdu(m)" = 0  AND 
+ -- "sde(m)" = 0  AND 
+ -- sdn(m)" = 0
+
   ```
    - Cliquer sur *OK*
    

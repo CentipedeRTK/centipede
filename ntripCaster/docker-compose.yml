@@ -1,7 +1,12 @@
- version: '3'
+version: '3'
 services:
- ntrip:
+  ntrip:
     build:
-      context: .
+      context: https://github.com/jancelin/centipede.git#master:/ntripCaster
     ports:
      - 2101:2101
+     - 80:80
+     - 443:443
+    volumes:
+     - /home/sig/ntripcaster_conf:/usr/local/ntripcaster/conf
+     - /home/sig/ntripcaster_logs:/usr/local/ntripcaster/logs

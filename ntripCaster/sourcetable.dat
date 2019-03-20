@@ -1,4 +1,6 @@
-CAS;www.euref-ip.net;2101;EUREF-IP;BKG;0;DEU;50.12;8.69;http://www.euref-ip.net/home
-NET;IGS;BKG;B;N;http://igscb.jpl.nasa.gov/;none;http://igs.ifag.de/index_ntrip_reg.htm;none
-STR;DODO;Saint Leu;RTCM 3;;1002(1),1006(10),1008(1),1019(1),1097(1),1107(1),1117(1),1127(1);1;GPS+GLO+GAL+BDS+SBAS;EUREF;FRA;-21.168;55.2903;0;0;tallysman;none;;;;ifremer france
-
+CAS;pip.sig.inra.fr;2101;NTRIPCaster/0.1.5/1.0;BKG;0;FRA;46.16488;-0.9482;https://github.com/jancelin/centipede
+CAS;scientific-contribs.ddns.net;2101;NTRIPCaster/0.1.5/1.0;BKG;0;FRA;-21.1687;55.2903;https://github.com/jancelin/centipede
+STR;CT;Saint Medard d'Aunis;RTCM 3;;1002(1),1006(1),1010(1),1097(1),1107(1),1117(1),1127(1);1;GPS+GLO+GAL+BDS+SBAS;EUREF;FRA;46.16488;-0.9482;0;0;tallysman;none;;;;DISA france
+STR;SLP;Saint Laurent de la Prée;RTCM 3;;1002(1),1006(1),1010(1),1097(1),1107(1),1117(1),1127(1);1;GPS+GLO+GAL+BDS+SBAS;EUREF;FRA;45.9921;-1.0281;0;0;tallysman;none;;;;INRA france
+STR;LIENSS;La Rochelle;RTCM 3;;1002(1),1006(1),1010(1),1097(1),1107(1),1117(1),1127(1);1;GPS+GLO+GAL+BDS+SBAS;EUREF;FRA;46.1426;-1.1574;0;0;tallysman;none;;;;LIENS france
+STR;GEVES;Saint Pierre d'Amilly;RTCM 3;;1002(1),1006(1),1010(1),1097(1),1107(1),1117(1),1127(1);1;GPS+GLO+GAL+BDS+SBAS;EUREF;FRA;46.1468;-0.6968;0;0;tallysman;none;;;;GEVES france

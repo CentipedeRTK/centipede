@@ -4,11 +4,13 @@
 
 <img src="docs/images/centipede.jpg" height="200">
 
-https://centipede.sig.inra.fr
+https://centipede.fr
 
-https://jancelin.github.io/centipede
+http://caster.centipede.fr
 
 [Tuto installation d'une base GNSS RTK](https://github.com/jancelin/centipede/blob/master/tuto/note.md)
+
+![RTK](/docs/images/1.jpg)
 
 
 

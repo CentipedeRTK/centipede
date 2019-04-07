@@ -25,7 +25,7 @@ Un accès WIFI proche de la base est indispensable pour assurer la connexion du 
 
 ## Choix de la zone d'implantation
 
-La zone d'implantation de l'antenne de réception ne nécessite pas une position dominante, mais doit proposer une visibilité maximum du ciel ; il est indispensable de ne pas avoir d'obstacles (bâtiments, arbres, murs ...) dans les 30 premiers degrés par rapport à la base de l'antenne.
+La zone d'implantation de l'antenne de réception ne nécessite pas une position dominante, mais doit proposer une visibilité maximum du ciel ; il est indispensable de ne pas avoir d'obstacles (bâtiments, arbres, murs ...) sous les 30 premiers degrés par rapport à la base de l'antenne.
 
 <p align="center"><img src="../docs/images/skyview-obstacles_1.png"></p>
 

@@ -6,7 +6,7 @@
 
 https://centipede.fr
 
-http://caster.centipede.fr
+http://caster.centipede.fr:2101
 
 [Tuto installation d'une base GNSS RTK](https://github.com/jancelin/centipede/blob/master/tuto/note.md)
 

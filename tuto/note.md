@@ -10,8 +10,8 @@ Voici la liste des éléments nécessaires à la mise en place d'une base RTK :
 |--------|----|
 |[Emlid Reach M+](https://store.emlid.com/product/reachm-plus/)|240€|
 |[Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/)|54€|
-|[Cable d'extension d'antenne](https://store.emlid.com/product/reach-antenna-extension-cable-2m/)|11€|
-|[Feuille aluminium (Ground plane)](https://fr.rs-online.com/web/c/abrasifs-materiaux-techniques/tubes-feuilles-et-angles-en-aluminium/feuilles-en-aluminium/?searchTerm=aluminium&sort-by=P_breakPrice1&sort-order=asc&applied-dimensions=4294555449)|12€|
+|[Câble d'extension d'antenne](https://store.emlid.com/product/reach-antenna-extension-cable-2m/)|11€|
+|[Feuille aluminium (plan de masse)](https://fr.rs-online.com/web/c/abrasifs-materiaux-techniques/tubes-feuilles-et-angles-en-aluminium/feuilles-en-aluminium/?searchTerm=aluminium&sort-by=P_breakPrice1&sort-order=asc&applied-dimensions=4294555449)|12€|
 |[Alimentation](https://fr.rs-online.com/web/p/adaptateurs-ac-dc/1770223/)|6€|
 |En Option||
 |[Dissipateur chaleur](https://fr.rs-online.com/web/p/dissipateurs-de-chaleur/1263113/)|13€|
@@ -25,20 +25,20 @@ Un accès WIFI proche de la base est indispensable pour assurer la connexion du 
 
 ## Choix de la zone d'implantation
 
-La zone d'implantation de l'antenne de réception ne nécessite pas une position dominante mais doit proposer une visibilité maximum du ciel ; il est indispensable de ne pas avoir d'obstacles (bâtiments, arbres, murs, ...) dans les 30 premiers degrés par rapport à la base de l'antenne.
+La zone d'implantation de l'antenne de réception ne nécessite pas une position dominante, mais doit proposer une visibilité maximum du ciel ; il est indispensable de ne pas avoir d'obstacles (bâtiments, arbres, murs ...) sous les 30 premiers degrés par rapport à la base de l'antenne.
 
 <p align="center"><img src="../docs/images/skyview-obstacles_1.png"></p>
 
 ## Installation du module
 
-L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un ground plane en métal ([préconisation du constructeur](http://www.tallysman.com/wp-content/uploads/Embedded-Antennas-Reference-Guide.pdf)) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fabriqué en aluminium, inox ou cuivre. Il doit disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mât, toiture, borne béton,...) et d'un deuxième trou pour faire passer le fil de l'antenne.
+L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un plan de masse en métal ([préconisation du constructeur](http://www.tallysman.com/wp-content/uploads/Embedded-Antennas-Reference-Guide.pdf)) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fabriqué en aluminium, inox ou cuivre. Il doit disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mât, toiture, borne béton...) et d'un deuxième trou pour faire passer le fil de l'antenne.
 > [Note pour plus tard](https://www.fig.net/resources/proceedings/fig_proceedings/fig2017/ppt/ts08c/TS08C_zhang_schwieger_8513_ppt.pdf)
 
 <p align="center"><img src="../docs/images/ground_plane.jpg" width=50%></p>
 
 <p align="center"><img src="../docs/images/ground_plane_boulon.jpg" width=50%></p>
 
-Coller ensuite l'antenne sur le ground plane, rajouter le câble d'extension de 2 mètres si nécessaire (en fonction de la configuration de pose) et connecter le Reach M+.
+Coller ensuite l'antenne sur le plan de masse, rajouter le câble d'extension de 2 mètres si nécessaire (en fonction de la configuration de pose) et connecter le Reach M+.
 
 <p align="center"><img src="../docs/images/ground_plane_assemblage.jpg"></p>
 
@@ -95,7 +95,7 @@ L'enregistrement se fait pendant une période minimale de 12h00 consécutives. L
 
 Plusieurs méthodes de post-traitements existent, et ce sont les conditions locales (éloignement de l'antenne de référence, modèle de l'antenne,  visibilité de la constellation ...) qui aident à déterminer la méthode la plus pertinente.
 
-* Télécharger le fichier UBX (Raw_xxx_UBX.zip) en cliquant sur l'icone <img src="../docs/images/reach_view_download.png">
+* Télécharger le fichier UBX (Raw_xxx_UBX.zip) en cliquant sur l'icône <img src="../docs/images/reach_view_download.png">
 > Le téléchargement n'est possible qu'en stoppant préalablement les logs (*Raw Data* sur OFF).
 
 * Aller sur le <a href="http://rgp.ign.fr/DONNEES/diffusion">site IGN</a> et télécharger la trame correspondante à la période.
@@ -104,7 +104,7 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Sélectionner GLONASS en plus de GPS (+ GALILEO si la base concernée le propose). Si un système sélectionné (ex : GALILEO) n'est pas disponible sur la base concernée, celle-ci disparait de l'interface cartographique et n'est donc plus sélectionnable. Dans ce cas, décocher le système de positionnement.
 
-* Echantillonnage : 5 sec.
+* Échantillonnage : 5 sec.
 
 * Version Rinex : 2.11
 
@@ -137,7 +137,7 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
 
 2 - __RTKPOST__
 
-Deux méthodes sont proposés, l'une avec les fichiers récupérés 24 h après la collecte des données (positionnement précis) et la deuxième ces fichiers plus les fichiers de l'IGS récupérés 20 jours après la collecte des données donc un potitionnement très précis (Solution combinée finale GNSS pour la solution orbitale combinée du système d'information sur la dynamique de la croûte terrestre (CDDIS)). 
+Deux méthodes sont proposées, l'une avec les fichiers récupérés 24 h après la collecte des données (positionnement précis) et la deuxième ces fichiers plus les fichiers de l'IGS récupérés 20 jours après la collecte des données donc un positionnement très précis (Solution combinée finale GNSS pour la solution orbitale combinée du système d'information sur la dynamique de la croûte terrestre (CDDIS)). 
 
 2.1 - __Méthode à 24h__
 
@@ -182,11 +182,11 @@ Deux méthodes sont proposés, l'une avec les fichiers récupérés 24 h après 
 2.2 - __Méthode après 20 jours__
 
 * Récupérer la date GPS de la collecte de données: http://navigationservices.agi.com/GNSSWeb/
-> par exemple le 5 février 2019 corresponds au 2039:2
+> par exemple le 5 février 2019 correspond au 2039:2
 * se rendre sur le site ftp://cddis.nasa.gov/gnss/products/
 * chercher le dossier correspondant à la date GPS et l'ouvrir
 > dans notre exemple 2032
-* Chercher le Fichier :igs"dategps+jour".sp3.Z , télécharger le et décompressez le
+* Chercher le Fichier :igs"dategps+jour".sp3.Z , télécharger le et décompressez-le
 > dans l'exemple: Fichier :igs20392.sp3.Z > igs20392.sp3
 * Ouvrir RTKPOST
 ```
@@ -197,7 +197,7 @@ Deux méthodes sont proposés, l'une avec les fichiers récupérés 24 h après 
 * Charger le fichier *.19o* de la base de référence (Base Station)
 * Charger les fichiers *.nav*, *.hnav*, *.gnav*, *igs20392.sp3* de la base à corriger
 * Renseigner le *Time Start* et le *Time End* (la plage horaire de notre période de logging).
-* Reprendre la procédure décrite précédement (2.1 __Méthode à 24h__) au niveau de * Cliquer sur __options__
+* Reprendre la procédure décrite précédemment (2.1 __Méthode à 24h__) au niveau de * Cliquer sur __options__
 
   
  3 - __RTKPLOT__ 
@@ -333,7 +333,7 @@ STR;DODO;Saint Leu;RTCM 3;;1002(1),1006(10),1008(1),1019(1),1097(1),1107(1),1117
 
 Pour plus d'informations sur les différents paramètres à remplir: <a href="https://software.rtcm-ntrip.org/wiki/STR" target="new_">ttps://software.rtcm-ntrip.org</a>
     
-> Un bug d'affichage non résolu persiste (cette liste ne s'affiche pas dans l'interface du reach) mais cette opération est nécessaire.
+> Un bug d'affichage non résolu persiste (cette liste ne s'affiche pas dans l'interface du reach), mais cette opération est nécessaire.
     
 * Lancer la fabrication et le démarrage du caster avec les commandes suivantes :
 
@@ -408,7 +408,7 @@ Zoom à l'échelle 1:26 :
 
 <p align="center"><img src="../docs/images/survey_centipede2.png"></p>
 
-Autre test sur un une table de 50cm X 50cm
+Autre test sur une table de 50cm X 50cm
 
 <p align="center"><img src="../docs/images/dodo_rtk.jpg"></p>
 

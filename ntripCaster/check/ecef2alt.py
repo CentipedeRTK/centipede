@@ -30,8 +30,7 @@ def spherical_ecef_to_lla3D(ecefArr):
 
     lon = lon * 180 / math.pi;
     lat = lat * 180 / math.pi;
-    s   =  repr(lat)+','+ repr(lon)+','+ repr(alt)
+    s   =  repr(alt)
     print s
 
 spherical_ecef_to_lla3D(sys.argv[1:4])
-

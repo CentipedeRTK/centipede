@@ -1,0 +1,31 @@
+
+version: '3'
+services:
+  postgis:
+    image: kartoza/postgis:11.0-2.5
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=centipede
+      - POSTGRES_PASS=centipede
+      - POSTGRES_DBNAME=centipede
+      - ALLOW_IP_RANGE=0.0.0.0/0
+      - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology   
+    restart: always
+#    entrypoint: >
+#      bash -c 'apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common &&
+#               curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - &&
+#               apt-key fingerprint 0EBFCD88 &&
+#               echo "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable" > /etc/apt/sources.list.d/docker.list &&
+#               apt-get update &&
+#               apt-get install  docker-ce-cli &&
+#               groupadd docker &&
+#               usermod -aG docker postgres &&
+#               /docker-entrypoint.sh'
+    volumes:
+      - postgis:/var/lib/postgresql
+      - /home/jancelin/centipede/ntripCaster/sql/ntrip:/home
+#      - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+  postgis:

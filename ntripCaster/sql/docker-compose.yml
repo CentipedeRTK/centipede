@@ -1,6 +1,16 @@
 
 version: '3'
 services:
+  ntrip:
+    build:
+      context: https://github.com/jancelin/centipede.git#master:/ntripCaster
+    ports:
+     - 2101:2101
+     - 80:80
+     - 443:443
+    volumes:
+     - ntripcaster:/usr/local/ntripcaster/conf
+     - logs:/usr/local/ntripcaster/logs
   postgis:
     image: kartoza/postgis:11.0-2.5
     restart: always
@@ -25,7 +35,9 @@ services:
 #               /docker-entrypoint.sh'
     volumes:
       - postgis:/var/lib/postgresql
-      - /home/jancelin/centipede/ntripCaster/sql/ntrip:/home
+      - ntripcaster:/home
 #      - /var/run/docker.sock:/var/run/docker.sock
 volumes:
   postgis:
+  ntripcaster:
+  logs:

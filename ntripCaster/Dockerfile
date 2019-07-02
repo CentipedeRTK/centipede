@@ -9,8 +9,8 @@ RUN make
 RUN make install
 WORKDIR /usr/local/ntripcaster
 RUN rm ./conf/*
-ADD sourcetable.dat ./conf
-ADD ntripcaster.conf ./conf
-ADD mountpos.conf ./conf
+#ADD sourcetable.dat ./conf
+#ADD ntripcaster.conf ./conf
+#ADD mountpos.conf ./conf
 RUN chown -R root:staff ./
 CMD /usr/local/ntripcaster/bin/ntripcaster

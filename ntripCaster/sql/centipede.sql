@@ -19,6 +19,19 @@ CREATE TABLE public.message
   CONSTRAINT pk_message PRIMARY KEY (id)
 );
 
+﻿CREATE TABLE public.commune
+(
+  id serial NOT NULL,
+  nom character varying,
+  geom geometry(Polygon,4326),
+  CONSTRAINT pk_commune PRIMARY KEY (id)
+);
+
+CREATE INDEX index_geom_com
+  ON public.commune
+  USING gist
+  (geom);
+
 CREATE TABLE public.antenne
 (
   id serial NOT NULL,
@@ -83,12 +96,13 @@ CREATE OR REPLACE VIEW public.buffer10000 AS
 
 -------------FUNCTION-----------------
 
---function for generate a postgis POINTZ geom with lat long alt values from RTM3
-CREATE OR REPLACE FUNCTION make_point()
+--function for generate a postgis POINTZ geom with lat long alt values from RTM3 and get "commune"
+CREATE OR REPLACE FUNCTION public.make_point()
   RETURNS TRIGGER AS
 $BODY$
 BEGIN
   NEW.geom=ST_SetSRID(ST_MakePoint(NEW.longitude,NEW.latitude,NEW.altitude),4326);
+  NEW.identifier=c.nom FROM public.antenne a JOIN public.commune c ON ST_INTERSECTS(NEW.geom,c.geom) WHERE a.id=NEW.id;
   RETURN NEW;
 END;
 $BODY$
@@ -98,20 +112,27 @@ CREATE TRIGGER trig_make_point BEFORE INSERT OR UPDATE
    ON public.antenne FOR EACH ROW
    EXECUTE PROCEDURE public.make_point();
    
---function generate ntripcaster.conf 
+--function generate ntripcaster.conf & sourcetab.dat
 CREATE OR REPLACE FUNCTION public.ntripcaster()
   RETURNS TRIGGER AS
 $BODY$
 BEGIN
   COPY ( select type from centipede.ntripcaster union ALL (select '/'||mp from public.antenne order by mp)) TO '/home/ntripcaster.conf';
+  COPY (SELECT type, mp, identifier, BTRIM(format,'"'), formatd, carrier, navsys, network, country, round(latitude,3), round(longitude,3), nmea, solution, generator, compres, auth,fee,bit,misc 
+  FROM public.antenne ORDER by mp) TO '/home/sourcetable.dat' WITH DELIMITER ';';
   RETURN NEW;
 END;
 $BODY$
   LANGUAGE 'plpgsql' VOLATILE;
 
+
 CREATE TRIGGER trig_ntripcaster AFTER INSERT OR UPDATE OR DELETE
    ON public.antenne FOR EACH ROW
    EXECUTE PROCEDURE public.ntripcaster();
+   
+--SELECT type, mp, identifier, BTRIM(format,'"'), formatd, carrier, navsys, network, country, round(latitude,3), round(longitude,3), nmea, solution, generator, compres, auth,fee,bit,misc
+--FROM public.antenne ORDER by mp
+
    
 --function for generate ntripcaster.conf when a Mount Point is modified  !!!! pas possible lancer docker avec postgres user...
 --CREATE OR REPLACE FUNCTION public.up_antenne()

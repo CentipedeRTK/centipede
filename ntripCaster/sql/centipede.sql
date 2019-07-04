@@ -3,13 +3,7 @@
 ----Centipede Database--------
 -------------TABLES--------------------
 
-﻿CREATE TABLE public.structure
-(
-  id serial NOT NULL,
-  name character varying(50), --type de structure (institution, agriculteur, particulier...)
-  CONSTRAINT pk_structure PRIMARY KEY (id)
-);
-
+﻿
 CREATE TABLE public.message
 (
   id serial NOT NULL,
@@ -59,12 +53,7 @@ CREATE TABLE public.antenne
   geom geometry(PointZ,4326), --geometrie à partir de la lont lat generé en auto
   ping boolean NOT NULL DEFAULT false, --base active?
   ping_date timestamp with time zone, --date du dernier ping?
-  photo character varying, -- chemin vers la photo de la base
-  contact character varying, -- mail du responsable de la base( alerte si base down)
   CONSTRAINT pk_antenne PRIMARY KEY (id),
-  CONSTRAINT fk_structure FOREIGN KEY (id_structure)
-      REFERENCES public.structure (id) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION,
   CONSTRAINT "uniq_MP" UNIQUE (mp)
 );
 
@@ -82,17 +71,51 @@ CREATE TABLE centipede.ntripcaster
   CONSTRAINT pk_ntripcaster PRIMARY KEY (id)
 );
 
+CREATE TABLE centipede.structure
+(
+  id serial NOT NULL,
+  name character varying(50), --type de structure (institution, agriculteur, particulier...)
+  CONSTRAINT pk_structure PRIMARY KEY (id)
+);
+
+
+CREATE TABLE centipede.contact
+(
+  id serial NOT NULL,
+  id_antenne integer NOT NULL, --identifiant de l'antenne
+  id_structure integer, --type de structure (institution, agriculteur, particulier...)
+  mail character varying, --mail
+  CONSTRAINT pk_contact PRIMARY KEY (id),
+  CONSTRAINT fk_antenne FOREIGN KEY (id_antenne)
+      REFERENCES public.antenne (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT fk_structure FOREIGN KEY (id_structure)
+      REFERENCES centipede.structure (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+
 -------------VIEW--------------------
---Buffer view
-CREATE OR REPLACE VIEW public.buffer10000 AS 
+CREATE OR REPLACE VIEW public.buffer10000 AS
  SELECT row_number() OVER () AS unique_id,
-    st_buffer(antenne.geom, 10000::double precision, 35) AS st_buffer, --buffer de 10km autour de la base pour le L1
-    antenne.mp AS antenne, --mountPoint
-    structure.name AS structure --structure
-   FROM public.antenne,
-        public.structure
-  WHERE antenne.id_structure = structure.id;
-  
+    st_buffer(st_transform(antenne.geom, 2154), 10000::double precision, 35) AS st_buffer,
+    antenne.mp AS antenne,
+    CASE WHEN antenne.ping = true THEN 'active' ELSE 'eteinte' END as ping
+   FROM antenne;
+   
+CREATE OR REPLACE VIEW public.etat_antennes AS   
+SELECT row_number() OVER () AS unique_id,
+    ST_Transform(antenne.geom,2154) AS anten,
+    antenne.mp AS mp,
+	CASE WHEN antenne.ping = true THEN 'active' ELSE 'eteinte' END as ping,
+	ping_date as check_activite,
+	round(longitude,5) as longitude,
+	round(latitude,5) as latitude,
+	round(altitude,3) as altitude,
+	BTRIM(format,'"') as data_format,
+	formatd as RTCM_messages,
+	navsys as systeme
+FROM public.antenne;
 
 -------------FUNCTION-----------------
 

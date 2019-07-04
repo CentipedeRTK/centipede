@@ -1,12 +1,36 @@
 version: '3'
 services:
   ntrip:
-    build:
-      context: https://github.com/jancelin/centipede.git#master:/ntripCaster
+    image: jancelin/centipede:ntripcaster
+#    build:
+#      context: https://github.com/jancelin/centipede.git#master:/ntripCaster
     ports:
      - 2101:2101
      - 80:80
      - 443:443
     volumes:
-     - /home/RTK/ntripcaster_conf:/usr/local/ntripcaster/conf
-     - /home/RTK/ntripcaster_logs:/usr/local/ntripcaster/logs
+     - ntripcaster:/usr/local/ntripcaster/conf
+     - logs:/usr/local/ntripcaster/logs
+  postgis:
+    image: kartoza/postgis:11.0-2.5
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=centipede
+      - POSTGRES_PASS=centipede
+      - POSTGRES_DBNAME=centipede
+      - ALLOW_IP_RANGE=0.0.0.0/0
+      - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology   
+    restart: always
+    entrypoint: >
+       bash -c 'touch /home/ntripcaster.conf && touch /home/sourcetable.dat &&
+                chown -R postgres:postgres /home &&
+                /docker-entrypoint.sh'
+    volumes:
+      - postgis:/var/lib/postgresql
+      - ntripcaster:/home
+volumes:
+  postgis:
+  ntripcaster:
+  logs:

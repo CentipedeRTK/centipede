@@ -23,7 +23,10 @@ services:
       - ALLOW_IP_RANGE=0.0.0.0/0
       - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology   
     restart: always
-#    entrypoint: >
+    entrypoint: >
+       bash -c 'touch /home/ntripcaster.conf && touch /home/sourcetable.dat &&
+                chown -R postgres:postgres /home &&
+                /docker-entrypoint.sh'
 #      bash -c 'apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common &&
 #               curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - &&
 #               apt-key fingerprint 0EBFCD88 &&

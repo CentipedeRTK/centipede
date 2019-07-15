@@ -4,9 +4,12 @@
 FROM swiftnav/rtklib:2.4.2_p13
 
 RUN apt-get update
-RUN apt-get install -y gpsd-clients jq curl nano
-RUN apt-get update
-RUN apt-get install -y postgresql-client
+RUN apt-get install -y postgresql-client jq curl git nano build-essential gcc python-dev scons
+RUN git clone https://gitlab.com/gpsd/gpsd
+WORKDIR /bin/gpsd
+RUN scons 
+RUN scons check 
+RUN scons udev-install
 WORKDIR /bin
 COPY ecef2lat.py ecef2lat.py
 COPY ecef2lon.py ecef2lon.py

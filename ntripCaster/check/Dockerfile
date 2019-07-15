@@ -7,9 +7,7 @@ RUN apt-get update
 RUN apt-get install -y postgresql-client jq curl git nano build-essential gcc python-dev scons
 RUN git clone https://gitlab.com/gpsd/gpsd
 WORKDIR /bin/gpsd
-RUN scons 
-RUN scons check 
-RUN scons udev-install
+RUN scons && scons check && scons udev-install
 WORKDIR /bin
 COPY ecef2lat.py ecef2lat.py
 COPY ecef2lon.py ecef2lon.py

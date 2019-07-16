@@ -40,7 +40,6 @@ do
     NETW=EUREF
     COUNTRY=FRA
     ECEF=$(jq -r 'select(.type == 1006) | [.x,.y,.z] | @sh' < RTCM3) #get Lat long alt (ECEF)
-    #!!!!!penser dans dockerfile    faire un:  chmod +x ecef2ll.py 
     LAT=$(python ecef2lat.py $ECEF) # transfom lat ECEF > WGS84
     LON=$(python ecef2lon.py $ECEF) # transfom lat ECEF > WGS84
     ALT=$(python ecef2alt.py $ECEF) # transfom lat ECEF > WGS84

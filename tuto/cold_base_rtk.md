@@ -8,7 +8,9 @@ Il arrive régulièrement que le Emlid Reach M+ chauffe se qui entraine sa déco
 
 Dans ce cas, il est important de rajouter un dispositif de dispersion de la chelur au module.
 
-**Mode Opératoire***
+**Mode Opératoire**
+
+>En premier,récupérer un dissipateur de chaleur sur un ancien pc ou en acheter un neuf (avec ou sans ventilation en fonction du climat) et le monter comme le montre les images
 
 <p align="center"><img src="../docs/images/cold/1.jpg"></p>
 

@@ -10,8 +10,7 @@ http://caster.centipede.fr:2101
 
 [Tuto installation d'une base GNSS RTK](https://github.com/jancelin/centipede/blob/master/tuto/note.md)
 
-La demande de connexion de votre base RTK au caster centipede est à envoyer par mail à julien.ancelin@inra.fr
-
+La demande de connexion de votre base RTK au caster centipede est à envoyer par mail à contact@centipede.fr
 ![RTK](/docs/images/1.jpg)
 
 

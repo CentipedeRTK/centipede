@@ -53,7 +53,7 @@ Voici plusieurs exemples de montage de bases RTK :
 
 En cas de montage extérieur, il est important de rajouter un dissipateur de chaleur sur le module RTK. La procédure de montage est disponible ici:
 
-https://github.com/jancelin/centipede/blob/master/tuto/cold_base_rtk.md
+[Installation d'un dissipateur thermique](https://github.com/jancelin/centipede/blob/master/tuto/cold_base_rtk.md)
 
 ## Premières configurations
 

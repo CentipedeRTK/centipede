@@ -1,6 +1,6 @@
 ***Hacking d'une base RTK pour la réguler thermiquement***
 
-Les Bases RTK penvent souffrir de la chaleur si elles ne sont pas protégées  en étant dans un batiments régulés thermiquement ou bien isolés. Une solution est de leurs offrir un dissipateur (actif ou passif) de chaleur afin de les réguler.
+Les Bases RTK penvent souffrir de la chaleur si elles ne sont pas protégées  en étant dans un batiments régulé thermiquement ou bien isolé. Une solution est de leurs offrir un dissipateur (actif ou passif) de chaleur afin de les réguler.
 
 **Exemple avec un matériel Emlid Reach +**
 

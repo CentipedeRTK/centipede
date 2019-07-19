@@ -51,10 +51,9 @@ Voici plusieurs exemples de montage de bases RTK :
 <p align="center"><img src="../docs/images/base_ex.png"></p>
 <p align="center"><sup><i>https://centipede.fr</i></sup></p>
 
+En cas de montage extérieur, il est important de rajouter un dissipateur de chaleur sur le module RTK. La procédure de montage est disponible ici:
 
-Dans nos conditions expérimentales, la température locale et l'humidité relative étant très élevées, il a été nécessaire de retirer le module du boîtier et de lui adjoindre un ventilateur équipé d'un dissipateur (montage à la pâte thermique), comme présenté ci-dessous. Sans ce montage, le Reach M+ bascule en mode sécurité et s'éteint pour éviter une surchauffe du processeur.
-
-<p align="center"><img src="../docs/images/reach_fan.png"></p>
+https://github.com/jancelin/centipede/blob/master/tuto/cold_base_rtk.md
 
 ## Premières configurations
 

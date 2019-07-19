@@ -10,7 +10,9 @@ Dans ce cas, il est important de rajouter un dispositif de dispersion de la chal
 
 **Mode Opératoire**
 
->En premier, récupérer un dissipateur de chaleur sur un ancien pc ou en acheter un neuf (avec ou sans ventilation en fonction du climat) et le monter comme le montre les images
+>En premier, récupérer un dissipateur de chaleur sur un ancien pc ou en acheter un neuf (avec ou sans ventilation en fonction du climat) et le monter comme le montre les images.
+
+> !! Le montage est à faire avec de la pâte thermique entre le M+ et le dissipateur. !!
 
 <p align="center"><img src="../docs/images/cold/1.jpg"></p>
 

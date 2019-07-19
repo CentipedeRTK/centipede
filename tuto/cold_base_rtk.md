@@ -28,3 +28,8 @@ Dans ce cas, il est important de rajouter un dispositif de dispersion de la chel
 
 
 <p align="center"><img src="../docs/images/cold/6.jpg"></p>
+
+
+>exemple de montage avec dissipateur et ventilation
+
+<p align="center"><img src="../docs/images/reach_fan.png"></p>

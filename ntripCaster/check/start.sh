@@ -20,8 +20,8 @@ do
   echo "__________________________________________________________________________"
   echo " >>>>>> Check "$i ": Wait 21 seconds ...";
   str2str -in ntrip://@$CAST_ADD:$CAST_PORT/$i -out tcpsvr://localhost:2102 &>/dev/null &   # get RTCM stream 
-#  curl -sS --max-time 11 http://localhost:2102 | gpsdecode -j |  jq --seq -s -r .[] >RTCM3 &&         # capture and decode
-  curl -sS --max-time 21 http://localhost:2102 | gpsdecode -j |  jq -R 'fromjson?' >RTCM3 &&  #resolve problem with bad json format (ex:1004 L2) but not display all values...
+#  curl -sS --max-time 21 http://localhost:2102 | gpsdecode -j |  jq --seq -s -r .[] >RTCM3 &&         # capture and decode
+  curl -sS --max-time 21 http://localhost:2102 | gpsdecode -j |  jq -R 'fromjson?' >RTCM3 &&  #resolve problem with bad json format but not display all values...
 
   if [ -s RTCM3 ]; then
     TYPE=STR
@@ -81,7 +81,16 @@ do
       echo "______________________________________________________________________"
   else
       echo "--------  "$i "DOWN"
-      psql --command="update $TABLE SET $PING= false  where $ID = '$i';" postgresql://$DB_USER:$DB_PSW@$DB_IP/$DB_NAME
+      psql --command="update $TABLE SET $PING= false  where $ID = '$i';" postgresql://$DB_USER:$DB_PSW@$DB_IP/$DB_NAME &&
+      MAIL=$(psql -t --command="SELECT cont.mail FROM centipede.contact as cont LEFT JOIN public.antenne as ant ON ant.id = cont.id_antenne WHERE ant.mp = '$i' AND ant.ping_date NOTNULL;"  postgresql://$DB_USER:$DB_PSW@$DB_IP/$DB_NAME) &&
+      if [ -z "$MAIL" ]
+      then
+        echo "base déclarée mais non active"
+      else
+        echo "send mail to " $MAIL &&
+        docker run --rm -e MP=$i -e MAIL="$MAIL" -v /home/sig/centipede/ntripCaster/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf jancelin/centipede:ssmtp &&
+        echo "mail sent to " $MAIL" !!!"
+      fi
       kill -9 $(ps aux | grep -e str2str| awk '{ print $2 }') 
       echo "______________________________________________________________________"
   fi

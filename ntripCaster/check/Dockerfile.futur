@@ -1,0 +1,32 @@
+#docker build -t jancelin/centipede:check_1 -f Dockerfile.futur .
+#docker run --rm --network host -v /var/run/docker.sock:/var/run/docker.sock jancelin/centipede:check_1
+
+FROM jancelin/centipede:check
+MAINTAINER Julien Ancelin<julien.ancelin@inra.fr>
+
+  
+RUN apt-get install -y apt-transport-https ca-certificates gnupg2 software-properties-common && \
+               curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
+               apt-key fingerprint 0EBFCD88 && \
+               echo "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable" > /etc/apt/sources.list.d/docker.list && \
+               apt-get update && \
+               apt-get install  docker-ce-cli && \
+               groupadd docker
+  
+#deploy check_centipede
+WORKDIR /bin
+COPY ecef2lat.py ecef2lat.py
+COPY ecef2lon.py ecef2lon.py
+COPY ecef2alt.py ecef2alt.py
+RUN chmod +x ecef2lat.py
+RUN chmod +x ecef2lon.py
+RUN chmod +x ecef2alt.py
+ENV DB_USER centipede
+ENV DB_PSW centipede
+ENV DB_NAME centipede
+ENV DB_IP localhost
+COPY start.sh start.sh
+RUN chmod +x start.sh
+
+ENTRYPOINT ["/bin/start.sh"]
+CMD [" "]

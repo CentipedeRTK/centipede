@@ -10,4 +10,19 @@ Dans ce cas, il est important de rajouter un dispositif de dispersion de la chel
 
 **Mode Opératoire***
 
+<p align="center"><img src="../docs/images/cold/1.jpg"></p>
 
+
+<p align="center"><img src="../docs/images/cold/2.jpg"></p>
+
+
+<p align="center"><img src="../docs/images/cold/3.jpg"></p>
+
+
+<p align="center"><img src="../docs/images/cold/4.jpg"></p>
+
+
+<p align="center"><img src="../docs/images/cold/5.jpg"></p>
+
+
+<p align="center"><img src="../docs/images/cold/6.jpg"></p>

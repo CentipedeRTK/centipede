@@ -10,9 +10,9 @@ Dans ce document, nous allons brancher un module emlid reach M+ directement sur 
 
 * Un vieux câble usb
 
-* le cable JST-GH port fourni avec le Reach M+
+* le cable JST-GH fourni avec le Reach M+
 
-* le câble adaptateur OTG
+* le câble adaptateur OTG fourni avec le Reach M+
 
 
 *Montage*

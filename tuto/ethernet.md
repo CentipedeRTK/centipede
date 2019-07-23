@@ -42,4 +42,4 @@ Une fois que le Reach M+ est démarré (les 3 leds allumés), se connecter au Ho
 
 Résultat dans "status"
 
-<p align="center"><img src="../docs/images/reach_correction.png"></p>
+<p align="center"><img src="../docs/images/fix.png"></p>

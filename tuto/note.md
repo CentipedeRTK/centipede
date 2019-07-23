@@ -378,6 +378,10 @@ Il n'est pas nécessaire de calibrer la position du rover ; celle-ci sera corrig
 - Sélectionner le format *RTCM3* pour la trame reçue
 - Indiquer le nom de la base RTK dans MountPoint 
 
+exemple du status
+
+<p align="center"><img src="../docs/images/fix.png"></p>
+
 Le rover est prêt à être utilisé : 
 
  - Dans la rubrique Logging, activer l'option *Position* (bouton sur ON).

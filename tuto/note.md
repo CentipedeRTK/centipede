@@ -277,13 +277,13 @@ La position la plus précise de notre base est donnée par la valeur de la médi
 
 ## Connexion de la base au caster
 
-Avant de pouvoir utiliser le réseau Centipède il est indispensable de faire une demande de connection au Caster (gratuit et sans obliations). les de demandes sont à envoyer à contact@centipede.fr en précisiant:
+Avant de pouvoir utiliser le réseau Centipède il est indispensable de faire une demande de connection au Caster (gratuit et sans obligations). les demandes sont à envoyer à contact@centipede.fr en précisiant:
 
-    - Votre situation géographique (commune)
-    - Nom, prénom
-    - Adresse mail
-    - Type de matériel utilisé pour la base RTK
-    - Proposition de nom de Mout Point ( entre 3 et 5 caractères)
+   - Votre situation géographique (commune)
+   - Nom, prénom
+   - Adresse mail
+   - Type de matériel utilisé pour la base RTK
+   - Proposition de nom de Mout Point ( entre 3 et 5 caractères)
 
 Pour connecter la base au caster, se rendre dans la rubrique *Base mode* de l'interface du reach :
 

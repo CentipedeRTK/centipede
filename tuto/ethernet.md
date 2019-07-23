@@ -19,7 +19,7 @@ Dans ce document, nous allons brancher un module emlid reach M+ directement sur 
 
 * couper votre câble USB pour récupérer le fil rouge et le noir.
 
-* raccorder les fils au cable JST-GH port afin d'alimenter le Reach M+
+* raccorder les fils au cable JST-GH afin d'alimenter le Reach M+
 
 <p align="center"><img src="../docs/images/ethernet/1.jpg"></p>
 

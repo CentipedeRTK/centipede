@@ -1,6 +1,6 @@
 **Utilisation d'un câble ethernet à la place du wifi**
 
-L'utilisation du wifi peut être contraignant en fonction du placement de la base RTK, de plus ce moyen de communication avec le réseau entraîne de coupures.
+L'utilisation du wifi peut être contraignant en fonction du placement de la base RTK, de plus ce moyen de communication avec le réseau entraîne, en fonction de la distance avec le relai, des coupures voir des pertes de signal.
 
 Dans ce document, nous allons brancher un module emlid reach M+ directement sur un cable ethernet.
 

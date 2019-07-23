@@ -37,3 +37,9 @@ Dans ce document, nous allons brancher un module emlid reach M+ directement sur 
 Pour vérifier le montage, connecter un câble ethernet (connecté à votre réseau) à l'adaptateur et alimenter en USB via un transformateur 220V -> 5V (smartphone), un port USB PC ou une batterie externe.
 
 Une fois que le Reach M+ est démarré (les 3 leds allumés), se connecter au Hotspot et vérifier qu'il accède bien au web. Une des meilleures techniques est d'ajouter une "correction input" via le réseau centipede et voir s'il reçoit bien les données.
+
+<p align="center"><img src="../docs/images/reach_correction.png"></p>
+
+Résultat dans "status"
+
+<p align="center"><img src="../docs/images/reach_correction.png"></p>

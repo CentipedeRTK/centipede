@@ -275,78 +275,15 @@ La position la plus précise de notre base est donnée par la valeur de la médi
  
 > Dans nos conditions expérimentales, nous avons obtenu une précision inférieure à 1 centimètre. :+1:
 
-## Installation du caster
-
-> Cette étape n'est pas obligatoire : 
-si vous êtes situé en métropole et que vous ne souhaitez pas installer et maintenir un caster, vous pouvez bénéficier du caster déjà existant tout en contribuant à l'extension du réseau Centipède. Vous mutualisez ainsi le signal de correction de votre base RTK et renforcez le caractère collaboratif de Centipède.
-
-Le caster Centipède est accessible à l'adresse http://pip.sig.inra.fr:2101
-
-> Les demandes de raccordement doivent être adressées à julien.ancelin@inra.fr
-
-### Prérequis du serveur
-
-OS: Ubuntu-server 18.04
-
-* Installer les paquets docker et docker-compose
-
-La procédure est décrite à l'adresse <a href="https://docs.docker.com/install/linux/docker-ce/debian/" target="new_">docs.docker.com</a>
-
-Il est nécessaire d'ouvrir le port 2101 de la machine.
-
-### Déploiement du caster
-
-L'application est conteneurisée avec docker, permettant un déploiement simple et rapide.
-
-* Récupérer les codes de centipede :
-
-``` 
-git clone https://github.com/jancelin/centipede.git 
-```
-
-* Modifier le fichier de configuration :
-
-```
-cd centipede/ntripCaster
-sudo nano ntripcaster.conf 
-```
-<p align="center"><img src="../docs/images/ntripcaster_conf.png"></p>
-
-   Modifier les valeurs suivantes :
-
-    - server_url
-    - email 
-    - server_name 
-    - mountpoint (à faire précéder du caractère /)
-    - encoder_password (celui-ci est nécessaire pour connecter la base au caster)
-
-* Modifier la liste des bases recensées par le caster
-
-<p align="center"><img src="../docs/images/sourcetab_dat.png"></p>
-
-```sudo nano sourcetab.dat```
-
-```
-STR;DODO;Saint Leu;RTCM 3;;1002(1),1006(10),1008(1),1019(1),1097(1),1107(1),1117(1),1127(1);1;GPS+GLO+GAL+BDS+SBAS;EUREF;FRA;-21.168;55.2903;0;0;tallysman;none;;;;ifremer france
-```
-
-Pour plus d'informations sur les différents paramètres à remplir: <a href="https://software.rtcm-ntrip.org/wiki/STR" target="new_">ttps://software.rtcm-ntrip.org</a>
-    
-> Un bug d'affichage non résolu persiste (cette liste ne s'affiche pas dans l'interface du reach), mais cette opération est nécessaire.
-    
-* Lancer la fabrication et le démarrage du caster avec les commandes suivantes :
-
-```
-docker-compose build 
-docker-compose up -d
-```
 ## Connexion de la base au caster
 
-Pour tester le bon fonctionnement du caster, lancer la commande suivante :
-``` 
-docker-compose logs ntrip
-```
-<p align="center"><img src="../docs/images/check_caster.png"></p>
+Avant de pouvoir utiliser le réseau Centipède il est indispensable de faire une demande de connection au Caster (gratuit et sans obliations). les de demandes sont à envoyer à contact@centipede.fr en précisiant:
+
+    - Votre situation géographique (commune)
+    - Nom, prénom
+    - Adresse mail
+    - Type de matériel utilisé pour la base RTK
+    - Proposition de nom de Mout Point ( entre 3 et 5 caractères)
 
 Pour connecter la base au caster, se rendre dans la rubrique *Base mode* de l'interface du reach :
 

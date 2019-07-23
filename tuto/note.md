@@ -355,9 +355,10 @@ Pour connecter la base au caster, se rendre dans la rubrique *Base mode* de l'in
 Modifier les valeurs suivantes (en se basant sur les paramètres enregistrés dans *ntripcaster.conf*)
 
    - Choisir l'option *NTRIP*
-   - Indiquer l'URL du caster dans le champ *Address*
+   - Indiquer l'URL du caster dans le champ *Address* : caster.centipede.fr
    - Choisir le port 2101
-   - Indiquer le nom du Mount point
+   - Indiquer le mot de passe: centipede
+   - Choisir/Indiquer le nom du Mount point
  
 ## Mise en oeuvre du rover
 
@@ -372,7 +373,7 @@ Il n'est pas nécessaire de calibrer la position du rover ; celle-ci sera corrig
 <p align="center"><img src="../docs/images/reach_correction.png"></p>
 
 - Choisir l'option *NTRIP*
-- Indiquer l'URL du caster dans le champ *Address*
+- Indiquer l'URL du caster dans le champ *Address*: caster.centipede.fr
 - Choisir le port 2101
 - Sélectionner le format *RTCM3* pour la trame reçue
 - Indiquer le nom de la base RTK dans MountPoint 

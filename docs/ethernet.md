@@ -1,8 +1,3 @@
----
-title: Utilisation d'un câble ethernet à la place du wifi
-layout: template
-filename: ethernet.md
---- 
 
 **Utilisation d'un câble ethernet à la place du wifi**
 

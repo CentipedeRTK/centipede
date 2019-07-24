@@ -108,7 +108,7 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Télécharger l'archive au format ZIP une fois celle-ci disponible.
 
-<p align="center"><img src="../docs/images/ign_choix.png"></p>
+![ign](image/montage/ign.png)
 
 * Réunir les 2 fichiers (UBX + Rinex) dans un même répertoire.
 

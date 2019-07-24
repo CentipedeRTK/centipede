@@ -40,11 +40,11 @@ Coller ensuite l'antenne sur le plan de masse, rajouter le câble d'extension de
 
 ![groundPlane](image/ground_plane.jpg)
 
-Le Reach M+ doit être positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et dans une zone lui permettant de capter le signal wifi de votre box ou accessible avec un cable ethernet ([exemple de montage](https://jancelin.github.io/centipede/ethernet))
+Le Reach M+ doit être positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et dans une zone lui permettant de capter le signal wifi de votre box. Si vous n'avez pas de wifi disponible, vous pouvez utiliser un [cpl wifi](https://www.boulanger.com/ref/8002139?xtor=SEC-1294-GOO&xts=171153&origin=pla&kwd=&gclid=EAIaIQobChMI1tTns9TN4wIVkEPTCh1dzAA7EAYYAiABEgKVZvD_BwE&gclsrc=aw.ds) ou un [Raspberry Pi](https://github.com/jancelin/geo-poppy/wiki/2.-Installation). Il est également possible de le connecter avec un avec un cable ethernet ([exemple de montage](https://jancelin.github.io/centipede/ethernet)) mais pas pour la phase de mise à jour (wifi uniquement).
 
 Voici plusieurs exemples de montage de bases RTK :
 
-![groundPlane](image/antenne.jpg)
+![antenne](image/antenne.jpg)
 
 En cas de montage extérieur, il est important de rajouter un dissipateur de chaleur sur le module RTK. La procédure de montage est disponible ici:
 
@@ -64,11 +64,17 @@ Le Reach M+ est mis sous tension.
 
 * Sélectionner votre réseau wifi et cliquer sur Connect.
 
+* Mettre à jour le Reach M+
+
+* Reboot
+
+![reachupdate](image/reachupdate.jpg)
+
 * Une fois le reach connecté sur votre réseau wifi, une nouvelle IP lui est attribuée ; c'est celle-ci qui est utilisée par la suite (http://reach.local fonctionne également). Cette IP est visible sur l'interface Web du Reach, en haut à gauche de l'écran.
 
-<p align="center"><img src="../docs/images/reach_home.png"></p>
+![reachview](image/reachview1.png)
 
-> Note : il est également possible de faire ces manipulations via l'application ReachView (disponible sur Android et iOS) sur une tablette ou un smartphone.
+> Note : il est également possible de faire ces manipulations via l'application [ReachView](https://play.google.com/store/apps/details?id=com.reachview&hl=fr) (disponible sur Android et iOS) sur une tablette ou un smartphone.
 
 ## Calcul de la position de la base
 

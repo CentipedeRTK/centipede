@@ -27,20 +27,20 @@ Un accès WIFI proche de la base est indispensable pour assurer la connexion du 
 
 La zone d'implantation de l'antenne de réception ne nécessite pas une position dominante, mais doit proposer une visibilité maximum du ciel ; il est indispensable de ne pas avoir d'obstacles (bâtiments, arbres, murs ...) sous les 30 premiers degrés par rapport à la base de l'antenne.
 
-![sky_view](images/skyview-obstacles_1.png)
+![sky_view](image/skyview-obstacles_1.png)
 
 ## Installation du module
 
 L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un plan de masse en métal ([préconisation du constructeur](http://www.tallysman.com/wp-content/uploads/Embedded-Antennas-Reference-Guide.pdf)) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fabriqué en aluminium, inox ou cuivre. Il doit disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mât, toiture, borne béton...) et d'un deuxième trou pour faire passer le fil de l'antenne.
 > [Note pour plus tard](https://www.fig.net/resources/proceedings/fig_proceedings/fig2017/ppt/ts08c/TS08C_zhang_schwieger_8513_ppt.pdf)
 
-![groundPlane](images/ground_plane.jpg)
+![groundPlane](image/ground_plane.jpg)
 
-![groundPlane](images/ground_plane_boulon.jpg)
+![groundPlane](image/ground_plane1.jpg)
 
 Coller ensuite l'antenne sur le plan de masse, rajouter le câble d'extension de 2 mètres si nécessaire (en fonction de la configuration de pose) et connecter le Reach M+.
 
-<p align="center"><img src="../docs/images/ground_plane_assemblage.jpg"></p>
+![groundPlane](image/ground_plane_assemblage.jpg)
 
 Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et dans une zone lui permettant de capter le signal wifi de votre box ou accessible avec un cable ethernet ([exemple de montage](https://github.com/jancelin/centipede/blob/master/tuto/ethernet.md))
 

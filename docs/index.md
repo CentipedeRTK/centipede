@@ -40,7 +40,7 @@ Coller ensuite l'antenne sur le plan de masse, rajouter le câble d'extension de
 
 ![groundPlane](image/ground_plane.jpg)
 
-Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et dans une zone lui permettant de capter le signal wifi de votre box ou accessible avec un cable ethernet ([exemple de montage](https://github.com/jancelin/centipede/blob/master/tuto/ethernet.md))
+Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et dans une zone lui permettant de capter le signal wifi de votre box ou accessible avec un cable ethernet ([exemple de montage](https://jancelin.github.io/centipede/ethernet))
 
 <p align="center"><img src="../docs/images/reach_palmier.png"></p>
 

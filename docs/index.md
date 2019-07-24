@@ -1,4 +1,6 @@
-# Mise en place d'une antenne RTK (exemple du site de Saint-Leu - Ifremer - Réunion)
+# Mise en place d'une Base RTK
+
+(exemple du site de Saint-Leu - Ifremer - Réunion)
 
 Licence: [AGPL-3.0](https://github.com/jancelin/centipede/blob/master/LICENSE)
 

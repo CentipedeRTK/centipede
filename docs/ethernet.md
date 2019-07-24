@@ -1,3 +1,9 @@
+---
+title: Utilisation d'un câble ethernet à la place du wifi
+layout: template
+filename: ethernet.md
+--- 
+
 **Utilisation d'un câble ethernet à la place du wifi**
 
 L'utilisation du wifi peut être contraignant en fonction du placement de la base RTK, de plus, ce moyen de communication avec le réseau entraîne, en fonction de la distance avec le relai, des coupures voir des pertes de signal.

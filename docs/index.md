@@ -1,9 +1,3 @@
----
-title: Mise en place d'une Base RTK
-layout: template
-filename: index.md
---- 
-
 # Mise en place d'une Base RTK
 
 (exemple du site de Saint-Leu - Ifremer - Réunion)

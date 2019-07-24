@@ -1,5 +1,5 @@
 theme: jekyll-theme-tactile
-`name: Centipede`
+name: Centipede
 markdown: redcarpet
 pygments: true
 baseurl: /

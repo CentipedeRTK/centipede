@@ -76,7 +76,7 @@ Le Reach M+ est mis sous tension.
 
 ### Paramétrage de la position des satellites
 
-<p align="center"><img src="../docs/images/RTK_settings.png"></p>
+![reachview](image/montage/RTK_setting1.png)
 
 La valeur du *Update rate* conditionne le nombre de mesures par seconde. 
 
@@ -85,7 +85,7 @@ La valeur du *Update rate* conditionne le nombre de mesures par seconde.
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
 Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging, en activant l'option *Raw data* (position ON). Les options *Position* et *Base correction* ne doivent pas être activées pour l'instant.
 
-<p align="center"><img src="../docs/images/reach_log.png"></p>
+![reachview](image/montage/reach_log.png)
 
 L'enregistrement se fait pendant une période minimale de 12h00 consécutives. Les positions enregistrées sont ensuite post-traitées en s'appuyant sur la trame de l'antenne RGP la plus proche (IGN - <a href="http://rgp.ign.fr">En savoir plus</a>), enregistrée sur la même période. Plus l'antenne de référence sera proche, meilleure sera la précision de localisation de notre base.
 

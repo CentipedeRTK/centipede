@@ -1,4 +1,10 @@
-theme: jekyll-theme-leap-day
-name: Centipede
-markdown: redcarpet
-baseurl: /
+ github: [metadata]
+ name: Centipede
+ encoding: UTF-8
+ kramdown:
+   input: GFM
+   hard_wrap: false
+ future: true
+ jailed: false
+ theme: jekyll-theme-leap-day
+ gfm_quirks: paragraph_end

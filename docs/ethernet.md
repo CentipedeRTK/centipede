@@ -1,11 +1,11 @@
 
-**Utilisation d'un câble ethernet à la place du wifi**
+# Utilisation d'un câble ethernet à la place du wifi
 
 L'utilisation du wifi peut être contraignant en fonction du placement de la base RTK, de plus, ce moyen de communication avec le réseau entraîne, en fonction de la distance avec le relai, des coupures voir des pertes de signal.
 
 Dans ce document, nous allons brancher un module emlid reach M+ directement sur un cable ethernet.
 
-*Matériel à prévoir en plus*
+## Matériel à prévoir en plus
 
 * [un module ethernet to USB: 32€](https://fr.rs-online.com/web/p/products/1447999/?grossPrice=Y&cm_mmc=FR-PLA-DS3A-_-google-_-CSS_PLA_FR_FR_Informatique_Et_P%C3%A9riph%C3%A9riques-_-R%C3%A9seaux_Et_Connectivit%C3%A9%7CAdaptateurs_D%27Interface-_-PRODUCT_GROUP&matchtype=&pla-627275384809&gclid=EAIaIQobChMI0uqsz4PL4wIVxEPTCh1P8wFLEAQYASABEgKqIvD_BwE&gclsrc=aw.ds)
 
@@ -16,7 +16,7 @@ Dans ce document, nous allons brancher un module emlid reach M+ directement sur 
 * le câble adaptateur OTG fourni avec le Reach M+
 
 
-*Montage*
+## Montage
 
 * couper votre câble USB pour récupérer le fil rouge et le noir.
 
@@ -33,7 +33,7 @@ Dans ce document, nous allons brancher un module emlid reach M+ directement sur 
 
 <p align="center"><img src="../docs/images/ethernet/2.jpg"></p>
 
-*Test*
+## Test
 
 Pour vérifier le montage, connecter un câble ethernet (connecté à votre réseau) à l'adaptateur et alimenter en USB via un transformateur 220V -> 5V (smartphone), un port USB PC ou une batterie externe.
 

@@ -40,18 +40,15 @@ Coller ensuite l'antenne sur le plan de masse, rajouter le câble d'extension de
 
 ![groundPlane](image/ground_plane.jpg)
 
-Le Reach M+ est positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et dans une zone lui permettant de capter le signal wifi de votre box ou accessible avec un cable ethernet ([exemple de montage](https://jancelin.github.io/centipede/ethernet))
-
-<p align="center"><img src="../docs/images/reach_palmier.png"></p>
+Le Reach M+ doit être positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et dans une zone lui permettant de capter le signal wifi de votre box ou accessible avec un cable ethernet ([exemple de montage](https://jancelin.github.io/centipede/ethernet))
 
 Voici plusieurs exemples de montage de bases RTK :
 
-<p align="center"><img src="../docs/images/base_ex.png"></p>
-<p align="center"><sup><i>https://centipede.fr</i></sup></p>
+![groundPlane](image/antenne.jpg)
 
 En cas de montage extérieur, il est important de rajouter un dissipateur de chaleur sur le module RTK. La procédure de montage est disponible ici:
 
-[Installation d'un dissipateur thermique](https://github.com/jancelin/centipede/blob/master/tuto/cold_base_rtk.md)
+[Installation d'un dissipateur thermique](https://jancelin.github.io/centipede/dissipateur)
 
 ## Premières configurations
 

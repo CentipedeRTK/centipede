@@ -14,24 +14,17 @@ Dans ce cas, il est important de rajouter un dispositif de dispersion de la chal
 
 > !! Le montage est à faire avec de la pâte thermique entre le M+ et le dissipateur. !!
 
-<p align="center"><img src="../docs/images/cold/1.jpg"></p>
+![dissip](image/dissipateur/1.jpg)
+
+![dissip](image/dissipateur/2.jpg)
+
+![dissip](image/dissipateur/3.jpg)
+
+![dissip](image/dissipateur/4.jpg)
+
+![dissip](image/dissipateur/5.jpg)
 
 
-<p align="center"><img src="../docs/images/cold/2.jpg"></p>
+## Exemple de montage avec dissipateur et ventilation (conditions extrèmes)
 
-
-<p align="center"><img src="../docs/images/cold/3.jpg"></p>
-
-
-<p align="center"><img src="../docs/images/cold/4.jpg"></p>
-
-
-<p align="center"><img src="../docs/images/cold/5.jpg"></p>
-
-
-<p align="center"><img src="../docs/images/cold/6.jpg"></p>
-
-
-## Exemple de montage avec dissipateur et ventilation (conditions extrèmes)
-
-<p align="center"><img src="../docs/images/reach_fan.png"></p>
+![dissip](image/dissipateur/6.jpg)

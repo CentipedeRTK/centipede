@@ -1,8 +1,8 @@
 # Le Projet Centipède
 
-## Le Real Time Kinematic collaboratif, ouvert et Open Source 🛰️ 🛰️ 🛰️ 
+![logo](image/index/centipede_petit2.png)
 
-![logo](image/index/centipede_petit.png)
+## Le Real Time Kinematic collaboratif, ouvert et Open Source 🛰️ 🛰️ 🛰️ 
 
 ![sketch](image/index/1.jpg)
 

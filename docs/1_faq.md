@@ -12,7 +12,7 @@
 
 * ### C'est simple le RTK?
 
-> Non!, ça demande un peu de matériel (donc un peu d'argent), un peu de connection internet (3-4g mobile) et de compréhension de la technologie pour en profiter pleinement.
+> Non!, ça demande un peu de matériel (donc un peu d'argent), un peu de connection internet (3-4g mobile et env 10 Mb/heure) et de compréhension de la technologie pour en profiter pleinement.
 
 * ### Donc c'est très cher?
 

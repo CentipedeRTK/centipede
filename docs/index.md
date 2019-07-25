@@ -1,6 +1,6 @@
 ![logo](image/index/centipede_petit.png)
 
-# Projet Centipède : le RTK en réseau ouvert pour géolocaliser les données environnementales et autoguider les véhicules agricoles
+## Projet Centipède : le RTK en réseau ouvert pour géolocaliser les données environnementales et autoguider les véhicules agricoles
 
 ![sketch](image/index/1.jpg)
 

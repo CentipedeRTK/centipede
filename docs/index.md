@@ -16,13 +16,7 @@ Le projet Centipède vise à créer un réseau de bases RTK ouvertes et disponib
 
 [https://centipede.fr](https://centipede.fr/index.php/view/map/?repository=centipede&project=centipede){:target="_blank"}
 
-[http://caster.centipede.fr:2101](http://caster.centipede.fr:2101)
-
-<figure class="caster">
-  <iframe src="http://caster.centipede.fr:2101" width="100%" height="900" allowfullscreen="true"> </iframe>
-</figure>
+[http://caster.centipede.fr:2101](http://caster.centipede.fr:2101){:target="_blank"}
 
 
 -------------------------------------------------------
-
-------------------------------------

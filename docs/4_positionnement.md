@@ -8,7 +8,7 @@ Votre base va servir de référentiel pour vous mais aussi pour toute personne s
 
 Paramétrer le recepteur en postionnnement static 
 
-![reachview](image/montage/RTK_setting1.png)
+![reachview](image/positionnement/RTK_setting1.png)
 
 La valeur du *Update rate* conditionne le nombre de mesures par seconde. 
 
@@ -17,7 +17,7 @@ La valeur du *Update rate* conditionne le nombre de mesures par seconde.
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
 Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging, en activant l'option *Raw data* (position ON). Les options *Position* et *Base correction* ne doivent pas être activées pour l'instant.
 
-![reachview](image/montage/reach_log.png)
+![reachview](image/positionnement/reach_log.png)
 
 L'enregistrement se fait pendant une période minimale de 12h00 consécutives. Les positions enregistrées sont ensuite post-traitées en s'appuyant sur la trame de l'antenne RGP la plus proche (IGN - <a href="http://rgp.ign.fr">En savoir plus</a>), enregistrée sur la même période. Plus l'antenne de référence sera proche, meilleure sera la précision de localisation de notre base.
 
@@ -40,7 +40,7 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Télécharger l'archive au format ZIP une fois celle-ci disponible.
 
-![ign](image/montage/ign.png)
+![ign](image/positionnement/ign.png)
 
 * Réunir les 2 fichiers (UBX + Rinex) dans un même répertoire.
 
@@ -142,16 +142,16 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
  
  Il est possible à ce stade-là de filtrer les données afin de ne conserver que les points pour lesquels la valeur de Q est égale à 1 (ie. mode FIX) et le ratio est maximal (ie. proche de 999).
  
- ## 4.4 QGIS
+## 4.4 QGIS
  
  Le fichier résultat peut être exploité dans QGIS.
  
- > Plus d'informations sur l'installation de ce logiciel sur cette <a href="https://doc.ubuntu-fr.org/qgis" target="new_">page</a>
+ > Plus d'informations sur l'installation de ce logiciel sur cette [page](https://doc.ubuntu-fr.org/qgis){:target="_blank"}
  
    - Cliquer sur *couche* > *Ajouter une couche* > *Ajouter une couche de texte délimité*
    - Choisir le fichier .pos puis cliquer sur *Ouvrir*
         
-<p align="center"><img src="../docs/images/calc_base_qgis_1.png"></p>      
+![qgis](image/positionnement/calc_base_qgis_1.png)   
 
    - Dans *Format de fichier*, sélectionner le délimiteur *Espace*
    - Fixer la valeur du *Nombre de lignes à ignorer* à 12
@@ -161,11 +161,12 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
    - Cliquer sur *OK* (une nouvelle fenêtre s'ouvre)
    - Sélectionner le SRC 4326 (WGS 84) en utilisant le filtre
    - Cliquer sur *OK*
-
-<p align="center"><img src="../docs/images/calc_base_qgis_2.png"></p>      
+   
+![qgis](image/positionnement/calc_base_qgis_2.png)
 
    - Faire un clic droit sur la couche puis *Filtrer...*
    - Ajouter le filtre suivant :
+   
  ```
  "Q" = 1 AND
  "ratio" >= 999 AND
@@ -177,11 +178,12 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
  -- "sdn(m)" = 0
 
   ```
+  
    - Cliquer sur *OK*
    
 On retrouve ici les points affichés dans RTKPLOT suite à l'application des mêmes filtres (mode FIX et AR Ratio > 999).
    
-<p align="center"><img src="../docs/images/calc_base_qgis_3.png"></p>      
+![qgis](image/positionnement/calc_base_qgis_3.png)
 
    - Cliquer sur *vecteur* > *Outils d'analyse* > *Statistiques basiques pour les champs*
         - *Couche vectorielle en entrée* : choisir le fichier pos
@@ -189,14 +191,14 @@ On retrouve ici les points affichés dans RTKPLOT suite à l'application des mê
         - *Statistiques* > *Enregistrer vers un fichier* et créer un fichier latitude.html (par exemple)
         - Cliquer sur *Run*
    - Répéter l'opération avec les champs longitude et hauteur.
-
-<p align="center"><img src="../docs/images/calc_base_qgis_4.png"></p>  
+   
+![qgis](image/positionnement/calc_base_qgis_4.png)
 
 Nous obtenons ainsi trois fichiers contenant les statistiques basiques sur les trois paramètres de localisation : longitude.html, latitude.html et height.html.
 
 La position la plus précise de notre base est donnée par la valeur de la médiane de chaque dimension.
 
-<p align="center"><img src="../docs/images/calc_base_qgis_5.png"></p>  
+![qgis](image/positionnement/calc_base_qgis_5.png)
 
 ## 4.5 Insertion des coordonnées corrigées
  
@@ -204,7 +206,7 @@ La position la plus précise de notre base est donnée par la valeur de la médi
  
    Dans l'onglet *Base coordinates* (LLH), mettre le *Coordinates input mode* sur Manual puis enregistrer les valeurs de longitude, latitude et hauteur.
    
-   <p align="center"><img src="../docs/images/reach_base_coord.png"></p>
+![reachview](image/positionnement/reach_base_coord.png)
  
 > Dans nos conditions expérimentales, nous avons obtenu une précision inférieure à 1 centimètre. :+1:
 
@@ -220,7 +222,7 @@ Avant de pouvoir utiliser le réseau Centipède il est indispensable de faire un
 
 Pour connecter la base au caster, se rendre dans la rubrique *Base mode* de l'interface du reach :
 
-<p align="center"><img src="../docs/images/reach_cor_output.png"></p>
+![reachview](image/positionnement/reach_cor_output.png)
 
 Modifier les valeurs suivantes (en se basant sur les paramètres enregistrés dans *ntripcaster.conf*)
 
@@ -229,3 +231,7 @@ Modifier les valeurs suivantes (en se basant sur les paramètres enregistrés da
    - Choisir le port 2101
    - Indiquer le mot de passe: centipede
    - Choisir/Indiquer le nom du Mount point
+   
+> Votre base est immédiatement opérationnelle mais n'apparaitra sur la [carte](https://https://centipede.fr/index.php/view/map/?repository=centipede&project=centipede){:target="_blank"} et bénificiera des options du service (mail d'alerte en cas de déconnection, visibilité de sa position et de son état) seulement après validation par l'administrateur.
+
+------------------------------------------------------------

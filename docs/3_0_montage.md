@@ -1,4 +1,4 @@
-# 3. Installation d'une Base RTK
+# 3 Installation d'une Base RTK
 
 Cette étape doit vous permettre de bien anticiper quel matériel acheter en fonction de la zone d'installation de l'antenne RTK et de vos possibilité de raccordement à un réseau internet pour diffuser les corrections produites
 

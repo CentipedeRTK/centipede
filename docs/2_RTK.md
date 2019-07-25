@@ -1,6 +1,6 @@
 ## 2 Le GNSS RTK c'est quoi?
 
-![logo](image/index/centipede_petit.png)
+![sketch](image/index/1.jpg)
 
 [wikipedia](https://fr.wikipedia.org/wiki/Cin%C3%A9matique_temps_r%C3%A9el)
 

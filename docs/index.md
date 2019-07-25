@@ -6,23 +6,51 @@
 
 * [3. Installation d’une Base RTK](https://jancelin.github.io/centipede/3_0_montage.html)
 
-   * [3.1 Matériel utilisé](https://jancelin.github.io/centipede/3_0_montage.md#31-mat%C3%A9riel-utilis%C3%A9)
+   * 3.1 Matériel utilisé
    
-   * [3.2 Choix de la zone d'implantation](https://jancelin.github.io/centipede/3_0_montage.md#32-choix-de-la-zone-dimplantation)
+   * 3.2 Choix de la zone d'implantation
    
-   * [3.3 Installation de l'antenne de réception et du Reach M+](https://jancelin.github.io/centipede/3_0_montage.md#33-installation-de-lantenne-de-r%C3%A9ception-et-du-reach-m)
+   * 3.3 Installation de l'antenne de réception et du Reach M+
    
-   * [3.4 Premières configurations](https://jancelin.github.io/centipede/3_0_montage.md#34-premi%C3%A8res-configurations)
-
+   * 3.4 Premières configurations
+   
 * [3.x Régulation thermique](https://jancelin.github.io/centipede/3_1_dissipateur.html)
 
-  * [3.x.1 Emlid Reach +](https://jancelin.github.io/centipede/3_1_dissipateur.md#3x1-emlid-reach-)
+  * 3.x.1 Emlid Reach +
   
-  * [3.x.2 Exemples de montages avec dissipateurs et ventilations (conditions extrèmes)](https://jancelin.github.io/centipede/3_1_dissipateur.md#3x2-exemples-de-montages-avec-dissipateurs-et-ventilations-conditions-extr%C3%A8mes)
+  * 3.x.2 Exemples de montages avec dissipateurs et ventilations (conditions extrèmes)
     
 * [3.y Utilisation d’un câble ethernet à la place du wifi](https://jancelin.github.io/centipede/3_2_ethernet.html)
-    
+
+  * 3.y.1 Matériel à prévoir en plus
+  
+  * 3.y.2 Montage
+  
+  * 3.y.3 Test
+
 * [4. Calcul de la position de la base](https://jancelin.github.io/centipede/4_positionnement.html)
+
+  * 4.1 Paramétrage de la position des satellites
+  
+  * 4.2 Récupération des données nécessaires
+  
+  * 4.3 Calcul de la correction
+  
+    * 4.3.1 RTKCONV
+  
+    * 4.3.2 RTKPOST
+    
+      * 4.3.2.1 Méthode à 24h
+      
+      * 4.3.2.2 Méthode après 20 jours
+      
+    * 4.3.3 RTKPLOT
+    
+   * 4.4 QGIS
+   
+   * 4.5 Insertion des coordonnées corrigées
+   
+   * 4.6 Connexion de la base au caster
 
 
 ### Exemples d'utilisations

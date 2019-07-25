@@ -1,4 +1,4 @@
-# Le Projet Centipède
+# 1 Le Projet Centipède
 
 ![logo](image/index/centipede_petit2.png)
 

@@ -1,8 +1,7 @@
 
+## Sommaire 
 
 ![logo](image/index/centipede_petit2.png)
-
-## 1 Sommaire 
 
 * [1. FAQ](https://jancelin.github.io/centipede/0_1_faq.html)
 

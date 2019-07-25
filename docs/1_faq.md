@@ -30,6 +30,8 @@
 
 > Parceque votre smartphone ne permet pas de récolter l'ensemble des données satellites de navigations de corrections différnetiel. Pas assez de précision...
 
+> Vous avez besoin de matériels compatibiles avec les trames L1 ou L1-L2 des satellites
+
 * ### C'est quoi une base et un rover?
 
 > Ce sont exactement les mêmes composants (antenne de réception + puce de décodage + nano ordinateur + logiciels), mais ont des fonctions différentes.

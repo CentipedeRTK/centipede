@@ -48,10 +48,31 @@
 
 > Non, nous avons fait le choix d'utiliser cette technologie pour ne pas rajouter une nouvelle emission d'ondes via une l'achat d'une fréquence particulière d'emission. Nous utilisons donc l'existant, avec ses avantages et ses inconvénients [zones blanches](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-deploiements-mobiles-en-zones-peu-denses/les-deploiements-mobiles-dans-les-zones-peu-denses.html){:target="_blank"}
 
+ * ### Mon matériel est compatible?
 
+> Le caster (serveur centralisant l'ensemble des Bases RTK Centipède) transmet une trame de correction en RTCM3, si votre matériel de géolocalisation est compatible avec ce format alors vous pouvez vous connecter librement aux Bases RTK Centipède.
 
+Librement?
 
+> Le réseau en réception est communautaire donc pas de login et de mot de passe
 
+> Pour la déclaration d'un base RTK en emission, il est necessaire de suivre à la lettre les prochaines pages de ce site.
+
+ * ### Comment me connecter au service si mon matériel est compatible?
+
+> Vérifier dans un premier temps que vous êtes bien dans une zone couverte géographiquement par le [réseau Centipède](https://centipede.fr){:target="_blank"}
+
+> dans vos paramètre de connexion de votre matériel à un système de correction RTK, veuillez renseigner:
+
+> adresse du serveur: caster.centipede.fr
+
+> Port: 2101
+
+> Pas de login et de mot de passe ( ou 1 espace en fonction des systèmes)
+
+> choisir le point de montage dans la liste ou stipuler le point de montage (Mount Point, ex: CT)
+
+> définir le format (si besoin); RTCM3
 
 
 

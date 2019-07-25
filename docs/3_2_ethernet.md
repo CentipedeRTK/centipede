@@ -22,7 +22,7 @@ Dans ce document, nous allons brancher un module emlid reach M+ directement sur 
 
 * raccorder les fils au cable JST-GH afin d'alimenter le Reach M+
 
-<p align="center"><img src="../docs/images/ethernet/1.jpg"></p>
+![ethernet](image/ethernet/1.jpg)
 
 * Connecter l'adaptateur ethernet USB au câble OTG et ce dernier au Reach M+
 
@@ -30,17 +30,15 @@ Dans ce document, nous allons brancher un module emlid reach M+ directement sur 
 
 * Connecter l'antenne
 
-
-<p align="center"><img src="../docs/images/ethernet/2.jpg"></p>
+![ethernet](image/ethernet/2.jpg)
 
 ## Test
 
 Pour vérifier le montage, connecter un câble ethernet (connecté à votre réseau) à l'adaptateur et alimenter en USB via un transformateur 220V -> 5V (smartphone), un port USB PC ou une batterie externe.
 
 Une fois que le Reach M+ est démarré (les 3 leds allumés), se connecter au Hotspot et vérifier qu'il accède bien au web. Une des meilleures techniques est d'ajouter une "correction input" via le réseau centipede et voir s'il reçoit bien les données.
-
-<p align="center"><img src="../docs/images/reach_correction.png"></p>
+![ethernet](image/ethernet/reach_correction.png)
 
 Résultat dans "status"
 
-<p align="center"><img src="../docs/images/fix.png"></p>
+![ethernet](image/ethernet/fix.png)

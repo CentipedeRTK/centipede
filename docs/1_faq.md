@@ -36,7 +36,7 @@
 
 > Parceque les conditions physiques en altitude (ionosphère et troposphère, bref au dessus de notre tête) se modifient en continue ( vent solaire, humidité,...) et "tordent" le signal emis par les satellites, se qui entraine des biais lors des mesures (env 3-5m).
 
-> Parceque votre smartphone ne permet pas de récolter l'ensemble des des données satellites de navigations de corrections différnetiel. Pas assez de précision...
+> Parceque votre smartphone ne permet pas de récolter l'ensemble des données satellites de navigations de corrections différnetiel. Pas assez de précision...
 
  * ### Ca émet des ondes?
 

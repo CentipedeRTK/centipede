@@ -24,6 +24,12 @@
 
 > Le coût global pour la géolocalisation en autonomie s'élève donc rarement à plus de 700 € (Base + rover + accessoires).
 
+* ### Pourquoi avec mon smartphone ou mon recepeteur GNSS je n'ai pas cette précision?
+
+> Parceque les conditions physiques en altitude (ionosphère et troposphère, bref au dessus de notre tête) se modifient en continue ( vent solaire, humidité,...) et "tordent" le signal emis par les satellites, se qui entraine des biais lors des mesures (env 3-5m).
+
+> Parceque votre smartphone ne permet pas de récolter l'ensemble des données satellites de navigations de corrections différnetiel. Pas assez de précision...
+
 * ### C'est quoi une base et un rover?
 
 > Ce sont exactement les mêmes composants (antenne de réception + puce de décodage + nano ordinateur + logiciels), mais ont des fonctions différentes.
@@ -31,12 +37,6 @@
 > * Une base est un ensemble de composants captants les signaux des satellites de navigation (GPS + GLONASS + GALILEO + ...) et qui connait sa position très précisement par calcul. Elle calcule en temps réel la différence entre les signaux reçus par les sattelites et sa position calculée. Ce sont ces variables de correction qui permettent de corriger un Rover. 
 
 > * Un Rover est un ensemble de composants captants les signaux des satellites de navigation (GPS + GLONASS + GALILEO + ...) et qui ressoit une variable de correction d'une base (via 3-4g mobile ou radio). Cette ensemble permet d'avoir, par calcul, une précision géométrique de quelques centimètres en fonction des conditions.
-
-* ### Pourquoi avec mon smartphone ou mon recepeteur GNSS je n'ai pas cette précision?
-
-> Parceque les conditions physiques en altitude (ionosphère et troposphère, bref au dessus de notre tête) se modifient en continue ( vent solaire, humidité,...) et "tordent" le signal emis par les satellites, se qui entraine des biais lors des mesures (env 3-5m).
-
-> Parceque votre smartphone ne permet pas de récolter l'ensemble des données satellites de navigations de corrections différnetiel. Pas assez de précision...
 
  * ### Ca émet des ondes?
 

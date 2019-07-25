@@ -1,4 +1,4 @@
-# Une Balise Open Source pour le monitoring des océans
+# 9.1 Une Balise Open Source pour le monitoring des océans
 
 <p align="left"><img src="../docs/images/balise.jpeg" ></p>
 <p align="center"><sup><i>Balise Champagne prototype V0.1 dans le lagon de Saint Leu (la Réunion)</i></sup></p>

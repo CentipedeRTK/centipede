@@ -31,6 +31,6 @@ Dans ce cas, il est important de rajouter un dispositif de dispersion de la chal
 
 ![dissip](image/dissipateur/8.jpg)
 
-![dissip](image/dissipateur/7.jpg)
+![dissip](image/dissipateur/7.png)
 
 

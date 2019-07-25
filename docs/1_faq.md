@@ -20,7 +20,7 @@
 
 > Si l'on investi dans un système dit "propriétaire" il faudra investir entre  2500 et 15000 € par antenne.
 
-> Dans le cas du projet Centipède, l'idée est d'utiliser des composants génériques et des logiciels opensources, les coût sont donc divisés par 10, soit 250 € pour un matériel (sans options), qu'il soit Base ou Rover.
+> Dans le cas du projet Centipède, l'idée est d'utiliser des composants génériques et des logiciels opensources, les coût sont donc divisés par 10, soit environ 250-300 € pour un matériel (sans options), qu'il soit Base ou Rover.
 
 > Le coût global pour la géolocalisation en autonomie s'élève donc rarement à plus de 700 € (Base + rover + accessoires).
 

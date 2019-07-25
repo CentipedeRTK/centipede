@@ -1,20 +1,20 @@
 ## FAQ
 
-* Ca sert à quoi?
+* ### Ca sert à quoi?
 
 > à avoir notre position géographique à quelques centimètre.
 
-* Pour quoi faire?
+* ### Pour quoi faire?
 
 > Localiser des choses très précisément  comme une plante, un chemin, un tuyau, ... 
 
-> Couplé à un drone (tracteur, quadadcoptère, aile) et un système de navigation, cela donne donne un système de conduite sans assistance.
+> Couplé à un drone (tracteur, quadadcoptère, aile) et un système de navigation, cela donne un système de conduite sans assistance.
 
-* C'est simple le RTK?
+* ### C'est simple le RTK?
 
 > Non!, ça demande un peu de matériel (donc un peu d'argent), un peu de connection internet (3-4g mobile) et de compréhension de la technologie pour en profiter pleinement.
 
-* Donc c'est très cher?
+* ### Donc c'est très cher?
 
 > Oui et Non. 
 
@@ -24,15 +24,15 @@
 
 > Le coût global pour la géolocalisation en autonomie s'élève donc rarement à plus de 700 € (Base + rover + accessoires).
 
-* C'est quoi une base et un rover?
+* ### C'est quoi une base et un rover?
 
 > Ce sont exactement les mêmes composants (antenne de récepetion + puce de decodage + nano ordinateur + logiciels)
 
-> * Une base est un ensemble de composants captants les signaux des satellites de navigation (GPS + GLONASS + GALILEO + ...) et qui connait sa position très précisement par calcul. Elle calcule en temps réel la différence entre les signaux reçus par les satteleites et sa position calculée. Ce sont ces variables  de correction qui permettent de corriger un Rover. 
+> *Une base est un ensemble de composants captants les signaux des satellites de navigation (GPS + GLONASS + GALILEO + ...) et qui connait sa position très précisement par calcul. Elle calcule en temps réel la différence entre les signaux reçus par les satteleites et sa position calculée. Ce sont ces variables  de correction qui permettent de corriger un Rover. 
 
 > * Un Rover est un ensemble de composants captants les signaux des satellites de navigation (GPS + GLONASS + GALILEO + ...) et qui ressoit une variable de correction d'une base. Cette ensemble permet d'avoir, par calcul, une précision géométrique de quelques centimètres en fonction des conditions.
 
-* Ca émet des ondes?
+ * ### Ca émet des ondes?
 
 > Non, nous recevons en permanence les ondes des satellites positionnés autour de la terre, nous ne faisons que les capter.
 

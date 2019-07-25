@@ -39,6 +39,7 @@ Pour vérifier le montage, connecter un câble ethernet (connecté à votre rés
 Une fois que le Reach M+ est démarré (les 3 leds allumés), se connecter au Hotspot et vérifier qu'il accède bien au web. Une des meilleures techniques est d'ajouter une "correction input" via le réseau centipede et voir s'il reçoit bien les données.
 
 > adress: caster.centipede.fr
+
 > port: 2101
 
 ![ethernet](image/ethernet/reach_correction.png)

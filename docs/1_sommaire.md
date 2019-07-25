@@ -1,8 +1,8 @@
-### Home Centipede
+
 
 ![logo](image/index/centipede_petit2.png)
 
-## Sommaire 
+## 1 Sommaire 
 
 * [1. Projet Centipede](https://jancelin.github.io/centipede/1_projet.html)
 

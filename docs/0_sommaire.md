@@ -3,7 +3,7 @@
 
 ![logo](image/index/centipede_petit2.png)
 
-* [1. FAQ](https://jancelin.github.io/centipede/0_1_faq.html)
+* [1. FAQ](https://jancelin.github.io/centipede/1_faq.html)
 
 * [2. RTK ? ]()
 

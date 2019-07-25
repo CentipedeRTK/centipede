@@ -6,7 +6,7 @@
 
 * ### Pour quoi faire?
 
-> Localiser des choses très précisément  comme une plante, un chemin, un tuyau, ... 
+> Localiser des choses très précisément  comme une plante, un chemin, un tuyau, faire une mesure, ... 
 
 > Couplé à un drone (tracteur, quadadcoptère, aile) et un système de navigation, cela donne un système de conduite sans assistance.
 

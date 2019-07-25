@@ -28,9 +28,9 @@
 
 > Ce sont exactement les mêmes composants (antenne de réception + puce de décodage + nano ordinateur + logiciels)
 
-> * Une base est un ensemble de composants captants les signaux des satellites de navigation (GPS + GLONASS + GALILEO + ...) et qui connait sa position très précisement par calcul. Elle calcule en temps réel la différence entre les signaux reçus par les satteleites et sa position calculée. Ce sont ces variables  de correction qui permettent de corriger un Rover. 
+> * Une base est un ensemble de composants captants les signaux des satellites de navigation (GPS + GLONASS + GALILEO + ...) et qui connait sa position très précisement par calcul. Elle calcule en temps réel la différence entre les signaux reçus par les sattelites et sa position calculée. Ce sont ces variables de correction qui permettent de corriger un Rover. 
 
-> * Un Rover est un ensemble de composants captants les signaux des satellites de navigation (GPS + GLONASS + GALILEO + ...) et qui ressoit une variable de correction d'une base. Cette ensemble permet d'avoir, par calcul, une précision géométrique de quelques centimètres en fonction des conditions.
+> * Un Rover est un ensemble de composants captants les signaux des satellites de navigation (GPS + GLONASS + GALILEO + ...) et qui ressoit une variable de correction d'une base (via 3-4g mobile ou radio). Cette ensemble permet d'avoir, par calcul, une précision géométrique de quelques centimètres en fonction des conditions.
 
  * ### Ca émet des ondes?
 

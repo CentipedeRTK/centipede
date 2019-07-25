@@ -26,7 +26,7 @@
 
 * ### C'est quoi une base et un rover?
 
-> Ce sont exactement les mêmes composants (antenne de récepetion + puce de decodage + nano ordinateur + logiciels)
+> Ce sont exactement les mêmes composants (antenne de réception + puce de décodage + nano ordinateur + logiciels)
 
 > * Une base est un ensemble de composants captants les signaux des satellites de navigation (GPS + GLONASS + GALILEO + ...) et qui connait sa position très précisement par calcul. Elle calcule en temps réel la différence entre les signaux reçus par les satteleites et sa position calculée. Ce sont ces variables  de correction qui permettent de corriger un Rover. 
 

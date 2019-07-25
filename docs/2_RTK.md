@@ -2,6 +2,6 @@
 
 ![sketch](image/index/1.jpg)
 
-[wikipedia](https://fr.wikipedia.org/wiki/Cin%C3%A9matique_temps_r%C3%A9el)
+[wikipedia](https://fr.wikipedia.org/wiki/Cin%C3%A9matique_temps_r%C3%A9el){:target="_blank"}
 
-[agriculturedeprecision](https://agriculturedeprecision.wordpress.com/rtk/)
+[agriculturedeprecision](https://agriculturedeprecision.wordpress.com/rtk/){:target="_blank"}

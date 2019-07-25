@@ -232,6 +232,6 @@ Modifier les valeurs suivantes (en se basant sur les paramètres enregistrés da
    - Indiquer le mot de passe: centipede
    - Choisir/Indiquer le nom du Mount point
    
-> Votre base est immédiatement opérationnelle mais n'apparaitra sur la [carte](https://https://centipede.fr/index.php/view/map/?repository=centipede&project=centipede){:target="_blank"} et bénificiera des options du service (mail d'alerte en cas de déconnection, visibilité de sa position et de son état) seulement après validation par l'administrateur.
+> Votre base est immédiatement opérationnelle mais n'apparaitra sur la [carte](https://centipede.fr/index.php/view/map/?repository=centipede&project=centipede){:target="_blank"} et bénificiera des options du service (mail d'alerte en cas de déconnection, visibilité de sa position et de son état) seulement après validation par l'administrateur.
 
 ------------------------------------------------------------

@@ -2,7 +2,7 @@
 
 Cette étape doit vous permettre de bien anticiper quel matériel acheter en fonction de la zone d'installation de l'antenne RTK et de vos possibilité de raccordement à un réseau internet pour diffuser les corrections produites
 
-## Matériel utilisé
+## 3.1 Matériel utilisé
 
 Voici la liste des éléments nécessaires à la mise en place d'une base RTK :
 
@@ -23,13 +23,13 @@ Un accès WIFI proche de la base est indispensable pour assurer la connexion du 
 
 > Exemple d'utilisation d'un RPI pour les réseaux wifi institutionnels ?
 
-## Choix de la zone d'implantation
+## 3.2 Choix de la zone d'implantation
 
 La zone d'implantation de l'antenne de réception ne nécessite pas une position dominante, mais doit proposer une visibilité maximum du ciel ; il est indispensable de ne pas avoir d'obstacles (bâtiments, arbres, murs ...) sous les 30 premiers degrés par rapport à la base de l'antenne.
 
 ![sky_view](image/montage/skyview-obstacles_1.png)
 
-## Installation de l'antenne de réception et du Reach M+
+## 3.3 Installation de l'antenne de réception et du Reach M+
 
 L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/){:target="_blank"} doit être placée sur un plan de masse en métal ([préconisation du constructeur](http://www.tallysman.com/wp-content/uploads/Embedded-Antennas-Reference-Guide.pdf){:target="_blank"}) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fabriqué en aluminium, inox ou cuivre. Il doit disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mât, toiture, borne béton...) et d'un deuxième trou pour faire passer le fil de l'antenne.
 > [Note pour plus tard](https://www.fig.net/resources/proceedings/fig_proceedings/fig2017/ppt/ts08c/TS08C_zhang_schwieger_8513_ppt.pdf){:target="_blank"}
@@ -48,7 +48,7 @@ En cas de montage extérieur, il est important de rajouter un dissipateur de cha
 
 [Installation d'un dissipateur thermique](https://jancelin.github.io/centipede/3_1_dissipateur){:target="_blank"}
 
-## Premières configurations
+## 3.4 Premières configurations
 
 Le Reach M+ est mis sous tension.
 

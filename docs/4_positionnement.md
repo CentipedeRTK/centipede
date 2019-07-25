@@ -6,6 +6,8 @@ Votre base va servir de référentiel pour vous mais aussi pour toute personne s
 
 ### Paramétrage de la position des satellites
 
+Paramétrer le recepteur en postionnnement static 
+
 ![reachview](image/montage/RTK_setting1.png)
 
 La valeur du *Update rate* conditionne le nombre de mesures par seconde. 

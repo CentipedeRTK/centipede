@@ -36,7 +36,7 @@
 
 > Non, nous recevons en permanence les ondes des satellites positionnés autour de la terre, nous ne faisons que les capter.
 
-> Oui et Non, Les données de correction de la base sont envoyés à un seveur par WIFI ou cable ethernet.
+> Oui et Non, Les données de correction de la base sont envoyés à un seveur par WIFI ou cable ethernet(via une "box internet personnelle" ou un réseau entreprise).
 
 > Oui, nous utilisons la technolie mobile ( 3-4G ) pour récupérer cette donnée sur le terrain. Nous consommons donc une emission.
 

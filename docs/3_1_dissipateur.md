@@ -25,6 +25,12 @@ Dans ce cas, il est important de rajouter un dispositif de dispersion de la chal
 ![dissip](image/dissipateur/5.jpg)
 
 
-## Exemple de montage avec dissipateur et ventilation (conditions extrèmes)
+## Exemples de montages avec dissipateurs et ventilations (conditions extrèmes)
 
 ![dissip](image/dissipateur/6.jpg)
+
+![dissip](image/dissipateur/8.jpg)
+
+![dissip](image/dissipateur/7.jpg)
+
+

@@ -1,4 +1,4 @@
-## Calcul de la position de la base
+## 3. Calcul de la position de la base
 
 ### Paramétrage de la position des satellites
 

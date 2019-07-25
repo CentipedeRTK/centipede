@@ -1,5 +1,9 @@
 ## 3. Calcul de la position de la base
 
+Il est necessaire maintenant de déterminer la position de la base le plus précisement possible.
+
+Votre base va servir de référentiel pour vous mais aussi pour toute personne se trouvant dans sa zone d'action. il est primordial que sa postion soit juste et très précise afin de pourvoir tous travailler sur un même référentiel géographique.
+
 ### Paramétrage de la position des satellites
 
 ![reachview](image/montage/RTK_setting1.png)

@@ -38,7 +38,11 @@
 
 > Oui et Non, Les données de correction de la base sont envoyés à un seveur par WIFI ou cable ethernet.
 
-> Oui et Non, nous utilisons la technolie mobile ( 3-4G ) pour récupérer cette donnée sur le terrain. Nous consommons donc une emission.
+> Oui, nous utilisons la technolie mobile ( 3-4G ) pour récupérer cette donnée sur le terrain. Nous consommons donc une emission.
+
+> Non, nous avons fait le choix d'utiliser cette technologie pour ne pas rajouter une nouvlle emission d'ondes via une fréquence particulière. Nous utilisons donc l'existant, avec ses avantages et ses inconvénients [zones blanches](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/observatoire-des-deploiements-mobiles-en-zones-peu-denses/les-deploiements-mobiles-dans-les-zones-peu-denses.html){:target="_blank"}
+
+
 
 
 

@@ -6,5 +6,6 @@
    hard_wrap: false
  future: true
  jailed: false
- theme: jekyll-theme-leap-day
+ #theme: jekyll-theme-leap-day
+ remote_theme: pmarsceill/just-the-docs
  gfm_quirks: paragraph_end

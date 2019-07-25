@@ -4,9 +4,9 @@
 
 ## 1 Sommaire 
 
-* [1. Projet Centipede](https://jancelin.github.io/centipede/1_projet.html)
+* [1. FAQ](https://jancelin.github.io/centipede/0_1_faq.html)
 
-* [2. RTK ? ](https://jancelin.github.io/centipede/2_RTK.html)
+* [2. RTK ? ]()
 
 * [3. Installation d’une Base RTK](https://jancelin.github.io/centipede/3_0_montage.html)
 

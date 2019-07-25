@@ -10,9 +10,10 @@ Les instituts de recherche comme l’Inra et le CNRS utilisent la géolocalisati
 
 Le projet Centipède vise à créer un réseau de bases RTK ouvertes et disponibles pour toute personne se trouvant dans la zone de couverture. Le réseau, ouvert, pourra également être complété et étendu. Le projet est développé et coordonné par la plateforme DISA (CNRS/INRA) en se basant sur l’implantation géographique des instituts de recherche de Charente-Maritime Nord pour offrir une couverture totale du territoire dans le triangle La Rochelle, Rochefort et Niort. Il est soutenu financièrement par la Région Nouvelle-Aquitaine et mutualise les moyens entre le Geves du Magneraud, le LIENSs (CNRS/Université de La Rochelle), l'INRA de Saint-Laurent-de-la-Prée et la Zone atelier Plaine & val de Sèvre. Cette technologie permettra entre autres à ces instituts et aux acteurs extérieurs, d’effectuer des relevés expérimentaux de haute précision géographique, d’accomplir des relevés photographiques grâce aux drones volants et d’automatiser la conduite haute précision des véhicules agricoles afin d’augmenter la précision, la qualité et la traçabilité des interventions.
 
-[https://centipede.fr](https://centipede.fr/index.php/view/map/?repository=centipede&project=centipede){:target="_blank"}
-
 <figure class="map">
   <iframe src="https://centipede.fr/index.php/view/map/?repository=centipede&project=centipede" allowfullscreen="true"> </iframe>
 </figure>
 
+[https://centipede.fr](https://centipede.fr/index.php/view/map/?repository=centipede&project=centipede){:target="_blank"}
+
+------------------------------------

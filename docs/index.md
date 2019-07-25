@@ -4,6 +4,9 @@
 
 ## Le Real Time Kinematic collaboratif, ouvert et Open Source  🛰️ 🛰️ 🛰️ 
 
+![logo](image/index/1.jpg)
+
+
 Les instituts de recherche comme l’Inra et le CNRS utilisent la géolocalisation pour référencer leurs données environnementales, mais la précision des systèmes de navigation par satellite, qui dépend des conditions atmosphériques, n’est que de quelques mètres. Des systèmes de correction différentiels peuvent pallier ce manque de précision : le cinématique temps réel (Real Time Kinematic) permet ainsi d’approcher la précision centimétrique. Mais ce système nécessite une base de référence à proximité du lieu de collecte, l’accessibilité de son signal, un matériel et une location du signal extrêmement coûteux. Depuis quelques années, des développeurs travaillent d’arrache-pied avec les logiciels Opensource et l’Open Harware pour créer des solutions peu coûteuses, légères, faciles d’utilisation et fiables.
 
 Le projet Centipède vise à créer un réseau de bases RTK ouvertes et disponibles pour toute personne se trouvant dans la zone de couverture. Le réseau, pourra également être complété et étendu par des particuliers, des privés ou partenaires publics.

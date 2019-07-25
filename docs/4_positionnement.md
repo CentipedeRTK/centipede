@@ -4,7 +4,7 @@ Il est necessaire maintenant de déterminer la position de la base le plus préc
 
 Votre base va servir de référentiel pour vous mais aussi pour toute personne se trouvant dans sa zone d'action. il est primordial que sa postion soit juste et très précise afin de pourvoir tous travailler sur un même référentiel géographique.
 
-### Paramétrage de la position des satellites
+### 4.1 Paramétrage de la position des satellites
 
 Paramétrer le recepteur en postionnnement static 
 
@@ -12,7 +12,7 @@ Paramétrer le recepteur en postionnnement static
 
 La valeur du *Update rate* conditionne le nombre de mesures par seconde. 
 
-### Récupération des données nécessaires
+### 4.2 Récupération des données nécessaires
 
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
 Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging, en activant l'option *Raw data* (position ON). Les options *Position* et *Base correction* ne doivent pas être activées pour l'instant.
@@ -23,10 +23,10 @@ L'enregistrement se fait pendant une période minimale de 12h00 consécutives. L
 
 Plusieurs méthodes de post-traitements existent, et ce sont les conditions locales (éloignement de l'antenne de référence, modèle de l'antenne,  visibilité de la constellation ...) qui aident à déterminer la méthode la plus pertinente.
 
-* Télécharger le fichier UBX (Raw_xxx_UBX.zip) en cliquant sur l'icône <img src="../docs/images/reach_view_download.png">
+* Télécharger le fichier UBX (Raw_xxx_UBX.zip) en cliquant sur l'icône.
 > Le téléchargement n'est possible qu'en stoppant préalablement les logs (*Raw Data* sur OFF).
 
-* Aller sur le <a href="http://rgp.ign.fr/DONNEES/diffusion">site IGN</a> et télécharger la trame correspondante à la période.
+* Aller sur le [site IGN](http://rgp.ign.fr/DONNEES/diffusion){:target="_blank"} et télécharger la trame correspondante à la période.
 
 * Sélectionner UT (Temps Universel)
 
@@ -36,7 +36,7 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Version Rinex : 2.11
 
-* Il faut ensuite sélectionner la base souhaitée sur la carte à l'aide de l'outil de sélection (<img src="../docs/images/ign_selection.png">) puis l'ajouter au panier.
+* Il faut ensuite sélectionner la base souhaitée sur la carte à l'aide de l'outil de sélection puis l'ajouter au panier.
 
 * Télécharger l'archive au format ZIP une fois celle-ci disponible.
 
@@ -44,13 +44,13 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Réunir les 2 fichiers (UBX + Rinex) dans un même répertoire.
 
-> Pour en savoir plus sur les formats UBX et Rinex : <a href="https://en.wikipedia.org/wiki/RINEX">wikipedia</a>
+> [Pour en savoir plus sur les formats UBX et Rinex](https://en.wikipedia.org/wiki/RINEX){:target="_blank"}
 
-### Calcul de la correction
+### 4.3 Calcul de la correction
 
-Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emlid.com/reachm-plus/common/tutorials/gps-post-processing/" target="new_">docs.emlid.com</a>.
+Télécharger la version d'RTKLIB fournie par EMLID : [docs.emlid.com](https://docs.emlid.com/reachm-plus/common/tutorials/gps-post-processing/){:target="_blank"}
 
-1 - __RTKCONV__
+#### 4.3.1 RTKCONV
 
 ```
 ./RTKCONV_Qt-x86_64.AppImage
@@ -62,12 +62,16 @@ Télécharger la version d'RTKLIB fournie par EMLID : <a href="https://docs.emli
 * Cliquer sur Convert
 * En sortie, nous récupérons 6 fichiers :
     - *.nav*, *.qnav*, *.lnav*, *.gnav*, *.hnav*, *.obs*
+    
+#### 4.3.2 RTKPOST
 
-2 - __RTKPOST__
+Deux méthodes sont proposées:
 
-Deux méthodes sont proposées, l'une avec les fichiers récupérés 24 h après la collecte des données (positionnement précis) et la deuxième ces fichiers plus les fichiers de l'IGS récupérés 20 jours après la collecte des données donc un positionnement très précis (Solution combinée finale GNSS pour la solution orbitale combinée du système d'information sur la dynamique de la croûte terrestre (CDDIS)). 
+La première avec les fichiers récupérés 24 h après la collecte des données (positionnement précis).
 
-2.1 - __Méthode à 24h__
+La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jours après la collecte des données donc un positionnement très précis (Solution combinée finale GNSS pour la solution orbitale combinée du système d'information sur la dynamique de la croûte terrestre (CDDIS)). 
+
+#### 4.3.2.1 Méthode à 24h
 
 ```
 ./RTKPOST_Qt-x86_64.AppImage
@@ -107,7 +111,7 @@ Deux méthodes sont proposées, l'une avec les fichiers récupérés 24 h après
  
 > Penser à sauvegarder tous ces paramétrages dans un fichier .conf (option Save)
 
-2.2 - __Méthode après 20 jours__
+#### 4.3.2.2 Méthode après 20 jours
 
 * Récupérer la date GPS de la collecte de données: http://navigationservices.agi.com/GNSSWeb/
 > par exemple le 5 février 2019 correspond au 2039:2
@@ -128,7 +132,7 @@ Deux méthodes sont proposées, l'une avec les fichiers récupérés 24 h après
 * Reprendre la procédure décrite précédemment (2.1 __Méthode à 24h__) au niveau de * Cliquer sur __options__
 
   
- 3 - __RTKPLOT__ 
+### 4.3.3 RTKPLOT
  
  ```
 ./RTKPLOT_Qt-x86_64.AppImage
@@ -138,7 +142,7 @@ Deux méthodes sont proposées, l'une avec les fichiers récupérés 24 h après
  
  Il est possible à ce stade-là de filtrer les données afin de ne conserver que les points pour lesquels la valeur de Q est égale à 1 (ie. mode FIX) et le ratio est maximal (ie. proche de 999).
  
- 4 - __QGIS__
+ ## 4.4 QGIS
  
  Le fichier résultat peut être exploité dans QGIS.
  
@@ -194,7 +198,7 @@ La position la plus précise de notre base est donnée par la valeur de la médi
 
 <p align="center"><img src="../docs/images/calc_base_qgis_5.png"></p>  
 
- 5 - __Insertion des coordonnées corrigées__
+## 4.5 Insertion des coordonnées corrigées
  
  Ces valeurs doivent être enregistrées dans la rubrique *Base mode* de l'interface du Reach.
  
@@ -204,7 +208,7 @@ La position la plus précise de notre base est donnée par la valeur de la médi
  
 > Dans nos conditions expérimentales, nous avons obtenu une précision inférieure à 1 centimètre. :+1:
 
-## Connexion de la base au caster
+## 4.6 Connexion de la base au caster
 
 Avant de pouvoir utiliser le réseau Centipède il est indispensable de faire une demande de connection au Caster (gratuit et sans obligations). les demandes sont à envoyer à contact@centipede.fr en précisiant:
 
@@ -225,60 +229,3 @@ Modifier les valeurs suivantes (en se basant sur les paramètres enregistrés da
    - Choisir le port 2101
    - Indiquer le mot de passe: centipede
    - Choisir/Indiquer le nom du Mount point
- 
-## Mise en oeuvre du rover
-
-> Il est conseillé de renommer chacun des reach dans la rubrique *Control panel* de l'interface (cliquer sur l'icône <img src="../docs/images/reach_control_panel.png">) puis *General settings* > *Edit*.
-
-La base fixe étant opérationnelle, il est possible de déployer un ou plusieurs reach mobiles ("rover") pour se déplacer en bénéficiant d'un positionnement centimétrique. Ceci est possible dans un rayon de 10 kilomètres autour de la base.
-
-Pour cela, le paramétrage du reach est semblable à celui de la base, en suivant les étapes décrites plus haut dans la rubrique *premières configurations*.
-
-Il n'est pas nécessaire de calibrer la position du rover ; celle-ci sera corrigée en temps réel en récupérant la trame fournie par la base, en éditant les paramètres de la rubrique *Input correction*
-
-<p align="center"><img src="../docs/images/reach_correction.png"></p>
-
-- Choisir l'option *NTRIP*
-- Indiquer l'URL du caster dans le champ *Address*: caster.centipede.fr
-- Choisir le port 2101
-- Sélectionner le format *RTCM3* pour la trame reçue
-- Indiquer le nom de la base RTK dans MountPoint 
-
-exemple du status
-
-<p align="center"><img src="../docs/images/fix.png"></p>
-
-Le rover est prêt à être utilisé : 
-
- - Dans la rubrique Logging, activer l'option *Position* (bouton sur ON).
- 
-<p align="center"><img src="../docs/images/reach_rover.png"></p>
-
- - Avant de commencer l'acquisition de données, il est préférable d'attendre d'obtenir un *Solution status* à FIX et un *AR ratio* > 999.
-
-Ci-dessous, exemple du rover construit pour être immergé :
-
-<p align="center"><img src="../docs/images/reach_bouee.jpg"></p>
-
-Un dissipateur de chaleur et un ventilateur ont été ajoutés :
-
-<p align="center"><img src="../docs/images/reach_champagne.jpg"></p>
-
-Le rover en mode *Survey* dans le lagon de Saint-Leu :
-
-<p align="center"><img src="../docs/images/reach_lagon.jpg"></p>
-
-Un exemple de relevés en mode fix :
-
-Localisation générale (Réserve marine de Saint-Leu) :
-
-<p align="center"><img src="../docs/images/survey_centipede1.png"></p>
-
-Zoom à l'échelle 1:26 :
-
-<p align="center"><img src="../docs/images/survey_centipede2.png"></p>
-
-Autre test sur une table de 50cm X 50cm
-
-<p align="center"><img src="../docs/images/dodo_rtk.jpg"></p>
-

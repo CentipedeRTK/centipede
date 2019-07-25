@@ -2,7 +2,7 @@
 
 * ### Ca sert à quoi?
 
-> à avoir notre position géographique à quelques centimètre.
+> à avoir votre position géographique à quelques centimètre.
 
 * ### Pour quoi faire?
 

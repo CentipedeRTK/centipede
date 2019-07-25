@@ -54,7 +54,7 @@
 
 > Le caster (serveur centralisant l'ensemble des Bases RTK Centipède) transmet une trame de correction en RTCM3, si votre matériel de géolocalisation est compatible avec ce format alors vous pouvez vous connecter librement aux Bases RTK Centipède.
 
-Librement?
+ * ### Librement?
 
 > Le réseau en réception est communautaire donc pas de login et de mot de passe
 

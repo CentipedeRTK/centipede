@@ -1,4 +1,4 @@
-# 1 Le Projet Centipède
+# Le Projet Centipède
 
 ## le RTK en réseau ouvert et collaboratif pour géolocaliser les données environnementales et autoguider les véhicules agricoles
 

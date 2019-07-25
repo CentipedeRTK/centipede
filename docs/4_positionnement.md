@@ -1,4 +1,4 @@
-## 4. Calcul de la position de la base
+## 4 Calcul de la position de la base
 
 Il est necessaire maintenant de déterminer la position de la base le plus précisement possible.
 

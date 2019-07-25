@@ -2,7 +2,7 @@
 
 Les Bases RTK peuvent souffrir de la chaleur si elles ne sont pas protégées en étant dans un bâtiment régulé thermiquement. Une solution est de leur offrir un dissipateur (actif ou passif) de chaleur afin de les réguler.
 
-## Exemple avec un matériel Emlid Reach +
+## 3.x.1 Emlid Reach +
 
 Il arrive régulièrement que l'Emlid Reach M+ chauffe ce qui entraîne sa déconnexion. Ce cas à été observé à la Réunion et sur la Rochelle, car les modules ne sont pas dans des bâtiments et exposés aux conditions climatiques extérieures.
 
@@ -23,7 +23,7 @@ En premier, récupérer un dissipateur de chaleur sur un ancien pc ou en acheter
 ![dissip](image/dissipateur/5.jpg)
 
 
-## Exemples de montages avec dissipateurs et ventilations (conditions extrèmes)
+## 3.x.2 Exemples de montages avec dissipateurs et ventilations (conditions extrèmes)
 
 ![dissip](image/dissipateur/6.jpg)
 

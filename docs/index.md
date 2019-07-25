@@ -1,4 +1,10 @@
-### Centipede
+### Home Centipede
+
+![logo](image/index/centipede_petit2.png)
+
+## Le Real Time Kinematic collaboratif, ouvert et Open Source  🛰️ 🛰️ 🛰️ 
+
+## Sommaire 
 
 * [1. Projet Centipede](https://jancelin.github.io/centipede/1_projet.html)
 

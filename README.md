@@ -8,7 +8,7 @@ https://centipede.fr
 
 http://caster.centipede.fr:2101
 
-[Documentation : https://docs.centipede.fr](https://docs.centipede.fr)
+Documentation [docs.centipede.fr](http://docs.centipede.fr)
 
 La demande de connexion de votre base RTK au caster centipede est à envoyer par mail à contact@centipede.fr
 ![RTK](/docs/images/1.jpg)

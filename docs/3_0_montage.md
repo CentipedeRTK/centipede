@@ -8,13 +8,16 @@ Voici la liste des éléments nécessaires à la mise en place d'une base RTK L1
 
 |Matériel|Prix HT|
 |--------|----|
-|[F9P](https://store.drotek.com/rtk-zed-f9p-gnss){:target="_blank"}|200€|
-|[D910 antenna](https://store.drotek.com/da-910-multiband-gnss-antenna){:target="_blank"}|100€|
-|[Raspberry Pi 3/4](https://www.kubii.fr/les-cartes-raspberry-pi/2119-raspberry-pi-3-modele-b-1-gb-kubii-713179640259.html){:target="_blank"}|44€|
-|[Micro SD 16Go](https://www.kubii.fr/carte-sd-et-stockage/2359-carte-microsd-16go-classe-10-u1-sandisk-kubii-619659161347.html){:target="_blank"}|11€|
-|[Alimentation](https://www.kubii.fr/les-officiels-raspberry-pi-kubii/2593-alimentation-officielle-raspberry-pi-3-eu-micro-usb-51v-25a-kubii-3272496297586.html?search_query=SC0136&results=51){:target="_blank"}|10€| 
-|[dissipateur de chaleur](https://www.kubii.fr/composants-raspberry-pi/1676-heat-sink-aluminium-pour-raspberry-pi-3-kubii-3272496005099.html){:target="_blank"}|1€|
-
+|[F9P](https://store.drotek.com/rtk-zed-f9p-gnss)|200€|
+|[D910 antenna](https://store.drotek.com/da-910-multiband-gnss-antenna)|100€|
+|[Raspberry Pi 3/4](https://www.kubii.fr/les-cartes-raspberry-pi/2119-raspberry-pi-3-modele-b-1-gb-kubii-713179640259.html)|44€|
+|[Micro SD 16Go](https://www.kubii.fr/carte-sd-et-stockage/2359-carte-microsd-16go-classe-10-u1-sandisk-kubii-619659161347.html)|11€|
+|[Alimentation](https://www.kubii.fr/les-officiels-raspberry-pi-kubii/2593-alimentation-officielle-raspberry-pi-3-eu-micro-usb-51v-25a-kubii-3272496297586.html?search_query=SC0136&results=51)|10€| 
+|[dissipateur de chaleur](https://www.kubii.fr/composants-raspberry-pi/1676-heat-sink-aluminium-pour-raspberry-pi-3-kubii-3272496005099.html)|1€|
+|[cable antenne sma mâle tnc mâle 3m](https://www.mhzshop.com/shop/Cables-et-cordons/Sur-mesure/50-ohms-WiFi-4G/Cordon-sur-mesure-en-coax-faible-perte-WLL-240-2-4-5-GHz-6-1mm.html)|19€|
+|[cable ethernet RJ45](https://www.mhzshop.com/shop/Cables-et-cordons/Cordons-reseau/)|6€|
+|[boite étanche je-200](https://www.mhzshop.com/shop/Accessoires-MHz/Boites-etanches/Boite-etanche-avec-fixation-mat-203x203x65mm-GentleBOX-JE-200.html)|16€|
+|TOTAL|407€|
 
 ## 3.2 Base RTK L1 (Emlid)
 
@@ -22,14 +25,14 @@ Voici la liste des éléments nécessaires à la mise en place d'une base RTK L1
 
 |Matériel|Prix HT|
 |--------|----|
-|[Emlid Reach M+](https://store.emlid.com/product/reachm-plus/){:target="_blank"}|240€|
-|[Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/){:target="_blank"}|54€|
-|[Câble d'extension d'antenne](https://store.emlid.com/product/reach-antenna-extension-cable-2m/){:target="_blank"}|11€|
-|[Feuille aluminium (plan de masse)](https://fr.rs-online.com/web/c/abrasifs-materiaux-techniques/tubes-feuilles-et-angles-en-aluminium/feuilles-en-aluminium/?searchTerm=aluminium&sort-by=P_breakPrice1&sort-order=asc&applied-dimensions=4294555449){:target="_blank"}|12€|
-|[Alimentation](https://fr.rs-online.com/web/p/adaptateurs-ac-dc/1770223/){:target="_blank"}|6€|
+|[Emlid Reach M+](https://store.emlid.com/product/reachm-plus/)|240€|
+|[Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/)|54€|
+|[Câble d'extension d'antenne](https://store.emlid.com/product/reach-antenna-extension-cable-2m/)|11€|
+|[Feuille aluminium (plan de masse)](https://fr.rs-online.com/web/c/abrasifs-materiaux-techniques/tubes-feuilles-et-angles-en-aluminium/feuilles-en-aluminium/?searchTerm=aluminium&sort-by=P_breakPrice1&sort-order=asc&applied-dimensions=4294555449)|12€|
+|[Alimentation](https://fr.rs-online.com/web/p/adaptateurs-ac-dc/1770223/)|6€|
 |En Option||
-|[Dissipateur chaleur](https://fr.rs-online.com/web/p/dissipateurs-de-chaleur/1263113/){:target="_blank"}|13€|
-|[Pâte thermique](https://fr.rs-online.com/web/p/graisse-thermique/0554311/){:target="_blank"}|7€|
+|[Dissipateur chaleur](https://fr.rs-online.com/web/p/dissipateurs-de-chaleur/1263113/)|13€|
+|[Pâte thermique](https://fr.rs-online.com/web/p/graisse-thermique/0554311/)|7€|
 
 > scratch 3M ?
 

@@ -2,7 +2,9 @@
 
 Cette étape doit vous permettre de bien anticiper quel matériel acheter en fonction de la zone d'installation de l'antenne RTK et de vos possibilité de raccordement à un réseau internet pour diffuser les corrections produites
 
-## 3.1 Base RTK L1-L2 DIY 
+## 3.1 Matériel
+
+### 3.1.1 Base RTK L1-L2 DIY 
 
 Voici la liste des éléments nécessaires à la mise en place d'une base RTK L1-L2:
 
@@ -19,7 +21,7 @@ Voici la liste des éléments nécessaires à la mise en place d'une base RTK L1
 |[boite étanche je-200](https://www.mhzshop.com/shop/Accessoires-MHz/Boites-etanches/Boite-etanche-avec-fixation-mat-203x203x65mm-GentleBOX-JE-200.html)|16€|
 |TOTAL|407€|
 
-## 3.2 Base RTK L1 (Emlid)
+## 3.1.2 Base RTK L1 (Emlid)
 
 Voici la liste des éléments nécessaires à la mise en place d'une base RTK L1:
 
@@ -48,14 +50,18 @@ La zone d'implantation de l'antenne de réception ne nécessite pas une position
 
 ## 3.3 Installation de l'antenne de réception et du Reach M+
 
-L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/){:target="_blank"} doit être placée sur un plan de masse en métal ([préconisation du constructeur](http://www.tallysman.com/wp-content/uploads/Embedded-Antennas-Reference-Guide.pdf){:target="_blank"}) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fabriqué en aluminium, inox ou cuivre. Il doit disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mât, toiture, borne béton...) et d'un deuxième trou pour faire passer le fil de l'antenne.
-> [Note pour plus tard](https://www.fig.net/resources/proceedings/fig_proceedings/fig2017/ppt/ts08c/TS08C_zhang_schwieger_8513_ppt.pdf){:target="_blank"}
+### 3.3.1 Installation de l'antenne de réception L1-L2
+
+### 3.3.2 Installation de l'antenne de réception L1
+
+L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un plan de masse en métal ([préconisation du constructeur](http://www.tallysman.com/wp-content/uploads/Embedded-Antennas-Reference-Guide.pdf)) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fabriqué en aluminium, inox ou cuivre. Il doit disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mât, toiture, borne béton...) et d'un deuxième trou pour faire passer le fil de l'antenne.
+> [Note pour plus tard](https://www.fig.net/resources/proceedings/fig_proceedings/fig2017/ppt/ts08c/TS08C_zhang_schwieger_8513_ppt.pdf)
 
 Coller ensuite l'antenne sur le plan de masse, rajouter le câble d'extension de 2 mètres si nécessaire (en fonction de la configuration de pose) et connecter le Reach M+.
 
 ![groundPlane](image/montage/ground_plane.jpg)
 
-Le Reach M+ doit être positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et dans une zone lui permettant de capter le signal wifi de votre box. Si vous n'avez pas de wifi disponible, vous pouvez utiliser un [cpl wifi](https://www.boulanger.com/ref/8002139?xtor=SEC-1294-GOO&xts=171153&origin=pla&kwd=&gclid=EAIaIQobChMI1tTns9TN4wIVkEPTCh1dzAA7EAYYAiABEgKVZvD_BwE&gclsrc=aw.ds){:target="_blank"} ou un [Raspberry Pi](https://github.com/jancelin/geo-poppy/wiki/2.-Installation){:target="_blank"}. Il est également possible de le connecter avec un avec un cable ethernet ([exemple de montage](https://jancelin.github.io/centipede/3_2_ethernet){:target="_blank"}) mais pas pour la phase de mise à jour (wifi uniquement).
+Le Reach M+ doit être positionné dans un endroit abrité du soleil direct et de la pluie, si possible en intérieur et dans une zone lui permettant de capter le signal wifi de votre box. Si vous n'avez pas de wifi disponible, vous pouvez utiliser un [cpl wifi](https://www.boulanger.com/ref/8002139?xtor=SEC-1294-GOO&xts=171153&origin=pla&kwd=&gclid=EAIaIQobChMI1tTns9TN4wIVkEPTCh1dzAA7EAYYAiABEgKVZvD_BwE&gclsrc=aw.ds) ou un [Raspberry Pi](https://github.com/jancelin/geo-poppy/wiki/2.-Installation). Il est également possible de le connecter avec un avec un cable ethernet ([exemple de montage](https://jancelin.github.io/centipede/3_2_ethernet)) mais pas pour la phase de mise à jour (wifi uniquement).
 
 Voici plusieurs exemples de montage de bases RTK :
 
@@ -63,7 +69,7 @@ Voici plusieurs exemples de montage de bases RTK :
 
 En cas de montage extérieur, il est important de rajouter un dissipateur de chaleur sur le module RTK. La procédure de montage est disponible ici:
 
-[Installation d'un dissipateur thermique](https://jancelin.github.io/centipede/3_1_dissipateur){:target="_blank"}
+[Installation d'un dissipateur thermique](https://jancelin.github.io/centipede/3_1_dissipateur)
 
 ## 3.4 Premières configurations
 
@@ -87,5 +93,5 @@ Le Reach M+ est mis sous tension.
 
 ![reachview](image/montage/reachview1.png)
 
-> Note : il est également possible de faire ces manipulations via l'application [ReachView](https://play.google.com/store/apps/details?id=com.reachview&hl=fr){:target="_blank"} (disponible sur Android et iOS) sur une tablette ou un smartphone.
+> Note : il est également possible de faire ces manipulations via l'application [ReachView](https://play.google.com/store/apps/details?id=com.reachview&hl=fr) (disponible sur Android et iOS) sur une tablette ou un smartphone.
 

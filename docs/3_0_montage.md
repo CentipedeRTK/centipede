@@ -1,10 +1,24 @@
-# 3 Installation d'une Base RTK
+# 3 Installation d'une Base RTK 
 
 Cette étape doit vous permettre de bien anticiper quel matériel acheter en fonction de la zone d'installation de l'antenne RTK et de vos possibilité de raccordement à un réseau internet pour diffuser les corrections produites
 
-## 3.1 Matériel utilisé
+## 3.1 Base RTK L1-L2 DIY 
 
-Voici la liste des éléments nécessaires à la mise en place d'une base RTK :
+Voici la liste des éléments nécessaires à la mise en place d'une base RTK L1-L2:
+
+|Matériel|Prix HT|
+|--------|----|
+|[F9P](https://store.drotek.com/rtk-zed-f9p-gnss){:target="_blank"}|200€|
+|[D910 antenna](https://store.drotek.com/da-910-multiband-gnss-antenna){:target="_blank"}|100€|
+|[Raspberry Pi 3/4](https://www.kubii.fr/les-cartes-raspberry-pi/2119-raspberry-pi-3-modele-b-1-gb-kubii-713179640259.html){:target="_blank"}|44€|
+|[Micro SD 16Go](https://www.kubii.fr/carte-sd-et-stockage/2359-carte-microsd-16go-classe-10-u1-sandisk-kubii-619659161347.html){:target="_blank"}|11€|
+|[Alimentation](https://www.kubii.fr/les-officiels-raspberry-pi-kubii/2593-alimentation-officielle-raspberry-pi-3-eu-micro-usb-51v-25a-kubii-3272496297586.html?search_query=SC0136&results=51){:target="_blank"}|10€| 
+|[dissipateur de chaleur](https://www.kubii.fr/composants-raspberry-pi/1676-heat-sink-aluminium-pour-raspberry-pi-3-kubii-3272496005099.html){:target="_blank"}|1€|
+
+
+## 3.2 Base RTK L1 (Emlid)
+
+Voici la liste des éléments nécessaires à la mise en place d'une base RTK L1:
 
 |Matériel|Prix HT|
 |--------|----|

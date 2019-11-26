@@ -26,9 +26,15 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 * Télécharger le fichier UBX (Raw_xxx_UBX.zip) en cliquant sur l'icône.
 > Le téléchargement n'est possible qu'en stoppant préalablement les logs (*Raw Data* sur OFF).
 
-* Aller sur le [site IGN](http://rgp.ign.fr/DONNEES/diffusion){:target="_blank"} et télécharger la trame correspondante à la période.
+### 4.3 Récupérer les données du RGP
 
-* Sélectionner UT (Temps Universel)
+* Aller sur le [site IGN](http://rgp.ign.fr/DONNEES/diffusion){:target="_blank"}
+
+* Zoomer large sur votre zone (50km)
+
+* Sélectionner TU (Temps Universel)
+
+* Changer la date de début et de fin en fonction du nom de votre fichier téléchargé précédement, et changer l'heure ```0 à 24h```
 
 * Sélectionner GLONASS en plus de GPS (+ GALILEO si la base concernée le propose). Si un système sélectionné (ex : GALILEO) n'est pas disponible sur la base concernée, celle-ci disparait de l'interface cartographique et n'est donc plus sélectionnable. Dans ce cas, décocher le système de positionnement.
 

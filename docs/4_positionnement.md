@@ -206,7 +206,7 @@ On retrouve ici les points affichés dans RTKPLOT suite à l'application des mê
 
 ## 4.5 Insertion des coordonnées corrigées
  
-### 4.5.1 F9P
+### 4.5.1 F9P + Raspberry Pi
 
 Insérer la valeur dans settings.conf puis ```F2 > Stop Rtcm3``` & ```F2 > Start Rtcm3``` 
 
@@ -229,6 +229,13 @@ Avant de pouvoir utiliser le réseau Centipède il est indispensable de faire un
    - Adresse mail
    - Type de matériel utilisé pour la base RTK
    - Proposition de nom de Mout Point ( entre 3 et 5 caractères)
+   
+   
+### 4.6.1 F9P + Raspberry Pi
+
+Rien à faire de plus
+
+### 4.6.1 Emlid
 
 Pour connecter la base au caster, se rendre dans la rubrique *Base mode* de l'interface du reach :
 

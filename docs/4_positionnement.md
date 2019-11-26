@@ -161,9 +161,9 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
  
 ## 4.4 QGIS
  
- Le fichier résultat peut être exploité dans QGIS.
+ Le fichier résultat peut être exploité dans QGIS3.
  
- > Plus d'informations sur l'installation de ce logiciel sur cette [page](https://doc.ubuntu-fr.org/qgis){:target="_blank"}
+ > Plus d'informations sur l'installation de ce logiciel sur cette [page](https://qgis.org/fr/site/){:target="_blank"}
  
    - Cliquer sur *couche* > *Ajouter une couche* > *Ajouter une couche de texte délimité*
    - Choisir le fichier .pos puis cliquer sur *Ouvrir*

@@ -101,7 +101,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
 * Cliquer sur __options__
   - __Setting1__
        - *Positionning Mode* : Static 
-       - *Fréquencies* : L1 + Forward (valeur par défaut) 
+       - *Fréquencies* : L1 + L2 
        - *Elevation mask* : valeur configurée pour le reach (15° par défaut) 
        - *Ionosphere correction* : Broadcast  
             > Correction de l'effet de l'ionosphère. Il est conseillé d'utiliser le mode Broadcast (modèle utilisé en temps réel et disponible dans le fichier de navigation) ou Dual-Frequancy (si des mesures ou plusieurs fréquences sont disponibles).
@@ -109,6 +109,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
        - *Troposphere correction* : Saastamoinen 
             > Correction de l'effet de la troposphère. Il est conseillé d'utiliser le mode Saastamoinen en positionnement utilisant des mesures de code ou en positionnement relatif avec de courtes lignes de base et de faibles dénivelés ; dans le cas contraire, on peut utiliser les modes Estimate ZTD ou Estimate ZTD+Grad (estimation de paramètres troposphériques).
             > Source : IGN cf. http://cours-fad-public.ensg.eu/mod/imscp/view.php?id=450 (Analyse GNSS sous RTKLIB, Fenêtre options)
+       - Cocher Galileo si votre fichier RGP en contient.
        - Pour les autres options, laisser les valeurs par défaut 
   - __Setting2__
        - *Integer Ambiguity Res* : Fix and Hold
@@ -151,12 +152,12 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
 ### 4.3.3 RTKPLOT
  
  ```
-./RTKPLOT_Qt-x86_64.AppImage
+./rtkplot.exe
 ```
  
  Pour cartographier le nuage de points obtenu précédemment (fichier avec extension pos).
  
- Il est possible à ce stade-là de filtrer les données afin de ne conserver que les points pour lesquels la valeur de Q est égale à 1 (ie. mode FIX) et le ratio est maximal (ie. proche de 999).
+ Il est possible à ce stade-là de filtrer les données afin de ne conserver que les points pour lesquels la valeur de Q est égale à 1 (ie. mode FIX).
  
 ## 4.4 QGIS
  
@@ -169,55 +170,48 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
         
 ![qgis](image/positionnement/calc_base_qgis_1.png)   
 
-   - Dans *Format de fichier*, sélectionner le délimiteur *Espace*
-   - Fixer la valeur du *Nombre de lignes à ignorer* à 12
-   - Cocher l'option "Entêtes en 1ere ligne"
-   - Renseigner le *champ X* : longitude
-   - Renseigner le *champ Y* : latitude
-   - Cliquer sur *OK* (une nouvelle fenêtre s'ouvre)
-   - Sélectionner le SRC 4326 (WGS 84) en utilisant le filtre
+   - Dans *Format de fichier*, sélectionner le délimiteur personalisés *Espace*
+   - Fixer la valeur du *Nombre de lignes à ignorer* à 26
+   - Cocher "Ignorer les champs vides"
+   - Cocher l'option "Entêtes en 1ere ligne", "Déteceter les types de champs" et "Ignorer les champs vides"
+   - Définition de la géométrie: cocher "Point"
+   - Sélectionner le SRC 4326 (WGS 84)
    - Cliquer sur *OK*
    
 ![qgis](image/positionnement/calc_base_qgis_2.png)
 
    - Faire un clic droit sur la couche puis *Filtrer...*
    - Ajouter le filtre suivant :
-   
- ```
- "Q" = 1 AND
- "ratio" >= 999 AND
- "sdun(m)" = 0 -- AND
- -- "sdeu(m)" = 0 AND
- -- "sdne(m)" = 0 AND
- -- "sdu(m)" = 0  AND 
- -- "sde(m)" = 0  AND 
- -- "sdn(m)" = 0
+
+```
+ "Q"=1 AND
+"ratio" >= 50 AND
+"sdeu(m)" = 0 AND
+"sdne(m)" = 0
 
   ```
-  
    - Cliquer sur *OK*
    
-On retrouve ici les points affichés dans RTKPLOT suite à l'application des mêmes filtres (mode FIX et AR Ratio > 999).
+On retrouve ici les points affichés dans RTKPLOT suite à l'application des mêmes filtres (mode FIX).
    
 ![qgis](image/positionnement/calc_base_qgis_3.png)
 
    - Cliquer sur *vecteur* > *Outils d'analyse* > *Statistiques basiques pour les champs*
         - *Couche vectorielle en entrée* : choisir le fichier pos
         - *Champ pour le calcul des statistiques* : latitude
-        - *Statistiques* > *Enregistrer vers un fichier* et créer un fichier latitude.html (par exemple)
-        - Cliquer sur *Run*
+        - Cliquer sur *Executer*
+        - Récupérer la valeur 'MEDIAN' ex: 46.164793681
    - Répéter l'opération avec les champs longitude et hauteur.
-   
-![qgis](image/positionnement/calc_base_qgis_4.png)
-
-Nous obtenons ainsi trois fichiers contenant les statistiques basiques sur les trois paramètres de localisation : longitude.html, latitude.html et height.html.
-
-La position la plus précise de notre base est donnée par la valeur de la médiane de chaque dimension.
-
-![qgis](image/positionnement/calc_base_qgis_5.png)
+   - Voici un exemple de coordonnées récupérés 46.164793681 -0.948418958 63.0686, ceci est la postion précise de votre base RTK
 
 ## 4.5 Insertion des coordonnées corrigées
  
+### 4.5.1 F9P
+
+Insérer la valeur dans settings.conf puis ```F2 > Stop Rtcm3``` & ```F2 > Start Rtcm3``` 
+
+### 4.5.2 Emlid
+
  Ces valeurs doivent être enregistrées dans la rubrique *Base mode* de l'interface du Reach.
  
    Dans l'onglet *Base coordinates* (LLH), mettre le *Coordinates input mode* sur Manual puis enregistrer les valeurs de longitude, latitude et hauteur.

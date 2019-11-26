@@ -62,9 +62,19 @@ Télécharger la version d'RTKLIB fournie par EMLID (RTKLib for Reach RS2): [doc
 ./rtkconv.exe
 ```
 
+* Renseigner la date start et end (la même)
+* Renseigner l'heure : start 00:01:00 et end 23:59:00
+* Interval = 5s
+* Unit= 24 h
 * Charger le fichier UBX
 * Sélectionner le format u-blox
-* Cliquer sur options puis changer la version Rinex (2.11 : celle de la base RGP)
+* Cliquer sur options 
+    * changer la version Rinex (2.11 : celle de la base RGP)
+    * cocher ```Scan Obs Types``` ```Half Cyc Corr``` ```Iono Corr``` ```Time Corr``` ```Leap sec```
+    * Satellite systems: ```GPS``` ```GLO``` ```GAL```
+    * Observation types: ``` C L D S ```
+    * Frequencies: ```L1``` ```L2```
+    * Time Torelance (s): ```0```
 * Cliquer sur Convert
 * En sortie, nous récupérons 6 fichiers :
     - *.nav*, *.qnav*, *.lnav*, *.gnav*, *.hnav*, *.obs*

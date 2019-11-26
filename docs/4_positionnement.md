@@ -194,7 +194,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
   ```
    - Cliquer sur *OK*
    
-On retrouve ici les points affichés dans RTKPLOT suite à l'application des mêmes filtres (mode FIX).
+On retrouve ici les points affichés dans RTKPLOT suite à l'application des mêmes filtres (mode FIX). Les points, même nombreux, ne devraient pas être éloignés les uns des autres de plus de quelques mm à 1-2cm.
    
 ![qgis](image/positionnement/calc_base_qgis_3.png)
 

@@ -210,6 +210,8 @@ On retrouve ici les points affichés dans RTKPLOT suite à l'application des mê
 
 Insérer la valeur dans settings.conf puis ```F2 > Stop Rtcm3``` & ```F2 > Start Rtcm3``` 
 
+https://github.com/jancelin/rtkbase/wiki/3.-Param%C3%A9trage#param%C3%A9trage
+
 ### 4.5.2 Emlid
 
  Ces valeurs doivent être enregistrées dans la rubrique *Base mode* de l'interface du Reach.

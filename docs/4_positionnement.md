@@ -52,14 +52,14 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 > [Pour en savoir plus sur les formats UBX et Rinex](https://en.wikipedia.org/wiki/RINEX){:target="_blank"}
 
-### 4.3 Calcul de la correction
+### 4.4 Calcul de la correction
 
-Télécharger la version d'RTKLIB fournie par EMLID : [docs.emlid.com](https://docs.emlid.com/reachm-plus/common/tutorials/gps-post-processing/){:target="_blank"}
+Télécharger la version d'RTKLIB fournie par EMLID (RTKLib for Reach RS2): [docs.emlid.com](https://docs.emlid.com/reachm-plus/common/tutorials/gps-post-processing/){:target="_blank"}
 
-#### 4.3.1 RTKCONV
+#### 4.4.1 RTKCONV
 
 ```
-./RTKCONV_Qt-x86_64.AppImage
+./rtkconv.exe
 ```
 
 * Charger le fichier UBX
@@ -80,7 +80,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
 #### 4.3.2.1 Méthode à 24h
 
 ```
-./RTKPOST_Qt-x86_64.AppImage
+./rtkpost.exe
 ```
 
 * Charger le fichier *.obs* de la base à corriger (Rover)

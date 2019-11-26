@@ -4,9 +4,11 @@ Cette étape doit vous permettre de bien anticiper quel matériel acheter en fon
 
 ## 3.1 Matériel
 
-### 3.1.1 Base RTK L1-L2 DIY 
+### 3.1.1 Base RTK L1-L2 (F9P + Raspberry Pi)
 
 Voici la liste des éléments nécessaires à la mise en place d'une base RTK L1-L2:
+
+**Toute la procédure de montage et de paramétrage est [ICI](https://github.com/jancelin/rtkbase/wiki)**
 
 |Matériel|Prix HT|
 |--------|----|
@@ -52,7 +54,7 @@ La zone d'implantation de l'antenne de réception ne nécessite pas une position
 
 ### 3.3.1 Installation de l'antenne de réception L1-L2
 
-### 3.3.2 Installation de l'antenne de réception L1
+### 3.3.2 Installation de l'antenne de réception L1 EMLID
 
 L'antenne [Tallysman multi-GNSS antenna](https://store.emlid.com/product/tallysman-multi-gnss-antenna/) doit être placée sur un plan de masse en métal ([préconisation du constructeur](http://www.tallysman.com/wp-content/uploads/Embedded-Antennas-Reference-Guide.pdf)) de 10 cm afin d'améliorer la réception des données satellitaires. Il peut être fabriqué en aluminium, inox ou cuivre. Il doit disposer d'un trou central pour le fixer avec un boulon tête fraisée sur un support (mât, toiture, borne béton...) et d'un deuxième trou pour faire passer le fil de l'antenne.
 > [Note pour plus tard](https://www.fig.net/resources/proceedings/fig_proceedings/fig2017/ppt/ts08c/TS08C_zhang_schwieger_8513_ppt.pdf)

@@ -4,7 +4,9 @@ Il est necessaire maintenant de déterminer la position de la base le plus préc
 
 Votre base va servir de référentiel pour vous mais aussi pour toute personne se trouvant dans sa zone d'action. il est primordial que sa postion soit juste et très précise afin de pourvoir tous travailler sur un même référentiel géographique.
 
-### 4.1 Paramétrage de la position des satellites
+**Pour les utilisateurs de bases RTK F9P + Raspberry Pi**: [Télécharger](https://github.com/jancelin/rtkbase/wiki/3.-Param%C3%A9trage#param%C3%A9trage) le UBX.zip de votre choix sur votre Base (http://centipede.local:8000), décompresser le et rendez-vous à [cette étape](https://jancelin.github.io/centipede/4_positionnement.html#43-r%C3%A9cup%C3%A9rer-les-donn%C3%A9es-du-rgp)
+
+### 4.1 Paramétrage de la position des satellites (matériel Emlid)
 
 Paramétrer le recepteur en postionnnement static 
 
@@ -12,7 +14,7 @@ Paramétrer le recepteur en postionnnement static
 
 La valeur du *Update rate* conditionne le nombre de mesures par seconde. 
 
-### 4.2 Récupération des données nécessaires
+### 4.2 Récupération des données nécessaires (matériel Emlid)
 
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
 Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging, en activant l'option *Raw data* (position ON). Les options *Position* et *Base correction* ne doivent pas être activées pour l'instant.

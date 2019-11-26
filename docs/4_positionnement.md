@@ -235,7 +235,7 @@ Avant de pouvoir utiliser le réseau Centipède il est indispensable de faire un
 
 Rien à faire de plus
 
-### 4.6.1 Emlid
+### 4.6.2 Emlid
 
 Pour connecter la base au caster, se rendre dans la rubrique *Base mode* de l'interface du reach :
 

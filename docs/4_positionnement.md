@@ -1,8 +1,8 @@
 ## 4 Calcul de la position de la base
 
-Il est necessaire maintenant de déterminer la position de la base le plus précisement possible.
+Il est nécessaire maintenant de déterminer la position de la base le plus précisement possible.
 
-Votre base va servir de référentiel pour vous mais aussi pour toute personne se trouvant dans sa zone d'action. il est primordial que sa postion soit juste et très précise afin de pourvoir tous travailler sur un même référentiel géographique.
+Votre base va servir de référentiel pour vous mais aussi pour toute personne se trouvant dans sa zone d'action. Il est primordial que sa postion soit juste et très précise afin de pourvoir tous travailler sur un même référentiel géographique.
 
 **Pour les utilisateurs de bases RTK F9P + Raspberry Pi**: [Télécharger](https://github.com/jancelin/rtkbase/wiki/3.-Param%C3%A9trage#param%C3%A9trage) le UBX.zip de votre choix sur votre Base (http://centipede.local:8000), décompresser le et rendez-vous à [cette étape](https://jancelin.github.io/centipede/4_positionnement.html#43-r%C3%A9cup%C3%A9rer-les-donn%C3%A9es-du-rgp)
 
@@ -32,9 +32,14 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Aller sur le [site IGN](http://rgp.ign.fr/DONNEES/diffusion)
 
+![ign](images/IGN_RGP.jpg)
+
 * Zoomer large sur votre zone (50km)
 
 * Sélectionner TU (Temps Universel)
+
+![ign](images/ign_rgp_tu.png)
+
 
 * Changer la date de début et de fin en fonction du nom de votre fichier téléchargé précédement, et changer l'heure ```0 à 24h```
 
@@ -43,6 +48,8 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 * Échantillonnage : 5 sec.
 
 * Version Rinex : 2.11
+
+![ign](images/ign_rgp_types.png)
 
 * Il faut ensuite sélectionner la base souhaitée sur la carte à l'aide de l'outil de sélection puis l'ajouter au panier.
 

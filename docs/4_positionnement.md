@@ -30,7 +30,7 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 ### 4.3 Récupérer les données du RGP
 
-* Aller sur le [site IGN](http://rgp.ign.fr/DONNEES/diffusion){:target="_blank"}
+* Aller sur le [site IGN](http://rgp.ign.fr/DONNEES/diffusion)
 
 * Zoomer large sur votre zone (50km)
 
@@ -52,11 +52,12 @@ Plusieurs méthodes de post-traitements existent, et ce sont les conditions loca
 
 * Réunir les 2 fichiers (UBX + Rinex) dans un même répertoire.
 
-> [Pour en savoir plus sur les formats UBX et Rinex](https://en.wikipedia.org/wiki/RINEX){:target="_blank"}
+> [Pour en savoir plus sur les formats UBX et Rinex](https://en.wikipedia.org/wiki/RINEX)
 
 ### 4.4 Calcul de la correction
 
-Télécharger la version d'RTKLIB fournie par EMLID (RTKLib for Reach RS2): [docs.emlid.com](https://docs.emlid.com/reachm-plus/common/tutorials/gps-post-processing/){:target="_blank"}
+Télécharger la version d'RTKLIB fournie par EMLID (RTKLib for Reach RS2): [docs.emlid.com](https://docs.emlid.com/reachm-plus/common/tutorials/gps-post-processing/)
+
 
 #### 4.4.1 RTKCONV
 
@@ -165,7 +166,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
  
  Le fichier résultat peut être exploité dans QGIS3.
  
- > Plus d'informations sur l'installation de ce logiciel sur cette [page](https://qgis.org/fr/site/){:target="_blank"}
+ > Plus d'informations sur l'installation de ce logiciel sur cette [page](https://qgis.org/fr/site/)
  
    - Cliquer sur *couche* > *Ajouter une couche* > *Ajouter une couche de texte délimité*
    - Choisir le fichier .pos puis cliquer sur *Ouvrir*
@@ -253,6 +254,6 @@ Modifier les valeurs suivantes (en se basant sur les paramètres enregistrés da
    - Indiquer le mot de passe: centipede
    - Choisir/Indiquer le nom du Mount point
    
-> Votre base est immédiatement opérationnelle mais n'apparaitra sur la [carte](https://centipede.fr/index.php/view/map/?repository=centipede&project=centipede){:target="_blank"} et bénificiera des options du service (mail d'alerte en cas de déconnection, visibilité de sa position et de son état) seulement après validation par l'administrateur.
+> Votre base est immédiatement opérationnelle mais n'apparaitra sur la [carte](https://centipede.fr/index.php/view/map/?repository=centipede&project=centipede) et bénificiera des options du service (mail d'alerte en cas de déconnection, visibilité de sa position et de son état) seulement après validation par l'administrateur.
 
 ------------------------------------------------------------

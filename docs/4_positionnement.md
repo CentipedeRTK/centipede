@@ -81,6 +81,8 @@ Télécharger la version d'RTKLIB fournie par EMLID (RTKLib for Reach RS2): [doc
 * En sortie, nous récupérons 6 fichiers :
     - *.nav*, *.qnav*, *.lnav*, *.gnav*, *.hnav*, *.obs*
     
+> http://ahgeodev.fr/tfo_plates_i14_sdk.htm : IRTF vers RGF93, pour convertir **```APPROX POSITION XYZ ```** de l'entête RINEX afin d'avoir la position aproximative en RGF93
+    
 #### 4.3.2 RTKPOST
 
 Deux méthodes sont proposées:

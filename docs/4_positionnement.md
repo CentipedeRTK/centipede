@@ -2,7 +2,7 @@
 
 Il est necessaire maintenant de déterminer la position de la base le plus précisement possible.
 
-Votre base va servir de référentiel pour vous mais aussi pour toute personne se trouvant dans sa zone d'action. il est primordial que sa postion soit juste et très précise afin de pourvoir tous travailler sur un même référentiel géographique.
+Votre base va servir de référentiel pour vous-même mais aussi pour toute personne se trouvant dans sa zone d'action. il est primordial que sa position soit la plus juste et la plus précise possible afin de fournir un même référentiel géographique  fiable à l'ensemble des utilisateurs.
 
 **Pour les utilisateurs de bases RTK F9P + Raspberry Pi**: [Télécharger](https://github.com/jancelin/rtkbase/wiki/3.-Param%C3%A9trage#param%C3%A9trage) le UBX.zip de votre choix sur votre Base (http://centipede.local:8000), décompresser le et rendez-vous à [cette étape](https://jancelin.github.io/centipede/4_positionnement.html#43-r%C3%A9cup%C3%A9rer-les-donn%C3%A9es-du-rgp)
 

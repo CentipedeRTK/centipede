@@ -97,7 +97,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
 ./rtkpost.exe
 ```
 
-* Charger le fichier *.obs* de la base à corriger (Rover)
+* Charger le fichier *.19o* de la base à corriger (Rover)
 * Charger le fichier *.19o* de la base de référence (Base Station)
 * Charger les fichiers *.nav*, *.hnav*, *.gnav*, *.lnav* de la base à corriger
 * Le fichier résultat aura une extension *.pos*

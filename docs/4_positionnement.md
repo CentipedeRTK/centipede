@@ -83,7 +83,7 @@ Télécharger la version d'RTKLIB fournie par EMLID (RTKLib for Reach RS2): [doc
     
 > http://ahgeodev.fr/tfo_plates_i14_sdk.htm : IRTF vers RGF93, pour convertir **```APPROX POSITION XYZ ```** de l'entête RINEX afin d'avoir la position aproximative en RGF93
     
-#### 4.3.2 RTKPOST
+#### 4.4.2 RTKPOST
 
 Deux méthodes sont proposées:
 
@@ -91,7 +91,7 @@ La première avec les fichiers récupérés 24 h après la collecte des données
 
 La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jours après la collecte des données donc un positionnement très précis (Solution combinée finale GNSS pour la solution orbitale combinée du système d'information sur la dynamique de la croûte terrestre (CDDIS)). 
 
-#### 4.3.2.1 Méthode à 24h
+#### 4.4.2.1 Méthode à 24h
 
 ```
 ./rtkpost.exe
@@ -132,7 +132,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
  
 > Penser à sauvegarder tous ces paramétrages dans un fichier .conf (option Save)
 
-#### 4.3.2.2 Méthode après 20 jours
+#### 4.4.2.2 Méthode après 20 jours
 
 * Récupérer la date GPS de la collecte de données: http://navigationservices.agi.com/GNSSWeb/
 > par exemple le 5 février 2019 correspond au 2039:2
@@ -153,7 +153,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
 * Reprendre la procédure décrite précédemment (2.1 __Méthode à 24h__) au niveau de * Cliquer sur __options__
 
   
-### 4.3.3 RTKPLOT
+### 4.4.3 RTKPLOT
  
  ```
 ./rtkplot.exe
@@ -163,7 +163,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
  
  Il est possible à ce stade-là de filtrer les données afin de ne conserver que les points pour lesquels la valeur de Q est égale à 1 (ie. mode FIX).
  
-## 4.4 QGIS
+## 4.5 QGIS
  
  Le fichier résultat peut être exploité dans QGIS3.
  
@@ -208,15 +208,15 @@ On retrouve ici les points affichés dans RTKPLOT suite à l'application des mê
    - Répéter l'opération avec les champs longitude et hauteur.
    - Voici un exemple de coordonnées récupérés 46.164793681 -0.948418958 63.0686, ceci est la postion précise de votre base RTK
 
-## 4.5 Insertion des coordonnées corrigées
+## 4.6 Insertion des coordonnées corrigées
  
-### 4.5.1 F9P + Raspberry Pi
+### 4.6.1 F9P + Raspberry Pi
 
 Insérer la valeur dans settings.conf puis ```F2 > Stop Rtcm3``` & ```F2 > Start Rtcm3``` 
 
 https://github.com/jancelin/rtkbase/wiki/3.-Param%C3%A9trage#param%C3%A9trage
 
-### 4.5.2 Emlid
+### 4.6.2 Emlid
 
  Ces valeurs doivent être enregistrées dans la rubrique *Base mode* de l'interface du Reach.
  
@@ -226,7 +226,7 @@ https://github.com/jancelin/rtkbase/wiki/3.-Param%C3%A9trage#param%C3%A9trage
  
 > Dans nos conditions expérimentales, nous avons obtenu une précision inférieure à 1 centimètre. :+1:
 
-## 4.6 Connexion de la base au caster
+## 4.7 Connexion de la base au caster
 
 Avant de pouvoir utiliser le réseau Centipède il est indispensable de faire une demande de connection au Caster (gratuit et sans obligations). les demandes sont à envoyer à contact@centipede.fr en précisiant:
 
@@ -237,11 +237,11 @@ Avant de pouvoir utiliser le réseau Centipède il est indispensable de faire un
    - Proposition de nom de Mout Point ( entre 3 et 5 caractères)
    
    
-### 4.6.1 F9P + Raspberry Pi
+### 4.7.1 F9P + Raspberry Pi
 
 Rien à faire de plus
 
-### 4.6.2 Emlid
+### 4.7.2 Emlid
 
 Pour connecter la base au caster, se rendre dans la rubrique *Base mode* de l'interface du reach :
 

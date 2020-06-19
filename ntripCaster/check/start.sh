@@ -39,7 +39,11 @@ do
     NAVSYS="$GLO""$GAL""$BDS""$QZS""$SBS""$GPS" #display nav system
     NETW=EUREF
     COUNTRY=FRA
-    ECEF=$(jq -r 'select(.type == 1006) | [.x,.y,.z] | @sh' < RTCM3) #get Lat long alt (ECEF)
+    ECEFT=$(jq -r 'select(.type == 1006) | [.x,.y,.z] | @sh' < RTCM3) #test if 1006 exist
+    ECEF=$(if [ -z "$ECFT" ]
+		then jq -r 'select(.type == 1005) | [.x,.y,.z] | @sh' < RTCM3
+		else jq -r 'select(.type == 1006) | [.x,.y,.z] | @sh' < RTCM3
+	   fi ) #get Lat long alt (ECEF)
     LAT=$(python ecef2lat.py $ECEF) # transfom lat ECEF > WGS84
     LON=$(python ecef2lon.py $ECEF) # transfom lat ECEF > WGS84
     ALT=$(python ecef2alt.py $ECEF) # transfom lat ECEF > WGS84

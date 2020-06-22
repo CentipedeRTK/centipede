@@ -40,7 +40,7 @@ do
     NETW=EUREF
     COUNTRY=FRA
     ECEFT=$(jq -r 'select(.type == 1006) | [.x,.y,.z] | @sh' < RTCM3) #test if 1006 exist
-    ECEF=$(if [ -z "$ECFT" ]
+    ECEF=$(if [ -z "$ECEFT" ]
 		then jq -r 'select(.type == 1005) | [.x,.y,.z] | @sh' < RTCM3
 		else jq -r 'select(.type == 1006) | [.x,.y,.z] | @sh' < RTCM3
 	   fi ) #get Lat long alt (ECEF)

@@ -1,7 +1,12 @@
+#manual run test:
 #docker run --rm -it -e HOST=127.0.0.1 -e PORT=5432 -e DB=gis -e TBL=public.llh -e USER=docker -e PASS='docker' -p 8090:8090 -v /home/pi/track/server.py:/usr/src/app/server.py track  python server.py
 ##
+#docker-compose test:
 #docker-compose build track
 #docker-compose up -d track
+# & create table with db.sql
+# now connect your rover Rtklib solution to TCP client IP:8090 with LLH format.
+
 version: '3'
 volumes:
   postgis:

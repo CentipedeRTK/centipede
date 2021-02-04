@@ -1,0 +1,10 @@
+[Unit]
+Description=Check centipede base RTK and logs
+
+[Service]
+Type=oneshot
+ExecStart=/home/user/checkbase2/check.sh
+
+[Install]
+WantedBy=multi-user.target
+

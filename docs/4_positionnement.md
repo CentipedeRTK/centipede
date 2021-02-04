@@ -2,9 +2,11 @@
 
 Il est necessaire maintenant de déterminer la position de la base le plus précisement possible.
 
-Votre base va servir de référentiel pour vous mais aussi pour toute personne se trouvant dans sa zone d'action. il est primordial que sa postion soit juste et très précise afin de pourvoir tous travailler sur un même référentiel géographique.
+Votre base va servir de référentiel pour vous-même mais aussi pour toute personne se trouvant dans sa zone d'action. il est primordial que sa position soit la plus juste et la plus précise possible afin de fournir un même référentiel géographique  fiable à l'ensemble des utilisateurs.
 
-### 4.1 Paramétrage de la position des satellites
+**Pour les utilisateurs de bases RTK F9P + Raspberry Pi**: [Télécharger](https://github.com/jancelin/rtkbase/wiki/3.-Param%C3%A9trage#param%C3%A9trage) le UBX.zip de votre choix sur votre Base (http://centipede.local:8000), décompresser le et rendez-vous à [cette étape](https://jancelin.github.io/centipede/4_positionnement.html#43-r%C3%A9cup%C3%A9rer-les-donn%C3%A9es-du-rgp)
+
+### 4.1 Paramétrage de la position des satellites (matériel Emlid)
 
 Paramétrer le recepteur en postionnnement static 
 
@@ -12,7 +14,7 @@ Paramétrer le recepteur en postionnnement static
 
 La valeur du *Update rate* conditionne le nombre de mesures par seconde. 
 
-### 4.2 Récupération des données nécessaires
+### 4.2 Récupération des données nécessaires (matériel Emlid)
 
 Afin d'utiliser le reach en tant que base fixe, il est indispensable de définir ses coordonnées le plus précisément possible.
 Pour ce faire, nous activons l'enregistrement des positions dans la rubrique logging, en activant l'option *Raw data* (position ON). Les options *Position* et *Base correction* ne doivent pas être activées pour l'instant.
@@ -79,7 +81,9 @@ Télécharger la version d'RTKLIB fournie par EMLID (RTKLib for Reach RS2): [doc
 * En sortie, nous récupérons 6 fichiers :
     - *.nav*, *.qnav*, *.lnav*, *.gnav*, *.hnav*, *.obs*
     
-#### 4.3.2 RTKPOST
+> http://ahgeodev.fr/tfo_plates_i14_sdk.htm : IRTF vers RGF93, pour convertir **```APPROX POSITION XYZ ```** de l'entête RINEX afin d'avoir la position aproximative en RGF93
+    
+#### 4.4.2 RTKPOST
 
 Deux méthodes sont proposées:
 
@@ -87,13 +91,13 @@ La première avec les fichiers récupérés 24 h après la collecte des données
 
 La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jours après la collecte des données donc un positionnement très précis (Solution combinée finale GNSS pour la solution orbitale combinée du système d'information sur la dynamique de la croûte terrestre (CDDIS)). 
 
-#### 4.3.2.1 Méthode à 24h
+#### 4.4.2.1 Méthode à 24h
 
 ```
 ./rtkpost.exe
 ```
 
-* Charger le fichier *.obs* de la base à corriger (Rover)
+* Charger le fichier *.19o* de la base à corriger (Rover)
 * Charger le fichier *.19o* de la base de référence (Base Station)
 * Charger les fichiers *.nav*, *.hnav*, *.gnav*, *.lnav* de la base à corriger
 * Le fichier résultat aura une extension *.pos*
@@ -128,7 +132,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
  
 > Penser à sauvegarder tous ces paramétrages dans un fichier .conf (option Save)
 
-#### 4.3.2.2 Méthode après 20 jours
+#### 4.4.2.2 Méthode après 20 jours
 
 * Récupérer la date GPS de la collecte de données: http://navigationservices.agi.com/GNSSWeb/
 > par exemple le 5 février 2019 correspond au 2039:2
@@ -149,7 +153,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
 * Reprendre la procédure décrite précédemment (2.1 __Méthode à 24h__) au niveau de * Cliquer sur __options__
 
   
-### 4.3.3 RTKPLOT
+### 4.4.3 RTKPLOT
  
  ```
 ./rtkplot.exe
@@ -159,7 +163,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
  
  Il est possible à ce stade-là de filtrer les données afin de ne conserver que les points pour lesquels la valeur de Q est égale à 1 (ie. mode FIX).
  
-## 4.4 QGIS
+## 4.5 QGIS
  
  Le fichier résultat peut être exploité dans QGIS3.
  
@@ -192,7 +196,7 @@ La deuxième avec ces mêmes fichiers + les fichiers de l'IGS récupérés 20 jo
   ```
    - Cliquer sur *OK*
    
-On retrouve ici les points affichés dans RTKPLOT suite à l'application des mêmes filtres (mode FIX).
+On retrouve ici les points affichés dans RTKPLOT suite à l'application des mêmes filtres (mode FIX). Les points, même nombreux, ne devraient pas être éloignés les uns des autres de plus de quelques mm à 1-2cm.
    
 ![qgis](image/positionnement/calc_base_qgis_3.png)
 
@@ -204,15 +208,15 @@ On retrouve ici les points affichés dans RTKPLOT suite à l'application des mê
    - Répéter l'opération avec les champs longitude et hauteur.
    - Voici un exemple de coordonnées récupérés 46.164793681 -0.948418958 63.0686, ceci est la postion précise de votre base RTK
 
-## 4.5 Insertion des coordonnées corrigées
+## 4.6 Insertion des coordonnées corrigées
  
-### 4.5.1 F9P + Raspberry Pi
+### 4.6.1 F9P + Raspberry Pi
 
 Insérer la valeur dans settings.conf puis ```F2 > Stop Rtcm3``` & ```F2 > Start Rtcm3``` 
 
 https://github.com/jancelin/rtkbase/wiki/3.-Param%C3%A9trage#param%C3%A9trage
 
-### 4.5.2 Emlid
+### 4.6.2 Emlid
 
  Ces valeurs doivent être enregistrées dans la rubrique *Base mode* de l'interface du Reach.
  
@@ -222,7 +226,7 @@ https://github.com/jancelin/rtkbase/wiki/3.-Param%C3%A9trage#param%C3%A9trage
  
 > Dans nos conditions expérimentales, nous avons obtenu une précision inférieure à 1 centimètre. :+1:
 
-## 4.6 Connexion de la base au caster
+## 4.7 Connexion de la base au caster
 
 Avant de pouvoir utiliser le réseau Centipède il est indispensable de faire une demande de connection au Caster (gratuit et sans obligations). les demandes sont à envoyer à contact@centipede.fr en précisiant:
 
@@ -233,11 +237,11 @@ Avant de pouvoir utiliser le réseau Centipède il est indispensable de faire un
    - Proposition de nom de Mout Point ( entre 3 et 5 caractères)
    
    
-### 4.6.1 F9P + Raspberry Pi
+### 4.7.1 F9P + Raspberry Pi
 
 Rien à faire de plus
 
-### 4.6.2 Emlid
+### 4.7.2 Emlid
 
 Pour connecter la base au caster, se rendre dans la rubrique *Base mode* de l'interface du reach :
 

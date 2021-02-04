@@ -2,7 +2,7 @@
 
  str2str -in ntrip://@caster.centipede.fr:2101/LIENSS -out tcpsvr://localhost:2102 &>/dev/null &   # get RTCM stream 
 #  curl -sS --max-time 21 http://localhost:2102 | gpsdecode -j |  jq --seq -s -r .[] >RTCM3 &&         # capture and decode
-  curl -sS --max-time 21 http://localhost:2102 | gpsdecode -j |  jq -R 'fromjson?' >RTCM3 &&  #resolve problem with bad json format but not display all values...
+  curl -sS  --http0.9 --max-time 21 http://localhost:2102 | gpsdecode -j |  jq -R 'fromjson?' >RTCM3 &&  #resolve problem with bad json format but not display all values...
 
 
     TYPE=STR
@@ -27,6 +27,7 @@
     BDS=$(jq -s -r '[(.[] |.type)] | unique | '"$BDS_MES"' | if . == true then "BDS+" else empty end' < RTCM3)
 
     RECV=$(jq -r 'select(.type == 1230)' < RTCM3)
+    ANT=$(jq -r 'select(.type == 1008)' < RTCM3)
 
     NAVSYS="$GLO""$GAL""$SBS""$QZS""$BDS""$GPS" #display nav system
     NETW=EUREF
@@ -45,7 +46,7 @@
     BIT=101
     MISC=CENTIPEDE
     echo "----------  "$i "UP"
-    echo $TYPE";"$i";"$i";"$FORMAT";"$FORMATD";"$CARRIER";"$NAVSYS";"$NETW";"$COUNTRY";"$LAT";"$LON";"$ALT";"$NMEA";"$SOLUT";"$GENER";"$COMP";"$AUTH";"$FEE";"$BIT";"$MISC";"$RECV
+    echo $TYPE";"$i";"$i";"$FORMAT";"$FORMATD";"$CARRIER";"$NAVSYS";"$NETW";"$COUNTRY";"$LAT";"$LON";"$ALT";"$NMEA";"$SOLUT";"$GENER";"$COMP";"$AUTH";"$FEE";"$BIT";"$MISC";"$RECV";"$ANT
 
 kill -9 $(ps aux | grep -e str2str| awk '{ print $2 }') 
       echo "______________________________________________________________________"

@@ -30,13 +30,22 @@ do
     FORMAT=$(jq -s -r '[(.[] |.class)] | unique | @csv' < RTCM3)  #get classe (RTCM3,....)
     FORMATD=$(jq -s -r '[(.[] |.type)] | unique | @csv' < RTCM3)  #get list of 
     CARRIER=1 #$(jq -s -r '[(.[] |.type)] | unique' < RTCM3 | jq -r 'if .[] == 1002 then 1 elif .[] == 1004 then 2 else empty end') #get L1, L1-L2, dgps
-    GPS=$(jq -s -r '[(.[] |.type)] | unique | {type: .[]} | if (select(.type >=1001) | select(.type <=1004)) or (select(.type >=1071) | select(.type <=1077)) then "GPS" else empty end ' < RTCM3)
-    GLO=$(jq -s -r '[(.[] |.type)] | unique | {type: .[]} | if (select(.type >=1009) | select(.type <=1012)) or (select(.type >=1081) | select(.type <=1087)) then "GLO+" else empty end ' < RTCM3)
-    GAL=$(jq -s -r '[(.[] |.type)] | unique | {type: .[]} | if (select(.type >=1091) | select(.type <=1097)) then "GAL+" else empty end ' < RTCM3)
-    BDS=$(jq -s -r '[(.[] |.type)] | unique | {type: .[]} | if (select(.type >=1121) | select(.type <=1127)) then "BDS+" else empty end ' < RTCM3)
-    QZS=$(jq -s -r '[(.[] |.type)] | unique | {type: .[]} | if (select(.type >=1111) | select(.type <=1117)) then "QZS+" else empty end ' < RTCM3)
-    SBS=$(jq -s -r '[(.[] |.type)] | unique | {type: .[]} | if (select(.type >=1101) | select(.type <=1107)) then "SBS+" else empty end ' < RTCM3)
-    NAVSYS="$GLO""$GAL""$BDS""$QZS""$SBS""$GPS" #display nav system
+
+    GPS_MES="contains([1001]) or contains([1002]) or contains([1003]) or contains([1004]) or contains([1071]) or contains([1072]) or contains([1073]) or contains([1074]) or contains([1075]) or contains([1076]) or contains([1077])"
+    GLO_MES="contains([1009]) or contains([1010]) or contains([1011]) or contains([1012]) or contains([1081]) or contains([1082]) or contains([1083]) or contains([1084]) or contains([1085]) or contains([1086]) or contains([1087])"
+    GAL_MES="contains([1091]) or contains([1092]) or contains([1093]) or contains([1094]) or contains([1095]) or contains([1096]) or contains([1097])"
+    SBS_MES="contains([1101]) or contains([1102]) or contains([1103]) or contains([1104]) or contains([1105]) or contains([1106]) or contains([1107])"
+    QZS_MES="contains([1111]) or contains([1112]) or contains([1113]) or contains([1114]) or contains([1115]) or contains([1116]) or contains([1117])"
+    BDS_MES="contains([1121]) or contains([1122]) or contains([1123]) or contains([1124]) or contains([1125]) or contains([1126]) or contains([1127])"
+
+    GPS=$(jq -s -r '[(.[] |.type)] | unique | '"$GPS_MES"' | if . == true then "GPS" else empty end' < RTCM3)
+    GLO=$(jq -s -r '[(.[] |.type)] | unique | '"$GLO_MES"' | if . == true then "GLO+" else empty end' < RTCM3)
+    GAL=$(jq -s -r '[(.[] |.type)] | unique | '"$GAL_MES"' | if . == true then "GAL+" else empty end' < RTCM3)
+    SBS=$(jq -s -r '[(.[] |.type)] | unique | '"$SBS_MES"' | if . == true then "SBS+" else empty end' < RTCM3)
+    QZS=$(jq -s -r '[(.[] |.type)] | unique | '"$QZS_MES"' | if . == true then "QZS+" else empty end' < RTCM3)
+    BDS=$(jq -s -r '[(.[] |.type)] | unique | '"$BDS_MES"' | if . == true then "BDS+" else empty end' < RTCM3)
+
+    NAVSYS="$GLO""$GAL""$SBS""$QZS""$BDS""$GPS" #display nav system
     NETW=EUREF
     COUNTRY=FRA
     ECEF=$(jq -r 'select(.type == 1006) | [.x,.y,.z] | @sh' < RTCM3) #get Lat long alt (ECEF)
@@ -61,7 +70,6 @@ do
       type= '$TYPE',
       format= '$FORMAT',
       formatd= '$FORMATD',
-      carrier= $CARRIER,
       navsys= '$NAVSYS',
       network= '$NETW',
       country= '$COUNTRY',

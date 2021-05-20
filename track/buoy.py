@@ -50,10 +50,8 @@ class myThread(Thread):
             except psycopg2.Error as e:
                 t_msg_err = "SQL error: " + e + "/n SQL: " #+ s
                 return render_template("error.html", t_msg_err = t_msg_err)
-            #break
-            #cur.close()
-
-
+            break
+            
 # Programme du serveur TCP
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 

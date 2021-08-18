@@ -1,0 +1,27 @@
+version: '3'
+volumes:
+  grafana-storage-centipede:
+services:
+  grafana_centipede:
+    image: grafana/grafana:7.5.2-ubuntu
+    container_name: grafana_centipede
+    restart: always
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-worldmap-panel,grafana-image-renderer,marcusolsson-gantt-panel
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin!
+      - GF_RENDERING_SERVER_URL=http://renderer:8081/render
+      - GF_RENDERING_CALLBACK_URL=http://grafana:3000/
+      - GF_LOG_FILTERS=rendering:debug
+    volumes:
+      - grafana-storage-centipede:/var/lib/grafana
+      - ./grafana/grafana_logs_centipede/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/grafana_logs_centipede/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/grafana_logs_centipede/grafana.ini:/etc/grafana/grafana.ini
+  renderer:
+    image: grafana/grafana-image-renderer:latest
+    ports:
+      - 8081
+    environment:
+      ENABLE_METRICS: 'true'
+

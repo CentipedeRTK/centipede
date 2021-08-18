@@ -4,14 +4,15 @@
 
 <p align="center"><img src="docs/images/centipede.jpg" height="200">
 
-https://centipede.fr
+[Cartographie des Bases GNSS](https://centipede.fr)
 
-http://caster.centipede.fr:2101
+[Caster Centipede](http://caster.centipede.fr:2101)
 
-Documentation [docs.centipede.fr](http://docs.centipede.fr)
+[La documentation](http://docs.centipede.fr)
 
-La demande de connexion de votre base RTK au caster centipede est à envoyer par mail à contact@centipede.fr
-![RTK](/docs/images/1.jpg)
+[Le forum de discussion](https://t.me/Centipede_RTK)
+
+
 
 
 

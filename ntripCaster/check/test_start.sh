@@ -1,14 +1,13 @@
 #!/bin/bash 
 
- str2str -in ntrip://@caster.centipede.fr:2101/LIENSS -out tcpsvr://localhost:2102 &>/dev/null &   # get RTCM stream 
+  str2str -in ntrip://@caster.centipede.fr:2101/CT2 -out tcpsvr://localhost:2102 &>/dev/null &   # get RTCM stream 
 #  curl -sS --max-time 21 http://localhost:2102 | gpsdecode -j |  jq --seq -s -r .[] >RTCM3 &&         # capture and decode
-  curl -sS  --http0.9 --max-time 21 http://localhost:2102 | gpsdecode -j |  jq -R 'fromjson?' >RTCM3 &&  #resolve problem with bad json format but not display all values...
-
+  curl -sS  --http0.9 --max-time 35 http://localhost:2102 | gpsdecode -j |  jq -R 'fromjson?' >RTCM3 &&  #resolve problem with bad json format but not display all values...
 
     TYPE=STR
     #mountpoint
     #IDENTIFIER= #commune ou $MP
-    FORMAT=$(jq -s -r '[(.[] |.class)] | unique | @csv' < RTCM3)  #get classe (RTCM3,....)
+    FORMAT=$(jq -s -r '[(.[] |.class)] | unique | @tsv' < RTCM3)  #get classe (RTCM3,....)
     FORMATD=$(jq -s -r '[(.[] |.type)] | unique | @csv' < RTCM3)  #get list of 
     CARRIER=1 #$(jq -s -r '[(.[] |.type)] | unique' < RTCM3 | jq -r 'if .[] == 1002 then 1 elif .[] == 1004 then 2 else empty end') #get L1, L1-L2, dgps
 
@@ -26,11 +25,8 @@
     QZS=$(jq -s -r '[(.[] |.type)] | unique | '"$QZS_MES"' | if . == true then "QZS+" else empty end' < RTCM3)
     BDS=$(jq -s -r '[(.[] |.type)] | unique | '"$BDS_MES"' | if . == true then "BDS+" else empty end' < RTCM3)
 
-    RECV=$(jq -r 'select(.type == 1230)' < RTCM3)
-    ANT=$(jq -r 'select(.type == 1008)' < RTCM3)
-
     NAVSYS="$GLO""$GAL""$SBS""$QZS""$BDS""$GPS" #display nav system
-    NETW=EUREF
+    NETW=NONE
     COUNTRY=FRA
     ECEF=$(jq -r 'select(.type == 1006) | [.x,.y,.z] | @sh' < RTCM3) #get Lat long alt (ECEF)
     LAT=$(python ecef2lat.py $ECEF) # transfom lat ECEF > WGS84
@@ -38,15 +34,25 @@
     ALT=$(python ecef2alt.py $ECEF) # transfom lat ECEF > WGS84
     NMEA=0
     SOLUT=0
-    GENER=sNTRIP
+
     COMP=none
     AUTH=N
     FEE=N
     #https://docs.emlid.com/reach/common/reachview/base-mode/ GPS+GLO+GAL+BDS+SBS
     BIT=101
     MISC=CENTIPEDE
+
+    REC=$(jq -s -r  '[(.[] |select (.receiver != null) | .receiver)] | unique | @tsv' < RTCM3)	# receiver type 
+    VER=$(jq -s -r  '[(.[] |select (.firmware != null) | .firmware)] | unique | @tsv' < RTCM3) 	# version rtkbase
+    ANT=$(jq -s -r  '[(.[] |select (.desc != null) | .desc)] | unique | @tsv' < RTCM3) 		# type antenne
+    SID=$(jq -s -r  '[(.[] |select (.station_id != null) | .station_id)] | unique | @tsv' < RTCM3) #station id
+
+    GENER="NTRIP $REC $VER"
+
+#    cp RTCM3 /home/RTCM3
     echo "----------  "$i "UP"
-    echo $TYPE";"$i";"$i";"$FORMAT";"$FORMATD";"$CARRIER";"$NAVSYS";"$NETW";"$COUNTRY";"$LAT";"$LON";"$ALT";"$NMEA";"$SOLUT";"$GENER";"$COMP";"$AUTH";"$FEE";"$BIT";"$MISC";"$RECV";"$ANT
+    echo $TYPE";"$i";"$i";"$FORMAT";"$FORMATD";"$CARRIER";"$NAVSYS";"$NETW";"$COUNTRY";"$LAT";"$LON";"$ALT";"$NMEA";"$SOLUT";"$GENER";"$COMP";"$AUTH";"$FEE";"$BIT";"$MISC
+    echo $REC";"$VER";"$ANT";"$SID
 
 kill -9 $(ps aux | grep -e str2str| awk '{ print $2 }') 
       echo "______________________________________________________________________"

@@ -1,0 +1,7 @@
+# User authentication file.
+# Here you list all the users with their passwords, one line per user.
+#
+# Syntax: <USER>:<PASSWORD>
+#
+# <USER>: name of the user.
+# <PASSWORD>: password of <USER>.

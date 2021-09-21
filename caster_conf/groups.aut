@@ -1,0 +1,15 @@
+# Group authentication file.
+# Here you list all groups and their members (users), one line per
+# group.
+#
+# Syntax: <GROUP>:<USER1>,<USER2>,...,<USERn>[:<MAX_NUM_CON>]
+# or
+# Syntax: <GROUP>:<USER1>,<USER2>,...,<USERn>[:ip<MAX_NUM_PER_IP>]
+#
+# <GROUP>: name of the group.
+# <USERi>: name of user belonging to <GROUP>.
+# <MAX_NUM_CON>: optional specification of maximal number of
+# simultaneous connections for <GROUP>. If not specified, an
+# infinite number of connections will be allowed.
+# <MAX_NUM_PER_IP>: optional specification of maximal number of
+# connections for one unique IP.

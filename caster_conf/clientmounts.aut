@@ -1,0 +1,21 @@
+# Client mount authentication file.
+# Here you specify which groups have client access to which mountpoints,
+# one line per mount.
+#
+# Syntax: <MOUNTPOINT>:<GROUP1>,<GROUP2>,...,<GROUPn>
+#
+# <MOUNTPOINT>: name of the mountpoint. Must start with a slash.
+# The mountpoints "/admin" and "/oper" should always be specified,
+# because otherwise everyone has full access to the server through
+# the web interface.
+# If you use the special keyword "all" (without slash) as mountpoint,
+# the groups specified on that line have full access to all
+# mountpoints and all other lines will be ignored.
+# If you use the special keyword "default" (without slash) the groups
+# specified on that line will have client access to mountpoints for which
+# there are no restrictions.
+# <GROUPi>: name of the group that has client access to <MOUNTPOINT>.
+
+/admin:FirstAdmin,SecondAdmin,NTRIPAdmin
+/oper:FirstAdmin,SecondAdmin
+all:centipede

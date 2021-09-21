@@ -1,0 +1,30 @@
+#péparer docker-compose.yml
+#arrêter réplication
+
+docker pull kartoza/postgis:13-3.1
+docker-compose stop postgiscaster
+
+####dans server master
+
+docker pull kartoza/postgis:13-3.1
+
+docker-compose exec postgiscaster sh -c "PGPASSWORD=centipedepswd  pg_dump --inserts --format=t --host=localhost --port=5432 -U centipede centipededb > /srv/centipede/centipede_dump.tar"
+
+docker-compose stop postgiscaster
+docker-compose rm postgiscaster
+
+#modifier compose> enlever # et en rajouter.
+
+docker-compose up postgiscaster
+
+#dans un autre terminal
+
+docker-compose exec postgiscaster sh -c "PGPASSWORD=centipedepswd pg_restore --host localhost --port 5432 --username "centipede" --dbname "centipededb" --role "postgres" --no-password  --verbose "/srv/centipede/centipede_dump.tar""
+
+#vérifier
+
+docker-compose rm postgiscaster
+
+#modifier compose> enlever # et en rajouter.
+
+docker-compose up postgiscaster

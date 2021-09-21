@@ -1,0 +1,55 @@
+var map_crs = "EPSG:3857"
+var local_crs = "EPSG:2154"  // 3857 is very bad for doing a buffer in meters, so better to use a local projection
+var radius = 10000; // in local crs unit
+var text_add = 'Base Distance'
+var text_remove = 'Supprimer'
+
+lizMap.events.on({
+    'uicreated':function(evt){
+
+        lizMap.map.addLayer(new OpenLayers.Layer.Vector('point_dynamic',{
+            styleMap: new OpenLayers.StyleMap({
+                pointRadius: 3,
+                fill: false,
+                fillOpacity: 0.2,
+                stroke: true,
+                strokeWidth: 2,
+                strokeColor: 'black',
+                strokeOpacity: 0.5
+            })
+        }));
+        var pointDynamic = lizMap.map.getLayersByName('point_dynamic')[0];
+
+        var html = '<button id="pointButton" class="btn btn-primary btn-lg">' + text_add + '</button>';
+        $('#map-content').append(html);
+        $('#pointButton')
+           .css('position', 'absolute')
+           .css('top', '30px')
+           .css('z-index', '1000')
+           .css('margin-left', 'calc(50% - 80px)');
+
+        lizMap.map.events.register('moveend', this, function() {
+            if( $('#pointButton').text() == text_remove ){
+                drawPoint();
+            }
+        });
+
+        function drawPoint() {
+            pointDynamic.removeAllFeatures();
+            pointD = lizMap.map.center;
+            var center_pointD = new OpenLayers.Geometry.Point(pointD.lon, pointD.lat);
+            center_pointD.transform(map_crs, local_crs);
+        }
+
+        $('#pointButton').click(function(){
+            if( $(this).text() == text_add ){
+                drawPoint();
+                $(this).text(text_remove);
+            } else {
+                pointDynamic.removeAllFeatures();
+                $(this).text(text_add);
+            }
+        });
+    }
+});
+

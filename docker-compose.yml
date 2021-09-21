@@ -1,0 +1,213 @@
+version: '3'
+volumes:
+  postgiscaster133:
+  ntripcaster:
+  grafana-storage:
+services:
+#---CENTIPEDE---------------------------------------------------------------
+  ntripcaster:
+#    image: jancelin/centipede:ntripcaster
+    build:
+      context: ./caster_docker
+    restart: always
+    depends_on:
+      - postgiscaster
+    ports:
+      - 2101:2101
+      - 80:80
+    environment:
+      - FIRSTADMIN
+      - FIRSTADMINPSWD
+      - NTRIPADMIN
+      - NTRIPADMINPSWD
+      - NTRIPUSER
+      - NTRIPUSERPSWD
+      - ENCODERPSWD
+    volumes:
+      - ./caster_conf:/usr/local/ntripcaster/conf
+      - ./caster_logs:/usr/local/ntripcaster/logs
+
+  postgiscaster:
+    image: kartoza/postgis:13-3.1
+    restart: always
+    container_name: postgiscaster_centipede
+    ports:
+      - 5432:5432
+#    network_mode: host
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASS
+      - POSTGRES_DBNAME
+      - ALLOW_IP_RANGE=0.0.0.0/0
+      - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology
+      - SHARED_PRELOAD_LIBRARIES=pg_cron
+      - REPLICATION=true
+#      - REPLICATION_USER
+#      - REPLICATION_PASS
+    restart: always
+    entrypoint: >  #get IGN raf18b grid for proj 7.2.1 and change caster_conf group before starting
+       bash -c 'FILE=/usr/share/proj/fr_ign_RAF18.tif &&
+                if [[ -f "$FILE" ]];
+                  then echo "$FILE exists.";
+                  else wget https://cdn.proj.org/fr_ign_RAF18b.tif -O /usr/share/proj/fr_ign_RAF18.tif;
+                fi;
+                chown -R :102 /home;
+                ./docker-entrypoint.sh'
+    volumes:
+      - postgiscaster133:/var/lib/postgresql
+      - ./caster_conf:/home
+      - ./pg_backup:/srv #db backup accesibility
+      - ./pg_backup/centipede/setup-db.sql:/docker-entrypoint-initdb.d/setup-db.sql #make db at first boot
+    healthcheck:
+      test: "exit 0"
+
+  checkbase1:
+    build:
+      context: ./checkbase
+    image: checkbase:1
+    restart: always
+    network_mode: host
+    depends_on:
+      - postgiscaster
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASS
+      - POSTGRES_DBNAME
+      - CAST_ADD
+      - CAST_PORT
+      - DB_IP
+      - REWRITEDOMAIN
+      - AUTHUSER
+      - AUTHPSWD
+      - MAILHUB
+
+  checkbase2:
+    build:
+      context: ./checkbase2
+    image: checkbase:2
+    restart: always
+    network_mode: host
+    depends_on:
+      - postgiscaster
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASS
+      - POSTGRES_DBNAME
+      - DB_IP
+      - SERVER
+      - FIRSTADMIN
+      - FIRSTADMINPSWD
+      - REWRITEDOMAIN
+      - AUTHUSER
+      - AUTHPSWD
+      - MAILHUB
+
+  nginxmap:
+    image: nginx:1
+    ports:
+      - 8083:80
+    restart: unless-stopped
+    volumes:
+      - ./map/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./map/lizmap:/srv/lizmap
+  lizmap:
+    image: 3liz/lizmap-web-client:3.5
+    command:
+      - php-fpm
+    entrypoint: >  #modify file + chown & start lizmap
+       sh -c 'sh /tmp/start.sh
+              /bin/lizmap-entrypoint.sh
+              /usr/sbin/php-fpm7 -F -O'
+    environment:
+      - LIZMAP_CACHESTORAGETYPE
+      - LIZMAP_CACHEREDISHOST
+      - LIZMAP_CACHEREDISDB
+      - LIZMAP_HOME
+      - LIZMAP_USER
+      - LIZMAP_WMSSERVERURL
+      - LIZMAP_ADMIN_LOGIN
+      - LIZMAP_ADMIN_PSWD
+      - LIZMAP_ADMIN_EMAIL
+      - LIZMAP_ADMIN_DEFAULT_PASSWORD_SOURCE
+      - POSTGRES_DBNAME
+      - POSTGRES_USER
+      - POSTGRES_PASS
+    depends_on:
+      - postgiscaster
+    expose:
+      - 9000
+    volumes:
+      - ./map/project:/srv/projects
+      - ./map/upload/:/srv/projects/cent_admin/media/upload
+      - ./map/upload/:/srv/projects/cent/media/upload:ro
+      - ./map/lizmap/var/lizmap-theme-config:/www/lizmap/var/lizmap-theme-config
+      - ./map/lizmap/var/lizmap-config:/www/lizmap/var/config
+      - ./map/lizmap/var/lizmap-db:/www/lizmap/var/db
+      - ./map/lizmap/www:/www/lizmap/www
+      - ./map/lizmap/var/log/lizmap:/www/lizmap/var/log
+      - ./map/lizmap/var/lizmap-modules:/www/lizmap/lizmap-modules
+      - ./map/lizmap/var/lizmap-my-packages:/www/lizmap/my-packages
+      - ./map/lizmap/etc:/srv/etc:ro
+      - ./map/lizmap/pswd:/tmp/pswd
+      - ./map/lizmap/start.sh:/tmp/start.sh
+    restart: unless-stopped
+  qgiserver:
+    image: 3liz/qgis-map-server:3.20
+    expose:
+      - 8080
+      - 18080
+    environment:
+      PGSERVICEFILE: /srv/etc/pg_service.conf
+      QGSRV_CACHE_ROOTDIR: /srv/projects
+      QGSRV_SERVER_WORKERS: 4
+      QGSRV_CACHE_SIZE: '20'
+      QGSRV_LOGGING_LEVEL: DEBUG
+      QGSRV_USER: 1000:1000
+      ROUTER_HOST: map
+      QGSRV_ZMQ_IDENTITY: OWS-SERVER
+      QGSRV_ZMQ_INADDR: tcp://*:18080
+      QGSRV_ZMQ_MAXQUEUE: 1000
+      QGSRV_ZMQ_TIMEOUT: 15000
+      LIBGL_DEBUG: verbose glxinfo
+      QGSRV_SERVER_PLUGINPATH: /srv/plugin
+    depends_on:
+      - postgiscaster
+      - lizmap
+    volumes:
+      - ./map/project:/srv/projects
+      - ./map/lizmap/etc:/srv/etc:ro
+      - ./map/project/plugin:/srv/plugins
+    restart: unless-stopped
+  redis:
+    image: redis:5-alpine
+    restart: always
+    volumes:
+      - ./map/lizmap/redis:/data
+
+  grafana:
+    image: grafana/grafana:8.1.3
+    container_name: grafana_centipede
+    restart: always
+    ports:
+      - 3001:3000
+    environment:
+      - GF_INSTALL_PLUGINS
+      - GF_SECURITY_ADMIN_USER
+      - GF_SECURITY_ADMIN_PASSWORD
+      - GF_RENDERING_SERVER_URL
+      - GF_RENDERING_CALLBACK_URL
+      - GF_LOG_FILTERS
+      - POSTGRES_DBNAME
+      - POSTGRES_USER
+      - POSTGRES_PASS
+    volumes:
+      - grafana-storage:/var/lib/grafana
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+  renderer:
+    image: grafana/grafana-image-renderer:latest
+    ports:
+      - 8081
+    environment:
+      ENABLE_METRICS: 'true'

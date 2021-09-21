@@ -1,0 +1,15 @@
+# Source mount authentication file.
+# Here you specify which groups have source access to which mountpoints,
+# one line per mount.
+#
+# Syntax: <MOUNTPOINT>:<GROUP1>,<GROUP2>,...,<GROUPn>
+#
+# <MOUNTPOINT>: name of the mountpoint. Must start with a slash.
+# If you use the special keyword "all" (without slash) as mountpoint,
+# the groups specified on that line have full access to all
+# mountpoints and all other lines will be ignored.
+# If you use the special keyword "default" (without slash) the groups
+# specified on that line will have source access to mountpoints for which
+# there are no restrictions.
+# <GROUPi>: name of the group that has source access to <MOUNTPOINT>.
+default:centipede

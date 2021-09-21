@@ -1,6 +1,0 @@
-!UBX CFG-RATE 100 1 1
-
-
-@
-!UBX CFG-RATE 1000 1 1
-

@@ -1,9 +1,0 @@
-cd rnx2rtkp\bcc
-call install.bat
-cd ..\..
-cd convbin\bcc
-call install.bat
-cd ..\..
-cd pos2kml\bcc
-call install.bat
-cd ..\..

@@ -1,9 +1,0 @@
-[Unit]
-Description=Check centipede base RTK and logs
-
-[Timer]
-OnCalendar=*-*-* *:*:0/15
-AccuracySec=1s
-
-[Install]
-WantedBy=timers.target

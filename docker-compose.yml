@@ -5,11 +5,13 @@ volumes:
   grafana-storage:
 services:
 #---CENTIPEDE---------------------------------------------------------------
+#BKG Professional NtripCaster allows the dissemination of GNSS real-time data streams via internet
+#Opensource but not free: https://igs.bkg.bund.de/ntrip/bkgcaster
   ntripcaster:
-#    image: jancelin/centipede:ntripcaster
     build:
       context: ./caster_docker
     restart: always
+    container_name: ntripcaster_centipede
     depends_on:
       - postgiscaster
     ports:
@@ -26,14 +28,14 @@ services:
     volumes:
       - ./caster_conf:/usr/local/ntripcaster/conf
       - ./caster_logs:/usr/local/ntripcaster/logs
-
+#Spatial for PostgreSQL object-relational database
+#includes cartographic projections as well as geodetic transformations
   postgiscaster:
     image: kartoza/postgis:13-3.1
     restart: always
     container_name: postgiscaster_centipede
     ports:
       - 5432:5432
-#    network_mode: host
     environment:
       - POSTGRES_USER
       - POSTGRES_PASS
@@ -60,12 +62,13 @@ services:
       - ./pg_backup/centipede/setup-db.sql:/docker-entrypoint-initdb.d/setup-db.sql #make db at first boot
     healthcheck:
       test: "exit 0"
-
+#Get RTCM3 message from Bases analyse and upd db
   checkbase1:
     build:
       context: ./checkbase
     image: checkbase:1
     restart: always
+    container_name: checkbase1_centipede
     network_mode: host
     depends_on:
       - postgiscaster
@@ -80,12 +83,13 @@ services:
       - AUTHUSER
       - AUTHPSWD
       - MAILHUB
-
+ #Check if bases are alive, store in db & mail alert
   checkbase2:
     build:
       context: ./checkbase2
     image: checkbase:2
     restart: always
+    container_name: checkbase2_centipede
     network_mode: host
     depends_on:
       - postgiscaster
@@ -101,17 +105,20 @@ services:
       - AUTHUSER
       - AUTHPSWD
       - MAILHUB
-
+#Gateway to the web map: Reverse proxy for lizmap.
   nginxmap:
     image: nginx:1
     ports:
       - 8083:80
     restart: unless-stopped
+    container_name: nginxmap_centipede
     volumes:
       - ./map/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./map/lizmap:/srv/lizmap
+#Lizmap Web Application generates dynamically a web map application
   lizmap:
     image: 3liz/lizmap-web-client:3.5
+    container_name: lizmap_centipede
     command:
       - php-fpm
     entrypoint: >  #modify file + chown & start lizmap
@@ -151,8 +158,10 @@ services:
       - ./map/lizmap/pswd:/tmp/pswd
       - ./map/lizmap/start.sh:/tmp/start.sh
     restart: unless-stopped
+#QGIS Server is an open source WMS, WFS, OGC API for Features 1.0 (WFS3)
   qgiserver:
     image: 3liz/qgis-map-server:3.20
+    container_name: qgiserver_centipede
     expose:
       - 8080
       - 18080
@@ -178,12 +187,14 @@ services:
       - ./map/lizmap/etc:/srv/etc:ro
       - ./map/project/plugin:/srv/plugins
     restart: unless-stopped
+#Store lizmap cache
   redis:
     image: redis:5-alpine
     restart: always
+    container_name: redis_centipede
     volumes:
       - ./map/lizmap/redis:/data
-
+#Analytics and interactive visualization web application
   grafana:
     image: grafana/grafana:8.1.3
     container_name: grafana_centipede
@@ -205,9 +216,12 @@ services:
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
       - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
       - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+#Grafana backend plugin that handles rendering panels and dashboards to PNGs using a headless browser
   renderer:
     image: grafana/grafana-image-renderer:latest
     ports:
       - 8081
+    restart: always
+    container_name: renderer_centipede
     environment:
       ENABLE_METRICS: 'true'

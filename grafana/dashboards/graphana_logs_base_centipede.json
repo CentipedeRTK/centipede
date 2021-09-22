@@ -95,7 +95,7 @@
           "group": [],
           "metricColumn": "mp",
           "rawQuery": true,
-          "rawSql": "SELECT\netat\nFROM etat_1_2\nWHERE\n  mp =  ($mount_name)\n--ORDER BY 1",
+          "rawSql": "SELECT\netat\nFROM logs.etat_1_2\nWHERE\n  mp =  ($mount_name)\n--ORDER BY 1",
           "refId": "A",
           "select": [
             [
@@ -255,7 +255,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  mp as \"MP\",\n  date_declar as \"Déclaration\",\n  receiver,\n  version,\n  antenne\nFROM antenne\nWHERE\n  antenne.mp in ($mount_name)\n",
+          "rawSql": "SELECT\n  mp as \"MP\",\n  date_declar as \"Déclaration\",\n  receiver,\n  version,\n  antenne\nFROM public.antenne\nWHERE\n  antenne.mp in ($mount_name)\n",
           "refId": "A",
           "select": [
             [
@@ -349,7 +349,7 @@
           "group": [],
           "metricColumn": "mp",
           "rawQuery": true,
-          "rawSql": "SELECT\n  control AS \"Date de déconnexion\",\n  mp AS \"Base GNSS\",\n  ti AS \"Durée\"\nFROM defaut_reseau_20s\nWHERE\n  mp =  ($mount_name)\nORDER BY 1,2",
+          "rawSql": "SELECT\n  control AS \"Date de déconnexion\",\n  mp AS \"Base GNSS\",\n  ti AS \"Durée\"\nFROM logs.defaut_reseau_20s\nWHERE\n  mp =  ($mount_name)\nORDER BY 1,2",
           "refId": "A",
           "select": [
             [
@@ -450,7 +450,7 @@
           "group": [],
           "metricColumn": "mp",
           "rawQuery": true,
-          "rawSql": "SELECT\n  mp ,\n  defaut AS \"time1\",\n  defaut + defaut_persist::interval as \"time2\",\n  defaut_persist,\n  'X' as \"color\"\nFROM defaut_logs\nWHERE\n  $__timeFilter(defaut) AND\n  defaut_logs.mp in ($mount_name) AND\n  defaut_persist >  interval '59 minute'\nunion \nSELECT\n  mp ,\n  defaut AS \"time1\",\n  defaut + defaut_persist::interval as \"time2\",\n  defaut_persist,\n  'X' as \"color\"\nFROM defaut\nWHERE\n  $__timeFilter(defaut) AND\n  defaut.mp in ($mount_name) AND\n  defaut_persist >  interval '1 minute'\nORDER BY 1,2",
+          "rawSql": "SELECT\n  mp ,\n  defaut AS \"time1\",\n  defaut + defaut_persist::interval as \"time2\",\n  defaut_persist,\n  'X' as \"color\"\nFROM logs.defaut_logs\nWHERE\n  $__timeFilter(defaut) AND\n  defaut_logs.mp in ($mount_name) AND\n  defaut_persist >  interval '59 minute'\nunion \nSELECT\n  mp ,\n  defaut AS \"time1\",\n  defaut + defaut_persist::interval as \"time2\",\n  defaut_persist,\n  'X' as \"color\"\nFROM logs.defaut\nWHERE\n  $__timeFilter(defaut) AND\n  defaut.mp in ($mount_name) AND\n  defaut_persist >  interval '1 minute'\nORDER BY 1,2",
           "refId": "A",
           "select": [
             [
@@ -543,7 +543,7 @@
           "group": [],
           "metricColumn": "mp",
           "rawQuery": true,
-          "rawSql": "SELECT\n  defaut AS \"time\",\n  mp AS metric,\n  minu\nFROM defaut_day\nWHERE\n  $__timeFilter(defaut) \n  AND defaut_day.mp in ($mount_name)\nORDER BY 1,2",
+          "rawSql": "SELECT\n  defaut AS \"time\",\n  mp AS metric,\n  minu\nFROM logs.defaut_day\nWHERE\n  $__timeFilter(defaut) \n  AND defaut_day.mp in ($mount_name)\nORDER BY 1,2",
           "refId": "A",
           "select": [
             [
@@ -674,7 +674,7 @@
           "group": [],
           "metricColumn": "mp",
           "rawQuery": true,
-          "rawSql": "SELECT\n  defaut AS \"time\",\n  mp AS metric,\n  sec\nFROM defaut_day\nWHERE\n  $__timeFilter(defaut) AND\n  sec != 0 \n  AND defaut_day.mp in ($mount_name)\nORDER BY 1,2",
+          "rawSql": "SELECT\n  defaut AS \"time\",\n  mp AS metric,\n  sec\nFROM logs.defaut_day\nWHERE\n  $__timeFilter(defaut) AND\n  sec != 0 \n  AND defaut_day.mp in ($mount_name)\nORDER BY 1,2",
           "refId": "A",
           "select": [
             [
@@ -871,7 +871,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "SELECT\n  mp as \"MP\",\n  navsys,\n  formatd\nFROM antenne\nWHERE\n  antenne.mp in ($mount_name)\n",
+          "rawSql": "SELECT\n  mp as \"MP\",\n  navsys,\n  formatd\nFROM public.antenne\nWHERE\n  antenne.mp in ($mount_name)\n",
           "refId": "A",
           "select": [
             [
@@ -945,7 +945,7 @@
           "group": [],
           "metricColumn": "mp",
           "rawQuery": true,
-          "rawSql": "SELECT\n  --check_activite AS \"time\",\n  mp,\n  longitude,\n  latitude,\n  case\n    WHEN ping = 'active' THEN 1\n    WHEN ping = 'eteinte' THEN 0\n  end AS etat\nFROM etat_antennes\nWHERE\n--  $__timeFilter(check_activite)\n  etat_antennes.mp in ($mount_name)\nORDER BY 1,2",
+          "rawSql": "SELECT\n  --check_activite AS \"time\",\n  mp,\n  longitude,\n  latitude,\n  case\n    WHEN ping = 'active' THEN 1\n    WHEN ping = 'eteinte' THEN 0\n  end AS etat\nFROM public.etat_antennes\nWHERE\n--  $__timeFilter(check_activite)\n  etat_antennes.mp in ($mount_name)\nORDER BY 1,2",
           "refId": "A",
           "select": [
             [
@@ -999,7 +999,7 @@
           "value": "CT2"
         },
         "datasource": null,
-        "definition": "select mp from antenne",
+        "definition": "select mp from public.antenne",
         "description": null,
         "error": null,
         "hide": 2,
@@ -1008,7 +1008,7 @@
         "multi": false,
         "name": "mount_name",
         "options": [],
-        "query": "select mp from antenne",
+        "query": "select mp from public.antenne",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,

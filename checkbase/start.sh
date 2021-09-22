@@ -12,7 +12,7 @@ sed -i.bak 's/^mailhub=.*/mailhub='$MAILHUB'/' $SSMTP
 
 ##Database parameters
 TABLE='public.antenne'      ##table
-TABLE2="public.defaut"
+TABLE2="logs.defaut"
 PING='ping'                 ##champ boolean
 DATE='ping_date'            ##champ timestamp with time zone
 ID='mp'                     ##champ Id de l'entité

@@ -1,6 +1,6 @@
 #!/bin/bash
 #script to check base GNSS connexion to Caster.
-TABLE="public.defaut"
+TABLE="logs.defaut"
 ##Config mail sender with .env file
 SSMTP=/etc/ssmtp/ssmtp.conf
 sed -i.bak 's/^rewriteDomain=.*/rewriteDomain='$REWRITEDOMAIN'/' $SSMTP

@@ -5,16 +5,16 @@
 -- Dumped from database version 13.2 (Debian 13.2-1.pgdg110+1)
 -- Dumped by pg_dump version 13.2 (Debian 13.2-1.pgdg110+1)
 
---SET statement_timeout = 0;
---SET lock_timeout = 0;
---SET idle_in_transaction_session_timeout = 0;
---SET client_encoding = 'UTF8';
---SET standard_conforming_strings = on;
---SELECT pg_catalog.set_config('search_path', '', false);
---SET check_function_bodies = false;
---SET xmloption = content;
---SET client_min_messages = warning;
---SET row_security = off;
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
 
 --
 -- Name: centipede; Type: SCHEMA; Schema: -; Owner: centipede
@@ -33,7 +33,7 @@ CREATE EXTENSION IF NOT EXISTS pg_cron WITH SCHEMA public;
 
 
 --
--- Name: EXTENSION pg_cron; Type: COMMENT; Schema: -; Owner:
+-- Name: EXTENSION pg_cron; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION pg_cron IS 'Job scheduler for PostgreSQL';
@@ -72,7 +72,7 @@ CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;
 
 
 --
--- Name: EXTENSION hstore; Type: COMMENT; Schema: -; Owner:
+-- Name: EXTENSION hstore; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs';
@@ -86,7 +86,7 @@ CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
 
 
 --
--- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner:
+-- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION postgis IS 'PostGIS geometry, geography, and raster spatial types and functions';
@@ -100,23 +100,23 @@ CREATE EXTENSION IF NOT EXISTS postgis_topology WITH SCHEMA topology;
 
 
 --
--- Name: EXTENSION postgis_topology; Type: COMMENT; Schema: -; Owner:
+-- Name: EXTENSION postgis_topology; Type: COMMENT; Schema: -; Owner: 
 --
 
 COMMENT ON EXTENSION postgis_topology IS 'PostGIS topology spatial types and functions';
 
 
 --
--- Name: defaut_store(); Type: FUNCTION; Schema: centipede; Owner: centipede
+-- Name: defaut_store(); Type: FUNCTION; Schema: logs; Owner: centipede
 --
 
-CREATE FUNCTION centipede.defaut_store() RETURNS trigger
+CREATE FUNCTION logs.defaut_store() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
   BEGIN
 	IF ( OLD.defaut_count > 0 AND NEW.defaut_count = 0 ) THEN
-	  INSERT INTO defaut_logs VALUES
-		(nextval('defaut_logs_id_seq'::regclass),
+	  INSERT INTO logs.defaut_logs VALUES
+		(nextval('logs.defaut_logs_id_seq'::regclass),
 		OLD.mp,
 		OLD.defaut,
 		OLD.defaut_persist);
@@ -127,7 +127,7 @@ CREATE FUNCTION centipede.defaut_store() RETURNS trigger
   $$;
 
 
-ALTER FUNCTION centipede.defaut_store() OWNER TO centipede;
+ALTER FUNCTION logs.defaut_store() OWNER TO centipede;
 
 --
 -- Name: asbinary(public.geometry); Type: FUNCTION; Schema: public; Owner: postgres
@@ -243,7 +243,7 @@ CREATE FUNCTION public.ntripcaster() RETURNS trigger
     AS $$
 BEGIN
   COPY (SELECT type FROM centipede.ntripcaster ORDER by id) TO PROGRAM 'rm /home/sourcetable.dat; cat >> /home/sourcetable.dat';
-  COPY (SELECT type, mp, identifier, BTRIM(format,'"'), formatd, carrier, navsys, network, country, round(latitude,3), round(longitude,3), nmea, solution, generator, compres, auth,fee,bit,misc
+  COPY (SELECT type, mp, identifier, BTRIM(format,'"'), formatd, carrier, navsys, network, country, round(latitude,3), round(longitude,3), nmea, solution, generator, compres, auth,fee,bit,misc 
 FROM public.antenne ORDER by mp) TO PROGRAM 'cat >> /home/sourcetable.dat; chmod 644 /home/sourcetable.dat;' WITH DELIMITER ';';
   RETURN NEW;
 END;
@@ -404,52 +404,6 @@ CREATE TABLE centipede.layer_styles (
 
 
 ALTER TABLE centipede.layer_styles OWNER TO centipede;
-
---
--- Name: layer_styles_old; Type: TABLE; Schema: centipede; Owner: centipede
---
-
-CREATE TABLE centipede.layer_styles_old (
-    id integer NOT NULL,
-    f_table_catalog character varying,
-    f_table_schema character varying,
-    f_table_name character varying,
-    f_geometry_column character varying,
-    stylename character varying(30),
-    styleqml xml,
-    stylesld xml,
-    useasdefault boolean,
-    description text,
-    owner character varying(30),
-    ui xml,
-    update_time timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
-    type character varying
-);
-
-
-ALTER TABLE centipede.layer_styles_old OWNER TO centipede;
-
---
--- Name: layer_styles_id_seq; Type: SEQUENCE; Schema: centipede; Owner: centipede
---
-
-CREATE SEQUENCE centipede.layer_styles_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE centipede.layer_styles_id_seq OWNER TO centipede;
-
---
--- Name: layer_styles_id_seq; Type: SEQUENCE OWNED BY; Schema: centipede; Owner: centipede
---
-
-ALTER SEQUENCE centipede.layer_styles_id_seq OWNED BY centipede.layer_styles_old.id;
-
 
 --
 -- Name: layer_styles_id_seq1; Type: SEQUENCE; Schema: centipede; Owner: centipede
@@ -660,6 +614,35 @@ ALTER SEQUENCE logs.active_eteinte_id_seq OWNED BY logs.active_eteinte.id;
 
 
 --
+-- Name: defaut; Type: TABLE; Schema: logs; Owner: centipede
+--
+
+CREATE TABLE logs.defaut (
+    mp character varying NOT NULL,
+    control timestamp with time zone,
+    defaut timestamp with time zone,
+    defaut_persist interval,
+    defaut_count integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE logs.defaut OWNER TO centipede;
+
+--
+-- Name: defaut_logs_temp; Type: TABLE; Schema: logs; Owner: centipede
+--
+
+CREATE TABLE logs.defaut_logs_temp (
+    id integer NOT NULL,
+    mp character varying NOT NULL,
+    defaut timestamp with time zone NOT NULL,
+    defaut_persist interval NOT NULL
+);
+
+
+ALTER TABLE logs.defaut_logs_temp OWNER TO centipede;
+
+--
 -- Name: antenne; Type: TABLE; Schema: public; Owner: centipede
 --
 
@@ -715,23 +698,57 @@ COMMENT ON COLUMN public.antenne.date_declar IS 'date de declaration de la base 
 
 
 --
--- Name: antenne_futur; Type: TABLE; Schema: public; Owner: centipede
+-- Name: defaut_day; Type: VIEW; Schema: logs; Owner: centipede
 --
 
-CREATE TABLE public.antenne_futur (
+CREATE VIEW logs.defaut_day AS
+ SELECT defaut_logs_temp.id,
+    ant.id AS id_antenne,
+    defaut_logs_temp.mp,
+    date_trunc('minutes'::text, defaut_logs_temp.defaut) AS defaut,
+        CASE
+            WHEN (round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) >= (86400)::double precision) THEN round(((date_part('epoch'::text, defaut_logs_temp.defaut_persist) / (86400)::double precision))::numeric, 2)
+            ELSE NULL::numeric
+        END AS days,
+        CASE
+            WHEN ((round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) >= (3600)::double precision) AND (round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) < (86400)::double precision)) THEN round(((date_part('epoch'::text, defaut_logs_temp.defaut_persist) / (3600)::double precision))::numeric, 2)
+            ELSE NULL::numeric
+        END AS hours,
+        CASE
+            WHEN ((round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) >= (60)::double precision) AND (round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) < (3600)::double precision)) THEN round(((date_part('epoch'::text, defaut_logs_temp.defaut_persist) / (60)::double precision))::numeric, 2)
+            ELSE NULL::numeric
+        END AS minu,
+        CASE
+            WHEN (round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) < (60)::double precision) THEN round((date_part('epoch'::text, defaut_logs_temp.defaut_persist))::numeric, 2)
+            ELSE NULL::numeric
+        END AS sec
+   FROM (logs.defaut_logs_temp
+     LEFT JOIN public.antenne ant ON (((ant.mp)::text = (defaut_logs_temp.mp)::text)))
+  WHERE (ant.id IS NOT NULL)
+  ORDER BY (round((date_part('epoch'::text, defaut_logs_temp.defaut_persist) / (60)::double precision))) DESC;
+
+
+ALTER TABLE logs.defaut_day OWNER TO centipede;
+
+--
+-- Name: defaut_logs; Type: TABLE; Schema: logs; Owner: centipede
+--
+
+CREATE TABLE logs.defaut_logs (
     id integer NOT NULL,
-    geom public.geometry(Point,4326),
-    carrier integer
+    mp character varying NOT NULL,
+    defaut timestamp with time zone NOT NULL,
+    defaut_persist interval NOT NULL
 );
 
 
-ALTER TABLE public.antenne_futur OWNER TO centipede;
+ALTER TABLE logs.defaut_logs OWNER TO centipede;
 
 --
--- Name: antenne_futur_id_seq; Type: SEQUENCE; Schema: public; Owner: centipede
+-- Name: defaut_logs_id_seq; Type: SEQUENCE; Schema: logs; Owner: centipede
 --
 
-CREATE SEQUENCE public.antenne_futur_id_seq
+CREATE SEQUENCE logs.defaut_logs_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -740,36 +757,30 @@ CREATE SEQUENCE public.antenne_futur_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.antenne_futur_id_seq OWNER TO centipede;
+ALTER TABLE logs.defaut_logs_id_seq OWNER TO centipede;
 
 --
--- Name: antenne_futur_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: centipede
+-- Name: defaut_logs_id_seq; Type: SEQUENCE OWNED BY; Schema: logs; Owner: centipede
 --
 
-ALTER SEQUENCE public.antenne_futur_id_seq OWNED BY public.antenne_futur.id;
+ALTER SEQUENCE logs.defaut_logs_id_seq OWNED BY logs.defaut_logs.id;
 
 
 --
--- Name: antenne_id_seq; Type: SEQUENCE; Schema: public; Owner: centipede
+-- Name: defaut_reseau_20s; Type: VIEW; Schema: logs; Owner: centipede
 --
 
-CREATE SEQUENCE public.antenne_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+CREATE VIEW logs.defaut_reseau_20s AS
+ SELECT d.mp,
+    d.control,
+    d.defaut_persist AS ti
+   FROM (logs.defaut d
+     JOIN public.antenne a ON (((a.mp)::text = (d.mp)::text)))
+  WHERE (d.defaut_count > 0)
+  ORDER BY d.control DESC;
 
 
-ALTER TABLE public.antenne_id_seq OWNER TO centipede;
-
---
--- Name: antenne_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: centipede
---
-
-ALTER SEQUENCE public.antenne_id_seq OWNED BY public.antenne.id;
-
+ALTER TABLE logs.defaut_reseau_20s OWNER TO centipede;
 
 --
 -- Name: carriertobuffer; Type: TABLE; Schema: public; Owner: centipede
@@ -783,124 +794,6 @@ CREATE TABLE public.carriertobuffer (
 
 
 ALTER TABLE public.carriertobuffer OWNER TO centipede;
-
---
--- Name: defaut; Type: TABLE; Schema: public; Owner: centipede
---
-
-CREATE TABLE public.defaut (
-    mp character varying NOT NULL,
-    control timestamp with time zone,
-    defaut timestamp with time zone,
-    defaut_persist interval,
-    defaut_count integer DEFAULT 0 NOT NULL
-);
-
-
-ALTER TABLE public.defaut OWNER TO centipede;
-
---
--- Name: buffer; Type: VIEW; Schema: public; Owner: centipede
---
-
-CREATE VIEW public.buffer AS
- SELECT row_number() OVER () AS unique_id,
-    public.st_buffer(public.st_transform(a.geom, 2154), (cb.buffer)::double precision, 35) AS st_buffer,
-    a.mp AS antenne,
-    cb.carrier,
-    cb.frequence,
-        CASE
-            WHEN (d.defaut_count = 0) THEN 'active'::text
-            ELSE 'eteinte'::text
-        END AS ping,
-        CASE
-            WHEN (con.mail IS NULL) THEN 0
-            ELSE 1
-        END AS legal
-   FROM (((public.antenne a
-     LEFT JOIN public.carriertobuffer cb ON ((a.carrier = cb.carrier)))
-     LEFT JOIN centipede.contact con ON ((con.id_antenne = a.id)))
-     LEFT JOIN public.defaut d ON (((d.mp)::text = (a.mp)::text)))
-  WHERE (a.longitude <> (0)::numeric);
-
-
-ALTER TABLE public.buffer OWNER TO centipede;
-
---
--- Name: buffer_futur; Type: VIEW; Schema: public; Owner: centipede
---
-
-CREATE VIEW public.buffer_futur AS
- SELECT row_number() OVER () AS unique_id,
-    public.st_buffer(public.st_transform(a.geom, 2154), (cb.buffer)::double precision, 35) AS st_buffer,
-    cb.carrier,
-    cb.frequence
-   FROM (public.antenne_futur a
-     LEFT JOIN public.carriertobuffer cb ON ((a.carrier = cb.carrier)));
-
-
-ALTER TABLE public.buffer_futur OWNER TO centipede;
-
---
--- Name: buffer_wgs84; Type: VIEW; Schema: public; Owner: centipede
---
-
-CREATE VIEW public.buffer_wgs84 AS
- SELECT row_number() OVER () AS unique_id,
-    public.st_buffer(public.st_transform(a.geom, 4326), (cb.buffer)::double precision, 35) AS st_buffer,
-    a.mp AS antenne,
-    cb.carrier,
-    cb.frequence,
-        CASE
-            WHEN (a.ping = true) THEN 'active'::text
-            ELSE 'eteinte'::text
-        END AS ping,
-        CASE
-            WHEN (con.mail IS NULL) THEN 0
-            ELSE 1
-        END AS legal
-   FROM ((public.antenne a
-     LEFT JOIN public.carriertobuffer cb ON ((a.carrier = cb.carrier)))
-     LEFT JOIN centipede.contact con ON ((con.id_antenne = a.id)))
-  WHERE (a.longitude <> (0)::numeric);
-
-
-ALTER TABLE public.buffer_wgs84 OWNER TO centipede;
-
---
--- Name: commune; Type: TABLE; Schema: public; Owner: centipede
---
-
-CREATE TABLE public.commune (
-    id integer NOT NULL,
-    nom character varying,
-    geom public.geometry(Polygon,4326)
-);
-
-
-ALTER TABLE public.commune OWNER TO centipede;
-
---
--- Name: commune_id_seq; Type: SEQUENCE; Schema: public; Owner: centipede
---
-
-CREATE SEQUENCE public.commune_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.commune_id_seq OWNER TO centipede;
-
---
--- Name: commune_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: centipede
---
-
-ALTER SEQUENCE public.commune_id_seq OWNED BY public.commune.id;
-
 
 --
 -- Name: etat_antennes; Type: VIEW; Schema: public; Owner: centipede
@@ -938,12 +831,113 @@ CREATE VIEW public.etat_antennes AS
      LEFT JOIN centipede.contact con ON ((con.id_antenne = antenne.id)))
      LEFT JOIN centipede.type_antenne ta ON ((ta.id = con.id_type_antenne)))
      LEFT JOIN centipede.recepteur r ON ((r.id = con.id_recepteur)))
-     LEFT JOIN public.defaut d ON (((d.mp)::text = (antenne.mp)::text)))
+     LEFT JOIN logs.defaut d ON (((d.mp)::text = (antenne.mp)::text)))
   WHERE (antenne.longitude <> (0)::numeric)
   ORDER BY antenne.mp;
 
 
 ALTER TABLE public.etat_antennes OWNER TO centipede;
+
+--
+-- Name: etat_1_2; Type: VIEW; Schema: logs; Owner: centipede
+--
+
+CREATE VIEW logs.etat_1_2 AS
+ SELECT etat_antennes.mp,
+        CASE
+            WHEN (etat_antennes.ping = 'active'::text) THEN '1'::text
+            WHEN (etat_antennes.ping = 'eteinte'::text) THEN '2'::text
+            ELSE NULL::text
+        END AS etat
+   FROM public.etat_antennes
+  ORDER BY etat_antennes.mp;
+
+
+ALTER TABLE logs.etat_1_2 OWNER TO centipede;
+
+--
+-- Name: antenne_id_seq; Type: SEQUENCE; Schema: public; Owner: centipede
+--
+
+CREATE SEQUENCE public.antenne_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.antenne_id_seq OWNER TO centipede;
+
+--
+-- Name: antenne_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: centipede
+--
+
+ALTER SEQUENCE public.antenne_id_seq OWNED BY public.antenne.id;
+
+
+--
+-- Name: buffer; Type: VIEW; Schema: public; Owner: centipede
+--
+
+CREATE VIEW public.buffer WITH (security_barrier='false') AS
+ SELECT row_number() OVER () AS unique_id,
+    public.st_buffer(public.st_transform(a.geom, 2154), (cb.buffer)::double precision, 35) AS st_buffer,
+    a.mp AS antenne,
+    cb.carrier,
+    cb.frequence,
+        CASE
+            WHEN (d.defaut_count = 0) THEN 'active'::text
+            ELSE 'eteinte'::text
+        END AS ping,
+        CASE
+            WHEN (con.mail IS NULL) THEN 0
+            ELSE 1
+        END AS legal
+   FROM (((public.antenne a
+     LEFT JOIN public.carriertobuffer cb ON ((a.carrier = cb.carrier)))
+     LEFT JOIN centipede.contact con ON ((con.id_antenne = a.id)))
+     LEFT JOIN logs.defaut d ON (((d.mp)::text = (a.mp)::text)))
+  WHERE (a.longitude <> (0)::numeric);
+
+
+ALTER TABLE public.buffer OWNER TO centipede;
+
+--
+-- Name: commune; Type: TABLE; Schema: public; Owner: centipede
+--
+
+CREATE TABLE public.commune (
+    id integer NOT NULL,
+    nom character varying,
+    geom public.geometry(Polygon,4326)
+);
+
+
+ALTER TABLE public.commune OWNER TO centipede;
+
+--
+-- Name: commune_id_seq; Type: SEQUENCE; Schema: public; Owner: centipede
+--
+
+CREATE SEQUENCE public.commune_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.commune_id_seq OWNER TO centipede;
+
+--
+-- Name: commune_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: centipede
+--
+
+ALTER SEQUENCE public.commune_id_seq OWNED BY public.commune.id;
+
 
 --
 -- Name: count_base; Type: VIEW; Schema: public; Owner: centipede
@@ -964,57 +958,23 @@ CREATE VIEW public.count_base AS
 ALTER TABLE public.count_base OWNER TO centipede;
 
 --
--- Name: defaut_logs; Type: TABLE; Schema: public; Owner: centipede
+-- Name: epsg; Type: TABLE; Schema: public; Owner: centipede
 --
 
-CREATE TABLE public.defaut_logs (
+CREATE TABLE public.epsg (
     id integer NOT NULL,
-    mp character varying NOT NULL,
-    defaut timestamp with time zone NOT NULL,
-    defaut_persist interval NOT NULL
+    epsg integer NOT NULL,
+    epsg_ref character varying NOT NULL
 );
 
 
-ALTER TABLE public.defaut_logs OWNER TO centipede;
+ALTER TABLE public.epsg OWNER TO centipede;
 
 --
--- Name: defaut_day; Type: VIEW; Schema: public; Owner: centipede
+-- Name: epsg_id_seq; Type: SEQUENCE; Schema: public; Owner: centipede
 --
 
-CREATE VIEW public.defaut_day AS
- SELECT defaut_logs.id,
-    ant.id AS id_antenne,
-    defaut_logs.mp,
-    date_trunc('minutes'::text, defaut_logs.defaut) AS defaut,
-        CASE
-            WHEN (round(date_part('epoch'::text, defaut_logs.defaut_persist)) >= (86400)::double precision) THEN round(((date_part('epoch'::text, defaut_logs.defaut_persist) / (86400)::double precision))::numeric, 2)
-            ELSE NULL::numeric
-        END AS days,
-        CASE
-            WHEN ((round(date_part('epoch'::text, defaut_logs.defaut_persist)) >= (3600)::double precision) AND (round(date_part('epoch'::text, defaut_logs.defaut_persist)) < (86400)::double precision)) THEN round(((date_part('epoch'::text, defaut_logs.defaut_persist) / (3600)::double precision))::numeric, 2)
-            ELSE NULL::numeric
-        END AS hours,
-        CASE
-            WHEN ((round(date_part('epoch'::text, defaut_logs.defaut_persist)) >= (60)::double precision) AND (round(date_part('epoch'::text, defaut_logs.defaut_persist)) < (3600)::double precision)) THEN round(((date_part('epoch'::text, defaut_logs.defaut_persist) / (60)::double precision))::numeric, 2)
-            ELSE NULL::numeric
-        END AS minu,
-        CASE
-            WHEN (round(date_part('epoch'::text, defaut_logs.defaut_persist)) < (60)::double precision) THEN round((date_part('epoch'::text, defaut_logs.defaut_persist))::numeric, 2)
-            ELSE NULL::numeric
-        END AS sec
-   FROM (public.defaut_logs
-     LEFT JOIN public.antenne ant ON (((ant.mp)::text = (defaut_logs.mp)::text)))
-  WHERE (ant.id IS NOT NULL)
-  ORDER BY (round((date_part('epoch'::text, defaut_logs.defaut_persist) / (60)::double precision))) DESC;
-
-
-ALTER TABLE public.defaut_day OWNER TO centipede;
-
---
--- Name: defaut_logs_id_seq; Type: SEQUENCE; Schema: public; Owner: centipede
---
-
-CREATE SEQUENCE public.defaut_logs_id_seq
+CREATE SEQUENCE public.epsg_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -1023,148 +983,14 @@ CREATE SEQUENCE public.defaut_logs_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.defaut_logs_id_seq OWNER TO centipede;
+ALTER TABLE public.epsg_id_seq OWNER TO centipede;
 
 --
--- Name: defaut_logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: centipede
+-- Name: epsg_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: centipede
 --
 
-ALTER SEQUENCE public.defaut_logs_id_seq OWNED BY public.defaut_logs.id;
+ALTER SEQUENCE public.epsg_id_seq OWNED BY public.epsg.id;
 
-
---
--- Name: defaut_minutes; Type: VIEW; Schema: public; Owner: centipede
---
-
-CREATE VIEW public.defaut_minutes AS
- SELECT defaut_logs.id,
-    defaut_logs.mp,
-    date_trunc('hours'::text, defaut_logs.defaut) AS defaut,
-        CASE
-            WHEN ((round(date_part('epoch'::text, defaut_logs.defaut_persist)) < (3600)::double precision) AND (round(date_part('epoch'::text, defaut_logs.defaut_persist)) >= (60)::double precision)) THEN round(((date_part('epoch'::text, defaut_logs.defaut_persist) / (60)::double precision))::numeric, 2)
-            ELSE NULL::numeric
-        END AS minu,
-    ant.id AS id_antenne
-   FROM (public.defaut_logs
-     LEFT JOIN public.antenne ant ON (((ant.mp)::text = (defaut_logs.mp)::text)))
-  WHERE (ant.id IS NOT NULL)
-  ORDER BY (round((date_part('epoch'::text, defaut_logs.defaut_persist) / (60)::double precision))) DESC;
-
-
-ALTER TABLE public.defaut_minutes OWNER TO centipede;
-
---
--- Name: defaut_minutes_7d; Type: VIEW; Schema: public; Owner: centipede
---
-
-CREATE VIEW public.defaut_minutes_7d AS
- SELECT defaut_logs.id,
-    defaut_logs.mp,
-    defaut_logs.defaut,
-    defaut_logs.defaut_persist
-   FROM public.defaut_logs
-  WHERE (defaut_logs.defaut >= (now() - '7 days'::interval));
-
-
-ALTER TABLE public.defaut_minutes_7d OWNER TO centipede;
-
---
--- Name: defaut_reseau_20s; Type: VIEW; Schema: public; Owner: centipede
---
-
-CREATE VIEW public.defaut_reseau_20s AS
- SELECT d.mp,
-    d.control,
-    d.defaut_persist AS ti
-   FROM (public.defaut d
-     JOIN public.antenne a ON (((a.mp)::text = (d.mp)::text)))
-  WHERE (d.defaut_count > 0)
-  ORDER BY d.control DESC;
-
-
-ALTER TABLE public.defaut_reseau_20s OWNER TO centipede;
-
---
--- Name: etat_1_2; Type: VIEW; Schema: public; Owner: centipede
---
-
-CREATE VIEW public.etat_1_2 AS
- SELECT etat_antennes.mp,
-        CASE
-            WHEN (etat_antennes.ping = 'active'::text) THEN '1'::text
-            WHEN (etat_antennes.ping = 'eteinte'::text) THEN '2'::text
-            ELSE NULL::text
-        END AS etat
-   FROM public.etat_antennes
-  ORDER BY etat_antennes.mp;
-
-
-ALTER TABLE public.etat_1_2 OWNER TO centipede;
-
---
--- Name: etat_antenne_wgs84; Type: VIEW; Schema: public; Owner: centipede
---
-
-CREATE VIEW public.etat_antenne_wgs84 AS
- SELECT etat_antennes.id,
-    public.st_setsrid(public.st_makepoint((etat_antennes.longitude)::double precision, (etat_antennes.latitude)::double precision, (etat_antennes.altitude)::double precision), 4326) AS geom_wgs84,
-    etat_antennes.mp,
-    etat_antennes.ping,
-    etat_antennes.check_activite,
-    etat_antennes.longitude,
-    etat_antennes.latitude,
-    etat_antennes.altitude,
-    etat_antennes.data_format,
-    etat_antennes.rtcm_messages,
-    etat_antennes.systeme,
-    etat_antennes.frequence,
-    etat_antennes.legal,
-    etat_antennes.recepteur,
-    etat_antennes.type_antenne,
-    etat_antennes.rapport
-   FROM public.etat_antennes;
-
-
-ALTER TABLE public.etat_antenne_wgs84 OWNER TO centipede;
-
---
--- Name: etat_antennes2; Type: VIEW; Schema: public; Owner: centipede
---
-
-CREATE VIEW public.etat_antennes2 AS
- SELECT antenne.id,
-    public.st_transform(antenne.geom, 2154) AS anten,
-    antenne.mp,
-        CASE
-            WHEN (d.defaut_count = 0) THEN 'active'::text
-            ELSE 'eteinte'::text
-        END AS ping,
-    d.control AS check_activite,
-    round(antenne.longitude, 5) AS longitude,
-    round(antenne.latitude, 5) AS latitude,
-    round(antenne.altitude, 3) AS altitude,
-    btrim((antenne.format)::text, '"'::text) AS data_format,
-    antenne.formatd AS rtcm_messages,
-    antenne.navsys AS systeme,
-    cb.frequence,
-        CASE
-            WHEN (con.mail IS NULL) THEN 0
-            ELSE 1
-        END AS legal,
-    r.name AS recepteur,
-    ta.name AS type_antenne,
-    con.rapport
-   FROM (((((public.antenne antenne
-     LEFT JOIN public.carriertobuffer cb ON ((antenne.carrier = cb.carrier)))
-     LEFT JOIN centipede.contact con ON ((con.id_antenne = antenne.id)))
-     LEFT JOIN centipede.type_antenne ta ON ((ta.id = con.id_type_antenne)))
-     LEFT JOIN centipede.recepteur r ON ((r.id = con.id_recepteur)))
-     LEFT JOIN public.defaut d ON (((d.mp)::text = (antenne.mp)::text)))
-  WHERE (antenne.longitude <> (0)::numeric)
-  ORDER BY antenne.mp;
-
-
-ALTER TABLE public.etat_antennes2 OWNER TO centipede;
 
 --
 -- Name: contact id; Type: DEFAULT; Schema: centipede; Owner: centipede
@@ -1178,13 +1004,6 @@ ALTER TABLE ONLY centipede.contact ALTER COLUMN id SET DEFAULT nextval('centiped
 --
 
 ALTER TABLE ONLY centipede.layer_styles ALTER COLUMN id SET DEFAULT nextval('centipede.layer_styles_id_seq1'::regclass);
-
-
---
--- Name: layer_styles_old id; Type: DEFAULT; Schema: centipede; Owner: centipede
---
-
-ALTER TABLE ONLY centipede.layer_styles_old ALTER COLUMN id SET DEFAULT nextval('centipede.layer_styles_id_seq'::regclass);
 
 
 --
@@ -1223,17 +1042,17 @@ ALTER TABLE ONLY logs.active_eteinte ALTER COLUMN id SET DEFAULT nextval('logs.a
 
 
 --
+-- Name: defaut_logs id; Type: DEFAULT; Schema: logs; Owner: centipede
+--
+
+ALTER TABLE ONLY logs.defaut_logs ALTER COLUMN id SET DEFAULT nextval('logs.defaut_logs_id_seq'::regclass);
+
+
+--
 -- Name: antenne id; Type: DEFAULT; Schema: public; Owner: centipede
 --
 
 ALTER TABLE ONLY public.antenne ALTER COLUMN id SET DEFAULT nextval('public.antenne_id_seq'::regclass);
-
-
---
--- Name: antenne_futur id; Type: DEFAULT; Schema: public; Owner: centipede
---
-
-ALTER TABLE ONLY public.antenne_futur ALTER COLUMN id SET DEFAULT nextval('public.antenne_futur_id_seq'::regclass);
 
 
 --
@@ -1244,18 +1063,10 @@ ALTER TABLE ONLY public.commune ALTER COLUMN id SET DEFAULT nextval('public.comm
 
 
 --
--- Name: defaut_logs id; Type: DEFAULT; Schema: public; Owner: centipede
+-- Name: epsg id; Type: DEFAULT; Schema: public; Owner: centipede
 --
 
-ALTER TABLE ONLY public.defaut_logs ALTER COLUMN id SET DEFAULT nextval('public.defaut_logs_id_seq'::regclass);
-
-
---
--- Name: layer_styles_old layer_styles_pkey; Type: CONSTRAINT; Schema: centipede; Owner: centipede
---
-
-ALTER TABLE ONLY centipede.layer_styles_old
-    ADD CONSTRAINT layer_styles_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.epsg ALTER COLUMN id SET DEFAULT nextval('public.epsg_id_seq'::regclass);
 
 
 --
@@ -1323,19 +1134,35 @@ ALTER TABLE ONLY logs.active_eteinte
 
 
 --
--- Name: defaut_logs defaut_logs_pkey; Type: CONSTRAINT; Schema: public; Owner: centipede
+-- Name: defaut_logs defaut_logs_pkey; Type: CONSTRAINT; Schema: logs; Owner: centipede
 --
 
-ALTER TABLE ONLY public.defaut_logs
+ALTER TABLE ONLY logs.defaut_logs
     ADD CONSTRAINT defaut_logs_pkey PRIMARY KEY (id);
 
 
 --
--- Name: defaut mp_pkey; Type: CONSTRAINT; Schema: public; Owner: centipede
+-- Name: defaut_logs_temp defaut_logs_pkey_tmp; Type: CONSTRAINT; Schema: logs; Owner: centipede
 --
 
-ALTER TABLE ONLY public.defaut
+ALTER TABLE ONLY logs.defaut_logs_temp
+    ADD CONSTRAINT defaut_logs_pkey_tmp PRIMARY KEY (id);
+
+
+--
+-- Name: defaut mp_pkey; Type: CONSTRAINT; Schema: logs; Owner: centipede
+--
+
+ALTER TABLE ONLY logs.defaut
     ADD CONSTRAINT mp_pkey PRIMARY KEY (mp);
+
+
+--
+-- Name: epsg epsg_pkey; Type: CONSTRAINT; Schema: public; Owner: centipede
+--
+
+ALTER TABLE ONLY public.epsg
+    ADD CONSTRAINT epsg_pkey PRIMARY KEY (id);
 
 
 --
@@ -1344,14 +1171,6 @@ ALTER TABLE ONLY public.defaut
 
 ALTER TABLE ONLY public.antenne
     ADD CONSTRAINT pk_antenne PRIMARY KEY (id);
-
-
---
--- Name: antenne_futur pk_antenne_futur; Type: CONSTRAINT; Schema: public; Owner: centipede
---
-
-ALTER TABLE ONLY public.antenne_futur
-    ADD CONSTRAINT pk_antenne_futur PRIMARY KEY (id);
 
 
 --
@@ -1386,17 +1205,24 @@ CREATE INDEX ae_index ON logs.active_eteinte USING btree (id DESC NULLS LAST);
 
 
 --
+-- Name: defaut_logs_ind; Type: INDEX; Schema: logs; Owner: centipede
+--
+
+CREATE INDEX defaut_logs_ind ON logs.defaut_logs USING btree (id);
+
+
+--
+-- Name: defaut_logs_ind_tmp; Type: INDEX; Schema: logs; Owner: centipede
+--
+
+CREATE INDEX defaut_logs_ind_tmp ON logs.defaut_logs_temp USING btree (id);
+
+
+--
 -- Name: antenna_ind; Type: INDEX; Schema: public; Owner: centipede
 --
 
 CREATE INDEX antenna_ind ON public.antenne USING gist (geom);
-
-
---
--- Name: defaut_logs_ind; Type: INDEX; Schema: public; Owner: centipede
---
-
-CREATE INDEX defaut_logs_ind ON public.defaut_logs USING btree (id);
 
 
 --
@@ -1414,10 +1240,10 @@ CREATE TRIGGER trig_ntripcaster2 AFTER INSERT OR DELETE OR UPDATE ON centipede.n
 
 
 --
--- Name: defaut defaut_store; Type: TRIGGER; Schema: public; Owner: centipede
+-- Name: defaut defaut_store; Type: TRIGGER; Schema: logs; Owner: centipede
 --
 
-CREATE TRIGGER defaut_store BEFORE UPDATE ON public.defaut FOR EACH ROW EXECUTE FUNCTION centipede.defaut_store();
+CREATE TRIGGER defaut_store BEFORE UPDATE ON logs.defaut FOR EACH ROW EXECUTE FUNCTION logs.defaut_store();
 
 
 --
@@ -1503,3 +1329,4 @@ ALTER DEFAULT PRIVILEGES FOR ROLE centipede IN SCHEMA public GRANT SELECT ON TAB
 --
 -- PostgreSQL database dump complete
 --
+

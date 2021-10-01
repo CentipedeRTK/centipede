@@ -3,7 +3,8 @@ version: '3'
 volumes:
   postgiswmaps:
 services:
-#swmaps
+#SWMAPS
+##DB
   postgiswmaps:
     image: kartoza/postgis:13-3.1
     restart: always
@@ -31,8 +32,7 @@ services:
                 ./docker-entrypoint.sh'
     volumes:
       - postgiswmaps:/var/lib/postgresql
-      - ./caster_conf:/home
       - ./pg_backup:/srv #db backup accesibility
-#      - ./pg_backup/centipede/setup-db.sql:/docker-entrypoint-initdb.d/setup-db.sql #make db at first boot
+      - ./pg_backup/setup-db.sql:/docker-entrypoint-initdb.d/setup-db.sql #make db at first boot
     healthcheck:
       test: "exit 0"

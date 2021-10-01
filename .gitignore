@@ -3,7 +3,6 @@
 *.me
 *.bak
 *.tar
-*.aut
 **/pswd
 **/lizmap/etc
 **/lizmap/redis

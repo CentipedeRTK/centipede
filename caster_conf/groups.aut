@@ -13,3 +13,4 @@
 # infinite number of connections will be allowed.
 # <MAX_NUM_PER_IP>: optional specification of maximal number of
 # connections for one unique IP.
+centipede:centipede

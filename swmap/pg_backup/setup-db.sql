@@ -46,7 +46,7 @@ COST 100
 IMMUTABLE NOT LEAKPROOF
 AS $BODY$
 DECLARE
-epsgIN INTEGER := 4171;
+epsgIN INTEGER := 4965;
 epsgOUT INTEGER := 5698;
 espgOUTc character varying := 'RGF93 / Lambert-93 + NGF-IGN69 height RAF18b';
 BEGIN

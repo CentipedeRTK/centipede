@@ -205,7 +205,12 @@ CREATE FUNCTION public.make_point() RETURNS trigger
     AS $$
 BEGIN
   NEW.geom=ST_SetSRID(ST_MakePoint(NEW.longitude,NEW.latitude,NEW.altitude),4326);
+  IF EXISTS (select c.nom FROM public.antenne a JOIN public.commune c ON ST_INTERSECTS(NEW.geom,c.geom) WHERE a.id=NEW.id)
+  THEN
   NEW.identifier=c.nom FROM public.antenne a JOIN public.commune c ON ST_INTERSECTS(NEW.geom,c.geom) WHERE a.id=NEW.id;
+  ELSE
+  NEW.identifier='';
+  END IF;
   RETURN NEW;
 END;
 $$;

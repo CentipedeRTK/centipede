@@ -209,7 +209,7 @@ BEGIN
   THEN
   NEW.identifier=c.nom FROM public.antenne a JOIN public.commune c ON ST_INTERSECTS(NEW.geom,c.geom) WHERE a.id=NEW.id;
   ELSE
-  NEW.identifier='';
+  NEW.identifier='N';
   END IF;
   RETURN NEW;
 END;

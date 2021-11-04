@@ -10,7 +10,7 @@ services:
     restart: always
     container_name: postgiswmap
     ports:
-      - 8080:5432
+      - 5435:5432
     environment:
       - POSTGRES_USER=swmaps
       - POSTGRES_PASS=swmaps123?

@@ -10,8 +10,8 @@ Your ntripclient must be able to send its position:
 
 ## Create a alert Telegram base change messages (option)
 
-*[Creating a Telegram bot account](https://usp-python.github.io/06-bot/)
-*get your **APIKEY** and **USERID** and complete and complete the ```./basevar/.env``` file.
+* [Creating a Telegram bot account](https://usp-python.github.io/06-bot/)
+* Get your **APIKEY** and **USERID** and complete and complete the ```./basevar/.env``` file.
 
 ## first Build & Run:
 
@@ -26,7 +26,7 @@ or first Build & Run as deamon:
 ## Connect your rover ntrip client
 
 * connect your ntripclient to:
-  * Your ip
+  * Your ip or DNS
   * Port: 9999
   * Mount name: ME
 

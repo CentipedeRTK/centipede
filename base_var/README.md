@@ -11,7 +11,12 @@ Your ntripclient must be able to send its position:
 ## Create a alert Telegram when Base GNSS change (option)
 
 * [Creating a Telegram bot account](https://usp-python.github.io/06-bot/)
-* Get your **APIKEY** and **USERID** and complete and complete the ```./basevar/.env``` file.
+* Get your **APIKEY** and **USERID** and complete and complete the ```./basevar/.env``` file
+* Connect to your Telegram account and search ```@CentipedeBaseVar_bot```:
+  * Click to **start**
+  * Bot send you ```/start```
+  * It's Ok, you will receive a notification like this: ```Move to base ,LIENSS,8.15,46.1554417,-1.0540733,17:23:49``` when there is a change in Mount point.
+
 
 ## first Build & Run:
 

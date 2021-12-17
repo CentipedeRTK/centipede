@@ -47,6 +47,7 @@ Now basevar get NMEA data from Rover every X seconds, check lon lat, research ne
 ### Debug RUN
 
 ```docker run -it  --rm --name caster_basevar -p 9999:9999 -v ./pybasevar:/home --entrypoint bash basevar```
+
 ```sh /home/run.sh```
 
  or

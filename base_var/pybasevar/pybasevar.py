@@ -12,7 +12,7 @@ from multiprocessing import Process
 
 caster='caster.centipede.fr'
 port=2101
-maxdist=50
+maxdist=300
 #socat="socat -d -d pty,raw,echo=0 pty,raw,echo=0 &>/dev/null"
 socat="socat -d -d pty,raw,echo=0 pty,raw,echo=0"
 ntripc="str2str -in serial://pts/2:115200:8:n:1:off -n 1 -b 1 -out ntripc://@:9999/ME &>/dev/null"
@@ -22,7 +22,7 @@ mp_use = "ENSG"
 ser = serial.Serial('/dev/pts/1', 115200, timeout=1)
 sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser))
 lon = 0.0
-mp_km_sav = 50
+mp_km_sav = 300
 
 ## Get nearest Mountpoint
 def loop_mp():

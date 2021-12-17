@@ -32,7 +32,7 @@ or first Build & Run as deamon:
 
 Now basevar get NMEA data from Rover every X seconds, check lon lat, research nearest Base GNSS on the caster Centipede and create a connexion.
 
-## manual Build
+## Manual Build for dev
 
 ```docker build -t basevar .```
 
@@ -40,11 +40,11 @@ Now basevar get NMEA data from Rover every X seconds, check lon lat, research ne
 
 ```docker build -t basevar . --no-cache```
 
-## Run as demon
+### Run as demon
 
 ```docker run -td --name caster_basevar -p 9999:9999  basevar```
 
-## Debug RUN
+### Debug RUN
 
 ```docker run -it  --rm --name caster_basevar -p 9999:9999 -v ./pybasevar:/home --entrypoint bash basevar```
 ```sh /home/run.sh```
@@ -53,6 +53,6 @@ Now basevar get NMEA data from Rover every X seconds, check lon lat, research ne
 
 ```docker run -it  --rm --name caster_basevar -p 9999:9999  basevar```
 
-## Debug inside container
+### Debug inside container
 
 ```docker exec -it caster_basevar bash```

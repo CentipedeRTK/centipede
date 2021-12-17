@@ -1,6 +1,6 @@
 # CENTIPEDE Caster Base Variable
 
-Your the ntripclient must be able to send its position:
+Your ntripclient must be able to send its position:
 * [Lefebure](https://play.google.com/store/apps/details?id=com.lefebure.ntripclient&hl=fr&gl=fr) :x:
 * [BluetoothGNSS](https://play.google.com/store/apps/details?id=com.clearevo.bluetooth_gnss&hl=fr&gl=fr) :heavy_check_mark:
 * [Swmaps](https://play.google.com/store/apps/details?id=np.com.softwel.swmaps&hl=fr&gl=fr) :heavy_check_mark:

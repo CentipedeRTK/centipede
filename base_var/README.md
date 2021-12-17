@@ -8,7 +8,7 @@ Your ntripclient must be able to send its position:
 * [RTKNAVI](http://rtkexplorer.com/downloads/rtklib-code/) :heavy_check_mark:
 * [RTKRCV](https://github.com/tomojitakasu/RTKLIB) :heavy_check_mark:
 
-## Create a alert Telegram base change messages (option)
+## Create a alert Telegram when Base GNSS change (option)
 
 * [Creating a Telegram bot account](https://usp-python.github.io/06-bot/)
 * Get your **APIKEY** and **USERID** and complete and complete the ```./basevar/.env``` file.

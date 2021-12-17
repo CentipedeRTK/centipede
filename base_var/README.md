@@ -1,13 +1,36 @@
 # CENTIPEDE Caster Base Variable
 
-## Build & Run:
+Your the ntripclient must be able to send its position:
+* [Lefebure](https://play.google.com/store/apps/details?id=com.lefebure.ntripclient&hl=fr&gl=fr) :x:
+* [BluetoothGNSS](https://play.google.com/store/apps/details?id=com.clearevo.bluetooth_gnss&hl=fr&gl=fr) :heavy_check_mark:
+* [Swmaps](https://play.google.com/store/apps/details?id=np.com.softwel.swmaps&hl=fr&gl=fr) :heavy_check_mark:
+* [RtkGPS+](https://docs.centipede.fr/docs/Rover_rtklib_android/#application-rtkgps-android-open-source) :heavy_check_mark:
+* [RTKNAVI](http://rtkexplorer.com/downloads/rtklib-code/) :heavy_check_mark:
+* [RTKRCV](https://github.com/tomojitakasu/RTKLIB) :heavy_check_mark:
+
+## Create a alert Telegram base change messages (option)
+
+*[Creating a Telegram bot account](https://usp-python.github.io/06-bot/)
+*get your **APIKEY** and **USERID** and complete and complete the ```./basevar/.env``` file.
+
+## first Build & Run:
 
 ```cd ./basevar```
 ```docker-compose up```
 
-## Build & Run as deamon:
+or first Build & Run as deamon:
 
+```cd ./basevar```
 ```docker-compose up -d```
+
+## Connect your rover ntrip client
+
+* connect your ntripclient to:
+  * Your ip
+  * Port: 9999
+  * Mount name: ME
+
+Now basevar get NMEA data from Rover every X seconds, check lon lat, research nearest Base GNSS on the caster Centipede and create a connexion.
 
 ## manual Build
 

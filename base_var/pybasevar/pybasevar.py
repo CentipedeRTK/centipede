@@ -40,18 +40,22 @@ def loop_mp():
                 #print(browser.get_mountpoints())
                 getmp= browser.get_mountpoints()
                 filtermp = getmp['str']
-                #print(m)
-                ##Get list of the nearest mountpoint
+                ## FILTER CARRIER 
+                filtermp1 = [m for m in filtermp if m['Carrier']=="2"]
+                #print (filtermp)
+                ##Watch all nearests mountpoints
                 for i in filtermp:
                     mp = i["Mountpoint"]
                     di = round(i["Distance"],2)
-                    print(mp,di,"km")
+                    car = i["Carrier"]
+                    print(mp,di,"km; Carrier:", car)
                 ##Get nearest mountpoint
-                for i, value in enumerate(filtermp):
-                    if i == 0:
+                for i, value in enumerate(filtermp1):
+                    if i == 0 :
                         mp_use1 = value["Mountpoint"]
                         mp_use_km = value["Distance"]
-                        print("You can Use: ",mp_use1,round(mp_use_km,2),"km")
+                        mp_Carrier = value["Carrier"]
+                        print("Nearest base: ",mp_use1,round(mp_use_km,2),"km; Carrier:",mp_Carrier)
                         ##Modify str2str in
                         global mp_use
                         global pid_str

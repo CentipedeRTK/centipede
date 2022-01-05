@@ -1,6 +1,6 @@
 import io
-import pynmea2
 import serial
+import pynmea2
 import time
 import subprocess
 import os
@@ -12,39 +12,17 @@ from multiprocessing import Process
 
 import config
 
-## 00-START socat TODO
-socat="socat -d -d pty,raw,echo=0 pty,raw,echo=0 &>/dev/null"
-## 01-Start caster
-ntripc="str2str -in serial://pts/2:115200:8:n:1:off -n 1 -b 1 -out ntripc://@:9999/ME &>/dev/null"
-## 02-Start a generic stream RTCM3 in
-stream1="str2str -in ntrip://:@caster.centipede.fr:2101/"
-stream2=" -out serial://pts/1:115200:8:n:1:off &>/dev/null"
-## 1-Analyse nmea from gnss ntripclient for get lon lat
-ser = serial.Serial('/dev/pts/1', 115200, timeout=1)
-sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser))
-## Defaut longitude
-lon = 0.0
-## 2-Get caster sourcetable
-caster='caster.centipede.fr'
-port=2101
-maxdist=300
-## 3-Get variables
-###defaut mountpoint
-mp_use = "ENSG"
-###critical distance before change
-mp_km_crit = 15
-
 ## 00-START socat
 ## TODO Open virtual ports, BUG don't run in background, use run.sh.
 def socat():
- process1 = subprocess.Popen(socat.split())
+ process1 = subprocess.Popen(config.socat.split())
  print("/dev/pts/1 & /2 created")
  time.sleep(3)
 
 ## 01-START caster
 def str2str_out():
     ##run ntripcaster
-    process2 = subprocess.Popen(ntripc.split())
+    process2 = subprocess.Popen(config.ntripc.split())
     pid2 = process2.pid
     print("str2str serial 2 ntripc is runnig, pid: ",pid2)
 
@@ -53,23 +31,23 @@ def loop_mp():
     while True:
         try:
             ## 3-Get variables
-            global mp_use
-            global mp_km_crit
-            global dist_r2mp
+            #global mp_use
+            #global mp_km_crit
+            #global dist_r2mp
             ## 4-Get str2str in pid
             global pid_str
             ## 1-Analyse nmea from gnss ntripclient for get lon lat
             ##TODO after x min reset parameters
-            line = sio.readline()
+            line = config.sio.readline()
             msg = pynmea2.parse(line)
             ## Verify is it a fake data.
-            if msg.longitude != lon:
+            if msg.longitude != config.lon:
                 ## LOG coordinate from Rover
                 latlon= msg.latitude, msg.longitude
                 print("ROVER: ",latlon,msg.timestamp)
                 ## 2-Get caster sourcetable
-                browser = NtripBrowser(caster, port=port, timeout=10,
-                    coordinates=(msg.latitude,msg.longitude), maxdist=maxdist )
+                browser = NtripBrowser(config.caster, port=config.port, timeout=10,
+                    coordinates=(msg.latitude,msg.longitude), maxdist=config.maxdist )
                 getmp= browser.get_mountpoints()
                 filtermp = getmp['str']
                 ## LOG Watch all nearests mountpoints
@@ -81,7 +59,7 @@ def loop_mp():
                 ## Filter carrier L1-L2
                 filtermp1 = [m for m in filtermp if int(m['Carrier'])>=2]
                 ## Verify distance between rover and mountpoint used.
-                filter_r2mp = [m for m in filtermp if m['Mountpoint']==mp_use]
+                filter_r2mp = [m for m in filtermp if m['Mountpoint']==config.mp_use]
                 for r in filter_r2mp:
                     config.dist_r2mp = r["Distance"]
                 ## Get nearest mountpoint
@@ -93,11 +71,11 @@ def loop_mp():
                         mp_use_km = value["Distance"]
                         mp_Carrier = value["Carrier"]
                         print("CASTER: Nearest base is ",mp_use1,round(mp_use_km,2),"km; Carrier:",mp_Carrier)
-                        print("CASTER: Distance between Rover & connected base ",mp_use,round(config.dist_r2mp,2),"km")
+                        print("CASTER: Distance between Rover & connected base ",config.mp_use,round(config.dist_r2mp,2),"km")
                         ## Check if it is necessary to change the base
-                        if mp_use != mp_use1:  #and round(float(mp_use_km),0) > mp_km_crit:
+                        if config.mp_use != mp_use1:  #and round(float(mp_use_km),0) > mp_km_crit:
                             ## Build new str2str_in command
-                            bashstr = stream1 + mp_use1 + stream2
+                            bashstr = config.stream1 + mp_use1 + config.stream2
                             ## LOG Move to base
                             print("CASTER: Move to base ",mp_use1, " !")
                             ## KILL old str2str_in
@@ -105,7 +83,7 @@ def loop_mp():
                             str2str = subprocess.Popen(killstr.split())
                             print("str2str is killing, old pid:", pid_str)
                             ## Upd variables & Running a new str2str_in service
-                            mp_use = mp_use1
+                            config.mp_use = mp_use1
                             time.sleep(3)
                             str2str = subprocess.Popen(bashstr.split())
                             pid_str = str2str.pid
@@ -116,7 +94,7 @@ def loop_mp():
                                 message = "Move to base ," + str(mp_use1) +","+str(round(mp_use_km,2))+","+str(round(msg.latitude,7))+","+str(round(msg.longitude,7))+","+ str(msg.timestamp)
                                 bot = telegram.Bot(token=api_key)
                                 bot.send_message(chat_id=user_id, text=message)
-                        if mp_use == mp_use1:
+                        if config.mp_use == mp_use1:
                             print("CASTER: Already connected to ",mp_use1)
         except serial.SerialException as e:
             #print('Device error: {}'.format(e))
@@ -131,7 +109,7 @@ if __name__ == '__main__':
     ## 01-START caster
     Process(target=str2str_out).start()
     ## 02-START a generic stream RTCM3 in
-    bashstr = stream1+mp_use+stream2
+    bashstr = config.stream1+config.mp_use+config.stream2
     str2str = subprocess.Popen(bashstr.split())
     ## 4-Get str2str in pid
     pid_str = str2str.pid

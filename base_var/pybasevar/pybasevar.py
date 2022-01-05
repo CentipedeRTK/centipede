@@ -27,8 +27,10 @@ caster='caster.centipede.fr'
 port=2101
 maxdist=300
 ## 3-Get variables
+###defaut mountpoint
 mp_use = "ENSG"
-mp_km_sav = 300
+###critical distance before change
+mp_km_crit = 15
 
 ## 00-START socat
 ## TODO Open virtual ports, BUG don't run in background, use run.sh.
@@ -80,11 +82,11 @@ def loop_mp():
                         print("Nearest base: ",mp_use1,round(mp_use_km,2),"km; Carrier:",mp_Carrier)
                         ## 3-Get variables
                         global mp_use
-                        global mp_km_sav
+                        global mp_km_crit
                         ## 4-Get str2str in pid
                         global pid_str
                         ## Check if it is necessary to change the base
-                        if mp_use != mp_use1: ##and round(mp_km_sav,0) > 2:
+                        if mp_use != mp_use1: ##and round(mp_use_km,0) > mp_km_crit:
                             ## Build new str2str_in command
                             bashstr = stream1 + mp_use1 + stream2
                             ## LOG Move to base
@@ -95,7 +97,6 @@ def loop_mp():
                             print("str2str is killing, old pid:", pid_str)
                             ## Upd variables & Running a new str2str_in service
                             mp_use = mp_use1
-                            mp_km_sav = mp_use_km
                             time.sleep(3)
                             str2str = subprocess.Popen(bashstr.split())
                             pid_str = str2str.pid

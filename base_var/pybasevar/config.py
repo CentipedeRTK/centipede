@@ -15,11 +15,12 @@ lon = 0.0
 ## 2-Get caster sourcetable
 caster='caster.centipede.fr'
 port=2101
+###max search distance between rover & caster bases
 maxdist=300
 ## 3-Get variables
 ###defaut mountpoint
 mp_use = "ENSG"
-###critical distance before change
-mp_km_crit = 15
-##Distance between rover > base
+##defaut Distance between rover > base
 dist_r2mp = 150
+###critical distance before change
+mp_km_crit = 20

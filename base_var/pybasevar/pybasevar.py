@@ -9,7 +9,6 @@ import telegram
 import sys
 from ntripbrowser import NtripBrowser
 from multiprocessing import Process
-
 import config
 
 ## 00-START socat
@@ -30,17 +29,13 @@ def str2str_out():
 def loop_mp():
     while True:
         try:
-            ## 3-Get variables
-            #global mp_use
-            #global mp_km_crit
-            #global dist_r2mp
             ## 4-Get str2str in pid
             global pid_str
             ## 1-Analyse nmea from gnss ntripclient for get lon lat
             ##TODO after x min reset parameters
             line = config.sio.readline()
             msg = pynmea2.parse(line)
-            ## Verify is it a fake data.
+            ## Verify if it's a fake data.
             if msg.longitude != config.lon:
                 ## LOG coordinate from Rover
                 latlon= msg.latitude, msg.longitude
@@ -73,7 +68,12 @@ def loop_mp():
                         print("CASTER: Nearest base is ",mp_use1,round(mp_use_km,2),"km; Carrier:",mp_Carrier)
                         print("CASTER: Distance between Rover & connected base ",config.mp_use,round(config.dist_r2mp,2),"km")
                         ## Check if it is necessary to change the base
-                        if config.mp_use != mp_use1:  #and round(float(mp_use_km),0) > mp_km_crit:
+                        if (
+                            ## Base is different?
+                            config.mp_use != mp_use1
+                            ###critical distance before change ?
+                            and config.dist_r2mp > config.mp_km_crit
+                        ):
                             ## Build new str2str_in command
                             bashstr = config.stream1 + mp_use1 + config.stream2
                             ## LOG Move to base

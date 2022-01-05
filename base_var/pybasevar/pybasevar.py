@@ -10,6 +10,8 @@ import sys
 from ntripbrowser import NtripBrowser
 from multiprocessing import Process
 
+import config
+
 ## 00-START socat TODO
 socat="socat -d -d pty,raw,echo=0 pty,raw,echo=0 &>/dev/null"
 ## 01-Start caster
@@ -34,10 +36,10 @@ mp_km_crit = 15
 
 ## 00-START socat
 ## TODO Open virtual ports, BUG don't run in background, use run.sh.
- def socat():
-     process1 = subprocess.Popen(socat.split())
-     print("/dev/pts/1 & /2 created")
-     time.sleep(3)
+def socat():
+ process1 = subprocess.Popen(socat.split())
+ print("/dev/pts/1 & /2 created")
+ time.sleep(3)
 
 ## 01-START caster
 def str2str_out():
@@ -50,27 +52,38 @@ def str2str_out():
 def loop_mp():
     while True:
         try:
+            ## 3-Get variables
+            global mp_use
+            global mp_km_crit
+            global dist_r2mp
+            ## 4-Get str2str in pid
+            global pid_str
             ## 1-Analyse nmea from gnss ntripclient for get lon lat
+            ##TODO after x min reset parameters
             line = sio.readline()
             msg = pynmea2.parse(line)
             ## Verify is it a fake data.
             if msg.longitude != lon:
                 ## LOG coordinate from Rover
                 latlon= msg.latitude, msg.longitude
-                print(latlon,msg.timestamp)
+                print("ROVER: ",latlon,msg.timestamp)
                 ## 2-Get caster sourcetable
                 browser = NtripBrowser(caster, port=port, timeout=10,
                     coordinates=(msg.latitude,msg.longitude), maxdist=maxdist )
                 getmp= browser.get_mountpoints()
                 filtermp = getmp['str']
                 ## LOG Watch all nearests mountpoints
-                for i in filtermp:
-                    mp = i["Mountpoint"]
-                    di = round(i["Distance"],2)
-                    car = i["Carrier"]
-                    print(mp,di,"km; Carrier:", car)
+                # for i in filtermp:
+                #     mp = i["Mountpoint"]
+                #     di = round(i["Distance"],2)
+                #     car = i["Carrier"]
+                #     print(mp,di,"km; Carrier:", car)
                 ## Filter carrier L1-L2
-                filtermp1 = [m for m in filtermp if m['Carrier']=="2"]
+                filtermp1 = [m for m in filtermp if int(m['Carrier'])>=2]
+                ## Verify distance between rover and mountpoint used.
+                filter_r2mp = [m for m in filtermp if m['Mountpoint']==mp_use]
+                for r in filter_r2mp:
+                    config.dist_r2mp = r["Distance"]
                 ## Get nearest mountpoint
                 for i, value in enumerate(filtermp1):
                     ## Get first row
@@ -79,18 +92,14 @@ def loop_mp():
                         mp_use1 = value["Mountpoint"]
                         mp_use_km = value["Distance"]
                         mp_Carrier = value["Carrier"]
-                        print("Nearest base: ",mp_use1,round(mp_use_km,2),"km; Carrier:",mp_Carrier)
-                        ## 3-Get variables
-                        global mp_use
-                        global mp_km_crit
-                        ## 4-Get str2str in pid
-                        global pid_str
+                        print("CASTER: Nearest base is ",mp_use1,round(mp_use_km,2),"km; Carrier:",mp_Carrier)
+                        print("CASTER: Distance between Rover & connected base ",mp_use,round(config.dist_r2mp,2),"km")
                         ## Check if it is necessary to change the base
-                        if mp_use != mp_use1: ##and round(mp_use_km,0) > mp_km_crit:
+                        if mp_use != mp_use1:  #and round(float(mp_use_km),0) > mp_km_crit:
                             ## Build new str2str_in command
                             bashstr = stream1 + mp_use1 + stream2
                             ## LOG Move to base
-                            print("Move to base ",mp_use1, " !")
+                            print("CASTER: Move to base ",mp_use1, " !")
                             ## KILL old str2str_in
                             killstr = "kill -9 " + str(pid_str)
                             str2str = subprocess.Popen(killstr.split())
@@ -107,6 +116,8 @@ def loop_mp():
                                 message = "Move to base ," + str(mp_use1) +","+str(round(mp_use_km,2))+","+str(round(msg.latitude,7))+","+str(round(msg.longitude,7))+","+ str(msg.timestamp)
                                 bot = telegram.Bot(token=api_key)
                                 bot.send_message(chat_id=user_id, text=message)
+                        if mp_use == mp_use1:
+                            print("CASTER: Already connected to ",mp_use1)
         except serial.SerialException as e:
             #print('Device error: {}'.format(e))
             continue

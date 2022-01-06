@@ -25,6 +25,14 @@ def str2str_out():
     pid2 = process2.pid
     print("str2str serial 2 ntripc is runnig, pid: ",pid2)
 
+def telegrambot():
+    if len(sys.argv) >= 2:
+        api_key = str( sys.argv[1] )
+        user_id = str( sys.argv[2] )
+        message = "Move to base ," + str(mp_use1) +","+str(round(mp_use1_km,2))+","+str(round(msg.latitude,7))+","+str(round(msg.longitude,7))+","+ str(msg.timestamp)
+        bot = telegram.Bot(token=api_key)
+        bot.send_message(chat_id=user_id, text=message)
+
 def movetobase():
     global pid_str
     ## Build new str2str_in command
@@ -41,12 +49,7 @@ def movetobase():
     str2str = subprocess.Popen(bashstr.split())
     pid_str = str2str.pid
     ##Send message to Telegram if param exist
-    if len(sys.argv) >= 2:
-        api_key = str( sys.argv[1] )
-        user_id = str( sys.argv[2] )
-        message = "Move to base ," + str(mp_use1) +","+str(round(mp_use1_km,2))+","+str(round(msg.latitude,7))+","+str(round(msg.longitude,7))+","+ str(msg.timestamp)
-        bot = telegram.Bot(token=api_key)
-        bot.send_message(chat_id=user_id, text=message)
+    telegrambot()
 
 ## 03-START loop to check rover position and nearest base
 def loop_mp():

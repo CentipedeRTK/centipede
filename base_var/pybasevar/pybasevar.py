@@ -25,17 +25,43 @@ def str2str_out():
     pid2 = process2.pid
     print("str2str serial 2 ntripc is runnig, pid: ",pid2)
 
+def movetobase():
+    global pid_str
+    ## Build new str2str_in command
+    bashstr = config.stream1 + mp_use1 + config.stream2
+    ## LOG Move to base
+    print("CASTER: Move to base ",mp_use1, " !")
+    ## KILL old str2str_in
+    killstr = "kill -9 " + str(pid_str)
+    str2str = subprocess.Popen(killstr.split())
+    print("str2str is killing, old pid:", pid_str)
+    ## Upd variables & Running a new str2str_in service
+    config.mp_use = mp_use1
+    time.sleep(3)
+    str2str = subprocess.Popen(bashstr.split())
+    pid_str = str2str.pid
+    ##Send message to Telegram if param exist
+    if len(sys.argv) >= 2:
+        api_key = str( sys.argv[1] )
+        user_id = str( sys.argv[2] )
+        message = "Move to base ," + str(mp_use1) +","+str(round(mp_use1_km,2))+","+str(round(msg.latitude,7))+","+str(round(msg.longitude,7))+","+ str(msg.timestamp)
+        bot = telegram.Bot(token=api_key)
+        bot.send_message(chat_id=user_id, text=message)
+
 ## 03-START loop to check rover position and nearest base
 def loop_mp():
     while True:
         try:
             ## 4-Get str2str in pid
             global pid_str
+            global mp_use1
+            global mp_use1_km
+            global msg
             ## 1-Analyse nmea from gnss ntripclient for get lon lat
             ##TODO after x min reset parameters
             line = config.sio.readline()
             msg = pynmea2.parse(line)
-            ## Verify if it's a fake data.
+            ## Exclude bad longitude
             if msg.longitude != config.lon:
                 ## LOG coordinate from Rover
                 latlon= msg.latitude, msg.longitude
@@ -51,51 +77,41 @@ def loop_mp():
                 #     di = round(i["Distance"],2)
                 #     car = i["Carrier"]
                 #     print(mp,di,"km; Carrier:", car)
+                ## Purge list
+                filtermp1 = []
                 ## Filter carrier L1-L2
                 filtermp1 = [m for m in filtermp if int(m['Carrier'])>=2]
-                ## Verify distance between rover and mountpoint used.
+                ## Value on connected base
                 filter_r2mp = [m for m in filtermp if m['Mountpoint']==config.mp_use]
+                ## Verify distance between rover and mountpoint used.
                 for r in filter_r2mp:
                     config.dist_r2mp = r["Distance"]
+                    config.mp_alive = r['Mountpoint']
                 ## Get nearest mountpoint
-                for i, value in enumerate(filtermp1):
+                for i, value in enumerate(filtermp1):###critical distance before change
                     ## Get first row
                     if i == 0 :
                         ## LOG Nearest base available
                         mp_use1 = value["Mountpoint"]
-                        mp_use_km = value["Distance"]
+                        mp_use1_km = value["Distance"]
                         mp_Carrier = value["Carrier"]
-                        print("CASTER: Nearest base is ",mp_use1,round(mp_use_km,2),"km; Carrier:",mp_Carrier)
-                        print("CASTER: Distance between Rover & connected base ",config.mp_use,round(config.dist_r2mp,2),"km")
+                        print("INFO: Nearest base is ",mp_use1,round(mp_use1_km,2),"km; Carrier:",mp_Carrier)
+                        print("INFO: Distance between Rover & connected base ",config.mp_use,round(config.dist_r2mp,2),"km")
                         ## Check if it is necessary to change the base
-                        if (
-                            ## Base is different?
-                            config.mp_use != mp_use1
-                            ###critical distance before change ?
-                            and config.dist_r2mp > config.mp_km_crit
-                        ):
-                            ## Build new str2str_in command
-                            bashstr = config.stream1 + mp_use1 + config.stream2
-                            ## LOG Move to base
-                            print("CASTER: Move to base ",mp_use1, " !")
-                            ## KILL old str2str_in
-                            killstr = "kill -9 " + str(pid_str)
-                            str2str = subprocess.Popen(killstr.split())
-                            print("str2str is killing, old pid:", pid_str)
-                            ## Upd variables & Running a new str2str_in service
-                            config.mp_use = mp_use1
-                            time.sleep(3)
-                            str2str = subprocess.Popen(bashstr.split())
-                            pid_str = str2str.pid
-                            ##Send message to Telegram if param exist
-                            if len(sys.argv) >= 2:
-                                api_key = str( sys.argv[1] )
-                                user_id = str( sys.argv[2] )
-                                message = "Move to base ," + str(mp_use1) +","+str(round(mp_use_km,2))+","+str(round(msg.latitude,7))+","+str(round(msg.longitude,7))+","+ str(msg.timestamp)
-                                bot = telegram.Bot(token=api_key)
-                                bot.send_message(chat_id=user_id, text=message)
-                        if config.mp_use == mp_use1:
-                            print("CASTER: Already connected to ",mp_use1)
+                        if config.mp_use == config.mp_alive:
+                            print("INFO: Base alive")
+                            ## nearest Base is different?
+                            if config.mp_use != mp_use1:
+                                ## Critical distance before change ?
+                                if config.dist_r2mp > config.mp_km_crit:
+                                    movetobase()
+                                else:
+                                    print("INFO:",mp_use1," is closer but critical distance not reached: ",round(config.dist_r2mp,2),"km")
+                            if config.mp_use == mp_use1:
+                                print("INFO: Already connected to ",mp_use1)
+                        else:
+                            print("INFO: Base dead")
+                            movetobase()
         except serial.SerialException as e:
             #print('Device error: {}'.format(e))
             continue

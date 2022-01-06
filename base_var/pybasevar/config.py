@@ -20,6 +20,7 @@ maxdist=300
 ## 3-Get variables
 ###defaut mountpoint
 mp_use = "ENSG"
+mp_alive=""
 ##defaut Distance between rover > base
 dist_r2mp = 150
 ###critical distance before change

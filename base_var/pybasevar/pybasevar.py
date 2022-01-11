@@ -9,6 +9,7 @@ import telegram
 import sys
 from ntripbrowser import NtripBrowser
 from multiprocessing import Process
+import time
 import config
 
 ## 00-START socat
@@ -94,7 +95,7 @@ def loop_mp():
                 #     di = round(i["Distance"],2)
                 #     car = i["Carrier"]
                 #     print(mp,di,"km; Carrier:", car)
-                ## Purge list
+                # Purge list
                 flt1 = []
                 ## filter carrier L1-L2
                 flt1 = [m for m in flt if int(m['Carrier'])>=2]
@@ -121,12 +122,19 @@ def loop_mp():
                         ## Check if it is necessary to change the base
                         ## Base Alive?
                         if config.mp_use == config.mp_alive:
-                            print("INFO: Base alive")
+                            print("INFO: Base",config.mp_alive," alive")
                             ## nearest Base is different?
                             if config.mp_use != mp_use1:
                                 ## Check Critical distance before change ?
                                 if config.dist_r2mp > config.mp_km_crit:
-                                    movetobase()
+                                    ##Hysteresis(htrs)
+                                    crithtrs = config.mp_km_crit + config.htrs
+                                    if config.dist_r2mp < crithtrs:
+                                        print(
+                                            "INFO: Hysteresis running: "
+                                            ,crithtrs,"km")
+                                    else:
+                                        movetobase()
                                 else:
                                     print(
                                         "INFO:",mp_use1,
@@ -134,7 +142,7 @@ def loop_mp():
                                         " But critical distance not reached: ",
                                         config.mp_km_crit,"km")
                             if config.mp_use == mp_use1:
-                                print("INFO: Already connected to ",mp_use1)
+                                print("INFO: Always connected to ",mp_use1)
                         else:
                             print("INFO: Base dead")
                             movetobase()

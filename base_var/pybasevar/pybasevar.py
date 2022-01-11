@@ -9,7 +9,7 @@ import telegram
 import sys
 from ntripbrowser import NtripBrowser
 from multiprocessing import Process
-import time
+from datetime import datetime
 import config
 
 ## 00-START socat
@@ -40,15 +40,20 @@ def main():
     ## 03-START loop to check rover position and nearest base
     Process(target=loop_mp).start()
 
+
 def telegrambot():
     if len(sys.argv) >= 2:
         api_key = str( sys.argv[1] )
         user_id = str( sys.argv[2] )
-        message = ("Move to base ," + str(mp_use1) +","+
-        str(round(mp_use1_km,2))+","+str(round(msg.latitude,7))+","+
-        str(round(msg.longitude,7))+","+ str(msg.timestamp))
         bot = telegram.Bot(token=api_key)
-        bot.send_message(chat_id=user_id, text=message)
+        bot.send_message(chat_id=user_id, text=config.message)
+
+def logging():
+    ##log in file
+    presentday = datetime.now()
+    file = open("basevarlog.txt", "a")
+    file.write(config.message + ","+ presentday.strftime('%d-%m-%Y') +'\n')
+    file.close
 
 def movetobase():
     ## Build new str2str_in command
@@ -64,6 +69,12 @@ def movetobase():
     time.sleep(3)
     str2str = subprocess.Popen(bashstr.split())
     config.pid_str = str2str.pid
+    ##Metadata
+    config.message = ("Move to base ," + str(mp_use1) +","+
+    str(round(mp_use1_km,2))+","+str(round(msg.latitude,7))+","+
+    str(round(msg.longitude,7))+","+ str(msg.timestamp))
+    ##Log data in file
+    logging()
     ##Send message to Telegram if param exist
     telegrambot()
 

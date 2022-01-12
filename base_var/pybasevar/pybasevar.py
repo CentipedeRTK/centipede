@@ -7,6 +7,7 @@ import os
 import signal
 import telegram
 import sys
+#import logging
 from decimal import *
 from ntripbrowser import NtripBrowser
 from multiprocessing import Process
@@ -34,9 +35,9 @@ def telegrambot():
         bot = telegram.Bot(token=api_key)
         bot.send_message(chat_id=user_id, text=config.message)
 
-def logging():
+def savelog():
     ##log in file
-    file = open("basevarlog.txt", "a")
+    file = open("basevarlog.csv", "a")
     file.write(config.message +'\n')
     file.close
 
@@ -44,7 +45,9 @@ def movetobase():
     ## Build new str2str_in command
     bashstr = config.stream1 + mp_use1 + config.stream2
     ## LOG Move to base
+    print("------")
     print("CASTER: Move to base ",mp_use1, " !")
+    print("------")
     ## KILL old str2str_in
     killstr = "kill -9 " + str(config.pid_str)
     str2str = subprocess.Popen(killstr.split())
@@ -60,7 +63,7 @@ def movetobase():
     str(round(mp_use1_km,2))+","+str(round(config.rlat,7))+","+
     str(round(config.rlon,7))+","+ presentday.strftime('%Y-%m-%d') +" "+str(config.rtime))
     ##Log data in file
-    #logging()
+    #savelog()
     ##Send message to Telegram if param exist
     #telegrambot()
 
@@ -122,13 +125,13 @@ def loop_mp():
             if len(flt_basealive) == 0:
                 print("INFO: Base ",config.mp_alive," is DEAD!")
                 movetobase()
-                logging()
+                savelog()
             if config.mp_use != mp_use1:
                 print("INFO: A closer base is now available")
                 movetobase()
-                logging()
+                savelog()
             else:
-                print("INFO: Connected to ",config.mp_use,", Waiting for the rover's geographical coordinates")
+                print("INFO: Connected to ",config.mp_use,", Waiting for the rover's geographical coordinates......")
                 ## 1-Analyse nmea from gnss ntripclient for get lon lat
                 ##TODO after x min reset parameters
                 line = config.sio.readline()
@@ -139,7 +142,9 @@ def loop_mp():
                     config.rlat = msg.latitude
                     config.rlon = msg.longitude
                     config.rtime = msg.timestamp
+                    print("------")
                     print("ROVER: ",config.rlat,config.rlon,msg.timestamp)
+                    print("------")
                     ## 2-Get caster sourcetable
                     ntripbrowser()
                     ### Check if it is necessary to change the base
@@ -150,23 +155,23 @@ def loop_mp():
                             ##critique + Hysteresis(htrs)
                             crithtrs = config.mp_km_crit + config.htrs
                             if config.dist_r2mp < crithtrs:
-                                print("INFO: Hysteresis critique running: ",crithtrs,"km")
+                                print("**INFO: Hysteresis critique running: ",crithtrs,"km")
                             else:
                                 ##middle mount point 2 mount point hysteresis
                                 r2mphtrs = mp_use1_km + config.htrs
                                 if config.dist_r2mp < r2mphtrs:
-                                    print("INFO: Hysteresis MP 2 MP running: ",r2mphtrs,"km")
+                                    print("**INFO: Hysteresis MP 2 MP running: ",r2mphtrs,"km")
                                 else:
                                     movetobase()
-                                    logging()
+                                    savelog()
                                     telegrambot()
 
                         else:
                             print(
-                                "INFO:",mp_use1," nearby: ",round(config.dist_r2mp,2),
+                                "**INFO:",mp_use1," nearby: ",round(config.dist_r2mp,2),
                                 " But critical distance not reached: ",config.mp_km_crit,"km")
                     if config.mp_use == mp_use1:
-                        print("INFO: Always connected to ",mp_use1)
+                        print("**INFO: Always connected to ",mp_use1)
 
         except serial.SerialException as e:
             #print('Device error: {}'.format(e))
@@ -176,6 +181,7 @@ def loop_mp():
             continue
 
 def main():
+    #logging.basicConfig(filename='pybasevar.log', filemode='a',format='%(asctime)s - %(message)s', level=logging.INFO)
     ## 00-START socat
     ## TODO
     ## 01-START caster

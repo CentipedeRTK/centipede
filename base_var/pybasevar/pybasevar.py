@@ -6,6 +6,8 @@ import subprocess
 import os
 import signal
 import telegram
+import telebot
+#import botquestion
 import sys
 #import logging
 from decimal import *
@@ -13,6 +15,29 @@ from ntripbrowser import NtripBrowser
 from multiprocessing import Process
 from datetime import datetime
 import config
+
+##TElegram param
+config.api_key = str( sys.argv[1] )
+config.user_id = str( sys.argv[2] )
+bot = telebot.TeleBot(config.api_key)
+
+@bot.message_handler(commands=['help'])
+def send_welcome(message):
+	bot.reply_to(message, "Howdy, how are you doing?")
+
+@bot.message_handler(commands=['mp'])
+def send_mp(message):
+    bot.reply_to(message, config.mp_use)
+
+@bot.message_handler(commands=['log'])
+def notas(mensagem):
+    mensagemID = mensagem.chat.id
+    doc = open('basevarlog.csv', 'rb')
+    bot.send_document(mensagemID, doc)
+
+@bot.message_handler(func=lambda message: True)
+def echo_all(message):
+	bot.reply_to(message, message.text)
 
 ## 00-START socat
 ## TODO : Open virtual ports, BUG don't run in background, use run.sh.
@@ -30,10 +55,8 @@ def str2str_out():
 
 def telegrambot():
     if len(sys.argv) >= 2:
-        api_key = str( sys.argv[1] )
-        user_id = str( sys.argv[2] )
-        bot = telegram.Bot(token=api_key)
-        bot.send_message(chat_id=user_id, text=config.message)
+        bot1 = telegram.Bot(token=config.api_key)
+        bot1.send_message(chat_id=config.user_id, text=config.message)
 
 def savelog():
     ##log in file
@@ -62,10 +85,6 @@ def movetobase():
     config.message = ("Move to base ," + str(mp_use1) +","+
     str(round(mp_use1_km,2))+","+str(round(config.rlat,7))+","+
     str(round(config.rlon,7))+","+ presentday.strftime('%Y-%m-%d') +" "+str(config.rtime))
-    ##Log data in file
-    #savelog()
-    ##Send message to Telegram if param exist
-    #telegrambot()
 
 def ntripbrowser():
     global browser
@@ -98,6 +117,7 @@ def ntripbrowser():
             print(
                 "INFO: Distance between Rover & connected base ",
                 config.mp_use,round(config.dist_r2mp,2),"km")
+            print(config.mp_use)
     ## Value on connected base
     flt_r2mp = [m for m in flt if m['Mountpoint']==config.mp_use]
     ## GET distance between rover and mountpoint used.
@@ -165,7 +185,6 @@ def loop_mp():
                                     movetobase()
                                     savelog()
                                     telegrambot()
-
                         else:
                             print(
                                 "**INFO:",mp_use1," nearby: ",round(config.dist_r2mp,2),
@@ -181,6 +200,7 @@ def loop_mp():
             continue
 
 def main():
+    print(config.api_key)
     #logging.basicConfig(filename='pybasevar.log', filemode='a',format='%(asctime)s - %(message)s', level=logging.INFO)
     ## 00-START socat
     ## TODO
@@ -194,6 +214,8 @@ def main():
     print("STR2STR: Defaut ntripcli 2 serial is runnig, pid: ",config.pid_str)
     ## 03-START loop to check rover position and nearest base
     Process(target=loop_mp).start()
+    ## 04-START botquestion:
+    bot.infinity_polling()
 
 if __name__ == '__main__':
     main()

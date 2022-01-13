@@ -9,6 +9,9 @@ pid_str=0
 ## 02-Start a generic stream RTCM3 in
 stream1="str2str -in ntrip://:@caster.centipede.fr:80/"
 stream2=" -out serial://pts/1:115200:8:n:1:off &>/dev/null"
+##Telegram
+api_key = ''
+user_id = ""
 ## 1-Analyse nmea from gnss ntripclient for get lon lat
 ser = serial.Serial('/dev/pts/1', 115200, timeout=1)
 sio = io.TextIOWrapper(io.BufferedRWPair(ser, ser))

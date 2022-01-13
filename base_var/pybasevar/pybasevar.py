@@ -7,7 +7,6 @@ import os
 import signal
 import telegram
 import telebot
-from aiogram import Bot, Dispatcher, executor, types
 #import botquestion
 import sys
 #import logging

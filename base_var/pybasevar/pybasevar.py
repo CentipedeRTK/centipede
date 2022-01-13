@@ -7,6 +7,7 @@ import os
 import signal
 import telegram
 import telebot
+from aiogram import Bot, Dispatcher, executor, types
 #import botquestion
 import sys
 #import logging
@@ -19,6 +20,7 @@ import config
 ##TElegram param
 config.api_key = str( sys.argv[1] )
 config.user_id = str( sys.argv[2] )
+
 bot = telebot.TeleBot(config.api_key)
 
 @bot.message_handler(commands=['help'])
@@ -26,8 +28,20 @@ def send_welcome(message):
 	bot.reply_to(message, "Howdy, how are you doing?")
 
 @bot.message_handler(commands=['mp'])
-def send_mp(message):
-    bot.reply_to(message, config.mp_use)
+def send_htrs(message):
+    bot.reply_to(message,"Mount Point: "+config.mp_use)
+
+@bot.message_handler(commands=['htrs'])
+def send_htrs(message):
+    bot.reply_to(message,"Hysteresis: "+str(config.htrs)+"km")
+
+@bot.message_handler(commands=['dist'])
+def send_mp_use1_km(message):
+    bot.reply_to(message,"Distance between Rover/Base: "+str(mp_use1_km)+"km")
+
+@bot.message_handler(commands=['crit'])
+def send_crit(message):
+    bot.reply_to(message, "Critical distance: "+str(config.mp_km_crit)+"km")
 
 @bot.message_handler(commands=['log'])
 def notas(mensagem):
@@ -38,6 +52,7 @@ def notas(mensagem):
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
 	bot.reply_to(message, message.text)
+
 
 ## 00-START socat
 ## TODO : Open virtual ports, BUG don't run in background, use run.sh.
@@ -54,6 +69,7 @@ def str2str_out():
     print("STR2STR: serial 2 ntripc is runnig, pid: ",pid2)
 
 def telegrambot():
+    global bot1
     if len(sys.argv) >= 2:
         bot1 = telegram.Bot(token=config.api_key)
         bot1.send_message(chat_id=config.user_id, text=config.message)
@@ -198,6 +214,8 @@ def loop_mp():
         except pynmea2.ParseError as e:
             #print('Parse error: {}'.format(e))
             continue
+
+
 
 def main():
     print(config.api_key)

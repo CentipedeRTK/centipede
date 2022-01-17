@@ -13,18 +13,8 @@ while :
     ##GET current min & second
     HEUR=$(date +%M:%S)
     echo "MIN:SS "$HEUR
-    ##Variable: listen Caster & get Active Mount Point
-    MP=$(curl -u $FIRSTADMIN:$FIRSTADMINPSWD http://$SERVER | \
-          grep '^<tr><td>'  \
-        	| sed             \
-        	-e 's:<tr>::g'    \
-        	-e 's:</tr>::g'   \
-        	-e 's:</td>::g'   \
-        	-e 's:<td>: :g'   \
-        	-e 's:/: :g'      \
-        	-e 's/\<Id\>//g'  \
-          | cut -d " " -f3 )
-    ###Display MountPoint list for information
+    ##GET connected Mount Point
+    MP=$(python3 /home/browser.py)
     echo "---List of GNSS BASES connected to $SERVER---"
     echo $MP
     echo "----------------"
@@ -38,14 +28,14 @@ while :
       postgresql://$POSTGRES_USER:$POSTGRES_PASS@$DB_IP/$POSTGRES_DBNAME
     done
 
-    ##Check potential connected bases are down
+    ##Check potential connected bases are
     CH=$(psql --command="COPY (SELECT $TABLE.mp
             FROM $TABLE
     		    WHERE $TABLE.control < (now()- interval '15 seconds')
             ORDER BY $TABLE.mp)
     		    TO STDOUT WITH DELIMITER ' ';" \
          postgresql://$POSTGRES_USER:$POSTGRES_PASS@$DB_IP/$POSTGRES_DBNAME)
-    echo "---Bases down ---"
+    echo "---Bases Down ---"
     echo $CH
     echo "---------------------------"
     ###Insert deconnection in database
@@ -60,7 +50,7 @@ while :
     ##Mail after 5 min (15s * 20 = 5 min) default
     MA5=$(psql --command="COPY (SELECT mp
           FROM $TABLE
-          WHERE defaut_count = 20) TO STDOUT WITH DELIMITER ' ';" \
+          WHERE defaut_count = 14) TO STDOUT WITH DELIMITER ' ';" \
         postgresql://$POSTGRES_USER:$POSTGRES_PASS@$DB_IP/$POSTGRES_DBNAME)
     echo "---Send defaut mail 5 min to---"
     echo $MA5
@@ -81,7 +71,7 @@ while :
         export MAIL=$MAIL
         export MP=$m
         /home/mail.sh
-        echo "mail base DOWN sent to " $MAIL" !!!"
+        echo "mail base  sent to " $MAIL" !!!"
       fi
     done
 
@@ -117,6 +107,6 @@ while :
       fi
     done
   ## Wait X seconds and start again.
-  sleep 15
+  sleep 8
   done
 exit 0

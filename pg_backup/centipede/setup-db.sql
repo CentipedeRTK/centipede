@@ -697,31 +697,27 @@ COMMENT ON COLUMN public.antenne.date_declar IS 'date de declaration de la base 
 --
 
 CREATE VIEW logs.defaut_day AS
- SELECT defaut_logs_temp.id,
-    ant.id AS id_antenne,
-    defaut_logs_temp.mp,
-    date_trunc('minutes'::text, defaut_logs_temp.defaut) AS defaut,
+SELECT id,
+    mp,
+    date_trunc('minutes'::text, defaut_logs.defaut) AS defaut,
         CASE
-            WHEN (round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) >= (86400)::double precision) THEN round(((date_part('epoch'::text, defaut_logs_temp.defaut_persist) / (86400)::double precision))::numeric, 2)
+            WHEN round(date_part('epoch'::text, defaut_logs.defaut_persist)) >= 86400::double precision THEN round((date_part('epoch'::text, defaut_logs.defaut_persist) / 86400::double precision)::numeric, 2)
             ELSE NULL::numeric
         END AS days,
         CASE
-            WHEN ((round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) >= (3600)::double precision) AND (round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) < (86400)::double precision)) THEN round(((date_part('epoch'::text, defaut_logs_temp.defaut_persist) / (3600)::double precision))::numeric, 2)
+            WHEN round(date_part('epoch'::text, defaut_logs.defaut_persist)) >= 3600::double precision AND round(date_part('epoch'::text, defaut_logs.defaut_persist)) < 86400::double precision THEN round((date_part('epoch'::text, defaut_logs.defaut_persist) / 3600::double precision)::numeric, 2)
             ELSE NULL::numeric
         END AS hours,
         CASE
-            WHEN ((round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) >= (60)::double precision) AND (round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) < (3600)::double precision)) THEN round(((date_part('epoch'::text, defaut_logs_temp.defaut_persist) / (60)::double precision))::numeric, 2)
+            WHEN round(date_part('epoch'::text, defaut_logs.defaut_persist)) >= 60::double precision AND round(date_part('epoch'::text, defaut_logs.defaut_persist)) < 3600::double precision THEN round((date_part('epoch'::text, defaut_logs.defaut_persist) / 60::double precision)::numeric, 2)
             ELSE NULL::numeric
         END AS minu,
         CASE
-            WHEN (round(date_part('epoch'::text, defaut_logs_temp.defaut_persist)) < (60)::double precision) THEN round((date_part('epoch'::text, defaut_logs_temp.defaut_persist))::numeric, 2)
+            WHEN round(date_part('epoch'::text, defaut_logs.defaut_persist)) < 60::double precision THEN round(date_part('epoch'::text, defaut_logs.defaut_persist)::numeric, 2)
             ELSE NULL::numeric
         END AS sec
-   FROM (logs.defaut_logs_temp
-     LEFT JOIN public.antenne ant ON (((ant.mp)::text = (defaut_logs_temp.mp)::text)))
-  WHERE (ant.id IS NOT NULL)
-  ORDER BY (round((date_part('epoch'::text, defaut_logs_temp.defaut_persist) / (60)::double precision))) DESC;
-
+  FROM logs.defaut_logs
+  ORDER BY defaut_logs.defaut DESC
 
 ALTER TABLE logs.defaut_day OWNER TO centipede;
 

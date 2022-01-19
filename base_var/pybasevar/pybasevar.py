@@ -7,6 +7,7 @@ import os
 import signal
 import telegram
 import telebot
+from telebot import types
 #import botquestion
 import sys
 #import logging
@@ -15,6 +16,16 @@ from ntripbrowser import NtripBrowser
 from multiprocessing import Process
 from datetime import datetime
 import config
+import configparser
+
+## import and edit .ini
+configp = configparser.ConfigParser()
+configp.read('param.ini')
+
+def editparam():
+    with open('param.ini','w') as configfile:
+        configp.write(configfile)
+        configfile.close()
 
 ##TElegram param
 config.api_key = str( sys.argv[1] )
@@ -27,20 +38,40 @@ def send_welcome(message):
 	bot.reply_to(message, "Howdy, how are you doing?")
 
 @bot.message_handler(commands=['mp'])
-def send_htrs(message):
-    bot.reply_to(message,"Mount Point: "+config.mp_use)
+def send_mp(message):
+    configp.read('param.ini')
+    bot.reply_to(message,"Mount Point: "+configp["data"]["mp_use"])
 
 @bot.message_handler(commands=['htrs'])
 def send_htrs(message):
-    bot.reply_to(message,"Hysteresis: "+str(config.htrs)+"km")
+    configp.read('param.ini')
+    bot.reply_to(message,"Hysteresis: "+configp["data"]["htrs"]+"km")
+
+@bot.message_handler(commands=['htrs!'])
+def send_htrs(message):
+    configp.read('param.ini')
+    msg = bot.reply_to(message,"Edit Hysteresis, write value: ")
+    bot.register_next_step_handler(msg, processSetHtrs)
+
+def processSetHtrs(message):
+    answer = message.text
+    if answer.isdigit():
+        print(answer)
+        configp["data"]["htrs"] = answer
+        editparam()
+        bot.reply_to(message,"Hysteresis is change to "+configp["data"]["htrs"]+"km")
+    else:
+        bot.reply_to(message, 'Oooops bad value!')
 
 @bot.message_handler(commands=['dist'])
 def send_mp_use1_km(message):
-    bot.reply_to(message,"Distance between Rover/Base: "+str(mp_use1_km)+"km")
+    configp.read('param.ini')
+    bot.reply_to(message,"Distance between Rover/Base: "+configp["data"]["dist_r2mp"]+"km")
 
 @bot.message_handler(commands=['crit'])
 def send_crit(message):
-    bot.reply_to(message, "Critical distance: "+str(config.mp_km_crit)+"km")
+    configp.read('param.ini')
+    bot.reply_to(message, "Critical distance: "+ configp["data"]["mp_km_crit"] +"km")
 
 @bot.message_handler(commands=['log'])
 def notas(mensagem):
@@ -71,12 +102,12 @@ def telegrambot():
     global bot1
     if len(sys.argv) >= 2:
         bot1 = telegram.Bot(token=config.api_key)
-        bot1.send_message(chat_id=config.user_id, text=config.message)
+        bot1.send_message(chat_id=config.user_id, text=configp["message"]["message"])
 
 def savelog():
     ##log in file
     file = open("basevarlog.csv", "a")
-    file.write(config.message +'\n')
+    file.write(configp["message"]["message"] +'\n')
     file.close
 
 def movetobase():
@@ -91,15 +122,19 @@ def movetobase():
     str2str = subprocess.Popen(killstr.split())
     print("STR2STR: KILL, old pid:", config.pid_str)
     ## Upd variables & Running a new str2str_in service
-    config.mp_use = mp_use1
+    #config.mp_use = mp_use1
+    configp["data"]["mp_use"] = mp_use1
+    editparam()
     time.sleep(3)
     str2str = subprocess.Popen(bashstr.split())
     config.pid_str = str2str.pid
     ##Metadata
     presentday = datetime.now()
-    config.message = ("Move to base ," + str(mp_use1) +","+
+    configp["message"]["message"] = ("Move to base ," + str(mp_use1) +","+
     str(round(mp_use1_km,2))+","+str(round(config.rlat,7))+","+
     str(round(config.rlon,7))+","+ presentday.strftime('%Y-%m-%d') +" "+str(config.rtime))
+    editparam()
+    telegrambot()
 
 def ntripbrowser():
     global browser
@@ -111,7 +146,7 @@ def ntripbrowser():
     ## 2-Get caster sourcetable
     browser = (NtripBrowser(config.caster, port=config.port,
     timeout=10,coordinates=(config.rlat,config.rlon),
-    maxdist=config.maxdist ))
+    maxdist=int(configp["data"]["maxdist"]) ))
     getmp= browser.get_mountpoints()
     flt = getmp['str']
     # Purge list
@@ -131,14 +166,15 @@ def ntripbrowser():
                 round(mp_use1_km,2),"km; Carrier:",mp_Carrier)
             print(
                 "INFO: Distance between Rover & connected base ",
-                config.mp_use,round(config.dist_r2mp,2),"km")
-            print(config.mp_use)
+                configp["data"]["mp_use"],Decimal(configp["data"]["dist_r2mp"]),"km")
+
     ## Value on connected base
-    flt_r2mp = [m for m in flt if m['Mountpoint']==config.mp_use]
+    flt_r2mp = [m for m in flt if m['Mountpoint']==configp["data"]["mp_use"]]
     ## GET distance between rover and mountpoint used.
     for r in flt_r2mp:
-        config.dist_r2mp = r["Distance"]
-        config.mp_alive = r['Mountpoint']
+        configp["data"]["dist_r2mp"] = str(round(r["Distance"],2))
+        configp["data"]["mp_alive"] = r['Mountpoint']
+        editparam()
     ## LOG Watch all nearests mountpoints
     # for i in flt:
     #     mp = i["Mountpoint"]
@@ -156,17 +192,17 @@ def loop_mp():
             ##Get data from Caster
             ntripbrowser()
             ##My base is Alive?
-            flt_basealive = [m for m in flt1 if m['Mountpoint']==config.mp_alive]
+            flt_basealive = [m for m in flt1 if m['Mountpoint']==configp["data"]["mp_alive"]]
             if len(flt_basealive) == 0:
-                print("INFO: Base ",config.mp_alive," is DEAD!")
+                print("INFO: Base ",configp["data"]["mp_alive"]," is DEAD!")
                 movetobase()
                 savelog()
-            if config.mp_use != mp_use1:
+            if configp["data"]["mp_use"] != mp_use1:
                 print("INFO: A closer base is now available")
                 movetobase()
                 savelog()
             else:
-                print("INFO: Connected to ",config.mp_use,", Waiting for the rover's geographical coordinates......")
+                print("INFO: Connected to ",configp["data"]["mp_use"],", Waiting for the rover's geographical coordinates......")
                 ## 1-Analyse nmea from gnss ntripclient for get lon lat
                 ##TODO after x min reset parameters
                 line = config.sio.readline()
@@ -184,27 +220,26 @@ def loop_mp():
                     ntripbrowser()
                     ### Check if it is necessary to change the base
                     ## nearest Base is different?
-                    if config.mp_use != mp_use1:
+                    if configp["data"]["mp_use"] != mp_use1:
                         ## Check Critical distance before change ?
-                        if config.dist_r2mp > config.mp_km_crit:
+                        if Decimal(configp["data"]["dist_r2mp"]) > int(configp["data"]["mp_km_crit"]):
                             ##critique + Hysteresis(htrs)
-                            crithtrs = config.mp_km_crit + config.htrs
-                            if config.dist_r2mp < crithtrs:
+                            crithtrs = int(configp["data"]["mp_km_crit"]) + int(configp["data"]["htrs"])
+                            if Decimal(configp["data"]["dist_r2mp"]) < crithtrs:
                                 print("**INFO: Hysteresis critique running: ",crithtrs,"km")
                             else:
                                 ##middle mount point 2 mount point hysteresis
-                                r2mphtrs = mp_use1_km + config.htrs
-                                if config.dist_r2mp < r2mphtrs:
+                                r2mphtrs = mp_use1_km + int(configp["data"]["htrs"])
+                                if Decimal(configp["data"]["dist_r2mp"]) < r2mphtrs:
                                     print("**INFO: Hysteresis MP 2 MP running: ",r2mphtrs,"km")
                                 else:
                                     movetobase()
                                     savelog()
-                                    telegrambot()
                         else:
                             print(
-                                "**INFO:",mp_use1," nearby: ",round(config.dist_r2mp,2),
-                                " But critical distance not reached: ",config.mp_km_crit,"km")
-                    if config.mp_use == mp_use1:
+                                "**INFO:",mp_use1," nearby: ",Decimal(configp["data"]["dist_r2mp"]),
+                                " But critical distance not reached: ",configp["data"]["mp_km_crit"],"km")
+                    if configp["data"]["mp_use"] == mp_use1:
                         print("**INFO: Always connected to ",mp_use1)
 
         except serial.SerialException as e:
@@ -224,7 +259,7 @@ def main():
     ## 01-START caster
     Process(target=str2str_out).start()
     ## 02-START a generic stream RTCM3 in
-    bashstr = config.stream1+config.mp_use+config.stream2
+    bashstr = config.stream1+configp["data"]["mp_use"]+config.stream2
     str2str = subprocess.Popen(bashstr.split())
     ## 4-Get str2str in pid
     config.pid_str = str2str.pid

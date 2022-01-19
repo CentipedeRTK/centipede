@@ -10,7 +10,7 @@ RUN ./install.sh --dependencies --rtklib
 #install dep for ntripbrowser
 RUN apt-get install -y libssl-dev libcurl4-openssl-dev python-dev
 #install python package
-RUN pip install --upgrade pyserial pynmea2 ntripbrowser python-telegram-bot pyTelegramBotAPI
+RUN pip install --upgrade pyserial pynmea2 ntripbrowser python-telegram-bot pyTelegramBotAPI configparser
 #for kill str2str ps aux
 RUN apt-get install -y procps
 #copy pybasevar

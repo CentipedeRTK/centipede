@@ -23,17 +23,4 @@ rtime = '00:00:00'
 ## 2-Get caster sourcetable
 caster='caster.centipede.fr'
 port=80
-###max search distance between rover & caster bases
-maxdist=300
-## 3-Get variables
-###defaut mountpoint
-mp_use = "CT"
-mp_alive="CT"
-##defaut Distance between rover > base
-dist_r2mp = 500
-###critical distance before change
-mp_km_crit = 15
-###hysteresis
-htrs = 1
-###message
-message = "Defaut_Message"
+#message = "Defaut_Message"

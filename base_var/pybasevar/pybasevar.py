@@ -8,9 +8,7 @@ import signal
 import telegram
 import telebot
 from telebot import types
-#import botquestion
 import sys
-#import logging
 from decimal import *
 from ntripbrowser import NtripBrowser
 from multiprocessing import Process
@@ -33,15 +31,6 @@ config.user_id = str( sys.argv[2] )
 
 bot = telebot.TeleBot(config.api_key)
 
-def stopforwrite():
-    run = Run()
-    os.kill(run.ppid, signal.SIGSTOP)
-    editparam()
-    p=Process(target=loop_mp)
-    p.start()
-    Run.ppid=p.pid
-    print("New ppid",Run.ppid)
-
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
 	bot.reply_to(message, "Howdy, how are you doing?")
@@ -51,36 +40,50 @@ def send_mp(message):
     configp.read('param.ini')
     bot.reply_to(message,"Mount Point: "+configp["data"]["mp_use"])
 
-@bot.message_handler(commands=['htrs'])
-def send_htrs(message):
-    configp.read('param.ini')
-    bot.reply_to(message,"Hysteresis: "+configp["data"]["htrs"]+"km")
-
-@bot.message_handler(commands=['htrs!'])
-def send_htrs(message):
-    configp.read('param.ini')
-    msg = bot.reply_to(message,"Edit Hysteresis, write value: ")
-    bot.register_next_step_handler(msg, processSetHtrs)
-
-def processSetHtrs(message):
-    answer = message.text
-    if answer.isdigit():
-        print(answer)
-        configp["data"]["htrs"] = answer
-        stopforwrite()
-        bot.reply_to(message,"Hysteresis is change to "+configp["data"]["htrs"]+"km")
-    else:
-        bot.reply_to(message, 'Oooops bad value!')
-
 @bot.message_handler(commands=['dist'])
 def send_mp_use1_km(message):
     configp.read('param.ini')
     bot.reply_to(message,"Distance between Rover/Base: "+configp["data"]["dist_r2mp"]+"km")
 
+#hysteresis
+@bot.message_handler(commands=['htrs'])
+def send_htrs(message):
+    configp.read('param.ini')
+    bot.reply_to(message,"Hysteresis: "+configp["data"]["htrs"]+"km")
+@bot.message_handler(commands=['htrs!'])
+def send_htrsE(message):
+    configp.read('param.ini')
+    msg = bot.reply_to(message,"Edit Hysteresis: old value:"+configp["data"]["htrs"]+"km, New value ? ")
+    bot.register_next_step_handler(msg, processSetHtrs)
+def processSetHtrs(message):
+    answer = message.text
+    if answer.isdigit():
+        print(answer)
+        configp["data"]["htrs"] = answer
+        stoptowrite()
+        bot.reply_to(message,"NEW Hysteresis: "+configp["data"]["htrs"]+"km")
+    else:
+        bot.reply_to(message, 'Oooops bad value!')
+
+#Critical distance
 @bot.message_handler(commands=['crit'])
 def send_crit(message):
     configp.read('param.ini')
     bot.reply_to(message, "Critical distance: "+ configp["data"]["mp_km_crit"] +"km")
+@bot.message_handler(commands=['crit!'])
+def send_critE(message):
+    configp.read('param.ini')
+    msg = bot.reply_to(message,"Edit critical distance: old value:"+configp["data"]["mp_km_crit"]+"km, New value ? ")
+    bot.register_next_step_handler(msg, processSetCrit)
+def processSetCrit(message):
+    answer = message.text
+    if answer.isdigit():
+        print(answer)
+        configp["data"]["mp_km_crit"] = answer
+        stoptowrite()
+        bot.reply_to(message,"NEW Critical distance: "+configp["data"]["mp_km_crit"]+"km")
+    else:
+        bot.reply_to(message, 'Oooops bad value!')
 
 @bot.message_handler(commands=['log'])
 def notas(mensagem):
@@ -90,7 +93,7 @@ def notas(mensagem):
 
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
-	bot.reply_to(message, message.text)
+	bot.reply_to(message, "What?")
 
 
 ## 00-START socat
@@ -201,16 +204,14 @@ def loop_mp():
             global mp_use1
             global mp_use1_km
             global msg
+            ##get variables
+            configp.read('param.ini')
             ##Get data from Caster
             ntripbrowser()
             ##My base is Alive?
             flt_basealive = [m for m in flt1 if m['Mountpoint']==configp["data"]["mp_alive"]]
             if len(flt_basealive) == 0:
                 print("INFO: Base ",configp["data"]["mp_alive"]," is DEAD!")
-                movetobase()
-                savelog()
-            if configp["data"]["mp_use"] != mp_use1:
-                print("INFO: A closer base is now available")
                 movetobase()
                 savelog()
             else:
@@ -234,7 +235,7 @@ def loop_mp():
                     ## nearest Base is different?
                     if configp["data"]["mp_use"] != mp_use1:
                         ## Check Critical distance before change ?
-                        if Decimal(configp["data"]["dist_r2mp"]) > int(configp["data"]["mp_km_cri    config.loomp = ppidt"]):
+                        if Decimal(configp["data"]["dist_r2mp"]) > int(configp["data"]["mp_km_crit"]):
                             ##critique + Hysteresis(htrs)
                             crithtrs = int(configp["data"]["mp_km_crit"]) + int(configp["data"]["htrs"])
                             if Decimal(configp["data"]["dist_r2mp"]) < crithtrs:
@@ -260,6 +261,16 @@ def loop_mp():
         except pynmea2.ParseError as e:
             #print('Parse error: {}'.format(e))
             continue
+
+## stop loop for change parameters (.ini)
+def stoptowrite():
+    run = Run()
+    os.kill(run.ppid, signal.SIGSTOP)
+    editparam()
+    p=Process(target=loop_mp)
+    p.start()
+    Run.ppid=p.pid
+    print("New ppid",Run.ppid)
 
 
 class Run:

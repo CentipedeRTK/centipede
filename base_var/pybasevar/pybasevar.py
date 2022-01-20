@@ -25,13 +25,22 @@ configp.read('param.ini')
 def editparam():
     with open('param.ini','w') as configfile:
         configp.write(configfile)
-        configfile.close()
+
 
 ##TElegram param
 config.api_key = str( sys.argv[1] )
 config.user_id = str( sys.argv[2] )
 
 bot = telebot.TeleBot(config.api_key)
+
+def stopforwrite():
+    run = Run()
+    os.kill(run.ppid, signal.SIGSTOP)
+    editparam()
+    p=Process(target=loop_mp)
+    p.start()
+    Run.ppid=p.pid
+    print("New ppid",Run.ppid)
 
 @bot.message_handler(commands=['help'])
 def send_welcome(message):
@@ -58,7 +67,7 @@ def processSetHtrs(message):
     if answer.isdigit():
         print(answer)
         configp["data"]["htrs"] = answer
-        editparam()
+        stopforwrite()
         bot.reply_to(message,"Hysteresis is change to "+configp["data"]["htrs"]+"km")
     else:
         bot.reply_to(message, 'Oooops bad value!')
@@ -135,6 +144,9 @@ def movetobase():
     str(round(config.rlon,7))+","+ presentday.strftime('%Y-%m-%d') +" "+str(config.rtime))
     editparam()
     telegrambot()
+    # with open('param.ini','w') as configfile:
+    #     configp.write(configfile)
+    #     configfile.close()
 
 def ntripbrowser():
     global browser
@@ -222,7 +234,7 @@ def loop_mp():
                     ## nearest Base is different?
                     if configp["data"]["mp_use"] != mp_use1:
                         ## Check Critical distance before change ?
-                        if Decimal(configp["data"]["dist_r2mp"]) > int(configp["data"]["mp_km_crit"]):
+                        if Decimal(configp["data"]["dist_r2mp"]) > int(configp["data"]["mp_km_cri    config.loomp = ppidt"]):
                             ##critique + Hysteresis(htrs)
                             crithtrs = int(configp["data"]["mp_km_crit"]) + int(configp["data"]["htrs"])
                             if Decimal(configp["data"]["dist_r2mp"]) < crithtrs:
@@ -250,24 +262,36 @@ def loop_mp():
             continue
 
 
+class Run:
+    ppid = 0
+    def loop():
+        ## 03-START loop to check rover position and nearest base
+        p=Process(target=loop_mp)
+        p.start()
+        Run.ppid=p.pid
+        print("ppid",Run.ppid)
 
-def main():
-    print(config.api_key)
-    #logging.basicConfig(filename='pybasevar.log', filemode='a',format='%(asctime)s - %(message)s', level=logging.INFO)
-    ## 00-START socat
-    ## TODO
-    ## 01-START caster
-    Process(target=str2str_out).start()
-    ## 02-START a generic stream RTCM3 in
-    bashstr = config.stream1+configp["data"]["mp_use"]+config.stream2
-    str2str = subprocess.Popen(bashstr.split())
-    ## 4-Get str2str in pid
-    config.pid_str = str2str.pid
-    print("STR2STR: Defaut ntripcli 2 serial is runnig, pid: ",config.pid_str)
-    ## 03-START loop to check rover position and nearest base
-    Process(target=loop_mp).start()
-    ## 04-START botquestion:
-    bot.infinity_polling()
+    def main():
+        #logging.basicConfig(filename='pybasevar.log', filemode='a',format='%(asctime)s - %(message)s', level=logging.INFO)
+        ## 00-START socat
+        ## TODO
+        ## 01-START caster
+        Process(target=str2str_out).start()
+        ## 02-START a generic stream RTCM3 in
+        bashstr = config.stream1+configp["data"]["mp_use"]+config.stream2
+        str2str = subprocess.Popen(bashstr.split())
+        ## 4-Get str2str in pid
+        config.pid_str = str2str.pid
+        print("STR2STR: Defaut ntripcli 2 serial is runnig, pid: ",config.pid_str)
+        print("START loop")
+        ## 03-START loop to check rover position and nearest base
+        p=Process(target=loop_mp)
+        p.start()
+        Run.ppid=p.pid
+        ## 04-START botquestion:
+        print("START bot question")
+        bot.infinity_polling()
+
 
 if __name__ == '__main__':
-    main()
+    Run.main()

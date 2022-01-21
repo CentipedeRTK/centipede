@@ -5,7 +5,6 @@ import time
 import subprocess
 import os
 import signal
-import telegram
 import telebot
 from telebot import types
 import sys
@@ -24,36 +23,16 @@ def editparam():
     with open('param.ini','w') as configfile:
         configp.write(configfile)
 
-
 ##TElegram param
 config.api_key = str( sys.argv[1] )
 config.user_id = str( sys.argv[2] )
-
 bot = telebot.TeleBot(config.api_key)
-
-@bot.message_handler(commands=['help'])
-def send_welcome(message):
-	bot.reply_to(message, "Howdy, how are you doing?")
-
-@bot.message_handler(commands=['mp'])
-def send_mp(message):
-    configp.read('param.ini')
-    bot.reply_to(message,"Mount Point: "+configp["data"]["mp_use"])
-
-@bot.message_handler(commands=['dist'])
-def send_mp_use1_km(message):
-    configp.read('param.ini')
-    bot.reply_to(message,"Distance between Rover/Base: "+configp["data"]["dist_r2mp"]+"km")
 
 #hysteresis
 @bot.message_handler(commands=['htrs'])
-def send_htrs(message):
-    configp.read('param.ini')
-    bot.reply_to(message,"Hysteresis: "+configp["data"]["htrs"]+"km")
-@bot.message_handler(commands=['htrs!'])
 def send_htrsE(message):
     configp.read('param.ini')
-    msg = bot.reply_to(message,"Edit Hysteresis: old value:"+configp["data"]["htrs"]+"km, New value ? ")
+    msg = bot.reply_to(message,"Edit Hysteresis:\n old value:"+configp["data"]["htrs"]+"km,\n Enter the new value ! ")
     bot.register_next_step_handler(msg, processSetHtrs)
 def processSetHtrs(message):
     answer = message.text
@@ -67,13 +46,9 @@ def processSetHtrs(message):
 
 #Critical distance
 @bot.message_handler(commands=['crit'])
-def send_crit(message):
-    configp.read('param.ini')
-    bot.reply_to(message, "Critical distance: "+ configp["data"]["mp_km_crit"] +"km")
-@bot.message_handler(commands=['crit!'])
 def send_critE(message):
     configp.read('param.ini')
-    msg = bot.reply_to(message,"Edit critical distance: old value:"+configp["data"]["mp_km_crit"]+"km, New value ? ")
+    msg = bot.reply_to(message,"Edit Maximum distance before GNSS base change:\n Old value:"+configp["data"]["mp_km_crit"]+"km,\n Enter the new value ! ")
     bot.register_next_step_handler(msg, processSetCrit)
 def processSetCrit(message):
     answer = message.text
@@ -85,16 +60,49 @@ def processSetCrit(message):
     else:
         bot.reply_to(message, 'Oooops bad value!')
 
+#Critical distance
+@bot.message_handler(commands=['dist'])
+def send_distE(message):
+    configp.read('param.ini')
+    msg = bot.reply_to(message,"Edit Max search distance of GNSS bases:\n old value:"+configp["data"]["maxdist"]+"km,\n Enter the new value ! ")
+    bot.register_next_step_handler(msg, processSetCrit)
+def processSetCrit(message):
+    answer = message.text
+    if answer.isdigit():
+        print(answer)
+        configp["data"]["maxdist"] = answer
+        stoptowrite()
+        bot.reply_to(message,"NEW Critical distance: "+configp["data"]["maxdist"]+"km")
+    else:
+        bot.reply_to(message, 'Oooops bad value!')
+
+#dowload logs
 @bot.message_handler(commands=['log'])
 def notas(mensagem):
     mensagemID = mensagem.chat.id
     doc = open('basevarlog.csv', 'rb')
     bot.send_document(mensagemID, doc)
 
+#principal messsage
 @bot.message_handler(func=lambda message: True)
 def echo_all(message):
-	bot.reply_to(message, "What?")
+    configp.read('param.ini')
+    mes=("Connected to Mount Point: \n*"+configp["data"]["mp_use"]+ "*\n" +
+    "Last distance between Rover/Base: \n*"+configp["data"]["dist_r2mp"]+"*km" + "\n\n" + "Parameters:\n"
+    "*/dist* Max search distance of bases: *"+configp["data"]["maxdist"]+"*km"+ "\n" +
+    "*/crit* Maximum distance before base change: *"+ configp["data"]["mp_km_crit"] +"*km" + "\n" +
+    "*/htrs* Hysteresis: *"+configp["data"]["htrs"]+"*km"+ "\n\n" +
+    "*/log*  Download GNSS base change logs")
+    bot.reply_to(message,mes,parse_mode= 'Markdown')
 
+#Automatic message on base change
+def telegrambot():
+    if len(sys.argv) >= 2:
+        configp.read('param.ini')
+        try:
+            bot.send_message(config.user_id,configp["message"]["message"])
+        except requests.exceptions.ConnectionError:
+            r.status_code = "Connection refused"
 
 ## 00-START socat
 ## TODO : Open virtual ports, BUG don't run in background, use run.sh.
@@ -109,12 +117,6 @@ def str2str_out():
     process2 = subprocess.Popen(config.ntripc.split())
     pid2 = process2.pid
     print("STR2STR: serial 2 ntripc is runnig, pid: ",pid2)
-
-def telegrambot():
-    global bot1
-    if len(sys.argv) >= 2:
-        bot1 = telegram.Bot(token=config.api_key)
-        bot1.send_message(chat_id=config.user_id, text=configp["message"]["message"])
 
 def savelog():
     ##log in file

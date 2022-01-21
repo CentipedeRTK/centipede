@@ -89,7 +89,7 @@ def processSetCritE(message):
 def send_distE(message):
     configp.read('param.ini')
     msg = bot.reply_to(message,"Edit Max search distance of GNSS bases saved:\n old value:"+configp["data"]["maxdist"]+"km,\n Enter the new value ! ")
-    bot.register_next_step_handler(msg, processDistE)
+    bot.register_next_step_handler(msg, processSetDistE)
 def processSetDistE(message):
     answer = message.text
     if answer.isdigit():

@@ -5,6 +5,7 @@ import time
 import subprocess
 import os
 import signal
+import telegram
 import telebot
 from telebot import types
 import sys
@@ -28,13 +29,36 @@ config.api_key = str( sys.argv[1] )
 config.user_id = str( sys.argv[2] )
 bot = telebot.TeleBot(config.api_key)
 
+@bot.message_handler(commands=['restart'])
+def send_restart(message):
+    configp.read('param.ini')
+    bot.reply_to(message, 'Restarting SERVICE......')
+    restartbasevar()
+
+#base filter
+@bot.message_handler(commands=['excl'])
+def send_exclE(message):
+    configp.read('param.ini')
+    msg = bot.reply_to(message,"Edit exclude Base(s):\n old value:"+configp["data"]["exc_mp"]+",\n Enter the new value ! ")
+    bot.register_next_step_handler(msg, processSetExclE)
+def processSetExclE(message):
+    answer = message.text
+    if answer.isupper():
+        print(answer)
+        configp["data"]["exc_mp"] = answer
+        stoptowrite()
+        bot.reply_to(message,"NEW exclude Base(s): "+configp["data"]["exc_mp"])
+    else:
+        bot.reply_to(message, 'Oooops bad value!')
+
+
 #hysteresis
 @bot.message_handler(commands=['htrs'])
 def send_htrsE(message):
     configp.read('param.ini')
     msg = bot.reply_to(message,"Edit Hysteresis:\n old value:"+configp["data"]["htrs"]+"km,\n Enter the new value ! ")
-    bot.register_next_step_handler(msg, processSetHtrs)
-def processSetHtrs(message):
+    bot.register_next_step_handler(msg, processSetHtrsE)
+def processSetHtrsE(message):
     answer = message.text
     if answer.isdigit():
         print(answer)
@@ -49,14 +73,14 @@ def processSetHtrs(message):
 def send_critE(message):
     configp.read('param.ini')
     msg = bot.reply_to(message,"Edit Maximum distance before GNSS base change:\n Old value:"+configp["data"]["mp_km_crit"]+"km,\n Enter the new value ! ")
-    bot.register_next_step_handler(msg, processSetCrit)
-def processSetCrit(message):
+    bot.register_next_step_handler(msg, processSetCritE)
+def processSetCritE(message):
     answer = message.text
     if answer.isdigit():
         print(answer)
         configp["data"]["mp_km_crit"] = answer
         stoptowrite()
-        bot.reply_to(message,"NEW Critical distance: "+configp["data"]["mp_km_crit"]+"km")
+        bot.reply_to(message,"NEW Maximum distance before GNSS base change saved: "+configp["data"]["mp_km_crit"]+"km")
     else:
         bot.reply_to(message, 'Oooops bad value!')
 
@@ -64,9 +88,9 @@ def processSetCrit(message):
 @bot.message_handler(commands=['dist'])
 def send_distE(message):
     configp.read('param.ini')
-    msg = bot.reply_to(message,"Edit Max search distance of GNSS bases:\n old value:"+configp["data"]["maxdist"]+"km,\n Enter the new value ! ")
-    bot.register_next_step_handler(msg, processSetCrit)
-def processSetCrit(message):
+    msg = bot.reply_to(message,"Edit Max search distance of GNSS bases saved:\n old value:"+configp["data"]["maxdist"]+"km,\n Enter the new value ! ")
+    bot.register_next_step_handler(msg, processDistE)
+def processSetDistE(message):
     answer = message.text
     if answer.isdigit():
         print(answer)
@@ -89,20 +113,26 @@ def echo_all(message):
     configp.read('param.ini')
     mes=("Connected to Mount Point: \n*"+configp["data"]["mp_use"]+ "*\n" +
     "Last distance between Rover/Base: \n*"+configp["data"]["dist_r2mp"]+"*km" + "\n\n" + "Parameters:\n"
+    "*/excl* Bases GNSS exclude: *"+configp["data"]["exc_mp"]+ "*\n" +
     "*/dist* Max search distance of bases: *"+configp["data"]["maxdist"]+"*km"+ "\n" +
     "*/crit* Maximum distance before base change: *"+ configp["data"]["mp_km_crit"] +"*km" + "\n" +
     "*/htrs* Hysteresis: *"+configp["data"]["htrs"]+"*km"+ "\n\n" +
     "*/log*  Download GNSS base change logs")
     bot.reply_to(message,mes,parse_mode= 'Markdown')
 
-#Automatic message on base change
+#Automatic message on base change with pytelegrambot (BUG with telebot)
 def telegrambot():
+    global bot1
     if len(sys.argv) >= 2:
-        configp.read('param.ini')
-        try:
-            bot.send_message(config.user_id,configp["message"]["message"])
-        except requests.exceptions.ConnectionError:
-            r.status_code = "Connection refused"
+        bot1 = telegram.Bot(token=config.api_key)
+        bot1.send_message(chat_id=config.user_id, text=configp["message"]["message"])
+
+def telegrambot2():
+    global bot2
+    if len(sys.argv) >= 2:
+        bot2 = telegram.Bot(token=config.api_key)
+        bot2.send_message(chat_id=config.user_id, text=configp["message"]["message2"])
+
 
 ## 00-START socat
 ## TODO : Open virtual ports, BUG don't run in background, use run.sh.
@@ -136,7 +166,6 @@ def movetobase():
     str2str = subprocess.Popen(killstr.split())
     print("STR2STR: KILL, old pid:", config.pid_str)
     ## Upd variables & Running a new str2str_in service
-    #config.mp_use = mp_use1
     configp["data"]["mp_use"] = mp_use1
     editparam()
     time.sleep(3)
@@ -149,9 +178,6 @@ def movetobase():
     str(round(config.rlon,7))+","+ presentday.strftime('%Y-%m-%d') +" "+str(config.rtime))
     editparam()
     telegrambot()
-    # with open('param.ini','w') as configfile:
-    #     configp.write(configfile)
-    #     configfile.close()
 
 def ntripbrowser():
     global browser
@@ -168,8 +194,10 @@ def ntripbrowser():
     flt = getmp['str']
     # Purge list
     flt1 = []
-    ## filter carrier L1-L2
-    flt1 = [m for m in flt if int(m['Carrier'])>=2]
+    ## Param base filter
+    excl =  list(configp["data"]["exc_mp"].split(" "))
+    ## filter carrier L1-L2 & exclude base
+    flt1 = [m for m in flt if int(m['Carrier'])>=2 and m['Mountpoint'] not in excl]
     ## GET nearest mountpoint
     for i, value in enumerate(flt1):
         ## Get first row
@@ -274,6 +302,14 @@ def stoptowrite():
     Run.ppid=p.pid
     print("New ppid",Run.ppid)
 
+def restartbasevar():
+        print("argv was",sys.argv)
+        print("sys.executable was", sys.executable)
+        print("restart now")
+        ## KILL old str2str_in
+        "kill -9 " + str(config.pid_str)
+        print("STR2STR: KILL, old pid:", config.pid_str)
+        os.execv(sys.executable, ['python'] + sys.argv)
 
 class Run:
     ppid = 0
@@ -285,6 +321,7 @@ class Run:
         print("ppid",Run.ppid)
 
     def main():
+        telegrambot2()
         #logging.basicConfig(filename='pybasevar.log', filemode='a',format='%(asctime)s - %(message)s', level=logging.INFO)
         ## 00-START socat
         ## TODO

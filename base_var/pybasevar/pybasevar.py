@@ -54,7 +54,6 @@ def processSetExclE(message):
     else:
         bot.reply_to(message, 'Oooops bad value!')
 
-
 #hysteresis
 @bot.message_handler(commands=['htrs'])
 def send_htrsE(message):
@@ -99,7 +98,7 @@ def processSetDistE(message):
         print(answer)
         configp["data"]["maxdist"] = answer
         stoptowrite()
-        bot.reply_to(message,"NEW Critical distance: "+configp["data"]["maxdist"]+"km")
+        bot.reply_to(message,"NEW Max search distance: "+configp["data"]["maxdist"]+"km")
     else:
         bot.reply_to(message, 'Oooops bad value!')
 
@@ -136,6 +135,7 @@ def telegrambot2():
         bot2 = telegram.Bot(token=config.api_key)
         bot2.send_message(chat_id=config.user_id, text=configp["message"]["message2"])
 
+##Save LOG
 def savelog():
     ##log in file
     file = open("basevarlog.csv", "a")
@@ -306,12 +306,11 @@ def killstr():
         os.kill(int(pidkill), signal.SIGKILL)
     print("KILLING all 'STR2STR -in ntrip' Successfully terminated")
 
-## 00-START socat
-## TODO : Open virtual ports, BUG don't run in background, use run.sh.
 # def socat():
-#  process1 = subprocess.Popen(config.socat.split())
-#  print("/dev/pts/1 & /2 created")
-#  time.sleep(3)
+#     global socat_run
+#     socat_run = subprocess.Popen(config.socat.split())
+#     print("/dev/pts/1 & /2 created")
+#     time.sleep(3)
 
 def str2str_out():
     global str2str_out
@@ -323,6 +322,13 @@ def str2str_in():
     configp.read('param.ini')
     bashstr = config.stream1+configp["data"]["mp_use"]+config.stream2
     str2str_in = subprocess.Popen(bashstr.split())
+
+# def start_socat():
+#     global socat_str
+#     socat_str = multiprocessing.Process(name='str_out',target=socat)
+#     socat_str.deamon = True
+#     print("socat_str Started:", multiprocessing.current_process().name)
+#     socat_str.start()
 
 def start_out_str2str():
     global out_str
@@ -347,12 +353,13 @@ def start_loop_basevar():
 
 def main():
     telegrambot2()
-    ##TODO socat
+    # start_socat()
     start_out_str2str()
     start_in_str2str()
     start_loop_basevar()
     bot.infinity_polling()
 
+    # socat_str.join()
     out_str.join()
     in_str.join()
     loop_str.join()

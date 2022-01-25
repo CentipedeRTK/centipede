@@ -11,10 +11,13 @@ from telebot import types
 import sys
 from decimal import *
 from ntripbrowser import NtripBrowser
-from multiprocessing import Process
+import multiprocessing
 from datetime import datetime
 import config
 import configparser
+
+##global varible loops
+loop_str = None
 
 ## import and edit .ini
 configp = configparser.ConfigParser()
@@ -133,21 +136,6 @@ def telegrambot2():
         bot2 = telegram.Bot(token=config.api_key)
         bot2.send_message(chat_id=config.user_id, text=configp["message"]["message2"])
 
-
-## 00-START socat
-## TODO : Open virtual ports, BUG don't run in background, use run.sh.
-# def socat():
-#  process1 = subprocess.Popen(config.socat.split())
-#  print("/dev/pts/1 & /2 created")
-#  time.sleep(3)
-
-## 01-START caster
-def str2str_out():
-    ##run ntripcaster
-    process2 = subprocess.Popen(config.ntripc.split())
-    pid2 = process2.pid
-    print("STR2STR: serial 2 ntripc is runnig, pid: ",pid2)
-
 def savelog():
     ##log in file
     file = open("basevarlog.csv", "a")
@@ -162,15 +150,12 @@ def movetobase():
     print("CASTER: Move to base ",mp_use1, " !")
     print("------")
     ## KILL old str2str_in
-    killstr = "kill -9 " + str(config.pid_str)
-    str2str = subprocess.Popen(killstr.split())
-    print("STR2STR: KILL, old pid:", config.pid_str)
+    killstr()
     ## Upd variables & Running a new str2str_in service
     configp["data"]["mp_use"] = mp_use1
     editparam()
-    time.sleep(3)
-    str2str = subprocess.Popen(bashstr.split())
-    config.pid_str = str2str.pid
+    time.sleep(2)
+    start_in_str2str()
     ##Metadata
     presentday = datetime.now()
     configp["message"]["message"] = ("Move to base ," + str(mp_use1) +","+
@@ -294,54 +279,83 @@ def loop_mp():
 
 ## stop loop for change parameters (.ini)
 def stoptowrite():
-    run = Run()
-    os.kill(run.ppid, signal.SIGSTOP)
+    global loop_str
+    loop_str.terminate()
+    time.sleep(2)
     editparam()
-    p=Process(target=loop_mp)
-    p.start()
-    Run.ppid=p.pid
-    print("New ppid",Run.ppid)
+    loop_str = multiprocessing.Process(name='loop',target=loop_mp)
+    loop_str.deamon = True
+    print("Loop_str Starting:", multiprocessing.current_process().name)
+    loop_str.start()
 
 def restartbasevar():
         print("argv was",sys.argv)
         print("sys.executable was", sys.executable)
         print("restart now")
         ## KILL old str2str_in
-        "kill -9 " + str(config.pid_str)
-        print("STR2STR: KILL, old pid:", config.pid_str)
+        killstr()
         os.execv(sys.executable, ['python'] + sys.argv)
 
-class Run:
-    ppid = 0
-    def loop():
-        ## 03-START loop to check rover position and nearest base
-        p=Process(target=loop_mp)
-        p.start()
-        Run.ppid=p.pid
-        print("ppid",Run.ppid)
+def killstr():
+    # iterating through each instance of the process
+    for line in os.popen("ps ax | grep 'str2str -in ntrip' | grep -v grep"):
+        fields = line.split()
+        # extracting Process ID from the output
+        pidkill = fields[0]
+        # terminating process
+        os.kill(int(pidkill), signal.SIGKILL)
+    print("KILLING all 'STR2STR -in ntrip' Successfully terminated")
 
-    def main():
-        telegrambot2()
-        #logging.basicConfig(filename='pybasevar.log', filemode='a',format='%(asctime)s - %(message)s', level=logging.INFO)
-        ## 00-START socat
-        ## TODO
-        ## 01-START caster
-        Process(target=str2str_out).start()
-        ## 02-START a generic stream RTCM3 in
-        bashstr = config.stream1+configp["data"]["mp_use"]+config.stream2
-        str2str = subprocess.Popen(bashstr.split())
-        ## 4-Get str2str in pid
-        config.pid_str = str2str.pid
-        print("STR2STR: Defaut ntripcli 2 serial is runnig, pid: ",config.pid_str)
-        print("START loop")
-        ## 03-START loop to check rover position and nearest base
-        p=Process(target=loop_mp)
-        p.start()
-        Run.ppid=p.pid
-        ## 04-START botquestion:
-        print("START bot question")
-        bot.infinity_polling()
+## 00-START socat
+## TODO : Open virtual ports, BUG don't run in background, use run.sh.
+# def socat():
+#  process1 = subprocess.Popen(config.socat.split())
+#  print("/dev/pts/1 & /2 created")
+#  time.sleep(3)
 
+def str2str_out():
+    global str2str_out
+    ##run ntripcaster
+    str2str_out = subprocess.Popen(config.ntripc.split())
+
+def str2str_in():
+    global str2str_in
+    configp.read('param.ini')
+    bashstr = config.stream1+configp["data"]["mp_use"]+config.stream2
+    str2str_in = subprocess.Popen(bashstr.split())
+
+def start_out_str2str():
+    global out_str
+    out_str = multiprocessing.Process(name='str_out',target=str2str_out)
+    out_str.deamon = True
+    print("Out_str Started:", multiprocessing.current_process().name)
+    out_str.start()
+
+def start_in_str2str():
+    global in_str
+    in_str = multiprocessing.Process(name='str_in',target=str2str_in)
+    in_str.deamon = True
+    print("In_str Started:", multiprocessing.current_process().name)
+    in_str.start()
+
+def start_loop_basevar():
+    global loop_str
+    loop_str = multiprocessing.Process(name='loop',target=loop_mp)
+    loop_str.deamon = True
+    print("Loop_str Starting:", multiprocessing.current_process().name)
+    loop_str.start()
+
+def main():
+    telegrambot2()
+    ##TODO socat
+    start_out_str2str()
+    start_in_str2str()
+    start_loop_basevar()
+    bot.infinity_polling()
+
+    out_str.join()
+    in_str.join()
+    loop_str.join()
 
 if __name__ == '__main__':
-    Run.main()
+    main()

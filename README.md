@@ -2,7 +2,7 @@
 
 ### Réseau collaboratif de Bases GNSS RTK low-cost
 
-[![DOI](https://zenodo.org/badge/115435144.svg)](https://zenodo.org/badge/latestdoi/115435144)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5814959.svg)](https://doi.org/10.5281/zenodo.5814959)
 
 <p align="center"><img src="https://raw.githubusercontent.com/jancelin/docs-centipedeRTK/master/assets/images/index/centipede_petit.png">
 
